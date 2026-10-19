@@ -90,7 +90,7 @@ Na stole leży stary klucz. Nie mogę go zgubić. Babcia nie napisała, czemu je
 
 Ale przede wszystkim chcę wiedzieć: co otwiera ten klucz?
 
-### Nowe słowa
+### Neue Wörter
 
 - **a** — und, aber (Gegensatz)
 - **aha** — aha, ach so
@@ -559,7 +559,7 @@ Pan Zbyszek długo milczy.
 
 I wychodzi.
 
-### Nowe słowa
+### Neue Wörter
 
 - **ach** — ach!
 - **aplikacja** _f_ — App
@@ -1006,7 +1006,7 @@ Pokazuję jej klucz. Kasia bierze go i patrzy na niego przy lampie.
 
 — Piękny. Bardzo stary. — Oddaje mi go. — Jak będziesz wiedział, co otwiera, powiedz mi. Lubię tajemnice.
 
-### Nowe słowa
+### Neue Wörter
 
 - **absolutnie** — absolut, völlig
 - **albo** — oder
@@ -1323,7 +1323,7 @@ W drzwiach powiedziała jeszcze:
 
 — Bo nic nie wiem — powiedziała i zamknęła drzwi.
 
-### Nowe słowa
+### Neue Wörter
 
 - **analiza (analizę)** _f_ — Analyse
 - **balkon (balkonem)** _m_ — Balkon
@@ -1710,7 +1710,7 @@ Kasia opowiadała mi o Krakowie. Że to miasto stworzyli kupcy i królowie, a sm
 
 Nie pomyślałem o tym. Teraz nie mogę przestać o tym myśleć.
 
-### Nowe słowa
+### Neue Wörter
 
 - **akcja (akcji)** _f_ — Aktion, Einsatz; Handlung
 - **anioł (Aniołem)** _m_ — Engel
@@ -2050,7 +2050,7 @@ Popatrzyliśmy na siebie.
 
 Teraz jest noc. Piszę w łóżku, bardzo krzywo. Termometr pokazuje trzydzieści osiem. Myślę o dwóch dziewczynach na zdjęciu w pokoju babci.
 
-### Nowe słowa
+### Neue Wörter
 
 - **aaa** — aaa
 - **alergia (alergię)** _f_ — Allergie
@@ -2320,7 +2320,7 @@ Na zawsze razem.
 
 Jutro mogę wyjść z domu. Wiem, do czyich drzwi zapukam najpierw.
 
-### Nowe słowa
+### Neue Wörter
 
 - **agencja** _f_ — Agentur, Behörde
 - **agent** _m_ — Agent
@@ -2691,7 +2691,7 @@ Drzwi do piwnicy nigdy nie są otwarte. Pan Zbyszek zawsze je zamyka na kłódk�
 
 Teraz kłódka leżała na podłodze. Złamana.
 
-### Nowe słowa
+### Neue Wörter
 
 - **aby** — damit, um zu
 - **aktor (aktorzy)** _m_ — Schauspieler
@@ -2905,7 +2905,7 @@ Kasia mówi, że w języku polskim „kim” to narzędnik od „kto”. Na lekc
 
 Tego jeszcze nie wiem.
 
-### Nowe słowa
+### Neue Wörter
 
 - **bluza (bluzie)** _f_ — Sweatshirt
 - **całkowicie** — völlig
@@ -3177,7 +3177,7 @@ Później Kasia zrobiła korektę mojego pamiętnika. Czerwonym długopisem, jak
 
 Faktycznie, jej notatki na marginesie były krótkie: „rodzaj!”, „aspekt!”, „słusznie”, „ładnie”, „kompletnie bez sensu, ale zabawne”. Na końcu napisała: „Zaliczone. Niezwykle szybki postęp. Jednakże: przecinki”. Naturalnie byłem dumny jak dziecko. Poprzednio tylko jedna osoba sprawdzała moje teksty: Michael, i to wyłącznie kod.
 
-### Nowe słowa
+### Neue Wörter
 
 - **adres** _m_ — Adresse
 - **adwokat (adwokatem)** _m_ — Rechtsanwalt
@@ -3515,7 +3515,7 @@ Kiedy wszyscy wychodzili, pani Halina zatrzymała mnie w przedpokoju.
 
 I zamknęła drzwi, zanim zdążyłem odpowiedzieć.
 
-### Nowe słowa
+### Neue Wörter
 
 - **arcydzieło** _n_ — Meisterwerk
 - **atmosfera** _f_ — Atmosphäre, Stimmung
@@ -3814,7 +3814,7 @@ Pani Halina. O pierwszej w nocy.
 
 Kasia już wybierała numer Tomka.
 
-### Nowe słowa
+### Neue Wörter
 
 - **akcent (akcentem)** _m_ — Akzent
 - **alkohol** _m_ — Alkohol
@@ -4144,7 +4144,7 @@ Pani Halina zamknęła oczy.
 
 Później pan Zbyszek odkrył, jak to się stało: złodzieje zamknęli drzwi do piwnicy, a Bonifacy był w środku. Przez cały dzień był tam uwięziony. Nikt go nie zranił, ale jego duma została zraniona bardzo mocno.
 
-### Nowe słowa
+### Neue Wörter
 
 - **aktualny (aktualna)** — aktuell, gültig
 - **aresztować (aresztujemy)** _uv._ — verhaften
@@ -4443,7 +4443,7 @@ Położyłem kopertę z powrotem pod różańcem. Dokładnie tak, jak leżała. 
 
 Kasia mówi, że dobrze zrobiłem. Że to musi wyjść od niej. Ja nie wiem. Czasem myślę, że cała ta rodzina od pięćdziesięciu lat czeka, aż ktoś powie coś pierwszy.
 
-### Nowe słowa
+### Neue Wörter
 
 - **adresat** _m_ — Empfänger
 - **akordeon (akordeonie)** _m_ — Akkordeon
@@ -4725,7 +4725,7 @@ Ja od niej dostałem dwie rzeczy. Książkę, gruby słownik frazeologiczny, z d
 
 O północy wszyscy poszli na pasterkę do kościoła. Ja też. Kościół był pełny, zimny i piękny, ludzie śpiewali, a ja stałem obok Kasi i myślałem, że pierwszy raz od śmierci babci nie czuję się sam.
 
-### Nowe słowa
+### Neue Wörter
 
 - **benzyna (benzyny)** _f_ — Benzin
 - **boski** — göttlich
@@ -4949,7 +4949,7 @@ Potem wstała i zrobiła coś, czego się nie spodziewałem. Pocałowała mnie w
 
 — I mów do mnie „ciociu” — powiedziała. — Po polsku: ciocia. Babcina siostra to też ciocia. Tak jest prościej.
 
-### Nowe słowa
+### Neue Wörter
 
 - **babciny (Babcina)** — Großmutter-; babcina siostra – Großmutters Schwester
 - **bezpieczeństwo (Bezpieczeństwa)** _n_ — Sicherheit
@@ -5219,7 +5219,7 @@ Wcześniej, przy bramie, powiedziała jeszcze:
 
 W oknie cioci Haliny paliło się światło. Na parapecie stał pusty kieliszek po szampanie. I obok niego, oparta o szybę, otwarta koperta.
 
-### Nowe słowa
+### Neue Wörter
 
 - **bądź** _uv._ — oder; sei! (von być); bądź co bądź – immerhin
 - **beze** — ohne (Form von bez; beze mnie – ohne mich)
@@ -5465,7 +5465,7 @@ Kasia siedzi obok i śpi na krześle z głową na moim łóżku. Kiedy przyjecha
 
 To chyba znaczy, że mnie kocha.
 
-### Nowe słowa
+### Neue Wörter
 
 - **Austria (Austrii)** — Österreich
 - **autobus (autobusem)** _m_ — Bus
@@ -5769,7 +5769,7 @@ Zanim zasnąłem, pan Władysław powiedział jeszcze:
 
 — W życiu trzeba umieć odpuścić. Kto nie umie odpuścić, ten oszaleje. Ja w młodości chciałem wszystko kontrolować. Potem góry mnie nauczyły, że na niektóre rzeczy nie masz wpływu: na pogodę, na lawinę, na kobietę. Możesz się tylko troszczyć o tych, których kochasz, i nie marnować czasu na złość. Zło samo się wykończy. A zemsta to nie jest rozwiązanie. To tylko kolejny problem.
 
-### Nowe słowa
+### Neue Wörter
 
 - **adidas (adidasach)** _f_ — Turnschuh (ugs.)
 - **Amerykanin (Amerykanie)** — Amerikaner
@@ -6101,7 +6101,7 @@ Za spokojnie, mówi ciocia Halina. Zieliński od trzech tygodni nic nie zrobił.
 
 — Kiedy pies przestaje szczekać — powiedziała ciocia — to znaczy, że szykuje się do skoku.
 
-### Nowe słowa
+### Neue Wörter
 
 - **akurat** — gerade, ausgerechnet
 - **ambasador** _m_ — Botschafter
@@ -6425,7 +6425,7 @@ Kasia odłożyła długopis. Podeszła do mnie i położyła mi ręce na ramiona
 
 — Twoja babcia już ci dużo powiedziała. — Dotknęła srebrnego kluczyka na swojej szyi. — Wszystko, co jest za tym murem, to tylko reszta.
 
-### Nowe słowa
+### Neue Wörter
 
 - **akta** _n_ — Akten
 - **badać (badał)** _uv._ — untersuchen
@@ -6676,7 +6676,7 @@ O dwunastej przyjedzie rejent Kaczmarek. Mecenas już wie. Fotograf z gazety te�
 
 Klucz mam w kieszeni. Przez całą noc ani razu go nie wyjąłem. Ale wiem, że jest. Czuję jego ciężar.
 
-### Nowe słowa
+### Neue Wörter
 
 - **alarm (Alarmu)** _m_ — Alarm
 - **awaryjny (awaryjnego)** — Not-; zasilanie awaryjne – Notstrom
@@ -6897,7 +6897,7 @@ Kasia siedziała obok mnie na kanapie i trzymała w ręku moją rękę, a w drug
 
 — Tak jest zawsze z prawdą — powiedziała ciocia Halina, nie otwierając oczu. — Leży blisko. Tylko trzeba mieć odwagę, żeby rozbić mur.
 
-### Nowe słowa
+### Neue Wörter
 
 - **aksamit (aksamitu)** _m_ — Samt
 - **beżny (najróżniejsze)** — verschieden (hier: różny, najróżniejsze – die verschiedensten)
@@ -7086,7 +7086,7 @@ Opowiedziałem jej o wszystkim. O liście, o szkatułce, o cioci. Mama długo s�
 
 — To ją pozdrów ode mnie — powiedziała mama. — I powiedz, że jest u nas zawsze mile widziana. Jim mówi, że pomiędzy Bostonem a Krakowem jest tylko jeden ocean, więc to blisko.
 
-### Nowe słowa
+### Neue Wörter
 
 - **Alleluja** — Halleluja (Wesołego Alleluja: Frohe Ostern)
 - **babka** _f_ — Napfkuchen; Großmutter (ugs.)
@@ -7330,7 +7330,7 @@ W prokuraturze w Krakowie leży już wniosek o zatrzymanie Ryszarda Zielińskieg
 
 Mam nadzieję, że Zieliński nie wie o tym, co my wiemy. Ale ciocia Halina by powiedziała, że tacy ludzie zawsze wiedzą.
 
-### Nowe słowa
+### Neue Wörter
 
 - **amunicja (amunicją)** _f_ — Munition
 - **architektura (architektury)** _f_ — Architektur
@@ -7604,7 +7604,7 @@ Ciocia dzwoniła już cztery razy. Bonifacy jest bohaterem. Ciocia mówi, że od
 
 — Nie. — Uśmiechnęła się po raz pierwszy tej nocy. — To bardzo nowakowskie.
 
-### Nowe słowa
+### Neue Wörter
 
 - **akrobata (akrobatów)** _m_ — Akrobat
 - **Ania** — Ania (Koseform von Anna)
@@ -7831,7 +7831,7 @@ Potem wyjęła z torebki kopertę. Tę z napisem „Dla Hali”. Ciągle zamkni�
 
 — I weź Kasię. — Ciocia popatrzyła na mnie znacząco. — I weź pierścionek. Tomek ci pokaże, jak się to robi. Tylko nie w kieliszku po kompocie.
 
-### Nowe słowa
+### Neue Wörter
 
 - **areszt (areszcie)** _m_ — Haft; areszt tymczasowy – Untersuchungshaft
 - **autentyczny** — echt, authentisch
@@ -8050,7 +8050,7 @@ Ciocia się uśmiechnęła. Potem wzięła z talerza ostatni kawałek sernika, k
 
 Potem poszedłem do Kasi. Bez SMS-a, bez dzwonienia. Babcia napisała, żeby nie czekać.
 
-### Nowe słowa
+### Neue Wörter
 
 - **aktorka** _f_ — Schauspielerin
 - **artysta (artysty)** _m_ — Künstler
@@ -8295,7 +8295,7 @@ Kiedy wróciliśmy do pensjonatu, ciocia siedziała na tarasie z mamą i z Jimem
 
 — No nareszcie — powiedziała. — Tomek wygrał drugi zakład z mamą.
 
-### Nowe słowa
+### Neue Wörter
 
 - **Artus (Artusa)** — Artus (Dwór Artusa: Artushof in Danzig)
 - **bagaż** _m_ — Gepäck
@@ -8551,7 +8551,7 @@ _Pod spodem, czerwonym długopisem, pismem Kasi:_
 
 _Dwa błędy. Jeden przecinek. Ocena: szóstka. Kocham cię, głupku. K._
 
-### Nowe słowa
+### Neue Wörter
 
 - **AGH** — AGH (Technische Universität in Krakau)
 - **asystent (asystenta)** _m_ — Assistent

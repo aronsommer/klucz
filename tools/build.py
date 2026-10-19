@@ -141,7 +141,7 @@ def segments(chapter_blocks, chapter_tokens, ids, excluded):
 def book(story, lists):
     out = ["# Klucz", ""]
     for i, (_, text, _) in enumerate(story):
-        out += [text.strip().replace("# ", "## ", 1), "", "### Nowe słowa", ""]
+        out += [text.strip().replace("# ", "## ", 1), "", "### Neue Wörter", ""]
         for _, display, form, tag, de in lists[i]:
             shown = f"{display} ({form})" if form else display
             out.append(f"- **{shown}**{f' _{tag}_' if tag else ''} — {de or '?'}")
