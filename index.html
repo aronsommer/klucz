@@ -81,7 +81,7 @@
     </style>
     <style>
       /* A green-tinted neutral paper with one red accent; word hover stays neutral. */
-      /* One reading column under a sticky bar (chapter switcher, then a jump to the words and the copy buttons); the chapter's new words follow the text. */
+      /* One reading column under a sticky bar (chapter switcher and a jump to the words, then the copy buttons); the chapter's new words follow the text. */
       :root {
         color-scheme: light dark;
         --bg: light-dark(#f2f4f1, #111614);
@@ -172,13 +172,20 @@
         letter-spacing: -0.5px;
         margin-right: auto;
       }
+      /* previous, chapter, next: one control on one surface */
+      .chapter-nav {
+        display: flex;
+        min-width: 0;
+        background: var(--tonal);
+        border-radius: 8px;
+      }
       .bar select {
         min-width: 0;
         max-width: 260px;
         height: var(--control);
         border: 0;
-        background: var(--tonal);
-        border-radius: 8px;
+        border-inline: 1px solid var(--line);
+        background: none;
         padding: 0 12px;
         font-weight: 500;
       }
@@ -187,9 +194,7 @@
         height: var(--control);
         flex: none;
         border: 0;
-        background: var(--accent);
-        color: var(--on-accent);
-        border-radius: 8px;
+        background: none;
         cursor: pointer;
         display: grid;
         place-items: center;
@@ -199,10 +204,8 @@
         font-size: 24px;
       }
       .arrow:disabled {
-        background: none;
         color: var(--text-2);
-        outline: 1px dashed var(--line);
-        outline-offset: -1px;
+        opacity: 0.5;
         cursor: not-allowed;
       }
       .copy-row {
@@ -228,6 +231,7 @@
         justify-content: flex-end;
         gap: 6px;
       }
+      #to-words,
       .copy-row button {
         height: 32px;
         border: 0;
@@ -241,8 +245,13 @@
         align-items: center;
         gap: 4px;
       }
+      #to-words .icon,
       .copy-row button .icon {
         font-size: 18px;
+      }
+      #to-words {
+        height: var(--control);
+        flex: none;
       }
       .copy-row button.done {
         background: var(--accent);
@@ -490,9 +499,8 @@
         .brand {
           display: none;
         }
-        .bar select {
-          flex: 1;
-          max-width: none;
+        #to-words {
+          margin-left: auto; /* without the brand, the chapter group moves left */
         }
         .copy-row button {
           padding: 0 8px;
@@ -533,18 +541,20 @@
     <header class="bar">
       <div class="bar-inner">
         <div class="brand">Klucz</div>
-        <button class="arrow" id="prev" aria-label="Vorheriges Kapitel">
-          <span class="icon" aria-hidden="true">chevron_left</span>
-        </button>
-        <select id="chapter" aria-label="Kapitel wählen"></select>
-        <button class="arrow" id="next" aria-label="Nächstes Kapitel">
-          <span class="icon" aria-hidden="true">chevron_right</span>
-        </button>
-      </div>
-      <div class="copy-row">
+        <div class="chapter-nav">
+          <button class="arrow" id="prev" aria-label="Vorheriges Kapitel">
+            <span class="icon" aria-hidden="true">chevron_left</span>
+          </button>
+          <select id="chapter" aria-label="Kapitel wählen"></select>
+          <button class="arrow" id="next" aria-label="Nächstes Kapitel">
+            <span class="icon" aria-hidden="true">chevron_right</span>
+          </button>
+        </div>
         <button id="to-words">
           <span class="icon" aria-hidden="true">arrow_downward</span>Wörter
         </button>
+      </div>
+      <div class="copy-row">
         <div id="copy" aria-label="Text kopieren"></div>
       </div>
       <div class="toast" id="toast" hidden role="status"></div>
@@ -836,7 +846,10 @@
         };
         $("prev").onclick = () => go(ch - 1);
         $("next").onclick = () => go(ch + 1);
-        $("chapter").onchange = (e) => go(+e.target.value);
+        $("chapter").onchange = (e) => {
+          go(+e.target.value);
+          e.target.blur();
+        };
         document.addEventListener("keydown", (e) => {
           if (e.key === "Escape") closePop();
           if (e.target.closest("select")) return;
