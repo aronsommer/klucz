@@ -9,7 +9,7 @@
     </style>
     <style>
       /* A green-tinted neutral paper with one red accent; word hover stays neutral. */
-      /* One reading column under a sticky bar (chapter switcher and a jump to the words, then the copy buttons); the chapter's new words follow the text. */
+      /* One reading column under a sticky bar (chapter switcher, a jump to the words and a print button, then the copy buttons); the chapter's new words follow the text. */
       :root {
         color-scheme: light dark;
         --bg: light-dark(#f2f4f1, #111614);
@@ -160,6 +160,7 @@
         gap: 6px;
       }
       #to-words,
+      #print,
       .copy-row button {
         height: 32px;
         border: 0;
@@ -177,9 +178,15 @@
       .copy-row button .icon {
         font-size: 18px;
       }
-      #to-words {
+      #to-words,
+      #print {
         height: var(--control);
         flex: none;
+      }
+      #print {
+        width: var(--control);
+        padding: 0;
+        justify-content: center;
       }
       .copy-row button.done {
         background: var(--accent);
@@ -402,6 +409,9 @@
         border-radius: 12px;
         box-shadow: var(--shadow);
       }
+      #book {
+        display: none;
+      }
       .fallback {
         position: fixed;
         left: 0;
@@ -462,6 +472,16 @@
           box-shadow: none;
           padding: 0;
         }
+        /* the print button prints the whole book instead of the open chapter */
+        .print-all main {
+          display: none;
+        }
+        .print-all #book {
+          display: block;
+        }
+        #book > div + div {
+          break-before: page;
+        }
       }
     </style>
   </head>
@@ -480,6 +500,9 @@
         </div>
         <button id="to-words">
           <span class="icon" aria-hidden="true">arrow_downward</span>Wörter
+        </button>
+        <button id="print" aria-label="Ganzes Buch drucken" title="Ganzes Buch drucken">
+          <span class="icon" aria-hidden="true">print</span>
         </button>
       </div>
       <div class="copy-row">
@@ -501,6 +524,7 @@
         </section>
       </div>
     </main>
+    <div id="book"></div>
 
     <div class="pop" id="pop" hidden role="dialog" aria-label="Übersetzung"></div>
     <textarea class="fallback" id="fallback" tabindex="-1" aria-hidden="true" readonly></textarea>
@@ -544,39 +568,48 @@
           return p;
         }
 
-        function render() {
-          const c = CH[ch];
-          const art = $("text");
-          art.textContent = "";
+        // chapter i's text blocks, for an article
+        function text(i) {
+          const f = document.createDocumentFragment();
           let quote = null;
-          for (const [kind, segs] of c.blocks) {
+          for (const [kind, segs] of CH[i].blocks) {
             if (kind !== "quote") quote = null;
             if (kind === "title") {
               const h = el("h1");
-              h.append(el("small", "", "Rozdział " + (ch + 1) + " z " + CH.length), name(ch));
-              art.append(h);
+              h.append(el("small", "", "Rozdział " + (i + 1) + " z " + CH.length), name(i));
+              f.append(h);
             } else if (kind === "break") {
               const b = el("div", "break", "* * *");
               b.setAttribute("role", "separator");
-              art.append(b);
+              f.append(b);
             } else if (kind === "quote") {
-              if (!quote) art.append((quote = el("blockquote")));
+              if (!quote) f.append((quote = el("blockquote")));
               quote.append(line(kind, segs));
             } else {
-              art.append(line(kind, segs));
+              f.append(line(kind, segs));
             }
           }
-
-          $("words-title").textContent = "Nowe słowa · " + c.words.length;
-          const dl = $("words");
-          dl.textContent = "";
-          for (const [id, form] of c.words) {
+          return f;
+        }
+        // chapter i's new words, for a .words list
+        function words(i) {
+          const f = document.createDocumentFragment();
+          for (const [id, form] of CH[i].words) {
             const [lemma, tag, de] = W[id];
             const dt = el("dt", "", lemma);
             if (form) dt.append(" ", el("small", "", "(" + form + ")"));
             if (tag) dt.append(el("i", "", tag));
-            dl.append(dt, el("dd", "", de));
+            f.append(dt, el("dd", "", de));
           }
+          return f;
+        }
+        const wordsTitle = (i) => "Nowe słowa · " + CH[i].words.length;
+        const pageTitle = () => "Klucz · " + (ch + 1) + ". " + name(ch);
+
+        function render() {
+          $("text").replaceChildren(text(ch));
+          $("words-title").textContent = wordsTitle(ch);
+          $("words").replaceChildren(words(ch));
 
           $("chapter").value = ch;
           $("prev").disabled = ch === 0;
@@ -588,7 +621,7 @@
               ? "Das ist das letzte Kapitel"
               : "Rozdział " + (ch + 2) + ": " + name(ch + 1);
           copyButtons();
-          document.title = "Klucz · " + (ch + 1) + ". " + name(ch);
+          document.title = pageTitle();
         }
 
         function go(i, p = 0) {
@@ -772,6 +805,30 @@
             24;
           window.scrollTo({ top, behavior: "smooth" });
         };
+        // every chapter with its words, each starting on a new page; built only while printing
+        $("print").onclick = () => {
+          $("book").replaceChildren(
+            ...CH.map((_, i) => {
+              const art = el("article"),
+                list = el("dl", "words"),
+                sec = el("section"),
+                page = el("div");
+              art.append(text(i));
+              list.append(words(i));
+              sec.append(el("h2", "", wordsTitle(i)), list);
+              page.append(art, sec);
+              return page;
+            }),
+          );
+          document.documentElement.classList.add("print-all");
+          document.title = "Klucz"; // also the file name when saved as PDF
+          window.print();
+        };
+        window.addEventListener("afterprint", () => {
+          document.documentElement.classList.remove("print-all");
+          $("book").replaceChildren();
+          document.title = pageTitle();
+        });
         $("prev").onclick = () => go(ch - 1);
         $("next").onclick = () => go(ch + 1);
         $("chapter").onchange = (e) => {
