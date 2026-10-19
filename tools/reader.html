@@ -136,6 +136,18 @@
       .copy-row {
         margin-top: 10px;
         flex-wrap: wrap;
+        position: relative;
+      }
+      /* the bookmark ribbon: hangs from the bar beside the text; the saved block lands next to it */
+      .copy-row::after {
+        content: "";
+        position: absolute;
+        left: -13px;
+        top: calc(100% + 11px); /* below the bar's padding and border */
+        width: 8px;
+        height: 26px;
+        background: var(--accent);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 6px), 0 100%);
       }
       #copy {
         margin-left: auto;
@@ -567,18 +579,50 @@
               : "Rozdział " + (ch + 2) + ": " + name(ch + 1);
           copyButtons();
           document.title = "Klucz · " + (ch + 1) + ". " + name(ch);
-          try {
-            history.replaceState(null, "", "#r" + (ch + 1));
-          } catch {}
         }
 
-        function go(i) {
-          if (i < 0 || i >= CH.length || i === ch) return;
-          ch = i;
-          closePop();
-          render();
-          window.scrollTo(0, 0);
+        function go(i, p = 0) {
+          if (i < 0 || i >= CH.length) return;
+          if (i !== ch) {
+            ch = i;
+            closePop();
+            render();
+          }
+          scrollToBlock(p);
+          save();
         }
+
+        // reading position: the top block of the article under the bar, kept in the hash (#r5/12) and in localStorage
+        const KEY = "klucz-position";
+        const barBottom = () => document.querySelector(".bar").getBoundingClientRect().bottom;
+        let saveTimer;
+        function scrollToBlock(p) {
+          const b = $("text").children[p];
+          window.scrollTo(
+            0,
+            p && b ? b.getBoundingClientRect().top + window.scrollY - barBottom() - 16 : 0,
+          );
+        }
+        function save() {
+          const blocks = $("text").children,
+            top = barBottom() + 24;
+          let p = 0;
+          while (p + 1 < blocks.length && blocks[p + 1].getBoundingClientRect().top <= top) p++;
+          try {
+            history.replaceState(null, "", "#r" + (ch + 1) + (p ? "/" + p : ""));
+          } catch {}
+          try {
+            localStorage.setItem(KEY, JSON.stringify([ch, p]));
+          } catch {}
+        }
+        window.addEventListener(
+          "scroll",
+          () => {
+            clearTimeout(saveTimer);
+            saveTimer = setTimeout(save, 200);
+          },
+          { passive: true },
+        );
 
         // tap a word: lemma, tag and translation
         function openPop(w) {
@@ -727,13 +771,25 @@
           if (e.key === "ArrowLeft") go(ch - 1);
           if (e.key === "ArrowRight") go(ch + 1);
         });
+        const clamp = (i) => Math.min(Math.max(i, 0), CH.length - 1);
         const fromHash = () => {
-          const m = location.hash.match(/^#r(\d+)$/);
-          return m ? Math.min(Math.max(+m[1] - 1, 0), CH.length - 1) : 0;
+          const m = location.hash.match(/^#r(\d+)(?:\/(\d+))?$/);
+          return m && [clamp(+m[1] - 1), +(m[2] || 0)];
         };
-        window.addEventListener("hashchange", () => go(fromHash()));
-        ch = fromHash();
+        const stored = () => {
+          try {
+            const [c, p] = JSON.parse(localStorage.getItem(KEY));
+            return [clamp(c), p];
+          } catch {}
+        };
+        window.addEventListener("hashchange", () => go(...(fromHash() || [0, 0])));
+        const saved = !fromHash() && stored();
+        const [c, p] = fromHash() || saved || [0, 0];
+        ch = c;
         render();
+        history.scrollRestoration = "manual"; // on reload the browser would scroll to the old offset after our jump
+        document.fonts.ready.then(() => go(c, p)); // the layout settles once the fonts are in
+        if (saved && (c || p)) toast("Weiterlesen: Kapitel " + (c + 1));
       })();
     </script>
   </body>
