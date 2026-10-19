@@ -554,19 +554,20 @@
 
         CH.forEach((_, i) => $("chapter").append(new Option(i + 1 + ". " + name(i), i)));
 
-        function line(kind, segs) {
-          const p = el("p", kind === "date" ? "date" : "");
+        // append text segments to e, each word a tappable span
+        function fill(e, segs) {
           for (const s of segs) {
             if (typeof s === "string") {
-              p.append(s);
+              e.append(s);
               continue;
             }
             const w = el("span", "w", s[0]);
             w.dataset.i = s[1];
-            p.append(w);
+            e.append(w);
           }
-          return p;
+          return e;
         }
+        const line = (kind, segs) => fill(el("p", kind === "date" ? "date" : ""), segs);
 
         // chapter i's text blocks, for an article
         function text(i) {
@@ -576,8 +577,10 @@
             if (kind !== "quote") quote = null;
             if (kind === "title") {
               const h = el("h1");
-              h.append(el("small", "", "Rozdział " + (i + 1) + " z " + CH.length), name(i));
-              f.append(h);
+              h.append(el("small", "", "Rozdział " + (i + 1) + " z " + CH.length));
+              // the name only: "Rozdział N. " is skipped, the small line above shows it
+              const start = segs.findIndex((s) => typeof s === "string" && /\d+\.\s*$/.test(s)) + 1;
+              f.append(fill(h, segs.slice(start)));
             } else if (kind === "break") {
               const b = el("div", "break", "* * *");
               b.setAttribute("role", "separator");
