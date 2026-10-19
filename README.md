@@ -6,7 +6,7 @@ _Klucz_ („Der Schlüssel“) ist das Tagebuch von Jonas, einem Deutschen, der 
 
 Die Idee dahinter: **Wer diesen Text versteht, versteht die 3.000 häufigsten Wörter des gesprochenen Polnisch.** Diese Wörter decken gut 90 % dessen ab, was im Alltag gesagt wird. Jedes davon steht mindestens einmal im Text, und zwar nicht als Liste, sondern eingebettet in eine echte Handlung.
 
-- **Lesen:** [index.html](index.html) – Leseseite: Wort antippen für die Übersetzung (🔊 spricht es mit der polnischen Stimme des Geräts aus), alphabetische Wortliste je Kapitel (oben „↓ Wörter“ springt hin), Kopierknöpfe für das ganze Kapitel und seine Teile, Druckknopf für das ganze Buch (im Druckdialog auch als PDF speicherbar)
+- **Lesen:** [index.html](index.html) – Leseseite: Wort antippen für die Übersetzung (🔊 spricht es mit der polnischen Stimme des Geräts aus), „DE“/„PL“ oben rechts zeigt das ganze Kapitel auf Deutsch oder wieder auf Polnisch, ohne dass der Text springt, alphabetische Wortliste je Kapitel (oben „↓ Wörter“ springt hin), Kopierknöpfe für das ganze Kapitel und seine Teile, Druckknopf für das ganze Buch (im Druckdialog auch als PDF speicherbar)
 - **Buch:** [KLUCZ.md](KLUCZ.md) – das ganze Buch mit einem Glossar nach jedem Kapitel
 - **Klartext:** [text/](text/) – jedes Kapitel ohne Formatierung, auch in Teilen für Google Translate
 - **Messung:** [REPORT.md](REPORT.md) – Abdeckung, neue Wörter pro Kapitel, grammatische Formen
@@ -14,12 +14,13 @@ Die Idee dahinter: **Wer diesen Text versteht, versteht die 3.000 häufigsten W�
 
 ## So funktioniert's im Alltag
 
-Alles, was man liest, wird aus zwei Quellen **erzeugt**. Von Hand bearbeitet werden nur diese Quellen:
+Alles, was man liest, wird aus drei Quellen **erzeugt**. Von Hand bearbeitet werden nur diese Quellen:
 
-| Quelle                     | Inhalt                                                                                                                                       |
-| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| `chapters/01.md` … `30.md` | der Text der Geschichte                                                                                                                      |
-| `data/glossary.tsv`        | die Übersetzungen, eine Zeile pro Grundform: `klucz<Tab>Schlüssel`; Eigennamen so geschrieben, wie sie angezeigt werden: `Kraków<Tab>Krakau` |
+| Quelle                        | Inhalt                                                                                                                                       |
+| ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `chapters/01.md` … `30.md`    | der Text der Geschichte                                                                                                                      |
+| `chapters/de/01.md` … `30.md` | die deutsche Übersetzung, Absatz für Absatz wie das Original; `tools/build.py` bricht ab, wenn die Absätze nicht eins zu eins übereinstimmen |
+| `data/glossary.tsv`           | die Übersetzungen, eine Zeile pro Grundform: `klucz<Tab>Schlüssel`; Eigennamen so geschrieben, wie sie angezeigt werden: `Kraków<Tab>Krakau` |
 
 **Einmalig einrichten** (im Projektordner):
 
@@ -35,6 +36,32 @@ python3 -m venv .venv
 ```
 
 Das baut `index.html`, `KLUCZ.md` und `text/` neu, in wenigen Sekunden, weil nur geänderte Kapitel neu analysiert werden. Kommt ein neues Wort vor, das noch keine Übersetzung hat, meldet das Skript am Ende `… glossary entries missing`. Dann gehört eine Zeile in `data/glossary.tsv`, und man lässt das Skript noch einmal laufen.
+
+**Deutsche Übersetzung:** Zu jedem Kapitel `chapters/NN.md` gehört `chapters/de/NN.md`, Absatz für Absatz. Auf der Leseseite liegen beide Fassungen eines Absatzes übereinander in derselben Fläche, deshalb springt beim Umschalten nichts. Polnisch und Deutsch lassen sich unabhängig voneinander bearbeiten; drei Sicherungen im Build sorgen dafür, dass sie zusammenpassen:
+
+1. **Gleiche Absätze, sonst kein Build.** Beide Dateien müssen dieselben Absätze in derselben Reihenfolge und derselben Art haben (Überschrift, Datum `_…_`, Absatz, Zitat `>`, Trennstrich `---`). Absätze trennt eine Leerzeile; eine zusätzliche Leerzeile teilt also einen Absatz. Passt etwas nicht, bricht das Skript ab, bevor es irgendetwas schreibt, und zeigt die Stelle:
+
+   ```
+   chapters/de/05.md does not match chapters/05.md paragraph by paragraph (75 Polish, 76 German); nothing was built.
+   paragraph 12 is the first that differs in kind; an extra or missing one can be earlier:
+     pl  quote: Zupy: żurek z jajkiem, …
+     de  para: Die Bar hieß „Pod Aniołem“, …
+   ```
+
+   Ein eingeschobener oder fehlender Absatz kann vor der genannten Stelle liegen, denn erst dort weicht die Art ab. Die beiden gezeigten Texte verraten meist, wie weit die Fassungen gegeneinander verrutscht sind. Ebenso bricht das Skript ab, wenn in `chapters/de/` eine Datei ohne polnisches Kapitel liegt.
+
+2. **Veraltete Übersetzungen werden gemeldet.** `data/translation_sync.tsv` merkt sich für jeden Absatz, welche polnische und welche deutsche Fassung zuletzt zusammengehörten (als Prüfsumme). Ändert sich ein polnischer Absatz, der deutsche aber nicht, meldet das Skript ihn bei jedem Lauf, bis er erledigt ist:
+
+   ```
+   1 German paragraphs may be outdated, their Polish changed. Update them in chapters/de, or run again with --accept-german if they still fit:
+     chapter 5, paragraph 6: Umówiliśmy się na drugą. Tak.
+   ```
+
+   Erledigt ist die Meldung, sobald der deutsche Absatz angepasst ist. Passt er trotz der Änderung noch (etwa nach einem korrigierten Komma im Polnischen), bestätigt `.venv/bin/python tools/build.py --accept-german` alle Absätze so, wie sie jetzt sind. Eine Änderung nur am Deutschen gilt als gewollt und wird nicht gemeldet (außer der neue Text gleicht wörtlich einem anderen deutschen Absatz desselben Kapitels, etwa „— Ja.“; dann genügt einmal `--accept-german`). `data/translation_sync.tsv` wird vom Skript geschrieben, nie von Hand, und gehört ins Repository, damit die Meldungen auch auf einem anderen Rechner stimmen.
+
+3. **Fehlende Übersetzungen werden gemeldet.** Fehlt zu einem Kapitel die deutsche Datei, baut das Skript trotzdem, nennt das Kapitel aber am Ende; auf der Leseseite fehlt dort der Knopf „DE“.
+
+Nicht prüfen kann das Skript, ob ein deutscher Absatz inhaltlich richtig übersetzt ist; das bleibt Sache des Lesens.
 
 **Woher die Grundform kommt:** Das Programm Stanza erkennt in jedem Satz automatisch, zu welcher Grundform ein Wort gehört (_Nazywam_ → _nazywać_, _poszedłem_ → _pójść_). Unter dieser Grundform steht die Übersetzung im Glossar, so wie in einem Wörterbuch.
 
@@ -144,6 +171,7 @@ Bearbeitet werden nur die **Quellen**: `chapters/` und `data/`. Alles andere wir
 ```
 klucz/
 ├── chapters/01.md … 30.md   Quelle: die Kapitel
+├── chapters/de/01.md … 30.md Quelle: die deutsche Übersetzung, Absatz für Absatz
 ├── index.html               erzeugt: Leseseite (Startseite für GitHub Pages)
 ├── .nojekyll                leer: GitHub Pages liefert die Dateien unverändert aus
 ├── fonts/                   Quelle: Schriften und Symbole, werden in index.html eingebettet
@@ -157,7 +185,8 @@ klucz/
 │   ├── raw_counts.tsv.gz    Rohzählung (Lemma, Wortart, Form, Anzahl) aus dem Korpus
 │   ├── lemma_fixes.tsv      Korrekturen der Lemmatisierung
 │   ├── excluded.tsv         Ausschlüsse mit Begründung
-│   └── glossary.tsv         Quelle: Polnisch → Deutsch
+│   ├── glossary.tsv         Quelle: Polnisch → Deutsch
+│   └── translation_sync.tsv erzeugt: welche polnischen und deutschen Absätze zuletzt zusammenpassten
 └── tools/
     ├── build.py             baut index.html, KLUCZ.md und text/ aus den Quellen
     ├── reader.html          Vorlage der Leseseite (Aussehen, Bedienung)

@@ -1,6 +1,6 @@
 # Abdeckungsbericht
 
-Wörter im Text: **37322** · verschiedene Lemmata: **4587**
+Wörter im Text: **37331** · verschiedene Lemmata: **4587**
 
 ## Abdeckung der Frequenzliste
 
@@ -8,10 +8,10 @@ Wörter im Text: **37322** · verschiedene Lemmata: **4587**
 |---|---|---|---|
 | 1–500 | 500 (100.0%) | 0 | 34 |
 | 1–1000 | 1000 (100.0%) | 0 | 183 |
-| 1–2000 | 1999 (100.0%) | 1 | 690 |
-| 1–3000 | 2993 (99.8%) | 7 | 1356 |
-| 1–4000 | 3297 (82.4%) | 703 | 1522 |
-| 1–5000 | 3523 (70.5%) | 1477 | 1649 |
+| 1–2000 | 1999 (100.0%) | 1 | 689 |
+| 1–3000 | 2993 (99.8%) | 7 | 1354 |
+| 1–4000 | 3297 (82.4%) | 703 | 1520 |
+| 1–5000 | 3523 (70.5%) | 1477 | 1647 |
 
 ## Kapitel
 
@@ -20,13 +20,13 @@ Wörter im Text: **37322** · verschiedene Lemmata: **4587**
 | Rozdział 1. Klucz | 647 | 285 | 7 | 9170 |
 | Rozdział 2. Chleb, mleko i pan Zbyszek | 932 | 252 | 14 | 8906 |
 | Rozdział 3. Pierwsza lekcja | 1093 | 206 | 11 | 9940 |
-| Rozdział 4. Człowiek w czarnym płaszczu | 1167 | 224 | 8 | 9758 |
-| Rozdział 5. Bar mleczny | 1112 | 200 | 18 | 9578 |
+| Rozdział 4. Człowiek w czarnym płaszczu | 1165 | 225 | 8 | 9758 |
+| Rozdział 5. Bar mleczny | 1113 | 200 | 18 | 9578 |
 | Rozdział 6. Gorączka | 979 | 152 | 13 | 9210 |
-| Rozdział 7. Zosia i Hala | 1247 | 260 | 19 | 9801 |
+| Rozdział 7. Zosia i Hala | 1247 | 259 | 19 | 9801 |
 | Rozdział 8. Wszystkich Świętych | 840 | 98 | 11 | 9876 |
-| Rozdział 9. Piwnica | 1050 | 137 | 16 | 8635 |
-| Rozdział 10. Urząd | 1190 | 187 | 20 | 9094 |
+| Rozdział 9. Piwnica | 1055 | 137 | 16 | 8635 |
+| Rozdział 10. Urząd | 1189 | 187 | 20 | 9094 |
 | Rozdział 11. Zebranie | 1123 | 150 | 17 | 9778 |
 | Rozdział 12. Andrzejki | 1336 | 184 | 13 | 9082 |
 | Rozdział 13. Włamanie | 1160 | 157 | 19 | 9392 |
@@ -34,9 +34,9 @@ Wörter im Text: **37322** · verschiedene Lemmata: **4587**
 | Rozdział 15. Wigilia | 1126 | 111 | 27 | 9717 |
 | Rozdział 16. Prawda | 1404 | 88 | 5 | 9359 |
 | Rozdział 17. Sylwester | 1349 | 121 | 11 | 9297 |
-| Rozdział 18. Zakopane | 1333 | 167 | 35 | 9683 |
+| Rozdział 18. Zakopane | 1332 | 167 | 35 | 9683 |
 | Rozdział 19. Sala numer sześć | 1444 | 133 | 23 | 9464 |
-| Rozdział 20. Decyzja | 1801 | 208 | 30 | 9873 |
+| Rozdział 20. Decyzja | 1807 | 208 | 30 | 9873 |
 | Rozdział 21. Mecenas | 1331 | 128 | 18 | 9722 |
 | Rozdział 22. Pożar | 1220 | 118 | 21 | 9461 |
 | Rozdział 23. Szkatułka | 984 | 67 | 15 | 9942 |
@@ -46,7 +46,7 @@ Wörter im Text: **37322** · verschiedene Lemmata: **4587**
 | Rozdział 27. Sąd | 1396 | 107 | 32 | 9902 |
 | Rozdział 28. Listy | 1536 | 111 | 19 | 9211 |
 | Rozdział 29. Morze | 1572 | 118 | 32 | 9661 |
-| Rozdział 30. Klucz | 1624 | 118 | 24 | 9522 |
+| Rozdział 30. Klucz | 1625 | 118 | 24 | 9522 |
 
 ## Wörter außerhalb der Liste (Top 10.000)
 
@@ -86,21 +86,21 @@ Wörter im Text: **37322** · verschiedene Lemmata: **4587**
 | Form | Anzahl |
 |---|---|
 | ADJ Acc Plur | 78 |
-| ADJ Acc Sing | 368 |
+| ADJ Acc Sing | 367 |
 | ADJ Dat - | 41 |
 | ADJ Dat Plur | 2 |
 | ADJ Dat Sing | 8 |
-| ADJ Degree=Cmp | 91 |
+| ADJ Degree=Cmp | 92 |
 | ADJ Degree=Sup | 71 |
 | ADJ Gen - | 6 |
 | ADJ Gen Plur | 54 |
 | ADJ Gen Sing | 278 |
 | ADJ Ins Plur | 38 |
-| ADJ Ins Sing | 135 |
+| ADJ Ins Sing | 134 |
 | ADJ Loc Plur | 34 |
 | ADJ Loc Sing | 283 |
 | ADJ Nom Plur | 235 |
-| ADJ Nom Sing | 1210 |
+| ADJ Nom Sing | 1211 |
 | ADJ Voc Sing | 3 |
 | ADV Degree=Cmp | 86 |
 | ADV Degree=Sup | 14 |
@@ -118,21 +118,21 @@ Wörter im Text: **37322** · verschiedene Lemmata: **4587**
 | DET Nom Sing | 371 |
 | NOUN Acc Plur | 512 |
 | NOUN Acc Ptan | 48 |
-| NOUN Acc Sing | 1583 |
+| NOUN Acc Sing | 1584 |
 | NOUN Dat Plur | 6 |
 | NOUN Dat Sing | 41 |
 | NOUN Gen Plur | 568 |
 | NOUN Gen Ptan | 22 |
-| NOUN Gen Sing | 1398 |
+| NOUN Gen Sing | 1400 |
 | NOUN Ins Plur | 146 |
 | NOUN Ins Ptan | 9 |
-| NOUN Ins Sing | 694 |
+| NOUN Ins Sing | 693 |
 | NOUN Loc Plur | 189 |
 | NOUN Loc Ptan | 39 |
-| NOUN Loc Sing | 1310 |
-| NOUN Nom Plur | 617 |
+| NOUN Loc Sing | 1309 |
+| NOUN Nom Plur | 618 |
 | NOUN Nom Ptan | 21 |
-| NOUN Nom Sing | 2707 |
+| NOUN Nom Sing | 2706 |
 | NOUN Voc Sing | 55 |
 | NUM Acc Plur | 248 |
 | NUM Acc Sing | 13 |
@@ -144,7 +144,7 @@ Wörter im Text: **37322** · verschiedene Lemmata: **4587**
 | NUM Nom Plur | 135 |
 | NUM Nom Sing | 2 |
 | PRON Acc - | 14 |
-| PRON Acc Plur | 74 |
+| PRON Acc Plur | 73 |
 | PRON Acc Ptan | 3 |
 | PRON Acc Sing | 580 |
 | PRON Dat - | 20 |
@@ -163,12 +163,12 @@ Wörter im Text: **37322** · verschiedene Lemmata: **4587**
 | PRON Loc Sing | 65 |
 | PRON Nom Plur | 28 |
 | PRON Nom Ptan | 61 |
-| PRON Nom Sing | 728 |
+| PRON Nom Sing | 727 |
 | VERB Conv Pres Imp | 9 |
-| VERB Fin Imp Imp | 56 |
-| VERB Fin Imp Perf | 58 |
+| VERB Fin Imp Imp | 57 |
+| VERB Fin Imp Perf | 57 |
 | VERB Fin Ind | 69 |
-| VERB Fin Ind Imp | 3625 |
-| VERB Fin Ind Perf | 2395 |
+| VERB Fin Ind Imp | 3623 |
+| VERB Fin Ind Perf | 2397 |
 | VERB Inf  Imp | 253 |
 | VERB Inf  Perf | 376 |

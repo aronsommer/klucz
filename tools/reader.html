@@ -9,7 +9,7 @@
     </style>
     <style>
       /* A green-tinted neutral paper with one red accent; word hover stays neutral. */
-      /* One reading column under a sticky bar (chapter switcher, a jump to the words and a print button, then the copy buttons); the chapter's new words follow the text. */
+      /* One reading column under a sticky bar (chapter switcher, a jump to the words and the DE/PL switch, then the copy and print buttons); the chapter's new words follow the text. */
       :root {
         color-scheme: light dark;
         --bg: light-dark(#f2f4f1, #111614);
@@ -24,7 +24,7 @@
         --shadow:
           0 1px 2px light-dark(rgb(60 64 67 / 0.12), transparent),
           0 4px 12px light-dark(rgb(60 64 67 / 0.12), rgb(0 0 0 / 0.5));
-        --control: 36px;
+        --control: 32px; /* every button and the chapter select */
         --read: "Literata", Georgia, "Times New Roman", serif;
         --ui: "Figtree", system-ui, sans-serif;
         font-family: var(--ui);
@@ -94,12 +94,6 @@
         align-items: center;
         gap: 8px;
       }
-      .brand {
-        font-size: 22px;
-        font-weight: 700;
-        letter-spacing: -0.5px;
-        margin-right: auto;
-      }
       /* previous, chapter, next: one control on one surface */
       .chapter-nav {
         display: flex;
@@ -160,9 +154,9 @@
         gap: 6px;
       }
       #to-words,
-      #print,
+      #german,
       .copy-row button {
-        height: 32px;
+        height: var(--control);
         border: 0;
         background: var(--tonal);
         border-radius: 8px;
@@ -178,13 +172,15 @@
       .copy-row button .icon {
         font-size: 18px;
       }
-      #to-words,
-      #print {
-        height: var(--control);
+      #to-words {
         flex: none;
+        margin-left: auto;
       }
+      /* the language switch and the print button below it: one size */
+      #german,
       #print {
         width: var(--control);
+        flex: none;
         padding: 0;
         justify-content: center;
       }
@@ -226,6 +222,9 @@
         color: var(--accent);
         margin-bottom: 10px;
       }
+      article h1 small .pair {
+        display: inline-grid;
+      }
       article .date {
         font-style: italic;
         color: var(--text-2);
@@ -246,6 +245,20 @@
         margin: 28px 0;
         color: var(--text-2);
         letter-spacing: 8px;
+      }
+      /* a block and its translation share one grid cell, so switching never moves the text */
+      .pair {
+        display: grid;
+      }
+      .pair > * {
+        grid-area: 1 / 1;
+      }
+      .pair > .de,
+      .german .pair > .pl {
+        visibility: hidden;
+      }
+      .german .pair > .de {
+        visibility: visible;
       }
       .w {
         cursor: pointer;
@@ -434,12 +447,6 @@
           border-bottom: 0;
           padding-bottom: 0;
         }
-        .brand {
-          display: none;
-        }
-        #to-words {
-          margin-left: auto; /* without the brand, the chapter group moves left */
-        }
         .copy-row button {
           padding: 0 8px;
         }
@@ -482,13 +489,18 @@
         #book > div + div {
           break-before: page;
         }
+        .pair > .de {
+          display: none;
+        }
+        .german .pair > .pl {
+          visibility: visible;
+        }
       }
     </style>
   </head>
   <body>
     <header class="bar">
       <div class="bar-inner">
-        <div class="brand">Klucz</div>
         <div class="chapter-nav">
           <button class="arrow" id="prev" aria-label="Vorheriges Kapitel">
             <span class="icon" aria-hidden="true">chevron_left</span>
@@ -501,12 +513,13 @@
         <button id="to-words">
           <span class="icon" aria-hidden="true">arrow_downward</span>Wörter
         </button>
-        <button id="print" aria-label="Ganzes Buch drucken" title="Ganzes Buch drucken">
-          <span class="icon" aria-hidden="true">print</span>
-        </button>
+        <button id="german" title="Deutsch zeigen">DE</button>
       </div>
       <div class="copy-row">
         <div id="copy" aria-label="Text kopieren"></div>
+        <button id="print" aria-label="Ganzes Buch drucken" title="Ganzes Buch drucken">
+          <span class="icon" aria-hidden="true">print</span>
+        </button>
       </div>
       <div class="toast" id="toast" hidden role="status"></div>
     </header>
@@ -567,29 +580,50 @@
           }
           return e;
         }
-        const line = (kind, segs) => fill(el("p", kind === "date" ? "date" : ""), segs);
+        // the text segments, and the German translation de (if any) in the same place
+        function both(e, segs, de) {
+          if (de == null) return fill(e, segs);
+          const pl = fill(el("span", "pl"), segs),
+            german = el("span", "de", de),
+            pair = el("span", "pair");
+          german.lang = "de";
+          pair.append(pl, german);
+          e.append(pair);
+          return e;
+        }
+        const line = (kind, segs, de) => both(el("p", kind === "date" ? "date" : ""), segs, de);
 
         // chapter i's text blocks, for an article
         function text(i) {
           const f = document.createDocumentFragment();
           let quote = null;
-          for (const [kind, segs] of CH[i].blocks) {
+          for (const [n, [kind, segs]] of CH[i].blocks.entries()) {
+            const de = CH[i].de?.[n];
             if (kind !== "quote") quote = null;
             if (kind === "title") {
-              const h = el("h1");
-              h.append(el("small", "", "Rozdział " + (i + 1) + " z " + CH.length));
+              const h = el("h1"),
+                small = el("small"),
+                of = [i + 1, CH.length];
+              small.append("Klucz · ");
+              h.append(
+                both(
+                  small,
+                  [`Rozdział ${of[0]} z ${of[1]}`],
+                  CH[i].de && `Kapitel ${of[0]} von ${of[1]}`,
+                ),
+              );
               // the name only: "Rozdział N. " is skipped, the small line above shows it
               const start = segs.findIndex((s) => typeof s === "string" && /\d+\.\s*$/.test(s)) + 1;
-              f.append(fill(h, segs.slice(start)));
+              f.append(both(h, segs.slice(start), de?.replace(/^\S+ \d+\.\s*/, "")));
             } else if (kind === "break") {
               const b = el("div", "break", "* * *");
               b.setAttribute("role", "separator");
               f.append(b);
             } else if (kind === "quote") {
               if (!quote) f.append((quote = el("blockquote")));
-              quote.append(line(kind, segs));
+              quote.append(line(kind, segs, de));
             } else {
-              f.append(line(kind, segs));
+              f.append(line(kind, segs, de));
             }
           }
           return f;
@@ -617,6 +651,7 @@
           $("chapter").value = ch;
           $("prev").disabled = ch === 0;
           $("next").disabled = ch === CH.length - 1;
+          $("german").hidden = !CH[ch].de;
           $("prev").title =
             ch === 0 ? "Das ist das erste Kapitel" : "Rozdział " + ch + ": " + name(ch - 1);
           $("next").title =
@@ -832,6 +867,13 @@
           $("book").replaceChildren();
           document.title = pageTitle();
         });
+        // the button names the language it switches to
+        $("german").onclick = (e) => {
+          closePop();
+          const on = document.documentElement.classList.toggle("german");
+          e.currentTarget.textContent = on ? "PL" : "DE";
+          e.currentTarget.title = on ? "Polnisch zeigen" : "Deutsch zeigen";
+        };
         $("prev").onclick = () => go(ch - 1);
         $("next").onclick = () => go(ch + 1);
         $("chapter").onchange = (e) => {

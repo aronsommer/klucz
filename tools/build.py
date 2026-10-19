@@ -3,16 +3,23 @@
 KLUCZ.md               the book with a glossary after each chapter
 text/NN.txt, klucz.txt plain text without markup, for copying or text-to-speech
 text/parts/NN-K.txt    the same, split into parts that fit Google Translate's 5,000 characters
-index.html             reading page (also the GitHub Pages start page): tap a word, word lists, copy
+index.html             reading page (also the GitHub Pages start page): tap a word, word lists, copy,
+                       and the German translation from chapters/de/NN.md where one exists
+
+Run with --accept-german to confirm that every German paragraph still fits its Polish one.
 """
 
 import base64
+import hashlib
 import json
 import re
+import sys
 
 from analyze import EXCLUDED, GLOSSARY, ROOT, chapters, feats, first_occurrences, is_word, read_tsv, tokens, tsv
 
 TEXT = ROOT / "text"
+GERMAN = ROOT / "chapters" / "de"
+SYNC = ROOT / "data" / "translation_sync.tsv"
 TEMPLATE = ROOT / "tools" / "reader.html"
 FONTS = ROOT / "fonts"
 PART_LIMIT = 4800
@@ -142,6 +149,63 @@ def book(story, lists):
     (ROOT / "KLUCZ.md").write_text("\n".join(out), encoding="utf-8")
 
 
+def german(story):
+    """Map chapter index -> German blocks, checked against the Polish ones before anything is written.
+
+    Paragraphs must match one to one in number, order and kind (title, date, para, quote, break).
+    """
+    numbers = {f"{i + 1:02d}" for i in range(len(story))}
+    strays = sorted(p.name for p in GERMAN.glob("*.md") if p.stem not in numbers)
+    if strays:
+        raise SystemExit(f"chapters/de: no Polish chapter for {', '.join(strays)}")
+    result = {}
+    for i, (_, markdown, _) in enumerate(story):
+        path = GERMAN / f"{i + 1:02d}.md"
+        if not path.exists():
+            continue
+        pl, de = blocks(markdown), blocks(path.read_text(encoding="utf-8"))
+        kinds_pl, kinds_de = [k for k, _ in pl], [k for k, _ in de]
+        if kinds_pl != kinds_de:
+            j = next((j for j, (a, b) in enumerate(zip(kinds_pl, kinds_de)) if a != b), min(len(pl), len(de)))
+            show = lambda bl: f"{bl[j][0]}: {bl[j][1][:80]}".replace("\n", " / ") if j < len(bl) else "(none, the file ends)"
+            raise SystemExit(
+                f"{path.relative_to(ROOT)} does not match chapters/{path.name} paragraph by paragraph "
+                f"({len(pl)} Polish, {len(de)} German); nothing was built.\n"
+                f"paragraph {j + 1} is the first that differs in kind; an extra or missing one can be earlier:\n"
+                f"  pl  {show(pl)}\n  de  {show(de)}"
+            )
+        result[i] = (pl, de)
+    return result
+
+
+def outdated(translations, accept):
+    """German paragraphs whose Polish changed since they were last in sync: [(chapter, paragraph, Polish)].
+
+    data/translation_sync.tsv keeps (chapter, Polish hash, German hash) for every paragraph in sync.
+    A pair is new when either side changed: a new German text is taken as updated, but an unchanged
+    German text next to a changed Polish one is reported and keeps its old pair until it is updated
+    or --accept-german confirms it.
+    """
+    digest = lambda text: hashlib.sha1(text.encode()).hexdigest()[:12]
+    known = set()
+    if SYNC.exists():
+        known = {tuple(line.split("\t")) for line in SYNC.read_text(encoding="utf-8").splitlines()[1:]}
+    known_de = {(c, d) for c, _, d in known}
+    keep, report = set(), []
+    for i, (pl, de) in sorted(translations.items()):
+        number = f"{i + 1:02d}"
+        for j, ((_, a), (_, b)) in enumerate(zip(pl, de)):
+            pair = (number, digest(a), digest(b))
+            if accept or pair in known or (number, pair[2]) not in known_de:
+                keep.add(pair)
+            else:
+                report.append((i + 1, j + 1, a))
+                keep |= {k for k in known if (k[0], k[2]) == (number, pair[2])}
+    rows = ["chapter\tpl\tde"] + ["\t".join(k) for k in sorted(keep)]
+    SYNC.write_text("\n".join(rows) + "\n", encoding="utf-8")
+    return report
+
+
 def fonts_css():
     """fonts/fonts.css with every font file embedded: browsers refuse font files next to a page opened as file://."""
     def embed(match):
@@ -153,6 +217,7 @@ def fonts_css():
 
 def main():
     story = chapters(names=True)
+    translations = german(story)
     glossary = {r["lemma"].lower(): (r["lemma"], r["de"]) for r in tsv(GLOSSARY)}
     lists = word_lists(first_occurrences(story), glossary)
     book(story, lists)
@@ -173,12 +238,15 @@ def main():
         chapter_parts = parts(chapter_blocks)
         for k, part in enumerate(chapter_parts, 1):
             (TEXT / "parts" / f"{number}-{k}.txt").write_text(part + "\n", encoding="utf-8")
-        chapters_data.append({
+        chapter = {
             "title": title,
             "blocks": segments(chapter_blocks, tokens(markdown), ids, excluded),
             "parts": chapter_parts,
             "words": [[ids[lemma], form] for lemma, _, form, _, _ in lists[i]],
-        })
+        }
+        if i in translations:
+            chapter["de"] = [t for _, t in translations[i][1]]
+        chapters_data.append(chapter)
     (TEXT / "klucz.txt").write_text("\n\n\n".join(whole) + "\n", encoding="utf-8")
 
     data = {"chapters": chapters_data, "words": [[display, tag, de] for _, display, _, tag, de in words]}
@@ -192,6 +260,15 @@ def main():
           f"index.html ({len(page) // 1024} KB); {len(missing)} glossary entries missing")
     if missing:
         print("missing in data/glossary.tsv:", ", ".join(missing))
+    if len(translations) < len(story):
+        absent = [f"{i + 1:02d}" for i in range(len(story)) if i not in translations]
+        print("no German translation (chapters/de):", ", ".join(absent))
+    report = outdated(translations, "--accept-german" in sys.argv)
+    if report:
+        print(f"{len(report)} German paragraphs may be outdated, their Polish changed. Update them in chapters/de, "
+              "or run again with --accept-german if they still fit:")
+        for c, j, text in report:
+            print(f"  chapter {c}, paragraph {j}: {text[:80]}")
 
 
 if __name__ == "__main__":

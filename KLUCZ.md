@@ -1227,7 +1227,7 @@ Pierwszy dzień w czasie przeszłym. Kasia, jeśli to czytasz: starałem się.
 
 Dużo się zmieniło w ciągu tego tygodnia. Największa zmiana: zacząłem myśleć po polsku, przynajmniej w sklepie. Wczoraj wydałem w markecie sto złotych i ani razu nie powiedziałem „przepraszam, nie rozumiem”. Kasia mówi, że muszę doceniać każdy mały sukces i że nie wolno się denerwować, bo to do niczego nie doprowadzi. Postaram się. Na razie jestem z siebie zadowolony.
 
-Rano przyszedł pan Zbyszek z kolegą i z nową lodówką. Kolega miał na imię Waldek, był mały, gruby i cały czas palił papierosy. Lodówka dotarła na drugie piętro po kwadransie. Waldek powiedział, że to jego rekord. Ale była za duża. Nie chciała wejść do kuchni. Pan Zbyszek i Waldek próbowali przez godzinę. Krzyczeli, pchali, kłócili się, a raz Waldek powiedział słowo, którego nie znałem. Pan Zbyszek powiedział mi, żebym go nie zapisywał. Nie zapisałem.
+W środę rano przyszedł pan Zbyszek z Waldkiem i z nową lodówką. Waldek był mały, gruby i cały czas palił papierosy. Lodówka dotarła na drugie piętro po kwadransie. Waldek powiedział, że to jego rekord. Ale była za duża. Nie chciała wejść do kuchni. Pan Zbyszek i Waldek próbowali przez godzinę. Krzyczeli, pchali, kłócili się, a raz Waldek powiedział słowo, którego nie znałem. Pan Zbyszek powiedział mi, żebym go nie zapisywał. Nie zapisałem.
 
 Później Kasia mi wytłumaczyła, że to było najczęstsze polskie przekleństwo i że lepiej go nie używać. Łagodniejsze wersje to „cholera”, „kurczę”, „kurde” i „do diabła”. Pan Zbyszek mówi głównie „cholera jasna” albo „ta cholerna lodówka”. Waldek mówi głównie „pieprzyć to”.
 
@@ -1237,7 +1237,7 @@ W końcu zdjęli drzwi z kuchni i lodówka weszła. Teraz mam nową lodówkę i 
 
 Nie wierzę mu, ale lodówka działa.
 
-O dziesiątej miałem spotkanie z firmą przez internet. Mój szef, Michael, siedział w biurze w Hamburgu i pił kawę.
+Dzisiaj o dziesiątej miałem spotkanie z firmą przez internet. Mój szef, Michael, siedział w biurze w Hamburgu i pił kawę.
 
 — Jonas, jak tam Polska? Kiedy wracasz?
 
@@ -1493,6 +1493,7 @@ W drzwiach powiedziała jeszcze:
 - **szef** _m_ — Chef
 - **sztuczny (sztucznej)** — künstlich
 - **śliwka (śliwkami)** _n_ — Pflaume
+- **środa (środę)** _f_ — Mittwoch
 - **światło (światła)** _n_ — Licht
 - **tabel** _f_ — Tabelle (hier: tabela, Gen. Pl.)
 - **tańczyć (tańczyła)** _uv._ — tanzen
@@ -1609,7 +1610,7 @@ Zjadłem. Nie wszystko, ale dużo. Żurek był kwaśny i gorący, z białą kie�
 
 Kiedy ludzi było mniej, pani Danuta usiadła z nami.
 
-— Cudownie, że przyszliście — powiedziała. — W trakcie obiadu nie chciałam wam przeszkadzać, ale teraz muszę z tobą zamienić słowo, synku. U nas jest znacznie lepiej niż w restauracji.
+— Cudownie, że przyszliście. U nas jest znacznie lepiej niż w restauracji, prawda? — powiedziała. — W trakcie obiadu nie chciałam wam przeszkadzać, ale teraz muszę z tobą zamienić słowo, synku.
 
 — No to opowiadaj. Skąd jesteś, co robisz, ile zarabiasz, czy masz żonę?
 
@@ -2529,7 +2530,6 @@ Jutro mogę wyjść z domu. Wiem, do czyich drzwi zapukam najpierw.
 - **śledztwo** _n_ — Ermittlung
 - **śmiertelny** — tödlich, sterblich
 - **śpiewać (śpiewa)** _uv._ — singen
-- **środa (środę)** _f_ — Mittwoch
 - **świątynia (świątyni)** _f_ — Tempel
 - **świątynie (świątynia)** _f_ — Tempel (hier: świątynia)
 - **taśma (taśmy)** _f_ — Band, Tonband
@@ -2665,7 +2665,7 @@ Nigdy nie widziałem czegoś tak pięknego i tak smutnego jednocześnie.
 
 Pani Halina powiedziała, że ludzie przychodzą tu nie tylko z powodu wiary. Również ci, którzy w Boga nie wierzą, palą znicze.
 
-— Ciało jest tutaj — powiedziała. — A dusza, cóż, tego nikt nie wie. Ale wspomnienia są prawdziwe. Jedynie one zostają. Mama mówiła: »Czyń dobro, a dobro do ciebie wróci«. Przychodzimy, aby zmarli wiedzieli, że o nich nie zapomnieliśmy. Lub żebyśmy sami o nich nie zapomnieli.
+— Ciało jest tutaj — powiedziała. — A dusza, cóż, tego nikt nie wie. Ale wspomnienia są prawdziwe. Jedynie one zostają. Mama mówiła: „Czyń dobro, a dobro do ciebie wróci”. Przychodzimy, aby zmarli wiedzieli, że o nich nie zapomnieliśmy. Lub żebyśmy sami o nich nie zapomnieli.
 
 Podczas spaceru do wyjścia mówiła mi, kto gdzie leży: aktorzy, poeci, profesorowie, generałowie, matka jej koleżanki, ksiądz, który dał jej ślub. Znała historię prawie każdego grobu. Wspominała tych ludzi tak, jakby to byli sąsiedzi z naszej ulicy.
 
@@ -2706,7 +2706,7 @@ Teraz kłódka leżała na podłodze. Złamana.
 - **członek** _m_ — Mitglied
 - **czterdzieści** — vierzig
 - **czyn** _m_ — Tat
-- **czynić (Czyń)** _v._ — tun, machen (geh.)
+- **czynić (Czyń)** _uv._ — tun, machen (geh.)
 - **czynsz (czynszu)** _m_ — Miete
 - **dym (dymem)** _m_ — Rauch
 - **dziwnie** — seltsam
@@ -2831,7 +2831,7 @@ Rano opowiedziałem wszystko panu Zbyszkowi. Zanim skończyłem, już był w piw
 
 — Tędy uciekł — powiedziałem i pokazałem drzwi na podwórko. — Musiał się wydostać tym wyjściem, a potem przez mur.
 
-— Z zewnątrz tych drzwi nie da się otworzyć bez klucza — powiedział pan Zbyszek. — Czyli miał klucz. Albo ktoś mu je otworzył.
+— Z zewnątrz tych drzwi nie da się otworzyć bez klucza, ale od środka tak — powiedział pan Zbyszek. — Czyli wszedł od frontu, przez kłódkę, a wyszedł tędy.
 
 Przy świetle dziennym, a właściwie przy świetle latarki pana Zbyszka, piwnica była mniej straszna. Była po prostu stara. Pajęczyny, kurz, stare rowery, skrzynki, słoiki z ogórkami i z dżemem. Pani Halina miała w swojej komórce chyba sto słoików. Na każdym była karteczka z datą.
 
@@ -3163,7 +3163,7 @@ Wieczorem przyszła Kasia z ciastem od mamy i z teczką na moje dokumenty z urz�
 
 Opowiedziałem jej wszystko. Kiedy skończyłem, długo milczała.
 
-— Jeśli pani Halina jest siostrą twojej babci — powiedziała w końcu — to jest drugą żyjącą córką Stanisława. Ona wie, czy dziadek Jan miał drugiego syna i czy jej tata czegokolwiek się zrzekał. A jeśli żadnego Antoniego nie było, to ten człowiek w ogóle nie jest spadkobiercą.
+— Jeśli pani Halina jest siostrą twojej babci — powiedziała w końcu — to jest młodszą córką Stanisława. Ona wie, czy dziadek Jan miał drugiego syna i czy jej tata czegokolwiek się zrzekał. A jeśli żadnego Antoniego nie było, to ten człowiek w ogóle nie jest spadkobiercą.
 
 — I jeśli to udowodnimy…
 
@@ -4891,7 +4891,7 @@ Powiedziałam.
 
 Zosię zabrali następnego dnia. Trzymali ją trzy doby, zanim ją wypuścili. Wyrzucili ją ze studiów pół roku przed dyplomem. Tata stracił stanowisko w biurze projektów i do emerytury pracował jako zwykły kreślarz. A ja dostałam to, co mi obiecali: Józek dostał paszport, ja zostałam w bibliotece. Wszystko było w porządku. Wszystko było w porządku przez pięćdziesiąt lat.
 
-Przez całe życie myślałam, że jestem zdrajczynią. Mama mówiła kiedyś, że „zdrajca” to najgorsze słowo w polskim języku. Że zdradziłam siostrę, a zdrada w rodzinie to najgorszy grzech. Sumienie nie dawało mi spać. Gniew na siebie, wstyd, żal. Józek mówił: »Hala, to nie ty jesteś winna, to system«. Ale system nie ma twarzy. Ja miałam.
+Przez całe życie myślałam, że jestem zdrajczynią. Mama mówiła kiedyś, że „zdrajca” to najgorsze słowo w polskim języku. Bo zdradziłam siostrę, a zdrada w rodzinie to najgorszy grzech. Sumienie nie dawało mi spać. Gniew na siebie, wstyd, żal. Józek mówił: »Hala, to nie ty jesteś winna, to system«. Ale system nie ma twarzy. Ja miałam.
 
 Długo obwiniałam ich. Potem siebie. Potem znowu ich. Ale winy nie można dzielić na pół. Okłamywałam wszystkich: rodziców, znajomych, samą siebie. Przez pięćdziesiąt lat nikomu poza Józkiem tego nie ujawniłam. Cierpienie, które sprawiłam Zosi, wracało do mnie każdej nocy.
 
@@ -5367,7 +5367,7 @@ A ja pojechałem z Kasią i Tomkiem w góry. Kasia powiedziała, że jeśli nie 
 
 Do Zakopanego jedzie się z Krakowa autobusem albo pociągiem. Pociąg jest piękniejszy, ale wolniejszy. Autobus jest szybszy, ale kierowca jeździ jak wariat. Pojechaliśmy autobusem.
 
-Odległość z Krakowa do Zakopanego to tylko sto kilometrów, ale w piątek po południu ta wycieczka trwa trzy godziny. Kierowca jechał z prędkością, która przerażała nawet Tomka, a Tomek jest policjantem. Na każdym przystanku ktoś wysiadał, a raz kierowca przejechał na czerwonym świetle.
+Odległość z Krakowa do Zakopanego to tylko sto kilometrów, ale w piątek rano ta wycieczka trwa trzy godziny. Kierowca jechał z prędkością, która przerażała nawet Tomka, a Tomek jest policjantem. Na każdym przystanku ktoś wysiadał, a raz kierowca przejechał na czerwonym świetle.
 
 — Spokojnie — powiedział Tomek. — Jestem po służbie.
 
@@ -6023,7 +6023,7 @@ Michael westchnął. Potem powiedział, że firma nie chce mnie stracić i że m
 
 — Wiedziałem, że tak powiesz. — Słyszałem, że się uśmiecha. — Wiesz, co jest najdziwniejsze? Twój niemiecki brzmi już trochę jak polski.
 
-— Dobrze. To prześlę ci umowę mailem. Papiery potrwają tydzień.
+— To dobrze czy źle? — zapytałem. — Dobrze. To prześlę ci umowę mailem. Papiery potrwają tydzień.
 
 ---
 
@@ -8531,7 +8531,7 @@ Rok temu znałem może tysiąc słów. Kasia mówi, że teraz znam kilka tysięc
 
 I cztery słowa z karteczki w słowniku.
 
-Rok temu myślałem, że uczę się polskiego, żeby zrozumieć babcię. Teraz wiem, że to nie wszystko. Uczyłem się polskiego, żeby ktoś mógł mnie zrozumieć. Żeby ciocia mogła mi opowiedzieć swoją historię w swoim języku. Żeby Kasia mogła mi powiedzieć, że nie udaje. Żeby pan Władysław w szpitalu w Zakopanem mógł mi opowiedzieć o ojcu, który przeprowadzał ludzi przez góry. Żeby Edward Lis mógł mi powiedzieć prawdę, zanim umarł.
+Rok temu myślałem, że uczę się polskiego, żeby zrozumieć babcię. Teraz wiem, że to nie wszystko. Uczyłem się polskiego, żeby ludzie mogli mi coś powiedzieć. Żeby ciocia mogła mi opowiedzieć swoją historię w swoim języku. Żeby Kasia mogła mi powiedzieć, że nie udaje. Żeby pan Władysław w szpitalu w Zakopanem mógł mi opowiedzieć o ojcu, który przeprowadzał ludzi przez góry. Żeby Edward Lis mógł mi powiedzieć prawdę, zanim umarł.
 
 Język to jest klucz. Każde słowo otwiera jakieś drzwi. Niektóre otwierają się łatwo. Inne są zardzewiałe i trzeba je przekręcać razem, we dwoje, z całej siły. Ale za każdymi drzwiami jest człowiek.
 
