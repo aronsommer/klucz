@@ -276,6 +276,13 @@
         margin: 0 auto;
       }
 
+      .tap-hint {
+        font-family: var(--ui);
+        font-size: 15px;
+        color: var(--text-2);
+        margin: 0 0 24px;
+      }
+
       article {
         font-family: var(--read);
         font-size: 19px;
@@ -542,7 +549,8 @@
         body::before,
         .bar,
         .pop,
-        .toast {
+        .toast,
+        .tap-hint {
           display: none !important;
         }
         main {
@@ -603,12 +611,13 @@
 
     <main>
       <div class="column">
+        <p class="tap-hint">Tippe auf ein Wort, um die Übersetzung zu sehen.</p>
         <article id="text"></article>
         <section>
           <h2 id="words-title">Neue Wörter</h2>
           <p class="hint">
-            Alle Wörter, die in diesem Kapitel zum ersten Mal vorkommen, alphabetisch. Jedes Wort im
-            Text lässt sich antippen.<br />m/f/n: Genus · uv./v.: unvollendeter/vollendeter Aspekt
+            Alle Wörter, die in diesem Kapitel zum ersten Mal vorkommen, alphabetisch.<br />m/f/n:
+            Genus · uv./v.: unvollendeter/vollendeter Aspekt
           </p>
           <dl class="words" id="words"></dl>
         </section>
