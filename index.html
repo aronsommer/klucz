@@ -1067,6 +1067,10 @@
           if (e.key === "ArrowLeft") go(ch - 1);
           if (e.key === "ArrowRight") go(ch + 1);
         });
+        // a press does not focus a button, so Space keeps scrolling the page
+        document.addEventListener("mousedown", (e) => {
+          if (e.target.closest("button")) e.preventDefault();
+        });
         const clamp = (i) => Math.min(Math.max(i, 0), CH.length - 1);
         const fromHash = () => {
           const m = location.hash.match(/^#r(\d+)(?:\/(\d+))?$/);
