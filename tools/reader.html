@@ -51,6 +51,8 @@
       }
       body {
         margin: 0;
+        /* the bar starts below the status bar, as when it sticks */
+        padding-top: env(safe-area-inset-top, 0px);
         background: var(--bg);
         color: var(--text);
         font-size: 15px;
