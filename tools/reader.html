@@ -8,12 +8,18 @@
       content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"
     />
     <title>Klucz</title>
+    <!-- Before the first paint, so a stored theme does not flash. -->
+    <script>
+      try {
+        document.documentElement.style.colorScheme = localStorage.getItem("klucz-theme") ?? "";
+      } catch {}
+    </script>
     <style>
       __FONTS__
     </style>
     <style>
       /* A green-tinted neutral paper with one red accent; word hover stays neutral. */
-      /* One reading column under a sticky bar (chapter switcher, a jump to the words and the DE/PL switch, then the copy and print buttons); the chapter's new words follow the text. */
+      /* One reading column under a sticky bar (chapter switcher over the copy and print buttons; a jump to the words over theme, fullscreen and the DE/PL switch); the chapter's new words follow the text. */
       :root {
         color-scheme: light dark;
         --bg: light-dark(#f2f4f1, #111614);
@@ -91,22 +97,74 @@
         padding-right: max(16px, env(safe-area-inset-right, 0px));
         padding-block: 10px;
       }
-      .bar-inner,
-      .copy-row {
+      .bar-inner {
         max-width: 680px;
         margin: 0 auto;
         display: flex;
-        align-items: center;
+        justify-content: space-between;
         gap: 8px;
+        position: relative;
       }
-      /* previous, chapter, next: one control on one surface */
+      /* the bookmark ribbon: hangs from the bar beside the text; the saved block lands next to it */
+      .bar-inner::after {
+        content: "";
+        position: absolute;
+        left: -13px;
+        top: calc(100% + 11px); /* below the bar's padding and border */
+        width: 8px;
+        height: 26px;
+        background: var(--accent);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 6px), 0 100%);
+      }
+      /* the chapter switcher over the copy buttons and print, which sits under the next arrow */
+      .nav {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) var(--control);
+        gap: 10px 8px;
+        min-width: 0;
+      }
       .chapter-nav {
+        grid-column: 1 / -1;
+      }
+      .tools {
+        display: grid;
+        grid-template-columns: repeat(3, var(--control));
+        grid-template-areas:
+          "words words words"
+          "theme full lang";
+        gap: 10px 8px;
+        flex: none;
+      }
+      #theme {
+        grid-area: theme;
+      }
+      #fullscreen {
+        grid-area: full;
+      }
+      /* without fullscreen (iPhone) the theme button moves next to the language switch */
+      .tools:has(#fullscreen[hidden]) #theme {
+        grid-area: full;
+      }
+      #german {
+        grid-area: lang;
+      }
+      #to-words {
+        grid-area: words;
+      }
+      /* the arrow glyph has 3px of empty space on its left, so both ends look even */
+      #to-words .icon {
+        margin-left: -3px;
+      }
+      /* previous, chapter, next: one control on one surface; so are the copy buttons */
+      .chapter-nav,
+      .copy {
         display: flex;
         min-width: 0;
         background: var(--tonal);
         border-radius: 8px;
       }
       .bar select {
+        flex: 1;
         min-width: 0;
         max-width: 260px;
         height: var(--control);
@@ -135,61 +193,48 @@
         opacity: 0.5;
         cursor: not-allowed;
       }
-      .copy-row {
-        margin-top: 10px;
-        flex-wrap: wrap;
-        position: relative;
-      }
-      /* the bookmark ribbon: hangs from the bar beside the text; the saved block lands next to it */
-      .copy-row::after {
-        content: "";
-        position: absolute;
-        left: -13px;
-        top: calc(100% + 11px); /* below the bar's padding and border */
-        width: 8px;
-        height: 26px;
-        background: var(--accent);
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 6px), 0 100%);
-      }
-      #copy {
-        margin-left: auto;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-end;
-        gap: 6px;
-      }
-      #to-words,
-      #german,
-      .copy-row button {
+      .tools button,
+      #print,
+      .copy button {
         height: var(--control);
         border: 0;
-        background: var(--tonal);
-        border-radius: 8px;
-        padding: 0 10px;
+        padding: 0;
         font-size: 14px;
         font-weight: 600;
         cursor: pointer;
         display: inline-flex;
         align-items: center;
+        justify-content: center;
         gap: 4px;
       }
-      #to-words .icon,
-      .copy-row button .icon {
+      .tools button,
+      #print {
+        background: var(--tonal);
+        border-radius: 8px;
+      }
+      .tools .icon,
+      #print .icon,
+      .copy .icon {
         font-size: 18px;
       }
-      #to-words {
-        flex: none;
-        margin-left: auto;
-      }
-      /* the language switch and the print button below it: one size */
-      #german,
-      #print {
+      .copy > .icon {
         width: var(--control);
         flex: none;
-        padding: 0;
-        justify-content: center;
+        align-self: center;
+        text-align: center;
       }
-      .copy-row button.done {
+      .copy button {
+        flex: 1;
+        min-width: 0;
+        border-left: 1px solid var(--line);
+        background: none;
+        padding: 0 6px;
+        white-space: nowrap;
+      }
+      .copy button:last-child {
+        border-radius: 0 8px 8px 0;
+      }
+      .copy button.done {
         background: var(--accent);
         color: var(--on-accent);
       }
@@ -459,16 +504,13 @@
           border-bottom: 0;
           padding-bottom: 0;
         }
-        .copy-row button {
-          padding: 0 8px;
-        }
-        .copy-row .long {
+        .copy .long {
           display: none;
-        } /* "Teil 1" becomes "1", so all buttons fit one row */
+        } /* "Teil 1" becomes "1", so all buttons fit their width */
       }
       @media print {
         :root {
-          color-scheme: light;
+          color-scheme: light !important; /* over the theme button's inline style */
         }
         body {
           background: #fff;
@@ -514,25 +556,31 @@
   <body>
     <header class="bar">
       <div class="bar-inner">
-        <div class="chapter-nav">
-          <button class="arrow" id="prev" aria-label="Vorheriges Kapitel">
-            <span class="icon" aria-hidden="true">chevron_left</span>
-          </button>
-          <select id="chapter" aria-label="Kapitel wählen"></select>
-          <button class="arrow" id="next" aria-label="Nächstes Kapitel">
-            <span class="icon" aria-hidden="true">chevron_right</span>
+        <div class="nav">
+          <div class="chapter-nav">
+            <button class="arrow" id="prev" aria-label="Vorheriges Kapitel">
+              <span class="icon" aria-hidden="true">chevron_left</span>
+            </button>
+            <select id="chapter" aria-label="Kapitel wählen"></select>
+            <button class="arrow" id="next" aria-label="Nächstes Kapitel">
+              <span class="icon" aria-hidden="true">chevron_right</span>
+            </button>
+          </div>
+          <div class="copy" id="copy" role="group" aria-label="Text kopieren"></div>
+          <button id="print" aria-label="Ganzes Buch drucken" title="Ganzes Buch drucken">
+            <span class="icon" aria-hidden="true">print</span>
           </button>
         </div>
-        <button id="to-words">
-          <span class="icon" aria-hidden="true">arrow_downward</span>Wörter
-        </button>
-        <button id="german" title="Deutsch zeigen">DE</button>
-      </div>
-      <div class="copy-row">
-        <div id="copy" aria-label="Text kopieren"></div>
-        <button id="print" aria-label="Ganzes Buch drucken" title="Ganzes Buch drucken">
-          <span class="icon" aria-hidden="true">print</span>
-        </button>
+        <div class="tools">
+          <button id="to-words">
+            <span class="icon" aria-hidden="true">arrow_downward</span>Wörter
+          </button>
+          <button id="theme"><span class="icon" aria-hidden="true">dark_mode</span></button>
+          <button id="fullscreen" aria-label="Vollbild" title="Vollbild">
+            <span class="icon" aria-hidden="true">fullscreen</span>
+          </button>
+          <button id="german" title="Deutsch zeigen">DE</button>
+        </div>
       </div>
       <div class="toast" id="toast" hidden role="status"></div>
     </header>
@@ -803,11 +851,11 @@
                   ),
                 )
               : [];
-          row.replaceChildren(whole, ...each);
+          row.replaceChildren(icon("content_copy"), whole, ...each);
         }
         function button(text, done, ...label) {
           const b = el("button");
-          b.append(icon("content_copy"), ...label);
+          b.append(...label);
           b.title = text.length.toLocaleString("de-DE") + " Zeichen";
           b.onclick = () => copy(text, b, done);
           return b;
@@ -836,12 +884,12 @@
             } catch {}
           }
           const mark = (b, done) => {
-            b.classList.toggle("done", done);
-            b.querySelector(".icon").textContent = done ? "check" : "content_copy";
+            $("copy")
+              .querySelectorAll("button")
+              .forEach((e) => e.classList.toggle("done", done && e === b));
+            $("copy").querySelector(".icon").textContent = done ? "check" : "content_copy";
           };
-          $("copy")
-            .querySelectorAll("button")
-            .forEach((b) => mark(b, ok && b === button));
+          mark(button, ok);
           if (!ok) {
             toast("Kopieren ist in diesem Browser blockiert.");
             return;
@@ -851,10 +899,7 @@
 
         $("to-words").onclick = () => {
           const top =
-            $("words-title").getBoundingClientRect().top +
-            window.scrollY -
-            document.querySelector(".bar").offsetHeight -
-            24;
+            $("words-title").getBoundingClientRect().top + window.scrollY - barBottom() - 24;
           window.scrollTo({ top, behavior: "smooth" });
         };
         // every chapter with its words, each starting on a new page; built only while printing
@@ -888,6 +933,37 @@
           e.currentTarget.textContent = on ? "PL" : "DE";
           e.currentTarget.title = on ? "Polnisch zeigen" : "Deutsch zeigen";
         };
+        // hidden where a page cannot go fullscreen (iPhone)
+        $("fullscreen").hidden = !document.fullscreenEnabled;
+        $("fullscreen").onclick = () =>
+          document.fullscreenElement
+            ? document.exitFullscreen()
+            : document.documentElement.requestFullscreen();
+        document.addEventListener("fullscreenchange", () => {
+          const on = !!document.fullscreenElement;
+          $("fullscreen").firstElementChild.textContent = on ? "fullscreen_exit" : "fullscreen";
+          $("fullscreen").title = $("fullscreen").ariaLabel = on ? "Vollbild beenden" : "Vollbild";
+        });
+        // a stored theme (set in the head) wins over the system's; the button shows the theme it switches to
+        const systemDark = matchMedia("(prefers-color-scheme: dark)");
+        const isDark = () => {
+          const s = document.documentElement.style.colorScheme;
+          return s ? s === "dark" : systemDark.matches;
+        };
+        const themeButton = () => {
+          $("theme").firstElementChild.textContent = isDark() ? "light_mode" : "dark_mode";
+          $("theme").title = $("theme").ariaLabel = isDark() ? "Helles Design" : "Dunkles Design";
+        };
+        $("theme").onclick = () => {
+          const next = isDark() ? "light" : "dark";
+          document.documentElement.style.colorScheme = next;
+          try {
+            localStorage.setItem("klucz-theme", next);
+          } catch {}
+          themeButton();
+        };
+        systemDark.addEventListener("change", themeButton);
+        themeButton();
         $("prev").onclick = () => go(ch - 1);
         $("next").onclick = () => go(ch + 1);
         $("chapter").onchange = (e) => {

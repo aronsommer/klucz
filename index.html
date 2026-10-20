@@ -8,6 +8,12 @@
       content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"
     />
     <title>Klucz</title>
+    <!-- Before the first paint, so a stored theme does not flash. -->
+    <script>
+      try {
+        document.documentElement.style.colorScheme = localStorage.getItem("klucz-theme") ?? "";
+      } catch {}
+    </script>
     <style>
       /* Self-hosted from Google Fonts (SIL Open Font License / Apache 2.0): latin and latin-ext subsets only. */
 @font-face {
@@ -73,19 +79,19 @@
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
     U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-/* Material Symbols Outlined, reduced to these icons: arrow_downward, arrow_forward, check, chevron_left, chevron_right, close, content_copy, print, volume_up */
+/* Material Symbols Outlined, reduced to these icons: arrow_downward, arrow_forward, check, chevron_left, chevron_right, close, content_copy, dark_mode, fullscreen, fullscreen_exit, light_mode, print, volume_up */
 @font-face {
   font-family: "Material Symbols Outlined";
   font-style: normal;
   font-weight: 400;
   font-display: block;
-  src: url(data:font/woff2;base64,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) format("woff2");
+  src: url(data:font/woff2;base64,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) format("woff2");
 }
 
     </style>
     <style>
       /* A green-tinted neutral paper with one red accent; word hover stays neutral. */
-      /* One reading column under a sticky bar (chapter switcher, a jump to the words and the DE/PL switch, then the copy and print buttons); the chapter's new words follow the text. */
+      /* One reading column under a sticky bar (chapter switcher over the copy and print buttons; a jump to the words over theme, fullscreen and the DE/PL switch); the chapter's new words follow the text. */
       :root {
         color-scheme: light dark;
         --bg: light-dark(#f2f4f1, #111614);
@@ -163,22 +169,74 @@
         padding-right: max(16px, env(safe-area-inset-right, 0px));
         padding-block: 10px;
       }
-      .bar-inner,
-      .copy-row {
+      .bar-inner {
         max-width: 680px;
         margin: 0 auto;
         display: flex;
-        align-items: center;
+        justify-content: space-between;
         gap: 8px;
+        position: relative;
       }
-      /* previous, chapter, next: one control on one surface */
+      /* the bookmark ribbon: hangs from the bar beside the text; the saved block lands next to it */
+      .bar-inner::after {
+        content: "";
+        position: absolute;
+        left: -13px;
+        top: calc(100% + 11px); /* below the bar's padding and border */
+        width: 8px;
+        height: 26px;
+        background: var(--accent);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 6px), 0 100%);
+      }
+      /* the chapter switcher over the copy buttons and print, which sits under the next arrow */
+      .nav {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) var(--control);
+        gap: 10px 8px;
+        min-width: 0;
+      }
       .chapter-nav {
+        grid-column: 1 / -1;
+      }
+      .tools {
+        display: grid;
+        grid-template-columns: repeat(3, var(--control));
+        grid-template-areas:
+          "words words words"
+          "theme full lang";
+        gap: 10px 8px;
+        flex: none;
+      }
+      #theme {
+        grid-area: theme;
+      }
+      #fullscreen {
+        grid-area: full;
+      }
+      /* without fullscreen (iPhone) the theme button moves next to the language switch */
+      .tools:has(#fullscreen[hidden]) #theme {
+        grid-area: full;
+      }
+      #german {
+        grid-area: lang;
+      }
+      #to-words {
+        grid-area: words;
+      }
+      /* the arrow glyph has 3px of empty space on its left, so both ends look even */
+      #to-words .icon {
+        margin-left: -3px;
+      }
+      /* previous, chapter, next: one control on one surface; so are the copy buttons */
+      .chapter-nav,
+      .copy {
         display: flex;
         min-width: 0;
         background: var(--tonal);
         border-radius: 8px;
       }
       .bar select {
+        flex: 1;
         min-width: 0;
         max-width: 260px;
         height: var(--control);
@@ -207,61 +265,48 @@
         opacity: 0.5;
         cursor: not-allowed;
       }
-      .copy-row {
-        margin-top: 10px;
-        flex-wrap: wrap;
-        position: relative;
-      }
-      /* the bookmark ribbon: hangs from the bar beside the text; the saved block lands next to it */
-      .copy-row::after {
-        content: "";
-        position: absolute;
-        left: -13px;
-        top: calc(100% + 11px); /* below the bar's padding and border */
-        width: 8px;
-        height: 26px;
-        background: var(--accent);
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 6px), 0 100%);
-      }
-      #copy {
-        margin-left: auto;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-end;
-        gap: 6px;
-      }
-      #to-words,
-      #german,
-      .copy-row button {
+      .tools button,
+      #print,
+      .copy button {
         height: var(--control);
         border: 0;
-        background: var(--tonal);
-        border-radius: 8px;
-        padding: 0 10px;
+        padding: 0;
         font-size: 14px;
         font-weight: 600;
         cursor: pointer;
         display: inline-flex;
         align-items: center;
+        justify-content: center;
         gap: 4px;
       }
-      #to-words .icon,
-      .copy-row button .icon {
+      .tools button,
+      #print {
+        background: var(--tonal);
+        border-radius: 8px;
+      }
+      .tools .icon,
+      #print .icon,
+      .copy .icon {
         font-size: 18px;
       }
-      #to-words {
-        flex: none;
-        margin-left: auto;
-      }
-      /* the language switch and the print button below it: one size */
-      #german,
-      #print {
+      .copy > .icon {
         width: var(--control);
         flex: none;
-        padding: 0;
-        justify-content: center;
+        align-self: center;
+        text-align: center;
       }
-      .copy-row button.done {
+      .copy button {
+        flex: 1;
+        min-width: 0;
+        border-left: 1px solid var(--line);
+        background: none;
+        padding: 0 6px;
+        white-space: nowrap;
+      }
+      .copy button:last-child {
+        border-radius: 0 8px 8px 0;
+      }
+      .copy button.done {
         background: var(--accent);
         color: var(--on-accent);
       }
@@ -531,16 +576,13 @@
           border-bottom: 0;
           padding-bottom: 0;
         }
-        .copy-row button {
-          padding: 0 8px;
-        }
-        .copy-row .long {
+        .copy .long {
           display: none;
-        } /* "Teil 1" becomes "1", so all buttons fit one row */
+        } /* "Teil 1" becomes "1", so all buttons fit their width */
       }
       @media print {
         :root {
-          color-scheme: light;
+          color-scheme: light !important; /* over the theme button's inline style */
         }
         body {
           background: #fff;
@@ -586,25 +628,31 @@
   <body>
     <header class="bar">
       <div class="bar-inner">
-        <div class="chapter-nav">
-          <button class="arrow" id="prev" aria-label="Vorheriges Kapitel">
-            <span class="icon" aria-hidden="true">chevron_left</span>
-          </button>
-          <select id="chapter" aria-label="Kapitel wählen"></select>
-          <button class="arrow" id="next" aria-label="Nächstes Kapitel">
-            <span class="icon" aria-hidden="true">chevron_right</span>
+        <div class="nav">
+          <div class="chapter-nav">
+            <button class="arrow" id="prev" aria-label="Vorheriges Kapitel">
+              <span class="icon" aria-hidden="true">chevron_left</span>
+            </button>
+            <select id="chapter" aria-label="Kapitel wählen"></select>
+            <button class="arrow" id="next" aria-label="Nächstes Kapitel">
+              <span class="icon" aria-hidden="true">chevron_right</span>
+            </button>
+          </div>
+          <div class="copy" id="copy" role="group" aria-label="Text kopieren"></div>
+          <button id="print" aria-label="Ganzes Buch drucken" title="Ganzes Buch drucken">
+            <span class="icon" aria-hidden="true">print</span>
           </button>
         </div>
-        <button id="to-words">
-          <span class="icon" aria-hidden="true">arrow_downward</span>Wörter
-        </button>
-        <button id="german" title="Deutsch zeigen">DE</button>
-      </div>
-      <div class="copy-row">
-        <div id="copy" aria-label="Text kopieren"></div>
-        <button id="print" aria-label="Ganzes Buch drucken" title="Ganzes Buch drucken">
-          <span class="icon" aria-hidden="true">print</span>
-        </button>
+        <div class="tools">
+          <button id="to-words">
+            <span class="icon" aria-hidden="true">arrow_downward</span>Wörter
+          </button>
+          <button id="theme"><span class="icon" aria-hidden="true">dark_mode</span></button>
+          <button id="fullscreen" aria-label="Vollbild" title="Vollbild">
+            <span class="icon" aria-hidden="true">fullscreen</span>
+          </button>
+          <button id="german" title="Deutsch zeigen">DE</button>
+        </div>
       </div>
       <div class="toast" id="toast" hidden role="status"></div>
     </header>
@@ -875,11 +923,11 @@
                   ),
                 )
               : [];
-          row.replaceChildren(whole, ...each);
+          row.replaceChildren(icon("content_copy"), whole, ...each);
         }
         function button(text, done, ...label) {
           const b = el("button");
-          b.append(icon("content_copy"), ...label);
+          b.append(...label);
           b.title = text.length.toLocaleString("de-DE") + " Zeichen";
           b.onclick = () => copy(text, b, done);
           return b;
@@ -908,12 +956,12 @@
             } catch {}
           }
           const mark = (b, done) => {
-            b.classList.toggle("done", done);
-            b.querySelector(".icon").textContent = done ? "check" : "content_copy";
+            $("copy")
+              .querySelectorAll("button")
+              .forEach((e) => e.classList.toggle("done", done && e === b));
+            $("copy").querySelector(".icon").textContent = done ? "check" : "content_copy";
           };
-          $("copy")
-            .querySelectorAll("button")
-            .forEach((b) => mark(b, ok && b === button));
+          mark(button, ok);
           if (!ok) {
             toast("Kopieren ist in diesem Browser blockiert.");
             return;
@@ -923,10 +971,7 @@
 
         $("to-words").onclick = () => {
           const top =
-            $("words-title").getBoundingClientRect().top +
-            window.scrollY -
-            document.querySelector(".bar").offsetHeight -
-            24;
+            $("words-title").getBoundingClientRect().top + window.scrollY - barBottom() - 24;
           window.scrollTo({ top, behavior: "smooth" });
         };
         // every chapter with its words, each starting on a new page; built only while printing
@@ -960,6 +1005,37 @@
           e.currentTarget.textContent = on ? "PL" : "DE";
           e.currentTarget.title = on ? "Polnisch zeigen" : "Deutsch zeigen";
         };
+        // hidden where a page cannot go fullscreen (iPhone)
+        $("fullscreen").hidden = !document.fullscreenEnabled;
+        $("fullscreen").onclick = () =>
+          document.fullscreenElement
+            ? document.exitFullscreen()
+            : document.documentElement.requestFullscreen();
+        document.addEventListener("fullscreenchange", () => {
+          const on = !!document.fullscreenElement;
+          $("fullscreen").firstElementChild.textContent = on ? "fullscreen_exit" : "fullscreen";
+          $("fullscreen").title = $("fullscreen").ariaLabel = on ? "Vollbild beenden" : "Vollbild";
+        });
+        // a stored theme (set in the head) wins over the system's; the button shows the theme it switches to
+        const systemDark = matchMedia("(prefers-color-scheme: dark)");
+        const isDark = () => {
+          const s = document.documentElement.style.colorScheme;
+          return s ? s === "dark" : systemDark.matches;
+        };
+        const themeButton = () => {
+          $("theme").firstElementChild.textContent = isDark() ? "light_mode" : "dark_mode";
+          $("theme").title = $("theme").ariaLabel = isDark() ? "Helles Design" : "Dunkles Design";
+        };
+        $("theme").onclick = () => {
+          const next = isDark() ? "light" : "dark";
+          document.documentElement.style.colorScheme = next;
+          try {
+            localStorage.setItem("klucz-theme", next);
+          } catch {}
+          themeButton();
+        };
+        systemDark.addEventListener("change", themeButton);
+        themeButton();
         $("prev").onclick = () => go(ch - 1);
         $("next").onclick = () => go(ch + 1);
         $("chapter").onchange = (e) => {
