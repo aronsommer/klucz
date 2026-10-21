@@ -979,14 +979,21 @@ main {
           u.onend = () => reading === u && read(all[all.indexOf(p) + 1]);
           u.onerror = () => reading === u && read(null);
         }
-        // starts at the first block not hidden under the bar
+        // starts at the first block starting in the upper half below the bar; failing that (a long
+        // block above it), at the block reaching below the bar
         $("read").hidden = !window.speechSynthesis;
         $("read").onclick = () => {
-          const all = readable();
+          const all = readable(),
+            bar = barBottom();
           read(
             reading
               ? null
-              : (all.find((p) => p.getBoundingClientRect().bottom > barBottom()) ?? all[0]),
+              : (all.find((p) => {
+                  const top = p.getBoundingClientRect().top;
+                  return top >= bar && top < (bar + window.innerHeight) / 2;
+                }) ??
+                  all.find((p) => p.getBoundingClientRect().bottom > bar) ??
+                  all[0]),
           );
         };
         function closePop() {
