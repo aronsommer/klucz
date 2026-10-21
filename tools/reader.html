@@ -811,7 +811,7 @@
             const say = el("button", "say");
             say.setAttribute("aria-label", "Aussprechen");
             say.append(icon("volume_up"));
-            say.onclick = () => speak(lemma);
+            say.onclick = () => speak(w.textContent);
             pop.append(say);
           }
           pop.hidden = false;
