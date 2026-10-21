@@ -1,33 +1,33 @@
 # Abdeckungsbericht
 
-Wörter im Text: **37343** · verschiedene Lemmata: **4587**
+Wörter im Text: **37352** · verschiedene Lemmata: **4589**
 
 ## Abdeckung der Frequenzliste
 
 | Rang | vorhanden | fehlt | nur 1× |
 |---|---|---|---|
-| 1–500 | 500 (100.0%) | 0 | 36 |
-| 1–1000 | 1000 (100.0%) | 0 | 185 |
-| 1–2000 | 1999 (100.0%) | 1 | 691 |
-| 1–3000 | 2993 (99.8%) | 7 | 1352 |
-| 1–4000 | 3297 (82.4%) | 703 | 1518 |
-| 1–5000 | 3523 (70.5%) | 1477 | 1645 |
+| 1–500 | 500 (100.0%) | 0 | 37 |
+| 1–1000 | 1000 (100.0%) | 0 | 184 |
+| 1–2000 | 1999 (100.0%) | 1 | 689 |
+| 1–3000 | 2993 (99.8%) | 7 | 1350 |
+| 1–4000 | 3298 (82.5%) | 702 | 1516 |
+| 1–5000 | 3524 (70.5%) | 1476 | 1643 |
 
 ## Kapitel
 
 | Kapitel | Wörter | neue Lemmata | nicht in Liste | höchster Rang |
 |---|---|---|---|---|
-| Rozdział 1. Klucz | 651 | 289 | 7 | 9170 |
-| Rozdział 2. Chleb, mleko i pan Zbyszek | 933 | 251 | 14 | 8906 |
-| Rozdział 3. Pierwsza lekcja | 1090 | 207 | 11 | 9940 |
-| Rozdział 4. Człowiek w czarnym płaszczu | 1171 | 227 | 8 | 9758 |
+| Rozdział 1. Klucz | 660 | 301 | 7 | 9170 |
+| Rozdział 2. Chleb, mleko i pan Zbyszek | 933 | 254 | 14 | 8906 |
+| Rozdział 3. Pierwsza lekcja | 1090 | 204 | 11 | 9940 |
+| Rozdział 4. Człowiek w czarnym płaszczu | 1171 | 225 | 8 | 9758 |
 | Rozdział 5. Bar mleczny | 1115 | 199 | 18 | 9578 |
-| Rozdział 6. Gorączka | 981 | 152 | 13 | 9210 |
-| Rozdział 7. Zosia i Hala | 1247 | 258 | 19 | 9801 |
+| Rozdział 6. Gorączka | 981 | 150 | 13 | 9210 |
+| Rozdział 7. Zosia i Hala | 1247 | 257 | 19 | 9801 |
 | Rozdział 8. Wszystkich Świętych | 840 | 99 | 11 | 9876 |
-| Rozdział 9. Piwnica | 1055 | 137 | 16 | 8635 |
-| Rozdział 10. Urząd | 1189 | 186 | 20 | 9094 |
-| Rozdział 11. Zebranie | 1123 | 149 | 17 | 9778 |
+| Rozdział 9. Piwnica | 1055 | 136 | 16 | 8635 |
+| Rozdział 10. Urząd | 1189 | 184 | 20 | 9094 |
+| Rozdział 11. Zebranie | 1123 | 147 | 17 | 9778 |
 | Rozdział 12. Andrzejki | 1336 | 184 | 13 | 9082 |
 | Rozdział 13. Włamanie | 1160 | 157 | 19 | 9392 |
 | Rozdział 14. Śnieg | 1166 | 156 | 31 | 9004 |
@@ -85,8 +85,8 @@ Wörter im Text: **37343** · verschiedene Lemmata: **4587**
 
 | Form | Anzahl |
 |---|---|
-| ADJ Acc Plur | 78 |
-| ADJ Acc Sing | 369 |
+| ADJ Acc Plur | 80 |
+| ADJ Acc Sing | 371 |
 | ADJ Dat - | 41 |
 | ADJ Dat Plur | 2 |
 | ADJ Dat Sing | 8 |
@@ -99,29 +99,29 @@ Wörter im Text: **37343** · verschiedene Lemmata: **4587**
 | ADJ Ins Sing | 134 |
 | ADJ Loc Plur | 34 |
 | ADJ Loc Sing | 283 |
-| ADJ Nom Plur | 236 |
-| ADJ Nom Sing | 1206 |
+| ADJ Nom Plur | 235 |
+| ADJ Nom Sing | 1204 |
 | ADJ Voc Sing | 3 |
 | ADV Degree=Cmp | 86 |
 | ADV Degree=Sup | 14 |
-| DET Acc Plur | 121 |
-| DET Acc Sing | 166 |
+| DET Acc Plur | 120 |
+| DET Acc Sing | 168 |
 | DET Dat Plur | 1 |
 | DET Dat Sing | 6 |
-| DET Gen Plur | 62 |
+| DET Gen Plur | 63 |
 | DET Gen Sing | 122 |
 | DET Ins Plur | 10 |
 | DET Ins Sing | 38 |
 | DET Loc Plur | 24 |
 | DET Loc Sing | 106 |
-| DET Nom Plur | 154 |
-| DET Nom Sing | 370 |
-| NOUN Acc Plur | 512 |
-| NOUN Acc Ptan | 48 |
-| NOUN Acc Sing | 1585 |
+| DET Nom Plur | 152 |
+| DET Nom Sing | 369 |
+| NOUN Acc Plur | 515 |
+| NOUN Acc Ptan | 47 |
+| NOUN Acc Sing | 1587 |
 | NOUN Dat Plur | 6 |
 | NOUN Dat Sing | 41 |
-| NOUN Gen Plur | 568 |
+| NOUN Gen Plur | 569 |
 | NOUN Gen Ptan | 21 |
 | NOUN Gen Sing | 1401 |
 | NOUN Ins Plur | 146 |
@@ -129,10 +129,10 @@ Wörter im Text: **37343** · verschiedene Lemmata: **4587**
 | NOUN Ins Sing | 695 |
 | NOUN Loc Plur | 189 |
 | NOUN Loc Ptan | 40 |
-| NOUN Loc Sing | 1308 |
-| NOUN Nom Plur | 619 |
+| NOUN Loc Sing | 1310 |
+| NOUN Nom Plur | 617 |
 | NOUN Nom Ptan | 21 |
-| NOUN Nom Sing | 2705 |
+| NOUN Nom Sing | 2702 |
 | NOUN Voc Sing | 55 |
 | NUM Acc Plur | 248 |
 | NUM Acc Sing | 13 |
@@ -146,17 +146,17 @@ Wörter im Text: **37343** · verschiedene Lemmata: **4587**
 | PRON Acc - | 14 |
 | PRON Acc Plur | 73 |
 | PRON Acc Ptan | 3 |
-| PRON Acc Sing | 581 |
+| PRON Acc Sing | 580 |
 | PRON Dat - | 20 |
 | PRON Dat Plur | 30 |
-| PRON Dat Sing | 259 |
+| PRON Dat Sing | 260 |
 | PRON Gen - | 12 |
 | PRON Gen Plur | 61 |
 | PRON Gen Ptan | 3 |
 | PRON Gen Sing | 438 |
 | PRON Ins - | 9 |
 | PRON Ins Plur | 14 |
-| PRON Ins Sing | 61 |
+| PRON Ins Sing | 62 |
 | PRON Loc - | 12 |
 | PRON Loc Plur | 10 |
 | PRON Loc Ptan | 1 |
@@ -168,7 +168,7 @@ Wörter im Text: **37343** · verschiedene Lemmata: **4587**
 | VERB Fin Imp Imp | 57 |
 | VERB Fin Imp Perf | 57 |
 | VERB Fin Ind | 70 |
-| VERB Fin Ind Imp | 3621 |
-| VERB Fin Ind Perf | 2401 |
+| VERB Fin Ind Imp | 3622 |
+| VERB Fin Ind Perf | 2402 |
 | VERB Inf  Imp | 253 |
-| VERB Inf  Perf | 377 |
+| VERB Inf  Perf | 378 |

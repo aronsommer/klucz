@@ -4,19 +4,19 @@
 
 _Poniedziałek, 12 października 2026_
 
-Nazywam się Jonas. Jestem Niemcem. Mam dwadzieścia osiem lat i jestem programistą. Od dzisiaj mieszkam w Krakowie.
+Nazywam się Jonas. Jestem Niemcem. Mam dwadzieścia osiem lat i jestem programistą. Od kilku dni mieszkam w Krakowie.
 
 Dziś jest poniedziałek, dwunasty października dwa tysiące dwudziestego szóstego roku. Tak się mówi po polsku. Długo, prawda? Pogoda jest kiepska, ale ja się cieszę. Kraków bardzo mi się podoba.
 
 To jest mój pierwszy dzień w Polsce. Mój polski jest jeszcze słaby. Znam trochę słów, ale mówię bardzo wolno i często nie rozumiem, co ludzie do mnie mówią. Dlatego piszę ten pamiętnik. Po polsku. Moja babcia zawsze mówiła: „Jak chcesz coś zrozumieć, musisz to napisać”.
 
-Nie potrafię jeszcze ładnie pisać, ponieważ znam dość mało słów i tylko parę czasów. Ale to nic. Oto mój pamiętnik.
+Nie potrafię jeszcze ładnie pisać, ponieważ znam dość mało słów i tylko parę możliwości odmian. Ale to nic. Oto mój pamiętnik.
 
-Moja babcia była Polką. Miała na imię Zofia, ale wszyscy mówili do niej Zosia. Ona nie żyje. Umarła w sierpniu, w szpitalu w Hamburgu. Teraz jestem sam. Nie mam brata ani siostry. Ojciec nie żyje od dawna, a matka mieszka w Ameryce i rzadko dzwoni.
+Moja babcia była Polką. Miała na imię Zofia, ale wszyscy mówili do niej Zosia. Ona nie żyje. Umarła w sierpniu, w szpitalu w Hamburgu. Teraz jestem sam. Nie mam brata ani siostry. Mój ojciec nie żyje od dawna, a matka mieszka w Ameryce i rzadko dzwoni.
 
-Niestety. Ostatnio jestem trochę samotny. Może w Krakowie to się zmieni.
+Niestety ostatnio jestem trochę samotny. Może w Krakowie to się zmieni.
 
-Babcia zostawiła mi mieszkanie. Tutaj, w Krakowie, na ulicy Lipowej. I list. I stary klucz.
+Babcia zostawiła mi mieszkanie, tutaj w Krakowie, na ulicy Lipowej, list oraz stary klucz.
 
 W liście jest tylko jedno zdanie:
 
@@ -26,13 +26,13 @@ Nie wiem, co to znaczy. Nikt nie wie.
 
 ---
 
-Rano jadę pociągiem z Berlina. Nie lecę samolotem, bo nie lubię lotnisk. Bilet na pociąg jest też tańszy niż bilet lotniczy, a lot z przesiadką trwa prawie tak samo długo. Podróż jest długa. Obok mnie siedzi mała dziewczynka z mamą. Dziewczynka patrzy na mnie i pyta:
+Rano jadę pociągiem z Berlina. Nie lecę samolotem, bo nie lubię lotnisk. Bilet na pociąg jest też tańszy niż bilet lotniczy, a lot z przesiadką trwa prawie tak samo długo. Podróż zajmuje dużo czasu. Obok mnie siedzi mała dziewczynka razem z mamą. Cały czas mi się przygląda, w końcu pyta:
 
 — Pan jest z Niemiec?
 
 — Tak — mówię. — Skąd wiesz?
 
-— Bo pan mówi tak śmiesznie.
+— Bo pan tak śmiesznie mówi.
 
 Mama mówi: „Przepraszam!”, ale ja się śmieję. Dziewczynka ma rację.
 
@@ -40,7 +40,7 @@ W Krakowie jest zimno i pada deszcz. Biorę taksówkę. Kierowca pyta: „Dokąd
 
 — Ulica Lipowa siedem — mówię.
 
-— Kazimierz! Piękne miejsce. Pan tu pracuje?
+— Kazimierz! Piękne miejsce. Pan tutaj pracuje?
 
 — Nie. To znaczy tak. Pracuję w domu, na komputerze.
 
@@ -50,19 +50,19 @@ W Krakowie jest zimno i pada deszcz. Biorę taksówkę. Kierowca pyta: „Dokąd
 
 Kierowca kiwa głową. Myślę, że nie wszystko rozumie, ale jest miły.
 
-Auto jedzie przez centrum. Widzę park, stary kościół, dużo ludzi z parasolami i dużo ptaków na placu.
+Auto jedzie przez centrum. Widzę park, stary kościół, dużo ludzi z parasolami i mnóstwo ptaków na placu.
 
 ---
 
 Dom na ulicy Lipowej jest stary i żółty. To kamienica. Ma cztery piętra, duże okna i ciężkie drzwi. Na dole jest mały sklep i kawiarnia.
 
-Mieszkanie babci jest na drugim piętrze. Otwieram drzwi nowym kluczem od notariusza. W środku jest ciemno i cicho. Wszędzie jest kurz. Są tu stare meble, dużo książek, zdjęcia na ścianie i duże łóżko. W kuchni jest stół i dwa krzesła. Z okna widzę podwórko i jedno drzewo.
+Mieszkanie babci jest na drugim piętrze. Otwieram drzwi nowym kluczem, który otrzymałem od notariusza. W środku jest ciemno i cicho. Wszędzie jest kurz. Powoli oglądam stare meble, liczne książki i zdjęcia na ścianie. W pokoju stoi duże łóżko, a w kuchni — stół i dwa krzesła. Z okna widzę podwórko i jedno drzewo.
 
 To jest teraz mój ulubiony widok. Tuż pod oknem, na drzewie, siedzi czarny ptak i patrzy na mnie.
 
 Na zdjęciach jest młoda kobieta. To babcia. Jest piękna i się uśmiecha. Obok niej jest druga dziewczyna, trochę młodsza. Kto to jest? Nie wiem.
 
-Wyciągam stary klucz z kieszeni. Jest ciężki i ma czerwoną wstążkę. Sprawdzam wszystkie drzwi: drzwi do mieszkania, do łazienki, do kuchni, szafę. Nic. Ten klucz nigdzie nie pasuje.
+Wyciągam stary klucz z kieszeni. Jest ciężki i ma czerwoną wstążkę. Próbuję otworzyć nim drzwi do mieszkania, łazienki i kuchni, a potem szafę. Nic. Nigdzie nie pasuje.
 
 Ktoś puka. Otwieram. Na korytarzu stoi starsza pani. Ma siwe włosy i okulary, a w rękach trzyma garnek. Obok niej siedzi wielki rudy kot.
 
@@ -78,7 +78,7 @@ Pani długo na mnie patrzy. Nie wiem dlaczego. Potem mówi:
 
 Pani Halina nic nie mówi. Daje mi garnek i idzie do siebie. Bonifacy zostaje. Siada na moim łóżku, jakby to był jego dom.
 
-— Bonifacy, chodź, kochanie! — woła pani Halina z korytarza. Ale kot nie idzie. — No trudno — mówi pani Halina. — Ten facet zawsze robi, co chce.
+— Bonifacy, chodź, kochanie! — woła pani Halina z korytarza. Ale kot nie idzie. — No trudno — mówi pani Halina. — Zawsze robi, co chce.
 
 Zupa jest bardzo dobra.
 
@@ -107,6 +107,7 @@ Ale przede wszystkim chcę wiedzieć: co otwiera ten klucz?
 - **brać (Biorę)** _uv._ — nehmen
 - **brat (brata)** _m_ — Bruder
 - **być (Jestem)** — sein
+- **cały** — ganz
 - **centrum** _n_ — Zentrum
 - **chcieć (chcesz)** _uv._ — wollen
 - **chleb** _m_ — Brot
@@ -118,7 +119,7 @@ Ale przede wszystkim chcę wiedzieć: co otwiera ten klucz?
 - **co** — was
 - **coś** — etwas
 - **czarny** — schwarz
-- **czas (czasów)** _m_ — Zeit
+- **czas (czasu)** _m_ — Zeit
 - **czerwony (czerwoną)** — rot
 - **często** — oft
 - **człowiek (ludzie)** _m_ — Mensch (Pl. ludzie – Leute)
@@ -128,7 +129,6 @@ Ale przede wszystkim chcę wiedzieć: co otwiera ten klucz?
 - **deszcz** _m_ — Regen
 - **dlaczego** — warum
 - **dlatego** — deshalb
-- **długi (długa)** — lang
 - **długo** — lange
 - **do** — zu, nach, bis
 - **dobry** — gut
@@ -146,14 +146,12 @@ Ale przede wszystkim chcę wiedzieć: co otwiera ten klucz?
 - **dwadzieścia** — zwanzig
 - **dwudziesty (dwudziestego)** — zwanzigster
 - **dwunasty** — zwölfter
-- **dzień** _m_ — Tag
+- **dzień (dni)** _m_ — Tag
 - **dziewczyna** _f_ — Mädchen; Freundin
 - **dziewczynka** _f_ — kleines Mädchen
 - **dziękować (Dziękuję)** _uv._ — danken; dziękuję – danke
-- **dzisiaj** _n_ — heute
 - **dziś** — heute
 - **dzwonić (dzwoni)** _uv._ — anrufen; klingeln
-- **facet** _m_ — Typ, Kerl (ugs.)
 - **garnek** _m_ — Topf
 - **głowa (głową)** _f_ — Kopf
 - **Halina** — Halina (Vorname)
@@ -179,25 +177,29 @@ Ale przede wszystkim chcę wiedzieć: co otwiera ten klucz?
 - **kiepski (kiepska)** — mies, schwach
 - **kierowca** _m_ — Fahrer
 - **kieszeń (kieszeni)** _f_ — Tasche (Kleidung)
+- **kilka (kilku)** — einige
 - **kiwać (kiwa)** _uv._ — nicken, winken
 - **klucz** _m_ — Schlüssel
 - **kobieta** _f_ — Frau
 - **kochanie** _m_ — Liebling, Schatz
 - **komputer (komputerze)** _m_ — Computer
+- **koniec (końcu)** _m_ — Ende; w końcu – schließlich
 - **korytarz (korytarzu)** _m_ — Flur, Gang
 - **kościół** _m_ — Kirche
 - **kot** _m_ — Katze, Kater
 - **Kowalska** — Kowalska (Nachname, w.)
 - **Kraków (Krakowie)** — Krakau
 - **krzesło (krzesła)** _n_ — Stuhl
-- **książka (książek)** _f_ — Buch
+- **książka (książki)** _f_ — Buch
 - **kto** — wer
 - **ktoś** — jemand
+- **który** — welcher; der/die/das (Relativpron.)
 - **kuchnia (kuchni)** _f_ — Küche
 - **kupić** _v._ — kaufen
 - **kurz** _m_ — Staub
 - **lecieć (lecę)** _uv._ — fliegen
 - **leżeć (leży)** _uv._ — liegen
+- **liczny (liczne)** — zahlreich
 - **Lipowa (Lipowej)** — Lipowa (Straßenname, „Lindenstraße“)
 - **list** _m_ — Brief
 - **lista (liście)** _f_ — Liste
@@ -220,7 +222,9 @@ Ale przede wszystkim chcę wiedzieć: co otwiera ten klucz?
 - **miły** — nett
 - **mleko** _n_ — Milch
 - **młody (młoda)** — jung
+- **mnóstwo** _n_ — Unmenge
 - **może** — vielleicht
+- **możliwość (możliwości)** _f_ — Möglichkeit
 - **móc (mogę)** _uv._ — können
 - **mój** — mein
 - **mówić (mówi)** _uv._ — sprechen, sagen
@@ -244,14 +248,19 @@ Ale przede wszystkim chcę wiedzieć: co otwiera ten klucz?
 - **o** — über; um (Uhrzeit)
 - **obok** — neben, daneben
 - **od** — von, seit
+- **odmiana (odmian)** _f_ — Sorte, Art; Beugung (Grammatik)
+- **oglądać (oglądam)** _uv._ — ansehen; oglądać się – sich umdrehen
 - **ojciec** _m_ — Vater
 - **okno (okna)** _n_ — Fenster
 - **okulary** _n_ — Brille
 - **on (niej)** — er; ona – sie, ono – es, oni – sie (Pl.)
+- **oraz** — sowie
 - **osiem** — acht
 - **ostatnio** — in letzter Zeit, neulich
 - **oto** — hier ist, da ist, siehe
+- **otrzymać (otrzymał)** _v._ — erhalten, bekommen
 - **otwierać (otwiera)** _uv._ — öffnen
+- **otworzyć** _v._ — öffnen
 - **padać (pada)** _uv._ — fallen; pada deszcz – es regnet
 - **pamiętnik** _m_ — Tagebuch
 - **pan** _m_ — Herr; Sie (zu einem Mann)
@@ -277,6 +286,7 @@ Ale przede wszystkim chcę wiedzieć: co otwiera ten klucz?
 - **pogoda** _f_ — Wetter
 - **pojęcie (pojęcia)** _n_ — Begriff, Ahnung; nie mam pojęcia – ich habe keine Ahnung
 - **pokazywać (Pokazuje)** _uv._ — zeigen
+- **pokój (pokoju)** _m_ — Zimmer; Frieden
 - **Polka (Polką)** — Polin
 - **Polska (Polsce)** — Polen
 - **polski (polsku)** — polnisch; po polsku – auf Polnisch
@@ -285,21 +295,25 @@ Ale przede wszystkim chcę wiedzieć: co otwiera ten klucz?
 - **ponieważ** — weil, da
 - **potem** — dann, danach
 - **potrafić (potrafię)** _uv._ — können, imstande sein
+- **powoli** — langsam
 - **pracować (pracuje)** _uv._ — arbeiten
 - **prawda** _f_ — Wahrheit; prawda? – nicht wahr?
 - **prawie** — fast
 - **programista (programistą)** _m_ — Programmierer
+- **próbować (Próbuję)** _uv._ — versuchen, probieren
 - **przed (przede)** — vor
 - **przepraszać (Przepraszam)** _uv._ — sich entschuldigen; przepraszam – Entschuldigung
 - **przesiadka (przesiadką)** _f_ — Umsteigen
 - **przez** — durch; über; przez telefon – am Telefon
 - **przy** — bei, an
+- **przyglądać (przygląda)** _uv._ — przyglądać się – betrachten, mustern
 - **przyjechać (przyjechał)** _v._ — ankommen
 - **ptak (ptaków)** _m_ — Vogel
 - **pukać (puka)** _uv._ — klopfen
 - **pytać (pyta)** _uv._ — fragen
 - **racja (rację)** _f_ — Recht; mieć rację – recht haben
 - **rano** — morgens
+- **razem** — zusammen
 - **ręka (rękach)** _f_ — Hand; Arm
 - **robić (robi)** _uv._ — machen, tun
 - **rok (lat)** _m_ — Jahr (Pl. lata)
@@ -322,7 +336,6 @@ Ale przede wszystkim chcę wiedzieć: co otwiera ten klucz?
 - **sklep** _m_ — Laden, Geschäft
 - **słaby** — schwach
 - **słowo (słów)** _n_ — Wort
-- **sprawdzać (Sprawdzam)** _uv._ — prüfen
 - **stać (stoi)** _uv._ — stehen
 - **stary** — alt
 - **stąd** — von hier
@@ -348,7 +361,6 @@ Ale przede wszystkim chcę wiedzieć: co otwiera ten klucz?
 - **trudno** — schwer, schwierig
 - **trwać (trwa)** _uv._ — dauern
 - **trzymać (trzyma)** _uv._ — halten
-- **tu** — hier
 - **tutaj** — hier
 - **tuż** — direkt, gleich; tuż obok – gleich daneben
 - **tylko** — nur
@@ -372,10 +384,10 @@ Ale przede wszystkim chcę wiedzieć: co otwiera ten klucz?
 - **wstążka (wstążkę)** _f_ — Band, Schleife
 - **wszędzie** — überall
 - **wszyscy** — alle
-- **wszystek (wszystkie)** — all, ganz (wszystkie – alle)
 - **wszystko** — alles
 - **wyciągać (Wyciągam)** _uv._ — herausziehen
 - **z** — mit; aus, von
+- **zajmować (zajmuje)** _uv._ — einnehmen, beanspruchen; zajmować się – sich beschäftigen
 - **zamknąć (zamknęła)** _v._ — schließen, zuschließen
 - **zapomnieć** _v._ — vergessen
 - **zawsze** — immer
@@ -579,7 +591,6 @@ I wychodzi.
 - **bułka (Bułki)** _f_ — Brötchen
 - **by** — würde (Konjunktiv-Partikel)
 - **całkiem** — ganz, ziemlich
-- **cały (całym)** — ganz
 - **cebula (cebulę)** _f_ — Zwiebel
 - **cena (cenę)** _f_ — Preis
 - **chociaż** — obwohl
@@ -600,6 +611,7 @@ I wychodzi.
 - **daleko (dalej)** — weit; dalej – weiter
 - **darmo** — umsonst; za darmo – kostenlos
 - **dla** — für
+- **długi (długa)** — lang
 - **dobrze** — gut
 - **dodawać (dodaje)** _uv._ — hinzufügen
 - **dogadać (dogadamy)** _v._ — dogadać się – sich verständigen, sich einigen (ugs.)
@@ -613,8 +625,10 @@ I wychodzi.
 - **działać (działa)** _uv._ — funktionieren; wirken
 - **dzieciak** _m_ — Kind, Kleiner (ugs.)
 - **dziesięć** — zehn
+- **dzisiaj** _n_ — heute
 - **dziwny** — seltsam
 - **euro** _n_ — Euro
+- **facet** _m_ — Typ, Kerl (ugs.)
 - **fajnie** — toll, cool (ugs.)
 - **fajny** — toll, cool (ugs.)
 - **fartuch (fartuchu)** _m_ — Schürze, Kittel
@@ -650,11 +664,9 @@ I wychodzi.
 - **kolejka** _f_ — Schlange (Warteschlange)
 - **koło** — Rad, Kreis; neben, bei
 - **kompletnie** — völlig
-- **koniec (końcu)** _m_ — Ende; w końcu – schließlich
 - **kontener (kontenera)** _m_ — Container
 - **kosztować (kosztuje)** _uv._ — kosten
 - **krzyczeć (krzyczą)** _uv._ — schreien
-- **który (której)** — welcher; der/die/das (Relativpron.)
 - **kumpel** _m_ — Kumpel (ugs.)
 - **kupować (Kupuję)** _uv._ — kaufen
 - **kurczak (kurczaki)** _m_ — Hähnchen
@@ -755,6 +767,7 @@ I wychodzi.
 - **spod** — unter … hervor; spod lady – unter der Hand
 - **spodobać (Spodobają)** _v._ — spodobać się – gefallen
 - **spotykać (spotykam)** _uv._ — treffen, begegnen
+- **sprawdzać (Sprawdzam)** _uv._ — prüfen
 - **sprawdzić** _v._ — überprüfen
 - **sto** — hundert
 - **stolik (stolików)** _m_ — Tischchen
@@ -775,6 +788,7 @@ I wychodzi.
 - **trzeci (trzecie)** — dritter
 - **trzy** — drei
 - **trzydzieści (trzydziestu)** — dreißig
+- **tu** — hier
 - **twardo** — hart; na twardo – hart gekocht
 - **u** — bei
 - **ubierać (Ubieram)** _uv._ — anziehen; ubierać się – sich anziehen
@@ -786,6 +800,7 @@ I wychodzi.
 - **wpaść (wpadnę)** _v._ — hineinfallen; vorbeikommen (ugs.)
 - **wracać (wraca)** _uv._ — zurückkehren
 - **wspaniały** — wunderbar, großartig
+- **wszystek (wszystkie)** — all, ganz (wszystkie – alle)
 - **wtorek** _m_ — Dienstag
 - **wybór** _m_ — Auswahl, Wahl
 - **wychodzić (wychodzę)** _uv._ — hinausgehen
@@ -1065,7 +1080,6 @@ Pokazuję jej klucz. Kasia bierze go i ogląda pod lampą.
 - **karteczka (karteczki)** _f_ — Zettel
 - **każdy** — jeder
 - **kiedy** — wann; als, wenn
-- **kilka (kilku)** — einige
 - **klasa (klasie)** _f_ — Klasse
 - **krótki (krótkie)** — kurz
 - **któryś** — irgendein, einer von
@@ -1099,7 +1113,6 @@ Pokazuję jej klucz. Kasia bierze go i ogląda pod lampą.
 - **odpowiadać (odpowiada)** _uv._ — antworten
 - **odrobina** _f_ — ein bisschen, Prise
 - **odwaga (odwagi)** _f_ — Mut
-- **oglądać (ogląda)** _uv._ — ansehen; oglądać się – sich umdrehen
 - **osoba (osób)** _f_ — Person
 - **owszem** — allerdings, durchaus
 - **oznaczać (oznacza)** _uv._ — bedeuten
@@ -1204,7 +1217,6 @@ Pokazuję jej klucz. Kasia bierze go i ogląda pod lampą.
 - **zadanie (zadań)** _n_ — Aufgabe; zadanie domowe – Hausaufgabe
 - **zainteresować (zainteresowało)** _v._ — interessieren
 - **zajęcia** _n_ — Unterricht, Kurs
-- **zajmować (zajmuje)** _uv._ — einnehmen, beanspruchen; zajmować się – sich beschäftigen
 - **zakupy** _n_ — Einkäufe; robić zakupy – einkaufen
 - **zamykać (zamykają)** _uv._ — schließen
 - **zapisywać (zapisuję)** _uv._ — aufschreiben, notieren
@@ -1423,7 +1435,6 @@ W drzwiach powiedziała jeszcze:
 - **Ola** — Ola (Koseform von Aleksandra)
 - **opuścić (opuszczę)** _v._ — verlassen
 - **osiemdziesiąt** — achtzig
-- **otworzyć (otwarte)** — öffnen
 - **palić (palił)** _uv._ — rauchen; brennen
 - **państwo (państwu)** _n_ — Staat; Herrschaften (Herr und Frau)
 - **papieros (papierosy)** _m_ — Zigarette
@@ -1454,7 +1465,6 @@ W drzwiach powiedziała jeszcze:
 - **produkt** _m_ — Produkt
 - **profil (profilu)** _m_ — Profil
 - **projekt** _m_ — Projekt
-- **próbować (próbowali)** _uv._ — versuchen, probieren
 - **prywatnie** — privat
 - **prywatny (prywatnego)** — privat
 - **przekleństwo** _n_ — Fluch, Schimpfwort
@@ -2140,12 +2150,10 @@ Teraz jest noc. Piszę w łóżku, bardzo krzywo. Termometr pokazuje trzydzieśc
 - **płuco (płuc)** _n_ — Lunge
 - **podziękować** _v._ — danken
 - **pogotowie** _n_ — Bereitschaft; pogotowie ratunkowe – Rettungsdienst
-- **pokój (pokoju)** _m_ — Zimmer; Frieden
 - **pomarańcza (pomarańczy)** _f_ — Orange
 - **pośpiech** _m_ — Eile
 - **potrzeba** — Bedürfnis; potrzeba – man braucht
 - **powodować (powoduje)** _uv._ — verursachen
-- **powoli** — langsam
 - **przedtem** — vorher
 - **przeżyć** _v._ — überleben; erleben
 - **przychodnia (przychodni)** _f_ — Ambulanz, Arztpraxis (öffentlich)
@@ -2494,7 +2502,6 @@ Jutro mogę wyjść z domu. Wiem, do czyich drzwi zapukam najpierw.
 - **pustynia** _f_ — Wüste
 - **rakieta** _f_ — Rakete
 - **ranny** — verwundet
-- **razem** — zusammen
 - **rękawiczka (rękawiczki)** _f_ — Handschuh
 - **rozkaz** _m_ — Befehl
 - **rzeczywiście** — tatsächlich
@@ -2984,7 +2991,6 @@ Tego jeszcze nie wiem.
 - **przeskoczyć (Przeskoczył)** _v._ — überspringen
 - **przestępstwo** _n_ — Straftat
 - **przestrzeń** _f_ — Raum
-- **przyglądać (przyglądał)** _uv._ — przyglądać się – betrachten, mustern
 - **przyłożyć (Przyłożył)** _v._ — anlegen, ansetzen
 - **pusty (pusta)** — leer
 - **pył** _m_ — Staub (fein)
@@ -3226,7 +3232,6 @@ Faktycznie, jej notatki na marginesie były krótkie: „rodzaj!”, „aspekt!�
 - **margines (marginesie)** _m_ — Rand; na marginesie – am Rande
 - **maszyna** _f_ — Maschine
 - **miejski (miejskie)** — städtisch
-- **mnóstwo** — Unmenge
 - **najemca (najemcy)** _m_ — Mieter
 - **należeć (należy)** _uv._ — gehören
 - **naturalnie** — natürlich
@@ -3250,7 +3255,6 @@ Faktycznie, jej notatki na marginesie były krótkie: „rodzaj!”, „aspekt!�
 - **oryginał (oryginale)** _m_ — Original
 - **osobisty** — persönlich
 - **oświadczenie** _n_ — Erklärung
-- **otrzymać (otrzyma)** _v._ — erhalten, bekommen
 - **ósmy (ósmej)** — achter
 - **pański** — Ihr (zu einem Mann)
 - **paszport** _m_ — Reisepass
@@ -3576,7 +3580,6 @@ I zamknęła drzwi, zanim zdążyłem odpowiedzieć.
 - **media** _n_ — Medien
 - **minister** _m_ — Minister
 - **modernizacja** _f_ — Modernisierung
-- **możliwość (możliwości)** _f_ — Möglichkeit
 - **nabywca** _m_ — Erwerber
 - **nadać (nada)** _v._ — verleihen; senden, aufgeben (Post)
 - **najwyżej** — höchstens
@@ -3590,7 +3593,6 @@ I zamknęła drzwi, zanim zdążyłem odpowiedzieć.
 - **omówić** _v._ — besprechen
 - **opinia (opinię)** _f_ — Meinung; Ruf
 - **opisać (Opiszę)** _v._ — beschreiben
-- **oraz** — sowie
 - **partia (partię)** _f_ — Partie; Partei
 - **partner (partnera)** _m_ — Partner
 - **piwniczny (piwnicznych)** — Keller-
