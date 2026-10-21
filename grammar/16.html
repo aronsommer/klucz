@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <title>Czas – Uhrzeit, Tage, Monate</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .col p {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      .hours p {
+        grid-template-columns: 32px 1fr 1fr;
+      }
+      .months p {
+        grid-template-columns: 1fr 1.1fr 1fr;
+      }
+      .page > table :is(th, td):first-child {
+        width: 90px;
+      }
+      .page > table :is(th, td):nth-child(2) {
+        width: 320px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <h1>Czas – Uhrzeit, Tage, Monate</h1>
+      <p class="sub">Die Uhrzeit sagt man mit der weiblichen Ordnungszahl: pierwsza (godzina).</p>
+
+      <h2>1. Uhrzeit <span>· Która (jest) godzina? – O której?</span></h2>
+      <div class="cols hours">
+        <div class="col">
+          <h3>Wie spät? · Um …</h3>
+          <p>
+            <b>1</b> <span><b>pierwsza</b></span> <span>o pierwszej</span>
+          </p>
+          <p>
+            <b>2</b> <span><b>druga</b></span> <span>o drugiej</span>
+          </p>
+          <p>
+            <b>3</b> <span><b>trzecia</b></span> <span>o trzeciej</span>
+          </p>
+          <p>
+            <b>4</b> <span><b>czwarta</b></span> <span>o czwartej</span>
+          </p>
+          <p>
+            <b>5</b> <span><b>piąta</b></span> <span>o piątej</span>
+          </p>
+          <p>
+            <b>6</b> <span><b>szósta</b></span> <span>o szóstej</span>
+          </p>
+        </div>
+        <div class="col">
+          <h3>Wie spät? · Um …</h3>
+          <p>
+            <b>7</b> <span><b>siódma</b></span> <span>o siódmej</span>
+          </p>
+          <p>
+            <b>8</b> <span><b>ósma</b></span> <span>o ósmej</span>
+          </p>
+          <p>
+            <b>9</b> <span><b>dziewiąta</b></span> <span>o dziewiątej</span>
+          </p>
+          <p>
+            <b>10</b> <span><b>dziesiąta</b></span> <span>o dziesiątej</span>
+          </p>
+          <p>
+            <b>11</b> <span><b>jedenasta</b></span> <span>o jedenastej</span>
+          </p>
+          <p>
+            <b>12</b> <span><b>dwunasta</b></span> <span>o dwunastej</span>
+          </p>
+        </div>
+      </div>
+      <p class="rule">
+        Ab 13 Uhr: trzynasta, czternasta … dwudziesta, dwudziesta pierwsza · o dwudziestej pierwszej
+      </p>
+
+      <h2>2. Minuten</h2>
+      <table>
+        <tr>
+          <td>8:10</td>
+          <td>dziesięć <b>po</b> ósmej</td>
+          <td>zehn nach acht</td>
+        </tr>
+        <tr>
+          <td>8:15</td>
+          <td><b>kwadrans po</b> ósmej</td>
+          <td>Viertel nach acht</td>
+        </tr>
+        <tr>
+          <td>8:30</td>
+          <td><b>wpół do</b> dziewiątej</td>
+          <td>halb neun – wie im Deutschen</td>
+        </tr>
+        <tr>
+          <td>8:45</td>
+          <td><b>za kwadrans</b> dziewiąta</td>
+          <td>Viertel vor neun</td>
+        </tr>
+        <tr>
+          <td>offiziell</td>
+          <td>ósma trzydzieści · dwudziesta piętnaście</td>
+          <td>8:30 · 20:15</td>
+        </tr>
+      </table>
+
+      <h2>3. Wochentage <span>· am …: w + Akkusativ</span></h2>
+      <div class="cols">
+        <div class="col">
+          <p><b>poniedziałek</b> <span>w poniedziałek</span></p>
+          <p>
+            <b>wtorek</b> <span><b>we</b> wtorek</span>
+          </p>
+          <p><b>środa</b> <span>w środę</span></p>
+          <p><b>czwartek</b> <span>w czwartek</span></p>
+        </div>
+        <div class="col">
+          <p><b>piątek</b> <span>w piątek</span></p>
+          <p><b>sobota</b> <span>w sobotę</span></p>
+          <p><b>niedziela</b> <span>w niedzielę</span></p>
+          <p><b>weekend</b> <span>w weekend</span></p>
+        </div>
+      </div>
+
+      <h2>4. Monate <span>· im …: w + Lokativ · Datum: Genitiv</span></h2>
+      <div class="cols months">
+        <div class="col">
+          <h3>Monat · im … · am 1. …</h3>
+          <p><b>styczeń</b> <span>w styczniu</span> <span>stycznia</span></p>
+          <p><b>luty</b> <span>w lutym</span> <span>lutego</span></p>
+          <p><b>marzec</b> <span>w marcu</span> <span>marca</span></p>
+          <p><b>kwiecień</b> <span>w kwietniu</span> <span>kwietnia</span></p>
+          <p><b>maj</b> <span>w maju</span> <span>maja</span></p>
+          <p><b>czerwiec</b> <span>w czerwcu</span> <span>czerwca</span></p>
+        </div>
+        <div class="col">
+          <h3>Monat · im … · am 1. …</h3>
+          <p><b>lipiec</b> <span>w lipcu</span> <span>lipca</span></p>
+          <p><b>sierpień</b> <span>w sierpniu</span> <span>sierpnia</span></p>
+          <p>
+            <b>wrzesień</b> <span><b>we</b> wrześniu</span> <span>września</span>
+          </p>
+          <p><b>październik</b> <span>w październiku</span> <span>października</span></p>
+          <p><b>listopad</b> <span>w listopadzie</span> <span>listopada</span></p>
+          <p><b>grudzień</b> <span>w grudniu</span> <span>grudnia</span></p>
+        </div>
+      </div>
+
+      <div class="box">
+        <h3>Datum <span>· Tag als männliche Ordnungszahl, Monat im Genitiv</span></h3>
+        <table class="ex">
+          <tr>
+            <td>Dziś jest <b>dwudziesty pierwszy</b> października.</td>
+            <td>Heute ist der 21. Oktober.</td>
+          </tr>
+          <tr>
+            <td>Urodziłam się <b>trzeciego</b> maja.</td>
+            <td>Ich bin am 3. Mai geboren.</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

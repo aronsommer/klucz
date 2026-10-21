@@ -1,0 +1,137 @@
+/* Shared by the reading page and the grammar page: colors, fonts, icons, the sticky bar and the column. */
+/* A green-tinted neutral paper with one red accent; word hover stays neutral. */
+:root {
+  color-scheme: light dark;
+  --bg: light-dark(#f2f4f1, #111614);
+  --surface: light-dark(#fbfcfa, #171d1b);
+  --tonal: light-dark(#e3e8e5, #242c29);
+  --line: light-dark(#d3dad6, #2a3330);
+  --text: light-dark(#1c2321, #e3e8e5);
+  --text-2: light-dark(#5d6965, #98a59f);
+  --accent: light-dark(#a8283f, #e8715f);
+  --on-accent: light-dark(#ffffff, #101513);
+  --highlight: light-dark(#dfe6e2, #29332f);
+  --shadow:
+    0 1px 2px light-dark(rgb(60 64 67 / 0.12), transparent),
+    0 4px 12px light-dark(rgb(60 64 67 / 0.12), rgb(0 0 0 / 0.5));
+  --control: 32px; /* every button and the chapter select */
+  --read: "Literata", Georgia, "Times New Roman", serif;
+  --ui: "Figtree", system-ui, sans-serif;
+  font-family: var(--ui);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation; /* no zoom on a double tap */
+}
+
+* {
+  box-sizing: border-box;
+}
+[hidden] {
+  display: none !important;
+}
+body {
+  margin: 0;
+  /* the bar starts below the status bar, as when it sticks */
+  padding-top: env(safe-area-inset-top, 0px);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  z-index: 30;
+  background: var(--surface);
+}
+button,
+select {
+  font: inherit;
+  color: inherit;
+}
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.icon {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1;
+  display: inline-block;
+  vertical-align: middle;
+  white-space: nowrap;
+  direction: ltr;
+  font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+}
+
+.bar {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 20;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 10px;
+}
+.bar-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  position: relative;
+}
+
+main {
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 40px 64px;
+}
+.column {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* previous, select, next: one control on one surface */
+.switcher {
+  display: flex;
+  min-width: 0;
+  background: var(--tonal);
+  border-radius: 8px;
+}
+.bar select {
+  flex: 1;
+  min-width: 0;
+  max-width: 260px;
+  height: var(--control);
+  border: 0;
+  border-inline: 1px solid var(--line);
+  background: none;
+  padding: 0 12px;
+  font-weight: 500;
+}
+.arrow {
+  width: var(--control);
+  height: var(--control);
+  flex: none;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  padding: 0;
+}
+.arrow .icon {
+  font-size: 24px;
+}
+.arrow:disabled {
+  color: var(--text-2);
+  opacity: 0.5;
+  cursor: not-allowed;
+}

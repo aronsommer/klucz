@@ -7,6 +7,7 @@ _Klucz_ („Der Schlüssel“) ist das Tagebuch von Jonas, einem Deutschen, der 
 Die Idee dahinter: **Wer diesen Text versteht, versteht die 3.000 häufigsten Wörter des gesprochenen Polnisch.** Diese Wörter decken gut 90 % dessen ab, was im Alltag gesagt wird. Jedes davon steht mindestens einmal im Text, und zwar nicht als Liste, sondern eingebettet in eine echte Handlung.
 
 - **Lesen:** [index.html](index.html) – Leseseite: Wort antippen für die Übersetzung (🔊 spricht es mit der polnischen Stimme des Geräts aus), „DE“/„PL“ oben rechts zeigt das ganze Kapitel auf Deutsch oder wieder auf Polnisch, ohne dass der Text springt, „Vorlesen“ liest das Kapitel ab dem Absatz oben auf dem Bildschirm vor und hebt den gelesenen Absatz hervor, alphabetische Wortliste je Kapitel (oben „↓ Wörter“ springt hin), Kopiermenü für das ganze Kapitel und seine Teile, Druckknopf für das ganze Buch (im Druckdialog auch als PDF speicherbar), Vollbild (nicht auf dem iPhone) und Hell/Dunkel-Umschalter (die Wahl bleibt gespeichert)
+- **Grammatik:** [grammar.html](grammar.html) – die Grammatikblätter im Aussehen der Leseseite, eines nach dem anderen zum Durchblättern wie die Kapitel; erreichbar über den Knopf 🎓 oben auf der Leseseite, zurück geht es mit 📖. Die Quelle sind die Blätter in [grammar/](grammar/), Regeln dafür in [grammar/README.md](grammar/README.md). `grammar/pdf.sh <Ordner>` macht aus denselben Blättern A4-PDFs in diesem Ordner (im Repository liegen keine PDFs)
 - **Buch:** [KLUCZ.md](KLUCZ.md) – das ganze Buch mit einem Glossar nach jedem Kapitel
 - **Klartext:** [text/](text/) – jedes Kapitel ohne Formatierung, auch in Teilen für Google Translate
 - **Messung:** [REPORT.md](REPORT.md) – Abdeckung, neue Wörter pro Kapitel, grammatische Formen
@@ -29,13 +30,13 @@ python3 -m venv .venv
 .venv/bin/pip install -r requirements.txt
 ```
 
-**Nach jeder Änderung** an einem Kapitel oder an einer Übersetzung:
+**Nach jeder Änderung** an einem Kapitel, einer Übersetzung oder einem Grammatikblatt:
 
 ```sh
 .venv/bin/python tools/build.py
 ```
 
-Das baut `index.html`, `KLUCZ.md` und `text/` neu, in wenigen Sekunden, weil nur geänderte Kapitel neu analysiert werden. Kommt ein neues Wort vor, das noch keine Übersetzung hat, meldet das Skript am Ende `… glossary entries missing`. Dann gehört eine Zeile in `data/glossary.tsv`, und man lässt das Skript noch einmal laufen.
+Das baut `index.html`, `grammar.html`, `KLUCZ.md` und `text/` neu, in wenigen Sekunden, weil nur geänderte Kapitel neu analysiert werden. Kommt ein neues Wort vor, das noch keine Übersetzung hat, meldet das Skript am Ende `… glossary entries missing`. Dann gehört eine Zeile in `data/glossary.tsv`, und man lässt das Skript noch einmal laufen.
 
 **Deutsche Übersetzung:** Zu jedem Kapitel `chapters/NN.md` gehört `chapters/de/NN.md`, Absatz für Absatz. Auf der Leseseite liegen beide Fassungen eines Absatzes übereinander in derselben Fläche, deshalb springt beim Umschalten nichts. Polnisch und Deutsch lassen sich unabhängig voneinander bearbeiten; drei Sicherungen im Build sorgen dafür, dass sie zusammenpassen:
 
@@ -166,15 +167,17 @@ Ebenfalls ausgeschlossen sind zwei herabwürdigende Bezeichnungen (_czarnuch, ci
 
 ## Dateien
 
-Bearbeitet werden nur die **Quellen**: `chapters/` und `data/`. Alles andere wird erzeugt und nie von Hand geändert.
+Bearbeitet werden nur die **Quellen**: `chapters/`, `data/` und `grammar/`. Alles andere wird erzeugt und nie von Hand geändert.
 
 ```
 klucz/
 ├── chapters/01.md … 30.md   Quelle: die Kapitel
 ├── chapters/de/01.md … 30.md Quelle: die deutsche Übersetzung, Absatz für Absatz
 ├── index.html               erzeugt: Leseseite (Startseite für GitHub Pages)
+├── grammar.html             erzeugt: Grammatikseite
+├── grammar/                 Quelle: Grammatikblätter (je eine A4-Seite), style.css fürs Drucken, pdf.sh, README.md
 ├── .nojekyll                leer: GitHub Pages liefert die Dateien unverändert aus
-├── fonts/                   Quelle: Schriften und Symbole, werden in index.html eingebettet
+├── fonts/                   Quelle: Schriften und Symbole, werden in index.html und grammar.html eingebettet
 ├── KLUCZ.md                 erzeugt: Gesamtbuch mit Glossaren
 ├── text/01.txt … 30.txt     erzeugt: Klartext je Kapitel, klucz.txt: das ganze Buch
 ├── text/parts/07-1.txt …    erzeugt: Klartext in Teilen bis 4.800 Zeichen
@@ -188,8 +191,10 @@ klucz/
 │   ├── glossary.tsv         Quelle: Polnisch → Deutsch
 │   └── translation_sync.tsv erzeugt: welche polnischen und deutschen Absätze zuletzt zusammenpassten
 └── tools/
-    ├── build.py             baut index.html, KLUCZ.md und text/ aus den Quellen
+    ├── build.py             baut index.html, grammar.html, KLUCZ.md und text/ aus den Quellen
+    ├── base.css             Farben, Schriften und Leiste beider Seiten
     ├── reader.html          Vorlage der Leseseite (Aussehen, Bedienung)
+    ├── grammar.html         Vorlage der Grammatikseite
     ├── analyze.py           misst die Geschichte: report, missing
     └── build_frequency.py   Korpus → Frequenzliste
 ```

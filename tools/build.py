@@ -5,6 +5,7 @@ text/NN.txt, klucz.txt plain text without markup, for copying or text-to-speech
 text/parts/NN-K.txt    the same, split into parts that fit Google Translate's 5,000 characters
 index.html             reading page (also the GitHub Pages start page): tap a word, word lists, copy,
                        and the German translation from chapters/de/NN.md where one exists
+grammar.html           every grammar sheet from grammar/NN.html in the reading page's look
 
 Run with --accept-german to confirm that every German paragraph still fits its Polish one.
 """
@@ -21,7 +22,11 @@ TEXT = ROOT / "text"
 GERMAN = ROOT / "chapters" / "de"
 SYNC = ROOT / "data" / "translation_sync.tsv"
 TEMPLATE = ROOT / "tools" / "reader.html"
+GRAMMAR_TEMPLATE = ROOT / "tools" / "grammar.html"
+BASE = ROOT / "tools" / "base.css"
+GRAMMAR = ROOT / "grammar"
 FONTS = ROOT / "fonts"
+PRINT_COLORS = {"#000": "var(--text)", "#8c8c8c": "var(--text-2)", "#bbb": "var(--line)"}
 PART_LIMIT = 4800
 TAGS = {"Masc": "m", "Fem": "f", "Neut": "n", "Imp": "uv.", "Perf": "v."}
 LETTER = re.compile(r"[^\W\d_]")
@@ -215,6 +220,32 @@ def fonts_css():
     return re.sub(r"url\(([\w.-]+\.woff2)\)", embed, (FONTS / "fonts.css").read_text(encoding="utf-8"))
 
 
+def grammar(base):
+    """Write grammar.html; returns the number of sheets.
+
+    Each sheet keeps its own <style>, scoped to it, with its print colors turned into the page's.
+    """
+    sheets, options = [], []
+    for path in sorted(GRAMMAR.glob("[0-9][0-9].html")):
+        html = path.read_text(encoding="utf-8")
+        page = re.search(r'<div class="page">(.*)</div>\s*</body>', html, re.S)
+        title = re.search(r"<h1>(.*?)</h1>", html, re.S)
+        if not page or not title:
+            raise SystemExit(f'{path.relative_to(ROOT)}: no <div class="page"> or <h1>')
+        number = int(path.stem)
+        style = re.search(r"<style>(.*?)</style>", html, re.S)
+        css = re.sub(r"#(?:000|8c8c8c|bbb)\b", lambda m: PRINT_COLORS[m[0]], style[1]) if style else ""
+        body = page[1].replace("<h1>", f"<h1><small>Thema {number}</small>", 1)
+        scoped = f'<style>@scope ([data-sheet="{number}"]) {{{css}}}</style>' if css else ""
+        hidden = " hidden" if sheets else ""  # the page script shows one sheet at a time
+        sheets.append(f'{scoped}<div class="page" data-sheet="{number}"{hidden}>{body}</div>')
+        options.append(f"<option>{number}. {title[1]}</option>")
+    page = (GRAMMAR_TEMPLATE.read_text(encoding="utf-8").replace("__BASE__", base)
+            .replace("__OPTIONS__", "\n".join(options)).replace("__SHEETS__", "\n".join(sheets)))
+    (ROOT / "grammar.html").write_text(page, encoding="utf-8")
+    return len(sheets)
+
+
 def main():
     story = chapters(names=True)
     translations = german(story)
@@ -251,13 +282,16 @@ def main():
 
     data = {"chapters": chapters_data, "words": [[display, tag, de] for _, display, _, tag, de in words]}
     payload = json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
-    page = TEMPLATE.read_text(encoding="utf-8").replace("__FONTS__", fonts_css()).replace("__DATA__", payload)
+    base = fonts_css() + BASE.read_text(encoding="utf-8")
+    page = TEMPLATE.read_text(encoding="utf-8").replace("__BASE__", base).replace("__DATA__", payload)
     (ROOT / "index.html").write_text(page, encoding="utf-8")
+    sheets = grammar(base)
 
     missing = [w[1] for words in lists.values() for w in words if not w[4]]
     print(f"KLUCZ.md, text/ ({len(story)} chapters, "
           f"{sum(len(c['parts']) for c in chapters_data)} parts), "
-          f"index.html ({len(page) // 1024} KB); {len(missing)} glossary entries missing")
+          f"index.html ({len(page) // 1024} KB), grammar.html ({sheets} sheets); "
+          f"{len(missing)} glossary entries missing")
     if missing:
         print("missing in data/glossary.tsv:", ", ".join(missing))
     if len(translations) < len(story):
