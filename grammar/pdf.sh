@@ -1,9 +1,11 @@
 #!/bin/sh
-# Renders every numbered sheet to a PDF in the given folder, named after its number and <h1>
-# (08.html, "Biernik – Akkusativ" -> 08-biernik-akkusativ.pdf), checks that each is exactly one page
-# and merges them in order into gramatyka-grammatik.pdf there. Exits non-zero on failure.
+# Deletes the numbered PDFs in the given folder, renders every numbered sheet to a PDF there, named
+# after its number and <h1> (08.html, "Biernik – Akkusativ" -> 08-biernik-akkusativ.pdf), checks that
+# each is exactly one page and merges them in order into gramatyka-grammatik.pdf there. Exits non-zero
+# on failure.
 [ -d "$1" ] || { echo "usage: grammar/pdf.sh <output folder>" >&2; exit 1; }
 out="$(cd "$1" && pwd)"
+rm -f "$out"/[0-9][0-9]-*.pdf
 cd "$(dirname "$0")" || exit 1
 chrome="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 for f in [0-9][0-9].html; do
