@@ -26,39 +26,39 @@ Dzisiaj o dziesiątej miałem spotkanie z firmą przez internet. Mój szef, Mich
 
 Pracowałem cały dzień. Bonifacy spał na mojej klawiaturze. Napisałem dużo kodu i jeszcze więcej błędów.
 
-Mój zespół w Hamburgu robi nową wersję systemu dla dużego klienta, firmy od transportu. Ja odpowiadam za analizę danych: tysiące plików, setki tabel, testy, testy i jeszcze raz testy. Kiedy program działa, nikt tego nie zauważa. Kiedy nie działa, wszyscy dzwonią. Tak wygląda moja robota. Michael mówi, że jeśli projekt będzie sukcesem, to będzie dobry krok w mojej karierze. Ja myślę, że jeśli projekt będzie sukcesem, to wreszcie się wyśpię. To tylko kwestia kilku tygodni.
+Mój zespół w Hamburgu robi nową wersję systemu dla dużego klienta, firmy od transportu. Ja odpowiadam za analizę danych: tysiące plików, setki tabel, testy, testy i jeszcze raz testy. Kiedy program działa, nikt tego nie zauważa. Kiedy nie działa, wszyscy dzwonią. Tak wygląda moja robota. Michael mówi, że jeśli projekt zakończy się sukcesem, to będzie dobry krok w mojej karierze. Ja myślę, że jeśli projekt zakończy się sukcesem, to wreszcie się wyśpię. To tylko kwestia kilku tygodni.
 
 Klient to duża firma, która ma magazyny w całej Europie. Ich dyrektor chce, żeby nowy system kontrolował każdą dostawę: każde zamówienie, każdy produkt, każdy samochód. Urządzenia we wszystkich magazynach są połączone w jedną sieć. Ja muszę uruchomić program, wprowadzić dane z dwóch starych systemów i usunąć błędy, zanim zespół w Hamburgu będzie mógł kontynuować. Kiedy coś nie działa, muszę się skontaktować z ich informatykiem w Rotterdamie, który nigdy nie odbiera telefonu. Wczoraj zapomniałem hasła do swojego profilu i straciłem godzinę. Taki jest biznes, mówi Michael. W tym sektorze czas to pieniądz.
 
 Michael chce teraz, żeby nasz system korzystał ze sztucznej inteligencji. Model ma sam przewidzieć, gdzie i kiedy będzie potrzebna ciężarówka. Brzmi niesamowicie, ale w praktyce to znaczy, że muszę nauczyć komputer myśleć jak kierowca, który pije kawę na stacji benzynowej. Michael uważa, że to wyjątkowy projekt. Ja uważam, że to wyjątkowo długi projekt.
 
-W ciągu dnia Michael dzwonił trzy razy. Raz, żeby spytać, czy wszystko działa. Drugi raz, żeby przypomnieć mi o terminie. Trzeci raz, żeby powiedzieć, że klient oczekuje wyników do przyszłego piątku. Kiedy w końcu wyłączyłem komputer, było już ciemno. Spędziłem cały dzień w domu i nie odebrałem ani jednego prywatnego telefonu. Nikt prywatnie nie dzwonił.
+W ciągu dnia Michael dzwonił trzy razy. Pierwszy raz, żeby spytać, czy wszystko działa. Drugi raz, żeby przypomnieć mi o terminie. Trzeci raz, żeby powiedzieć, że klient oczekuje wyników do przyszłego piątku. Kiedy w końcu wyłączyłem komputer, było już ciemno. Spędziłem cały dzień w domu i nie odebrałem ani jednego prywatnego telefonu. Nikt prywatnie nie dzwonił.
 
 Wieczorem poszedłem na spacer, żeby popatrzeć na miasto. Kazimierz w nocy jest niesamowity. Małe ulice, stare domy, światła w oknach, muzyka z barów. Na placu było dużo młodych ludzi. Pili piwo, jedli zapiekanki i rozmawiali w różnych językach. Kupiłem zapiekankę. Była ogromna i bardzo tłusta. Zjadłem całą.
 
-Na rogu jakiś chłopak grał na gitarze, a obok niego tańczyła para staruszków. Ludzie bili brawo. Przed jednym klubem stała długa kolejka do wejścia. Dwie dziewczyny zapytały mnie, czy mam ochotę się z nimi napić. Powiedziałem, że niestety nie, bo jestem zmęczony. Przez całą drogę do domu myślałem, czemu tak powiedziałem. Nie byłem zmęczony. Byłem tylko nieśmiały. Po polsku i po niemiecku.
+Na rogu jakiś chłopak grał na gitarze, a obok niego tańczyła para staruszków. Ludzie bili brawo. Przed jednym klubem stała długa kolejka do wejścia. Dwie dziewczyny zapytały mnie, czy mam ochotę się z nimi napić. Powiedziałem, że niestety nie, bo jestem zmęczony. Przez całą drogę do domu zastanawiałem się, czemu tak powiedziałem. Nie byłem zmęczony. Byłem tylko nieśmiały. Po polsku i po niemiecku.
 
 Jakiś koleś w czapce sprzedawał obwarzanki i krzyczał, że są najlepsze na świecie. Kupiłem jednego. Był zimny i twardy, ale koleś miał tyle entuzjazmu, że nie mogłem mu powiedzieć prawdy.
 
 Kiedy wróciłem, przed naszym domem stał duży czarny samochód. Drzwi do kamienicy były otwarte. Na podwórku usłyszałem głosy. Pani Halina stała przy drzewie, a obok niej stał wysoki mężczyzna w czarnym płaszczu. Miał siwe włosy, drogi zegarek i bardzo białe zęby.
 
-Jego samochód był potężny i czarny jak trumna. Mężczyzna miał spojrzenie człowieka, który jest przyzwyczajony, że wszyscy go słuchają.
+Jego samochód był potężny i czarny jak trumna. Mężczyzna miał spojrzenie człowieka, który jest przyzwyczajony do tego, że wszyscy go słuchają.
 
-— Pani Halino, ja tylko chcę pomóc — mówił spokojnie. — Ten dom się rozpada. Dach jest zły, okna są złe, nie ma windy. Pani ma osiemdziesiąt lat. Dam pani dobre pieniądze. Kupi pani nowe mieszkanie, z windą, z balkonem…
+— Pani Halino, ja tylko chcę pomóc — mówił spokojnie. — Ten dom się rozpada. Dach jest do wymiany, okna też, nie ma windy. Pani ma osiemdziesiąt lat. Dam pani dobre pieniądze. Kupi pani nowe mieszkanie, z windą, z balkonem…
 
 — Nigdy — powiedziała pani Halina. — Tu się urodziłam i tu umrę.
 
-— Nikt nie musi umierać. — Mężczyzna się uśmiechnął. Ale jego oczy się nie uśmiechały. — Proszę pomyśleć. Mam czas. Ale niezbyt dużo.
+— Nikt nie musi umierać. — Mężczyzna się uśmiechnął. Ale oczy mu się nie uśmiechały. — Proszę pomyśleć. Mam czas. Ale niezbyt dużo.
 
 — Oferuję pani więcej, niż jest warte to marne mieszkanie — dodał.
 
 Wtedy mnie zobaczył.
 
-— A! Pan musi być wnukiem pani Zofii. — Podszedł do mnie i podał mi rękę. — Ryszard Zieliński. Bardzo mi przykro z powodu babci. Wspaniała kobieta.
+— A! Pan pewnie jest wnukiem pani Zofii. — Podszedł do mnie i podał mi rękę. — Ryszard Zieliński. Bardzo mi przykro z powodu babci. Wspaniała kobieta.
 
 — Znał ją pan?
 
-— Wszyscy na Kazimierzu ją znali. — Dał mi swoją wizytówkę. — Jeśli pan zechce sprzedać mieszkanie, proszę zadzwonić. Każdego dnia, o każdej godzinie. Zapłacę więcej niż ktokolwiek inny.
+— Wszyscy na Kazimierzu ją znali. — Podał mi wizytówkę. — Jeśli pan zechce sprzedać mieszkanie, proszę zadzwonić. Każdego dnia, o każdej godzinie. Zapłacę więcej niż ktokolwiek inny.
 
 — Nie chcę sprzedać.
 
@@ -72,19 +72,19 @@ Pani Halina stała przy drzewie i trzęsła się. Nie wiem, czy z zimna, czy ze 
 
 — Nic nie jest w porządku. — Popatrzyła na mnie. Potem westchnęła. — Chodź pan na herbatę. Jest zimno.
 
-Pierwszy raz byłem w jej mieszkaniu. Było bardzo czyste i bardzo pełne. Na każdej ścianie wisiały obrazy, na każdym stole stały zdjęcia, na każdym krześle leżała poduszka. W kuchni pachniało ciastem. Bonifacy od razu poszedł do swojej miski.
+Pierwszy raz byłem w jej mieszkaniu. Było bardzo czyste i pełne rzeczy. Na każdej ścianie wisiały obrazy, na każdym stole stały zdjęcia, na każdym krześle leżała poduszka. W kuchni pachniało ciastem. Bonifacy od razu poszedł do swojej miski.
 
 Pani Halina zrobiła herbatę i dała mi kawałek ciasta ze śliwkami.
 
 — On przychodzi od roku — powiedziała. — Najpierw był miły. Kwiaty przynosił, czekoladki. Teraz już nie jest miły. Pani Wanda z pierwszego piętra sprzedała mu mieszkanie w lipcu. Pan Kazimierz z trzeciego w sierpniu. Zostało nas niewielu. Ja, pan Zbyszek, państwo Nowakowie z parteru, Ola i Bartek z czwartego piętra. I pan.
 
-— On chce się nas pozbyć — dodała. — Jednego po drugim. Najpierw się uśmiecha, potem obiecuje, potem straszy. Znam ten typ. Ale mnie nikt nie zmusi, żebym wyjechała z własnego domu.
+— On chce się nas pozbyć — dodała. — Jednego po drugim. Najpierw się uśmiecha, potem obiecuje, potem straszy. Znam ten typ. Ale mnie nikt nie zmusi, żebym się wyprowadziła z własnego domu.
 
 — Próbuje nas przekonać, że to dla naszego dobra. Ale nikt go nie powstrzyma, jeśli my tego nie zrobimy. On chce zdobyć cały dom. A ja tego mieszkania nie opuszczę. Chyba że martwa.
 
 — Ma posiadłości w całym mieście. Mówią, że jego firma jest warta prawie miliard. Ale za miliard nie kupi się szacunku.
 
-— I moja babcia. Ona też nie chciała sprzedać?
+— A moja babcia? Ona też nie chciała sprzedać?
 
 — Zosia? — Pani Halina pierwszy raz powiedziała coś o babci. — Zosia nigdy niczego nie sprzedała. Wszystko zostawiała. Ludzi też.
 
