@@ -19,7 +19,7 @@
     </style>
     <style>
       /* A green-tinted neutral paper with one red accent; word hover stays neutral. */
-      /* One reading column under a sticky bar (chapter switcher over the copy and print buttons; a jump to the words over theme, fullscreen and the DE/PL switch); the chapter's new words follow the text. */
+      /* One reading column under a sticky bar (chapter switcher over the copy menu and print button; a jump to the words over theme, fullscreen and the DE/PL switch); the chapter's new words follow the text. */
       :root {
         color-scheme: light dark;
         --bg: light-dark(#f2f4f1, #111614);
@@ -118,7 +118,7 @@
         background: var(--accent);
         clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 6px), 0 100%);
       }
-      /* the chapter switcher over the copy buttons and print, which sits under the next arrow */
+      /* the chapter switcher over the copy menu and print, which sits under the next arrow */
       .nav {
         display: grid;
         grid-template-columns: minmax(0, 1fr) var(--control);
@@ -157,9 +157,8 @@
       #to-words .icon {
         margin-left: -3px;
       }
-      /* previous, chapter, next: one control on one surface; so are the copy buttons */
-      .chapter-nav,
-      .copy {
+      /* previous, chapter, next: one control on one surface */
+      .chapter-nav {
         display: flex;
         min-width: 0;
         background: var(--tonal);
@@ -197,7 +196,7 @@
       }
       .tools button,
       #print,
-      .copy button {
+      #copy {
         height: var(--control);
         border: 0;
         padding: 0;
@@ -210,35 +209,57 @@
         gap: 4px;
       }
       .tools button,
-      #print {
+      #print,
+      #copy {
         background: var(--tonal);
         border-radius: 8px;
       }
       .tools .icon,
       #print .icon,
-      .copy .icon {
+      #copy .icon {
         font-size: 18px;
       }
-      .copy > .icon {
-        width: var(--control);
-        flex: none;
-        align-self: center;
-        text-align: center;
-      }
-      .copy button {
-        flex: 1;
+      .copy {
+        position: relative;
         min-width: 0;
-        border-left: 1px solid var(--line);
-        background: none;
-        padding: 0 6px;
-        white-space: nowrap;
       }
-      .copy button:last-child {
-        border-radius: 0 8px 8px 0;
+      #copy {
+        width: 100%;
       }
-      .copy button.done {
+      #copy.done {
         background: var(--accent);
         color: var(--on-accent);
+      }
+      /* the chapter's parts to pick from, under the copy button */
+      .copy-menu {
+        position: absolute;
+        top: calc(100% + 6px);
+        left: 0;
+        min-width: 100%;
+        display: grid;
+        padding: 4px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+      }
+      .copy-menu button {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        border: 0;
+        border-radius: 8px;
+        background: none;
+        padding: 8px 12px;
+        white-space: nowrap;
+        cursor: pointer;
+      }
+      .copy-menu button:hover {
+        background: var(--highlight);
+      }
+      .copy-menu small {
+        font-size: 13px;
+        color: var(--text-2);
       }
 
       main {
@@ -517,9 +538,6 @@
           border-bottom: 0;
           padding-bottom: 0;
         }
-        .copy .long {
-          display: none;
-        } /* "Teil 1" becomes "1", so all buttons fit their width */
       }
       @media print {
         :root {
@@ -579,7 +597,12 @@
               <span class="icon" aria-hidden="true">chevron_right</span>
             </button>
           </div>
-          <div class="copy" id="copy" role="group" aria-label="Text kopieren"></div>
+          <div class="copy">
+            <button id="copy" aria-expanded="false">
+              <span class="icon" aria-hidden="true">content_copy</span>Kopieren
+            </button>
+            <div class="copy-menu" id="copy-menu" hidden></div>
+          </div>
           <button id="print" aria-label="Ganzes Buch drucken" title="Ganzes Buch drucken">
             <span class="icon" aria-hidden="true">print</span>
           </button>
@@ -644,7 +667,8 @@
         const name = (i) => CH[i].title.replace(/^Rozdział \d+\.\s*/, "");
         let ch = 0,
           active = null,
-          toastTimer;
+          toastTimer,
+          copyTimer;
 
         CH.forEach((_, i) => $("chapter").append(new Option(i + 1 + ". " + name(i), i)));
 
@@ -739,7 +763,6 @@
             ch === CH.length - 1
               ? "Das ist das letzte Kapitel"
               : "Rozdział " + (ch + 2) + ": " + name(ch + 1);
-          copyButtons();
           document.title = pageTitle();
         }
 
@@ -748,6 +771,7 @@
           if (i !== ch) {
             ch = i;
             closePop();
+            openMenu(false);
             render();
           }
           scrollToBlock(p);
@@ -789,6 +813,7 @@
         // tap a word: lemma, tag and translation
         function openPop(w) {
           closePop();
+          openMenu(false);
           active = w;
           w.classList.add("active");
           const [lemma, tag, de] = W[w.dataset.i];
@@ -852,44 +877,44 @@
         });
         document.addEventListener("click", (e) => {
           if (!e.target.closest("#pop")) closePop();
+          if (!e.target.closest(".copy")) openMenu(false);
         });
 
-        // the whole chapter, and if it is longer than the 5,000 characters Google Translate accepts, its parts
-        function copyButtons() {
-          const row = $("copy"),
-            parts = CH[ch].parts;
-          const whole = button(parts.join("\n\n"), "Kapitel", "Alles");
-          const each =
-            parts.length > 1
-              ? parts.map((text, i) =>
-                  button(
-                    text,
-                    "Teil " + (i + 1) + " von " + parts.length,
-                    el("span", "long", "Teil "),
-                    i + 1,
-                  ),
-                )
-              : [];
-          row.replaceChildren(icon("content_copy"), whole, ...each);
+        // the whole chapter, or a menu with it and its parts if it is longer than the 5,000 characters Google Translate accepts
+        $("copy").onclick = () => {
+          const parts = CH[ch].parts;
+          if (parts.length === 1) return copy(parts[0]);
+          if (!$("copy-menu").hidden) return openMenu(false);
+          const item = (text, label) => {
+            const b = el("button", "", label);
+            b.append(el("small", "", text.length + " Zeichen"));
+            b.onclick = () => {
+              openMenu(false);
+              copy(text);
+            };
+            return b;
+          };
+          $("copy-menu").replaceChildren(
+            item(parts.join("\n\n"), "Ganzes Kapitel"),
+            ...parts.map((text, i) => item(text, "Teil " + (i + 1))),
+          );
+          openMenu(true);
+        };
+        function openMenu(open) {
+          $("copy-menu").hidden = !open;
+          $("copy").ariaExpanded = open;
         }
-        function button(text, done, ...label) {
-          const b = el("button");
-          b.append(...label);
-          b.title = text.length.toLocaleString("de-DE") + " Zeichen";
-          b.onclick = () => copy(text, b, done);
-          return b;
-        }
-        function toast(msg, then) {
+        function toast(msg) {
           const t = $("toast");
           t.textContent = msg;
           t.hidden = false;
           clearTimeout(toastTimer);
           toastTimer = setTimeout(() => {
             t.hidden = true;
-            then?.();
           }, 3500);
         }
-        async function copy(text, button, label) {
+        // success shows on the button only; a failure needs the message
+        async function copy(text) {
           let ok = false;
           try {
             await navigator.clipboard.writeText(text);
@@ -902,18 +927,17 @@
               ok = document.execCommand("copy");
             } catch {}
           }
-          const mark = (b, done) => {
-            $("copy")
-              .querySelectorAll("button")
-              .forEach((e) => e.classList.toggle("done", done && e === b));
-            $("copy").querySelector(".icon").textContent = done ? "check" : "content_copy";
+          const mark = (done) => {
+            $("copy").classList.toggle("done", done);
+            $("copy").replaceChildren(
+              icon(done ? "check" : "content_copy"),
+              done ? "Kopiert" : "Kopieren",
+            );
           };
-          mark(button, ok);
-          if (!ok) {
-            toast("Kopieren ist in diesem Browser blockiert.");
-            return;
-          }
-          toast(label + " kopiert.", () => mark(button, false)); // the button turns back when the message goes
+          clearTimeout(copyTimer);
+          mark(ok);
+          if (ok) copyTimer = setTimeout(() => mark(false), 2000);
+          else toast("Kopieren ist in diesem Browser blockiert.");
         }
 
         $("to-words").onclick = () => {
@@ -990,7 +1014,10 @@
           e.target.blur();
         };
         document.addEventListener("keydown", (e) => {
-          if (e.key === "Escape") closePop();
+          if (e.key === "Escape") {
+            closePop();
+            openMenu(false);
+          }
           if (e.target.closest("select")) return;
           if (e.key === "ArrowLeft") go(ch - 1);
           if (e.key === "ArrowRight") go(ch + 1);
