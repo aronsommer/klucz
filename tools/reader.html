@@ -19,7 +19,7 @@
     </style>
     <style>
       /* A green-tinted neutral paper with one red accent; word hover stays neutral. */
-      /* One reading column under a sticky bar (chapter switcher over the copy menu and print button; a jump to the words over theme, fullscreen and the DE/PL switch); the chapter's new words follow the text. */
+      /* One reading column under a sticky bar (chapter switcher over read aloud, copy and print; a jump to the words over theme, fullscreen and the DE/PL switch); the chapter's new words follow the text. */
       :root {
         color-scheme: light dark;
         --bg: light-dark(#f2f4f1, #111614);
@@ -118,12 +118,13 @@
         background: var(--accent);
         clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 6px), 0 100%);
       }
-      /* the chapter switcher over the copy menu and print, which sits under the next arrow */
+      /* the chapter switcher over read aloud, copy and print; print sits under the next arrow */
       .nav {
         display: grid;
-        grid-template-columns: minmax(0, 1fr) var(--control);
+        grid-template-columns: minmax(0, 1fr) var(--control) var(--control);
         gap: 10px 8px;
         min-width: 0;
+        position: relative;
       }
       .chapter-nav {
         grid-column: 1 / -1;
@@ -195,6 +196,7 @@
         cursor: not-allowed;
       }
       .tools button,
+      #read,
       #print,
       #copy {
         height: var(--control);
@@ -209,18 +211,19 @@
         gap: 4px;
       }
       .tools button,
+      #read,
       #print,
       #copy {
         background: var(--tonal);
         border-radius: 8px;
       }
       .tools .icon,
+      #read .icon,
       #print .icon,
       #copy .icon {
         font-size: 18px;
       }
       .copy {
-        position: relative;
         min-width: 0;
       }
       #copy {
@@ -230,12 +233,11 @@
         background: var(--accent);
         color: var(--on-accent);
       }
-      /* the chapter's parts to pick from, under the copy button */
+      /* the chapter's parts to pick from: under the copy button, on a phone from the left edge so it fits */
       .copy-menu {
         position: absolute;
         top: calc(100% + 6px);
-        left: 0;
-        min-width: 100%;
+        right: calc(var(--control) + 8px);
         display: grid;
         padding: 4px;
         background: var(--surface);
@@ -343,6 +345,13 @@
       .w {
         cursor: pointer;
         border-radius: 3px;
+      }
+      /* the title or paragraph being read aloud */
+      article .reading {
+        --tint: color-mix(in srgb, var(--accent) 10%, transparent);
+        background: var(--tint);
+        box-shadow: 0 0 0 6px var(--tint);
+        border-radius: 2px;
       }
       .w:hover,
       .w.active {
@@ -525,6 +534,10 @@
       }
 
       @media (max-width: 480px) {
+        .copy-menu {
+          left: 0;
+          right: auto;
+        }
         article {
           font-size: 18px;
         }
@@ -597,9 +610,10 @@
               <span class="icon" aria-hidden="true">chevron_right</span>
             </button>
           </div>
+          <button id="read"><span class="icon" aria-hidden="true">play_arrow</span>Vorlesen</button>
           <div class="copy">
-            <button id="copy" aria-expanded="false">
-              <span class="icon" aria-hidden="true">content_copy</span>Kopieren
+            <button id="copy" aria-label="Kopieren" title="Kopieren" aria-expanded="false">
+              <span class="icon" aria-hidden="true">content_copy</span>
             </button>
             <div class="copy-menu" id="copy-menu" hidden></div>
           </div>
@@ -668,7 +682,8 @@
         let ch = 0,
           active = null,
           toastTimer,
-          copyTimer;
+          copyTimer,
+          reading = null; // the utterance being read aloud
 
         CH.forEach((_, i) => $("chapter").append(new Option(i + 1 + ". " + name(i), i)));
 
@@ -772,6 +787,7 @@
             ch = i;
             closePop();
             openMenu(false);
+            if (reading) read(null);
             render();
           }
           scrollToBlock(p);
@@ -836,7 +852,10 @@
             const say = el("button", "say");
             say.setAttribute("aria-label", "Aussprechen");
             say.append(icon("volume_up"));
-            say.onclick = () => speak(w.textContent);
+            say.onclick = () => {
+              read(null);
+              speak(w.textContent);
+            };
             pop.append(say);
           }
           pop.hidden = false;
@@ -857,13 +876,43 @@
           }
         }
         // the device's own Polish voice, if it has one
-        function speak(text) {
+        function speak(text, rate = 1) {
           const u = new SpeechSynthesisUtterance(text);
           u.lang = "pl-PL";
           u.voice = speechSynthesis.getVoices().find((v) => v.lang.startsWith("pl")) || null;
+          u.rate = rate;
           speechSynthesis.cancel();
           speechSynthesis.speak(u);
+          return u;
         }
+        // the title and paragraphs, in reading order
+        const readable = () => [...$("text").querySelectorAll("h1, p")];
+        // read the chapter aloud block by block from p, slower, marking the one being read; no p stops
+        function read(p) {
+          document.querySelector(".reading")?.classList.remove("reading");
+          $("read").replaceChildren(icon(p ? "stop" : "play_arrow"), p ? "Stopp" : "Vorlesen");
+          if (!p) {
+            reading = null;
+            return speechSynthesis.cancel();
+          }
+          p.classList.add("reading");
+          // the title by its name only, without the chapter number
+          const text = p.tagName === "H1" ? name(ch) : (p.querySelector(".pl") ?? p).textContent;
+          const u = (reading = speak(text, 0.8));
+          const all = readable();
+          u.onend = () => reading === u && read(all[all.indexOf(p) + 1]);
+          u.onerror = () => reading === u && read(null);
+        }
+        // starts at the first block not hidden under the bar
+        $("read").hidden = !window.speechSynthesis;
+        $("read").onclick = () => {
+          const all = readable();
+          read(
+            reading
+              ? null
+              : (all.find((p) => p.getBoundingClientRect().bottom > barBottom()) ?? all[0]),
+          );
+        };
         function closePop() {
           $("pop").hidden = true;
           if (active) active.classList.remove("active");
@@ -929,10 +978,7 @@
           }
           const mark = (done) => {
             $("copy").classList.toggle("done", done);
-            $("copy").replaceChildren(
-              icon(done ? "check" : "content_copy"),
-              done ? "Kopiert" : "Kopieren",
-            );
+            $("copy").firstElementChild.textContent = done ? "check" : "content_copy";
           };
           clearTimeout(copyTimer);
           mark(ok);

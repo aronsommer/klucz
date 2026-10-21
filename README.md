@@ -6,7 +6,7 @@ _Klucz_ („Der Schlüssel“) ist das Tagebuch von Jonas, einem Deutschen, der 
 
 Die Idee dahinter: **Wer diesen Text versteht, versteht die 3.000 häufigsten Wörter des gesprochenen Polnisch.** Diese Wörter decken gut 90 % dessen ab, was im Alltag gesagt wird. Jedes davon steht mindestens einmal im Text, und zwar nicht als Liste, sondern eingebettet in eine echte Handlung.
 
-- **Lesen:** [index.html](index.html) – Leseseite: Wort antippen für die Übersetzung (🔊 spricht es mit der polnischen Stimme des Geräts aus), „DE“/„PL“ oben rechts zeigt das ganze Kapitel auf Deutsch oder wieder auf Polnisch, ohne dass der Text springt, alphabetische Wortliste je Kapitel (oben „↓ Wörter“ springt hin), Kopiermenü für das ganze Kapitel und seine Teile, Druckknopf für das ganze Buch (im Druckdialog auch als PDF speicherbar), Vollbild (nicht auf dem iPhone) und Hell/Dunkel-Umschalter (die Wahl bleibt gespeichert)
+- **Lesen:** [index.html](index.html) – Leseseite: Wort antippen für die Übersetzung (🔊 spricht es mit der polnischen Stimme des Geräts aus), „DE“/„PL“ oben rechts zeigt das ganze Kapitel auf Deutsch oder wieder auf Polnisch, ohne dass der Text springt, „Vorlesen“ liest das Kapitel ab dem Absatz oben auf dem Bildschirm vor und hebt den gelesenen Absatz hervor, alphabetische Wortliste je Kapitel (oben „↓ Wörter“ springt hin), Kopiermenü für das ganze Kapitel und seine Teile, Druckknopf für das ganze Buch (im Druckdialog auch als PDF speicherbar), Vollbild (nicht auf dem iPhone) und Hell/Dunkel-Umschalter (die Wahl bleibt gespeichert)
 - **Buch:** [KLUCZ.md](KLUCZ.md) – das ganze Buch mit einem Glossar nach jedem Kapitel
 - **Klartext:** [text/](text/) – jedes Kapitel ohne Formatierung, auch in Teilen für Google Translate
 - **Messung:** [REPORT.md](REPORT.md) – Abdeckung, neue Wörter pro Kapitel, grammatische Formen
@@ -98,7 +98,7 @@ Die Ränge 3.001–5.000 sind nicht vollständig enthalten, nur das, was sich na
 - **Kapitel für Kapitel, in Reihenfolge.** Die Wörter werden ungefähr nach Häufigkeit eingeführt: Kapitel 1 nutzt fast nur die häufigsten ~300.
 - **Das Glossar am Kapitelende** listet alphabetisch jedes Wort, das dort zum ersten Mal vorkommt. Steht die Fundform in Klammern, ist das die Form im Text, etwa _pójść (poszedłem)_.
 - **Ab Kapitel 4 schreibt Jonas in der Vergangenheit**, weil seine Lehrerin Kasia es ihm aufgibt, danach folgen Futur, Konditional und Aspekt. Die Grammatik steigt also mit der Geschichte.
-- **Für Google Translate** gibt es reinen Text ohne Formatzeichen. Google Translate nimmt höchstens 5.000 Zeichen auf einmal, deshalb liegt jedes Kapitel auch in Teilen unter 4.800 Zeichen vor (`text/parts/07-1.txt` usw.). Auf der Leseseite steht oben unter der Kapitelauswahl ein Knopf „Kopieren“; er öffnet ein Menü mit „Ganzes Kapitel“, „Teil 1“, „Teil 2“ … (bei einem Kapitel ohne Teile kopiert er es direkt).
+- **Für Google Translate** gibt es reinen Text ohne Formatzeichen. Google Translate nimmt höchstens 5.000 Zeichen auf einmal, deshalb liegt jedes Kapitel auch in Teilen unter 4.800 Zeichen vor (`text/parts/07-1.txt` usw.). Auf der Leseseite steht oben unter der Kapitelauswahl ein Kopierknopf; er öffnet ein Menü mit „Ganzes Kapitel“, „Teil 1“, „Teil 2“ … (bei einem Kapitel ohne Teile kopiert er es direkt).
 - **Zweimal lesen lohnt sich.** Rund 1.350 Kernwörter kommen nur ein einziges Mal vor. Beim zweiten Durchgang kennt man die Handlung und achtet auf die Wörter.
 
 ---
