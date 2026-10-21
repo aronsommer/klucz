@@ -241,6 +241,7 @@ def grammar(base):
         sheets.append(f'{scoped}<div class="page" data-sheet="{number}"{hidden}>{body}</div>')
         options.append(f"<option>{number}. {title[1]}</option>")
     page = (GRAMMAR_TEMPLATE.read_text(encoding="utf-8").replace("__BASE__", base)
+            .replace("__PRINT__", (GRAMMAR / "style.css").read_text(encoding="utf-8"))
             .replace("__OPTIONS__", "\n".join(options)).replace("__SHEETS__", "\n".join(sheets)))
     (ROOT / "grammar.html").write_text(page, encoding="utf-8")
     return len(sheets)

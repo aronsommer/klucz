@@ -17,23 +17,19 @@
     <style>
       __BASE__
     </style>
-    <style>
+    <style media="screen">
       /* A bar with the topic switcher and the way back to the story; below it one grammar sheet. */
-      .back {
-        width: var(--control);
-        height: var(--control);
-        flex: none;
-        display: grid;
-        place-items: center;
-        border-radius: 8px;
-        background: var(--tonal);
-        color: inherit;
-        text-decoration: none;
+      .switcher {
+        grid-column: span 6;
       }
-      .back .icon {
-        font-size: 18px;
+      @media (min-width: 641px) {
+        .switcher {
+          grid-column: span 5;
+        }
+        #back {
+          grid-column: span 2;
+        }
       }
-
       /* The sheets' print style (grammar/style.css) in the reading page's look, with the same
          selectors, so each sheet's own <style> overrides it as it does on paper. */
       @scope (.page) {
@@ -191,6 +187,35 @@
         }
       }
     </style>
+    <!-- On paper: the open sheet alone, styled by grammar/style.css as in the PDFs. -->
+    <style media="print">
+      __PRINT__
+    </style>
+    <style media="print">
+      body::before,
+      .bar {
+        display: none;
+      }
+      main {
+        padding: 0;
+      }
+      .column {
+        max-width: none;
+      }
+      .page h1 small {
+        display: none;
+      }
+      .page {
+        zoom: var(--fit, 1);
+      }
+      /* each sheet's own style uses the page's colors; on paper they are its print colors again */
+      :root {
+        color-scheme: light !important; /* over a stored theme's inline style */
+        --text: #000;
+        --text-2: #8c8c8c;
+        --line: #bbb;
+      }
+    </style>
   </head>
   <body>
     <header class="bar">
@@ -199,15 +224,24 @@
           <button class="arrow" id="prev" aria-label="Vorheriges Thema">
             <span class="icon" aria-hidden="true">chevron_left</span>
           </button>
-          <select id="topic" aria-label="Thema wählen">
+          <select id="topic" aria-label="Thema wählen" title="Thema wählen">
             __OPTIONS__
           </select>
           <button class="arrow" id="next" aria-label="Nächstes Thema">
             <span class="icon" aria-hidden="true">chevron_right</span>
           </button>
         </div>
-        <a class="back" href="index.html" aria-label="Zur Geschichte" title="Zur Geschichte">
-          <span class="icon" aria-hidden="true">menu_book</span>
+        <button class="tool" id="print" aria-label="Thema drucken" title="Thema drucken">
+          <span class="icon" aria-hidden="true">print</span>
+        </button>
+        <a
+          class="tool"
+          id="back"
+          href="index.html"
+          aria-label="Zurück zum Buch"
+          title="Zurück zum Buch"
+        >
+          <span class="icon" aria-hidden="true">menu_book</span><span class="label">Buch</span>
         </a>
       </div>
     </header>
@@ -221,7 +255,7 @@
         const $ = (id) => document.getElementById(id);
         const sheets = [...document.querySelectorAll(".page")];
         const names = [...$("topic").options].map((o) => o.text);
-        // the open sheet is kept in the hash (so Back returns to the one before) and in localStorage
+        // the open sheet is kept in the hash (replaced, so Back leaves the page) and in localStorage
         const KEY = "klucz-grammar";
         const index = (name) => sheets.findIndex((s) => s.dataset.sheet === name);
         let current = 0;
@@ -240,7 +274,9 @@
         }
         const fromHash = () => index(location.hash.slice(1));
         const go = (i) => {
-          if (i >= 0 && i < sheets.length) location.hash = sheets[i].dataset.sheet;
+          if (i < 0 || i >= sheets.length) return;
+          history.replaceState(null, "", "#" + sheets[i].dataset.sheet);
+          show(i);
         };
         addEventListener("hashchange", () => show(Math.max(fromHash(), 0)));
         $("prev").onclick = () => go(current - 1);
@@ -253,6 +289,23 @@
           if (e.target.closest("select")) return;
           if (e.key === "ArrowLeft") go(current - 1);
           if (e.key === "ArrowRight") go(current + 1);
+        });
+        // the book link opens the story at the reading position the story stored, as its own hash would
+        try {
+          const [c, p] = JSON.parse(localStorage.getItem("klucz-position"));
+          $("back").href = "index.html#" + (c + 1) + (p ? "/" + p : "");
+        } catch {}
+        $("print").onclick = () => print();
+        // before printing, measure the open sheet with the print styles and shrink it if it is taller than A4
+        const A4 = 1122; // 297 mm in CSS px
+        const styles = [...document.querySelectorAll("style[media]")];
+        addEventListener("beforeprint", () => {
+          const sheet = sheets[current];
+          sheet.style.removeProperty("--fit");
+          styles.forEach((s) => (s.media = s.media === "print" ? "all" : "not all"));
+          const height = sheet.getBoundingClientRect().height;
+          styles.forEach((s) => (s.media = s.media === "all" ? "print" : "screen"));
+          if (height > A4) sheet.style.setProperty("--fit", A4 / height);
         });
         // a press does not focus a button, so Space keeps scrolling the page
         document.addEventListener("mousedown", (e) => {

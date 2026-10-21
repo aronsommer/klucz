@@ -79,11 +79,12 @@ select {
   padding-right: max(16px, env(safe-area-inset-right, 0px));
   padding-block: 10px;
 }
+/* eight equal columns: every control spans whole columns, so both rows line up */
 .bar-inner {
   max-width: 680px;
   margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
   gap: 8px;
   position: relative;
 }
@@ -108,7 +109,6 @@ main {
 .bar select {
   flex: 1;
   min-width: 0;
-  max-width: 260px;
   height: var(--control);
   border: 0;
   border-inline: 1px solid var(--line);
@@ -134,4 +134,32 @@ main {
   color: var(--text-2);
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+/* a bar button: fills the columns it spans */
+.tool {
+  width: 100%;
+  height: var(--control);
+  border: 0;
+  border-radius: 8px;
+  background: var(--tonal);
+  color: inherit;
+  text-decoration: none;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+.tool .icon {
+  font-size: 18px;
+}
+/* an icon button's label shows only where the page gives it two columns */
+@media (max-width: 640px) {
+  .tool .label {
+    display: none;
+  }
 }
