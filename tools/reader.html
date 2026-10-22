@@ -511,6 +511,9 @@
       __DATA__
     </script>
     <script>
+      __THEME__;
+    </script>
+    <script>
       (() => {
         // W: [headword, part of speech, grammar, German]; F: descriptions of word forms, e.g. "Genitiv Pl."
         const {
@@ -901,26 +904,6 @@
           $("fullscreen").firstElementChild.textContent = on ? "fullscreen_exit" : "fullscreen";
           $("fullscreen").title = $("fullscreen").ariaLabel = on ? "Vollbild beenden" : "Vollbild";
         });
-        // a stored theme (set in the head) wins over the system's; the button shows the theme it switches to
-        const systemDark = matchMedia("(prefers-color-scheme: dark)");
-        const isDark = () => {
-          const s = document.documentElement.style.colorScheme;
-          return s ? s === "dark" : systemDark.matches;
-        };
-        const themeButton = () => {
-          $("theme").firstElementChild.textContent = isDark() ? "light_mode" : "dark_mode";
-          $("theme").title = $("theme").ariaLabel = isDark() ? "Helles Design" : "Dunkles Design";
-        };
-        $("theme").onclick = () => {
-          const next = isDark() ? "light" : "dark";
-          document.documentElement.style.colorScheme = next;
-          try {
-            localStorage.setItem("klucz-theme", next);
-          } catch {}
-          themeButton();
-        };
-        systemDark.addEventListener("change", themeButton);
-        themeButton();
         $("prev").onclick = () => go(ch - 1);
         $("next").onclick = () => go(ch + 1);
         $("chapter").onchange = (e) => {

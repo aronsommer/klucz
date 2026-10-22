@@ -26,6 +26,7 @@ SYNC = ROOT / "data" / "translation_sync.tsv"
 TEMPLATE = ROOT / "tools" / "reader.html"
 GRAMMAR_TEMPLATE = ROOT / "tools" / "grammar.html"
 BASE = ROOT / "tools" / "base.css"
+THEME = ROOT / "tools" / "theme.js"
 GRAMMAR = ROOT / "grammar"
 FONTS = ROOT / "fonts"
 PRINT_COLORS = {"#000": "var(--text)", "#8c8c8c": "var(--text-2)", "#bbb": "var(--line)"}
@@ -243,7 +244,7 @@ def fonts_css():
     return re.sub(r"url\(([\w.-]+\.woff2)\)", embed, (FONTS / "fonts.css").read_text(encoding="utf-8"))
 
 
-def grammar(base):
+def grammar(base, theme):
     """Write grammar.html; returns the number of sheets.
 
     Each sheet keeps its own <style>, scoped to it, with its print colors turned into the page's.
@@ -264,7 +265,7 @@ def grammar(base):
         sheets.append(f'{scoped}<div class="page" data-sheet="{number}"{hidden}>{body}</div>')
         options.append(f"<option>{number}. {title[1]}</option>")
     page = (GRAMMAR_TEMPLATE.read_text(encoding="utf-8").replace("__BASE__", base)
-            .replace("__PRINT__", (GRAMMAR / "style.css").read_text(encoding="utf-8"))
+            .replace("__THEME__", theme).replace("__PRINT__", (GRAMMAR / "style.css").read_text(encoding="utf-8"))
             .replace("__OPTIONS__", "\n".join(options)).replace("__SHEETS__", "\n".join(sheets)))
     (ROOT / "grammar.html").write_text(page, encoding="utf-8")
     return len(sheets)
@@ -317,9 +318,11 @@ def main():
     data = {"chapters": chapters_data, "words": [words[w] for w in order], "forms": list(descriptions)}
     payload = json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
     base = fonts_css() + BASE.read_text(encoding="utf-8")
-    page = TEMPLATE.read_text(encoding="utf-8").replace("__BASE__", base).replace("__DATA__", payload)
+    theme = THEME.read_text(encoding="utf-8")
+    page = (TEMPLATE.read_text(encoding="utf-8").replace("__BASE__", base).replace("__THEME__", theme)
+            .replace("__DATA__", payload))
     (ROOT / "index.html").write_text(page, encoding="utf-8")
-    sheets = grammar(base)
+    sheets = grammar(base, theme)
 
     missing = [words[w][0] for w in order if not words[w][3]]
     print(f"KLUCZ.md, text/ ({len(story)} chapters, "

@@ -20,11 +20,11 @@
     <style media="screen">
       /* A bar with the topic switcher and the way back to the story; below it one grammar sheet. */
       .switcher {
-        grid-column: span 6;
+        grid-column: span 5;
       }
       @media (min-width: 641px) {
         .switcher {
-          grid-column: span 5;
+          grid-column: span 4;
         }
         #back {
           grid-column: span 2;
@@ -234,6 +234,9 @@
         <button class="tool" id="print" aria-label="Thema drucken" title="Thema drucken">
           <span class="icon" aria-hidden="true">print</span>
         </button>
+        <button class="tool" id="theme">
+          <span class="icon" aria-hidden="true">dark_mode</span>
+        </button>
         <a
           class="tool"
           id="back"
@@ -250,6 +253,9 @@
       <div class="column">__SHEETS__</div>
     </main>
 
+    <script>
+      __THEME__;
+    </script>
     <script>
       (() => {
         const $ = (id) => document.getElementById(id);
