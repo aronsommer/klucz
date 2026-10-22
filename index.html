@@ -279,23 +279,31 @@ main {
       #to-words {
         grid-column: span 2;
       }
-      /* the translation switch: Polish and the chosen language, the one shown cut out of a solid fill; a tap switches */
+      /* the translation switch: two halves, Polish and the chosen language; the one shown is filled,
+         2px in from the edge, its corners 8px - 2px so they follow the button's */
       #translate {
         grid-column: span 2;
-        padding: 3px;
-        gap: 2px;
+        padding: 2px;
+        gap: 0;
+        cursor: default;
       }
-      #translate span {
+      #translate button {
         flex: 1;
         align-self: stretch;
-        display: grid;
-        place-items: center;
+        border: 0;
         border-radius: 6px;
+        background: none;
         color: var(--text-2);
+        font: inherit;
+        cursor: pointer;
+        transition:
+          background-color 0.15s,
+          color 0.15s;
       }
-      #translate .on {
+      #translate [aria-pressed="true"] {
         background: var(--text);
         color: var(--tonal);
+        cursor: default;
       }
       /* the language button: a globe under an invisible select, so the device shows its own menu */
       .lang {
@@ -742,7 +750,10 @@ main {
             <option value="en">English</option>
           </select>
         </label>
-        <button class="tool" id="translate"></button>
+        <div class="tool" id="translate" role="group">
+          <button id="show-pl" data-tip="read_polish">PL</button>
+          <button id="show-tr" data-tip="read_translation" data-t="lang_code"></button>
+        </div>
       </div>
       <div class="toast" id="toast" hidden role="status"></div>
     </header>
@@ -1228,17 +1239,16 @@ addEventListener("focusout", (e) => e.target.classList.remove("by-pointer"));
           translated = on;
           document.documentElement.classList.toggle("translated", on);
           $("translate").hidden = !CH[ch].tr[lang];
-          $("translate").replaceChildren(
-            el("span", on ? "" : "on", "PL"),
-            el("span", on ? "on" : "", t("lang_code")),
-          );
-          $("translate").title = $("translate").ariaLabel = t(
-            on ? "read_polish" : "read_translation",
-          );
+          $("show-pl").ariaPressed = !on;
+          $("show-tr").ariaPressed = on;
         }
-        $("translate").onclick = () => {
+        $("show-pl").onclick = () => {
           closePop();
-          translate(!translated);
+          translate(false);
+        };
+        $("show-tr").onclick = () => {
+          closePop();
+          translate(true);
         };
         // hidden where a page cannot go fullscreen (iPhone)
         $("fullscreen").hidden = !document.fullscreenEnabled;
