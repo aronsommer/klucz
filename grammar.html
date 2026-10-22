@@ -928,7 +928,41 @@ b {
         </p>
       </div>
     </div>
-<div class="page" data-sheet="3" hidden>
+<style>@scope ([data-sheet="3"]) {
+      .groups {
+        font-size: 14px;
+      }
+      .groups :is(th, td) {
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+      .groups tr:first-child th:first-child {
+        width: 100px;
+      }
+      /* A black line before each block of groups that share their endings. */
+      .groups th[colspan],
+      .groups tr:nth-child(2) th:is(:nth-child(1), :nth-child(3), :nth-child(6)),
+      .groups td:is(:nth-child(2), :nth-child(4), :nth-child(7)) {
+        position: relative;
+      }
+      .groups th[colspan]::before,
+      .groups tr:nth-child(2) th:is(:nth-child(1), :nth-child(3), :nth-child(6))::before,
+      .groups td:is(:nth-child(2), :nth-child(4), :nth-child(7))::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        border-left: 1px solid var(--text);
+      }
+      /* Over the grey line below each row. */
+      .groups td:is(:nth-child(2), :nth-child(4), :nth-child(7))::before {
+        bottom: -1px;
+      }
+      .block th[colspan] {
+        border-bottom-width: 1px;
+      }
+    }</style><div class="page" data-sheet="3" hidden>
       <h1><small>Thema 3</small>Czasowniki – Verben</h1>
       <p class="sub">
         Gegenwart und Vergangenheit · <span class="stem">Stamm</span> + <b>Endung</b>
@@ -936,57 +970,108 @@ b {
 
       <h2>1. Gegenwart <span>· teraz</span></h2>
       <p class="rule">
-        Die Grundform (die Form im Wörterbuch) endet auf -ć. Ihr Ende zeigt meist die Gruppe: -ać,
-        -ować oder -ić.
+        Die Grundform (die Form im Wörterbuch) endet auf -ć. Ihr Ende zeigt meist, welche Endungen
+        an den Stamm kommen. Gruppen im selben Block haben dieselben Endungen.
       </p>
-      <table>
+      <table class="groups">
+        <tr class="block">
+          <th rowspan="2">Person</th>
+          <th colspan="7">Grundform endet auf</th>
+        </tr>
         <tr>
-          <th>Person</th>
-          <th>-ać<small>czytać – lesen</small></th>
-          <th>-ować<small>pracować – arbeiten</small></th>
-          <th>-ić<small>robić – machen</small></th>
+          <th>
+            -ać<small>czytać<br />lesen</small>
+          </th>
+          <th>
+            -eć<small>umieć<br />können</small>
+          </th>
+          <th>
+            -ować<small>pracować<br />arbeiten</small>
+          </th>
+          <th>
+            -nąć<small>ciągnąć<br />ziehen</small>
+          </th>
+          <th>
+            -ąć<small>zacząć *<br />anfangen</small>
+          </th>
+          <th>
+            -ić<small>robić<br />machen</small>
+          </th>
+          <th>
+            -yć<small>tańczyć<br />tanzen</small>
+          </th>
         </tr>
         <tr>
           <td>ja</td>
           <td>czyta<b>m</b></td>
+          <td>umie<b>m</b></td>
           <td>pracuj<b>ę</b></td>
-          <td>rob<b>ię</b></td>
+          <td>ciągn<b>ę</b></td>
+          <td>zaczn<b>ę</b></td>
+          <td>robi<b>ę</b></td>
+          <td>tańcz<b>ę</b></td>
         </tr>
         <tr>
           <td>ty</td>
           <td>czyta<b>sz</b></td>
+          <td>umie<b>sz</b></td>
           <td>pracuj<b>esz</b></td>
+          <td>ciągni<b>esz</b></td>
+          <td>zaczni<b>esz</b></td>
           <td>rob<b>isz</b></td>
+          <td>tańcz<b>ysz</b></td>
         </tr>
         <tr>
           <td>on · ona · ono</td>
           <td>czyta</td>
+          <td>umie</td>
           <td>pracuj<b>e</b></td>
+          <td>ciągni<b>e</b></td>
+          <td>zaczni<b>e</b></td>
           <td>rob<b>i</b></td>
+          <td>tańcz<b>y</b></td>
         </tr>
         <tr>
           <td>my</td>
           <td>czyta<b>my</b></td>
+          <td>umie<b>my</b></td>
           <td>pracuj<b>emy</b></td>
+          <td>ciągni<b>emy</b></td>
+          <td>zaczni<b>emy</b></td>
           <td>rob<b>imy</b></td>
+          <td>tańcz<b>ymy</b></td>
         </tr>
         <tr>
           <td>wy</td>
           <td>czyta<b>cie</b></td>
+          <td>umie<b>cie</b></td>
           <td>pracuj<b>ecie</b></td>
+          <td>ciągni<b>ecie</b></td>
+          <td>zaczni<b>ecie</b></td>
           <td>rob<b>icie</b></td>
+          <td>tańcz<b>ycie</b></td>
         </tr>
         <tr>
           <td>oni · one</td>
           <td>czyta<b>ją</b></td>
+          <td>umie<b>ją</b></td>
           <td>pracuj<b>ą</b></td>
-          <td>rob<b>ią</b></td>
+          <td>ciągn<b>ą</b></td>
+          <td>zaczn<b>ą</b></td>
+          <td>robi<b>ą</b></td>
+          <td>tańcz<b>ą</b></td>
         </tr>
       </table>
+      <p class="note">
+        Viele Verben auf -eć gehen wie -ić: myśleć (denken) → myśl<b>ę</b>, myśl<b>isz</b>.
+      </p>
+      <p class="note">
+        * Bei den meisten Verben auf -ąć bedeutet diese Form Zukunft: zacznę = ich werde anfangen.
+      </p>
 
       <h2>2. Vergangenheit <span>· przeszłość</span></h2>
       <p class="rule">
-        Grundform ohne -ć + Endung: by-ć (sein) → byłem. Gilt für die meisten Verben.
+        Stamm = Grundform ohne -ć: być (sein) → by + Endung. Gilt für die meisten Verben.
       </p>
       <table>
         <tr>
@@ -1026,16 +1111,35 @@ b {
         </tr>
       </table>
 
+      <p class="note">
+        -eć: e wird a: umieć → umi<b>ałem</b>, umi<b>ała</b>. Nur bei einer Gruppe mit Mann bleibt
+        e: umi<b>eli</b>.
+      </p>
+      <p class="note">
+        -ąć: ą nur bei einem Mann: zacząć → zacz<b>ąłem</b>, zacz<b>ął</b>. Sonst ę:
+        zacz<b>ęłam</b>, zacz<b>ęli</b>.
+      </p>
+
       <div class="box">
-        <h3>Beispiel</h3>
-        <p>
-          Robert <span class="stem">czyta</span><b>ł</b>. · Kasia <span class="stem">czyta</span
-          ><b>ła</b>.
-        </p>
-        <p>
-          Robert i Kasia <span class="stem">czyta</span><b>li</b>. · Kasia i Anna
-          <span class="stem">czyta</span><b>ły</b>.
-        </p>
+        <h3>Beispiele</h3>
+        <table class="ex">
+          <tr>
+            <td>Robert <span class="stem">czyta</span><b>ł</b>.</td>
+            <td>Robert hat gelesen.</td>
+          </tr>
+          <tr>
+            <td>Kasia <span class="stem">czyta</span><b>ła</b>.</td>
+            <td>Kasia hat gelesen.</td>
+          </tr>
+          <tr>
+            <td>Robert i Kasia <span class="stem">czyta</span><b>li</b>.</td>
+            <td>Robert und Kasia haben gelesen.</td>
+          </tr>
+          <tr>
+            <td>Kasia i Anna <span class="stem">czyta</span><b>ły</b>.</td>
+            <td>Kasia und Anna haben gelesen.</td>
+          </tr>
+        </table>
       </div>
 
       <p class="note">się bleibt immer gleich: nazywam się, nazywałam się</p>
