@@ -1,17 +1,17 @@
 # Abdeckungsbericht
 
-Wörter im Text: **37352** · verschiedene Lemmata: **4589**
+Wörter im Text: **37352** · verschiedene Lemmata: **4585**
 
 ## Abdeckung der Frequenzliste
 
 | Rang | vorhanden | fehlt | nur 1× |
 |---|---|---|---|
 | 1–500 | 500 (100.0%) | 0 | 37 |
-| 1–1000 | 1000 (100.0%) | 0 | 184 |
-| 1–2000 | 1999 (100.0%) | 1 | 689 |
-| 1–3000 | 2993 (99.8%) | 7 | 1350 |
-| 1–4000 | 3298 (82.5%) | 702 | 1516 |
-| 1–5000 | 3524 (70.5%) | 1476 | 1643 |
+| 1–1000 | 999 (99.9%) | 1 | 183 |
+| 1–2000 | 1997 (99.9%) | 3 | 687 |
+| 1–3000 | 2991 (99.7%) | 9 | 1347 |
+| 1–4000 | 3295 (82.4%) | 705 | 1513 |
+| 1–5000 | 3520 (70.4%) | 1480 | 1639 |
 
 ## Kapitel
 
@@ -24,11 +24,11 @@ Wörter im Text: **37352** · verschiedene Lemmata: **4589**
 | Rozdział 5. Bar mleczny | 1115 | 199 | 18 | 9578 |
 | Rozdział 6. Gorączka | 981 | 150 | 13 | 9210 |
 | Rozdział 7. Zosia i Hala | 1247 | 257 | 19 | 9801 |
-| Rozdział 8. Wszystkich Świętych | 840 | 99 | 11 | 9876 |
+| Rozdział 8. Wszystkich Świętych | 840 | 98 | 11 | 9876 |
 | Rozdział 9. Piwnica | 1055 | 136 | 16 | 8635 |
 | Rozdział 10. Urząd | 1189 | 184 | 20 | 9094 |
 | Rozdział 11. Zebranie | 1123 | 147 | 17 | 9778 |
-| Rozdział 12. Andrzejki | 1336 | 184 | 13 | 9082 |
+| Rozdział 12. Andrzejki | 1336 | 183 | 13 | 9082 |
 | Rozdział 13. Włamanie | 1160 | 157 | 19 | 9392 |
 | Rozdział 14. Śnieg | 1166 | 156 | 31 | 9004 |
 | Rozdział 15. Wigilia | 1126 | 111 | 27 | 9717 |
@@ -36,16 +36,16 @@ Wörter im Text: **37352** · verschiedene Lemmata: **4589**
 | Rozdział 17. Sylwester | 1349 | 121 | 11 | 9297 |
 | Rozdział 18. Zakopane | 1332 | 167 | 35 | 9683 |
 | Rozdział 19. Sala numer sześć | 1444 | 132 | 23 | 9464 |
-| Rozdział 20. Decyzja | 1807 | 208 | 30 | 9873 |
-| Rozdział 21. Mecenas | 1331 | 128 | 18 | 9722 |
+| Rozdział 20. Decyzja | 1807 | 207 | 30 | 9873 |
+| Rozdział 21. Mecenas | 1331 | 129 | 18 | 9722 |
 | Rozdział 22. Pożar | 1220 | 118 | 21 | 9461 |
 | Rozdział 23. Szkatułka | 984 | 67 | 15 | 9942 |
 | Rozdział 24. Wielkanoc | 1464 | 124 | 41 | 9858 |
 | Rozdział 25. Warszawa | 1400 | 116 | 13 | 9641 |
 | Rozdział 26. Pościg | 1296 | 104 | 23 | 8968 |
 | Rozdział 27. Sąd | 1396 | 107 | 32 | 9902 |
-| Rozdział 28. Listy | 1536 | 109 | 19 | 9211 |
-| Rozdział 29. Morze | 1572 | 117 | 32 | 9661 |
+| Rozdział 28. Listy | 1536 | 108 | 19 | 9211 |
+| Rozdział 29. Morze | 1572 | 116 | 31 | 9661 |
 | Rozdział 30. Klucz | 1625 | 119 | 24 | 9522 |
 
 ## Wörter außerhalb der Liste (Top 10.000)
@@ -78,7 +78,7 @@ Wörter im Text: **37352** · verschiedene Lemmata: **4589**
 - **Rozdział 26. Pościg:** dyktafon (dyktafon), ogolony (ogolony), brzęczeć (brzęczy), łokiec (łokciem), wrzasnąć (wrzasnął), tramwajowy (tramwajowe), nadjechać (nadjechał), okrąglak (okrąglaka), zahamować (zahamował), bulwar (bulwarów), kładka (kładkę), pieszy (pieszych), rowerzysta (rowerzystów), akrobata (akrobatów), barierka (barierkach), wbiec (wbiegł), kulać (Kulał), podżegać (podżegania), usiłowanie (usiłowania), spomiędzy (spomiędzy), wysyczać (wysyczał), niepolski (niepolskie), nowakowski (nowakowskie)
 - **Rozdział 27. Sąd:** rejonowy (Rejonowym), marmur (marmur), mównica (mównica), godło (godło), nosidełko (nosidełku), wokanda (wokanda), toga (todze), szepnąć (szepnął), odszepnąć (odszepnęła), pięćdziesięcioletni (pięćdziesięcioletnia), żabot (żabotem), umilknąć (umilkli), oddalenie (oddalenie), uchylać (uchylam), bezsporny (bezsporna), przyrzeczenie (przyrzeczenie), wiadomy (wiadome), toner (toner), drukarka (drukarki), staranność (starannością), krój (krój), czcionka (czcionki), porównany (porównane), twierdzenie (twierdzenie), wideokonferencja (wideokonferencję), zawiadamiać (zawiadamia), prawomocny (prawomocne), procesowy (procesowym), uzasadnienie (uzasadnieniu), klaskać (klaskać), protokolantka (Protokolantka), znacząco (znacząco)
 - **Rozdział 28. Listy:** kasztan (kasztany), majówka (majówka), grillować (grillowała), karkówka (karkówkę), szaszłyk (szaszłyki), szesnasty (szesnastej), kuć (kują), tnąć (tną), cement (cementem), zabytkowy (zabytkowym), konserwator (konserwatora), rusztowanie (rusztowanie), podlewać (podlewa), odchrząknąć (odchrząknął), mariacki (Mariackiej), hejnał (hejnał), trębacz (Trębacz), osiemset (osiemset), tatarski (tatarska)
-- **Rozdział 29. Morze:** mewa (mewy), słomkowy (słomkowym), hawajski (hawajskie), równina (równiny), sosnowy (sosnowe), doniczka (doniczkach), bocian (bociany), drożdżowy (drożdżowe), pensjonat (pensjonat), dolka (dolce), złotówka (złotówki), molo (molo), fasada (fasadami), żuraw (żuraw), bursztyn (bursztynem), broszka (broszkę), stocznia (Stocznia), rdzawy (rdzawy), zamurowywać (zamurowuje), bałtyk (Bałtyk), proma (promy), rybacki (rybacka), wysuszać (wysusza), zdradliwy (zdradliwe), półwysep (półwysep), leżak (leżaka), granatowy (granatowy), kąpielowy (kąpielowy), osiemdziesięcioletni (Osiemdziesięcioletnia), spodenki (spodenkach), mol (molu), gorzko (Gorzko)
+- **Rozdział 29. Morze:** mewa (mewy), słomkowy (słomkowym), hawajski (hawajskie), równina (równiny), sosnowy (sosnowe), doniczka (doniczkach), bocian (bociany), drożdżowy (drożdżowe), pensjonat (pensjonat), dolka (dolce), złotówka (złotówki), molo (molo), fasada (fasadami), żuraw (żuraw), bursztyn (bursztynem), broszka (broszkę), stocznia (Stocznia), rdzawy (rdzawy), zamurowywać (zamurowuje), bałtyk (Bałtyk), proma (promy), rybacki (rybacka), wysuszać (wysusza), zdradliwy (zdradliwe), półwysep (półwysep), leżak (leżaka), granatowy (granatowy), kąpielowy (kąpielowy), osiemdziesięcioletni (Osiemdziesięcioletnia), spodenki (spodenkach), gorzko (Gorzko)
 - **Rozdział 30. Klucz:** bochenek (bochenek), zakwas (zakwasie), kajzerka (kajzerki), przypiec (przypieczone), rodowity (rodowity), przesiadować (Przesiadują), optymista (optymistą), podsumowanie (podsumowanie), wypracowanie (wypracowaniu), żółknąć (żółknie), upadłość (upadłość), oczepiny (oczepiny), welon (welon), polonez (poloneza), obrączek (obrączek), chrząknąć (chrząknąć), strażaczka (strażaczką), słoiek (słoikiem), gody (gody), egzaminator (egzaminatorów), ustny (ustnej), mosiężny (mosiężna), metaliczny (metaliczny), przekręcać (przekręcać)
 
 ## Grammatische Formen
@@ -94,13 +94,13 @@ Wörter im Text: **37352** · verschiedene Lemmata: **4589**
 | ADJ Degree=Sup | 71 |
 | ADJ Gen - | 6 |
 | ADJ Gen Plur | 54 |
-| ADJ Gen Sing | 278 |
+| ADJ Gen Sing | 279 |
 | ADJ Ins Plur | 38 |
 | ADJ Ins Sing | 134 |
 | ADJ Loc Plur | 34 |
 | ADJ Loc Sing | 283 |
 | ADJ Nom Plur | 235 |
-| ADJ Nom Sing | 1204 |
+| ADJ Nom Sing | 1203 |
 | ADJ Voc Sing | 3 |
 | ADV Degree=Cmp | 86 |
 | ADV Degree=Sup | 14 |

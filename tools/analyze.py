@@ -23,6 +23,7 @@ LEXICAL_POS = {"NOUN", "VERB", "ADJ", "ADV", "PRON", "DET", "NUM", "ADP", "AUX",
                "CCONJ", "SCONJ", "PART", "INTJ"}
 BANDS = [500, 1000, 2000, 3000, 4000, 5000]
 MARKUP = re.compile(r"[_*#>]|^-{3,}$", re.M)
+PIPELINE = "tokenize,mwt,pos,lemma,depparse"
 
 nlp = None
 
@@ -36,40 +37,40 @@ def ranks():
 
 
 def tokens(text):
-    """Return [(form, lemma, upos, feats)] of all of a chapter's tokens, lemmas fixed.
+    """Return [(form, lemma, upos, feats, się)] of all of a chapter's tokens, lemmas fixed.
 
+    się is true when the parser attaches a "się" to this word.
     Stanza output is cached by content, so only changed chapters are parsed again.
     """
     global nlp
     text = MARKUP.sub(" ", text)
-    cached = CACHE / f"{hashlib.sha1(text.encode()).hexdigest()}.json"
+    cached = CACHE / f"{hashlib.sha1((PIPELINE + text).encode()).hexdigest()}.json"
     if cached.exists():
         words = json.loads(cached.read_text())
     else:
         if nlp is None:
             import stanza
 
-            nlp = stanza.Pipeline("pl", processors="tokenize,mwt,pos,lemma", verbose=False)
-        words = [
-            (w.text, (w.lemma or "").lower(), w.upos, w.feats or "")
-            for s in nlp(text).sentences
-            for w in s.words
-        ]
+            nlp = stanza.Pipeline("pl", processors=PIPELINE, verbose=False)
+        words = []
+        for s in nlp(text).sentences:
+            heads = {w.head for w in s.words if w.lemma == "się"}
+            words += [(w.text, (w.lemma or "").lower(), w.upos, w.feats or "", w.id in heads) for w in s.words]
         CACHE.mkdir(exist_ok=True)
         cached.write_text(json.dumps(words, ensure_ascii=False))
     fixes = read_tsv(FIXES)
-    return [(form, fix(fixes, lemma, form), pos, f) for form, lemma, pos, f in words]
+    return [(form, fix(fixes, lemma, form), pos, f, się) for form, lemma, pos, f, się in words]
 
 
 def is_word(token, excluded, names=False):
     """A lexical word; with names, proper nouns too (but not one-letter initials)."""
-    _, lemma, pos, _ = token
+    _, lemma, pos, *_ = token
     kind = pos in LEXICAL_POS or (names and pos == "PROPN" and len(lemma) > 1)
     return kind and LEMMA.match(lemma) and lemma not in excluded
 
 
 def parse(text, names=False):
-    """Return [(form, lemma, upos, feats)] of a chapter's words, optionally with proper nouns."""
+    """Return [(form, lemma, upos, feats, się)] of a chapter's words, optionally with proper nouns."""
     excluded = read_tsv(EXCLUDED)
     return [t for t in tokens(text) if is_word(t, excluded, names)]
 
@@ -85,7 +86,7 @@ def chapters(names=False):
 
 
 def first_occurrences(story):
-    """Map chapter index -> [(form, lemma, upos, feats)] of lemmas new in that chapter."""
+    """Map chapter index -> [(form, lemma, upos, feats, się)] of lemmas new in that chapter."""
     seen, new = set(), defaultdict(list)
     for i, (_, _, words) in enumerate(story):
         for word in words:
@@ -103,7 +104,7 @@ def report(args):
     rank = ranks()
     story = chapters()
     new = first_occurrences(story)
-    counts = Counter(l for _, _, words in story for _, l, _, _ in words)
+    counts = Counter(w[1] for _, _, words in story for w in words)
     tokens = sum(counts.values())
     out = ["# Abdeckungsbericht", ""]
     out += [f"Wörter im Text: **{tokens}** · verschiedene Lemmata: **{len(counts)}**", ""]
@@ -125,13 +126,13 @@ def report(args):
         out.append(f"| {title} | {len(words)} | {len(lemmas)} | {len(outside)} | {top} |")
     out += ["", "## Wörter außerhalb der Liste (Top 10.000)", ""]
     for i, (title, _, _) in enumerate(story):
-        outside = [f"{l} ({f})" for f, l, _, _ in new[i] if l not in rank]
+        outside = [f"{l} ({f})" for f, l, *_ in new[i] if l not in rank]
         if outside:
             out.append(f"- **{title}:** {', '.join(outside)}")
     out += ["", "## Grammatische Formen", ""]
     grammar = Counter()
     for _, _, words in story:
-        for _, _, pos, f in words:
+        for _, _, pos, f, _ in words:
             f = feats(f)
             if pos in {"NOUN", "ADJ", "PRON", "DET", "NUM"} and "Case" in f:
                 grammar[f"{pos} {f['Case']} {f.get('Number', '-')}"] += 1
@@ -149,7 +150,7 @@ def report(args):
 
 def missing(args):
     rows = tsv(FREQUENCY)
-    present = {l for _, _, words in chapters() for _, l, _, _ in words}
+    present = {w[1] for _, _, words in chapters() for w in words}
     gaps = [r for r in rows if int(r["rank"]) <= args.upto and r["lemma"] not in present]
     for r in gaps:
         print(f"{r['rank']}\t{r['lemma']}\t{r['pos']}\t{r['forms']}")

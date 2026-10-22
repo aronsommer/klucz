@@ -189,17 +189,21 @@
         border: 1px solid var(--line);
         padding: 14px 16px;
       }
+      /* the tapped form and what form it is, above the entry */
       .pop .form {
-        font-family: var(--read);
         color: var(--text-2);
-        font-size: 17px;
-        display: inline-flex;
-        align-items: center;
-        gap: 4px;
-        margin-right: 4px;
+        font-size: 14px;
+        margin-bottom: 4px;
       }
-      .pop .form .icon {
-        font-size: 18px;
+      .pop .form span {
+        font-family: var(--read);
+        font-size: 17px;
+        color: var(--text);
+      }
+      .pop .grammar {
+        color: var(--text-2);
+        font-size: 14px;
+        margin-top: 2px;
       }
       .pop b {
         font-family: var(--read);
@@ -278,7 +282,7 @@
       .words {
         margin: 0;
         display: grid;
-        grid-template-columns: minmax(120px, max-content) 1fr;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
         column-gap: 20px;
         background: var(--surface);
         border-radius: 16px;
@@ -300,9 +304,13 @@
         font-weight: 700;
         font-size: 16px;
       }
-      .words dt small {
+      .words small {
+        display: block;
+        font-family: var(--ui);
         font-weight: 400;
+        font-size: 13px;
         color: var(--text-2);
+        margin-top: 2px;
       }
       .words dt i {
         font-family: var(--ui);
@@ -478,8 +486,11 @@
         <section>
           <h2 id="words-title">Neue Wörter</h2>
           <p class="hint">
-            Alle Wörter, die in diesem Kapitel zum ersten Mal vorkommen, alphabetisch.<br />m/f/n:
-            Genus · uv./v.: unvollendeter/vollendeter Aspekt
+            Alle Wörter, die in diesem Kapitel zum ersten Mal vorkommen, alphabetisch in der
+            Grundform.<br />
+            m/f/n: Genus · Gen.: Genitiv Sg. · Pl.: Nominativ Pl. · uv./v.:
+            unvollendeter/vollendeter Aspekt, in Klammern der Aspektpartner · bei Verben: 1. und 2.
+            Person Sg. · bei Präpositionen: der Kasus danach
           </p>
           <dl class="words" id="words"></dl>
         </section>
@@ -501,7 +512,12 @@
     </script>
     <script>
       (() => {
-        const { chapters: CH, words: W } = JSON.parse(document.getElementById("data").textContent); // W: [lemma, tag, German]
+        // W: [headword, part of speech, grammar, German]; F: descriptions of word forms, e.g. "Genitiv Pl."
+        const {
+          chapters: CH,
+          words: W,
+          forms: F,
+        } = JSON.parse(document.getElementById("data").textContent);
         const $ = (id) => document.getElementById(id);
         const el = (tag, cls, text) => {
           const e = document.createElement(tag);
@@ -532,6 +548,7 @@
             }
             const w = el("span", "w", s[0]);
             w.dataset.i = s[1];
+            if (s.length > 2) w.dataset.f = s[2]; // the form is not the headword
             e.append(w);
           }
           return e;
@@ -587,12 +604,15 @@
         // chapter i's new words, for a .words list
         function words(i) {
           const f = document.createDocumentFragment();
-          for (const [id, form] of CH[i].words) {
-            const [lemma, tag, de] = W[id];
-            const dt = el("dt", "", lemma);
-            if (form) dt.append(" ", el("small", "", "(" + form + ")"));
-            if (tag) dt.append(el("i", "", tag));
-            f.append(dt, el("dd", "", de));
+          for (const [id, form, d] of CH[i].words) {
+            const [word, pos, grammar, de] = W[id];
+            const dt = el("dt", "", word);
+            if (pos) dt.append(el("i", "", pos));
+            if (grammar) dt.append(el("small", "", grammar));
+            const dd = el("dd", "", de);
+            if (form)
+              dd.append(el("small", "", "im Text: " + form + (F[d] ? " (" + F[d] + ")" : "")));
+            f.append(dt, dd);
           }
           return f;
         }
@@ -662,13 +682,13 @@
           { passive: true },
         );
 
-        // tap a word: lemma, tag and translation
+        // tap a word: its form, its word list entry and translation
         function openPop(w) {
           closePop();
           openMenu(false);
           active = w;
           w.classList.add("active");
-          const [lemma, tag, de] = W[w.dataset.i];
+          const [word, pos, grammar, de] = W[w.dataset.i];
           const pop = $("pop");
           pop.textContent = "";
           const close = el("button", "close"); // shown only on the bottom sheet
@@ -677,13 +697,15 @@
           close.append(icon("close"));
           close.onclick = closePop;
           pop.append(close);
-          if (w.textContent.toLowerCase() !== lemma) {
-            const f = el("span", "form", w.textContent);
-            f.append(icon("arrow_forward"));
-            pop.append(f);
+          if (w.dataset.f != null) {
+            const form = el("div", "form");
+            form.append(el("span", "", w.textContent));
+            if (F[w.dataset.f]) form.append(" · " + F[w.dataset.f]);
+            pop.append(form);
           }
-          pop.append(el("b", "", lemma));
-          if (tag) pop.append(el("i", "", tag));
+          pop.append(el("b", "", word));
+          if (pos) pop.append(el("i", "", pos));
+          if (grammar) pop.append(el("div", "grammar", grammar));
           pop.append(el("p", "", de));
           if (window.speechSynthesis) {
             const say = el("button", "say");

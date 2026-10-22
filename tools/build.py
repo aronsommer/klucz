@@ -1,4 +1,4 @@
-"""Build every output from chapters/*.md and data/glossary.tsv.
+"""Build every output from chapters/*.md, data/glossary.tsv and the dictionary excerpts (tools/lexicon.py).
 
 KLUCZ.md               the book with a glossary after each chapter
 text/NN.txt, klucz.txt plain text without markup, for copying or text-to-speech
@@ -15,8 +15,10 @@ import hashlib
 import json
 import re
 import sys
+from collections import Counter
 
-from analyze import EXCLUDED, GLOSSARY, ROOT, chapters, feats, first_occurrences, is_word, read_tsv, tokens, tsv
+from analyze import EXCLUDED, GLOSSARY, ROOT, chapters, is_word, read_tsv, tokens, tsv
+from lexicon import POS, Dictionary, describe, load
 
 TEXT = ROOT / "text"
 GERMAN = ROOT / "chapters" / "de"
@@ -28,7 +30,6 @@ GRAMMAR = ROOT / "grammar"
 FONTS = ROOT / "fonts"
 PRINT_COLORS = {"#000": "var(--text)", "#8c8c8c": "var(--text-2)", "#bbb": "var(--line)"}
 PART_LIMIT = 4800
-TAGS = {"Masc": "m", "Fem": "f", "Neut": "n", "Imp": "uv.", "Perf": "v."}
 LETTER = re.compile(r"[^\W\d_]")
 ALPHABET = "aąbcćdeęfghijklłmnńoópqrsśtuvwxyzźż"
 
@@ -78,21 +79,40 @@ def polish_order(word):
     return [ALPHABET.find(c) if c in ALPHABET else len(ALPHABET) for c in word]
 
 
-def word_lists(new, glossary):
-    """Map chapter index -> [[lemma, display, first form, tag, German]] of the words new in it, alphabetically.
+def entries(marked, dictionary, glossary):
+    """Word list entries, and what each marked word in the text is.
 
-    Lemmas are lowercase; the glossary spells the word as it is displayed (Kraków, PESEL).
+    marked holds each chapter's segments from segments(). Returns (words, lists, found):
+    words    {headword: [display, part of speech, grammar, German]}, headwords lowercase
+    lists    chapter index -> [(headword, form in the text, its description)] of the words new in it,
+             alphabetically; form and description are empty when the form is the lemma
+    found    {id(segment): (headword, description or None)} for every marked word
     """
-    lists = {}
-    for i, words in new.items():
-        lists[i] = []
-        for form, lemma, pos, f in words:
-            tag = TAGS.get(feats(f).get("Gender" if pos == "NOUN" else "Aspect")) if pos in {"NOUN", "VERB"} else None
-            display, de = glossary.get(lemma, (lemma, ""))
-            shown = "" if form.lower() == lemma else form
-            lists[i].append([lemma, display, shown, tag or "", de])
+    first, kinds, forms, found = {}, {}, {}, {}
+    for i, chapter in enumerate(marked):
+        for _, segs in chapter:
+            for seg in segs:
+                if isinstance(seg, str):
+                    continue
+                surface, parts = seg
+                form, lemma, upos, f, się = parts[0]
+                lemma = dictionary.lemma(form, lemma, upos, f)
+                headword = dictionary.headword(lemma, się and upos == "VERB")
+                kinds.setdefault(headword, Counter())[dictionary.pos((form, lemma, upos, f, się))] += 1
+                forms.setdefault(headword, set()).add(form)
+                text = (surface if upos == "PROPN" else surface.lower()) if surface.lower() != lemma else ""
+                description = describe(parts) if text else None
+                found[id(seg)] = (headword, description)
+                first.setdefault(headword, (i, text, description, (form, lemma, upos, f, się)))
+    words, lists = {}, {}
+    for headword, (i, text, description, token) in first.items():
+        pos = kinds[headword].most_common(1)[0][0]
+        display, de = glossary.get(headword, (headword, ""))
+        words[headword] = [display, POS.get(pos, ""), dictionary.entry(headword, pos, token, forms[headword]), de]
+        lists.setdefault(i, []).append((headword, text, description or ""))
+    for i in lists:
         lists[i].sort(key=lambda w: polish_order(w[0]))
-    return lists
+    return words, lists, found
 
 
 def find(text, form, pos, glued):
@@ -105,8 +125,8 @@ def find(text, form, pos, glued):
     return -1
 
 
-def segments(chapter_blocks, chapter_tokens, ids, excluded):
-    """Mark each word of the display text with its lemma: [[kind, [text | [form, id], ...]], ...].
+def segments(chapter_blocks, chapter_tokens, excluded):
+    """Mark each word of the display text with its tokens: [[kind, [text | [form, tokens], ...]], ...].
 
     Stanza splits forms such as "poszedłem" into "poszedł" + "em"; glued parts join the word before.
     A token that cannot be found in this or the next two blocks is skipped.
@@ -115,7 +135,7 @@ def segments(chapter_blocks, chapter_tokens, ids, excluded):
     for bi, (kind, text) in enumerate(chapter_blocks):
         segs, pos = [], 0
         while ti < len(chapter_tokens):
-            form, lemma, _, _ = chapter_tokens[ti]
+            form = chapter_tokens[ti][0]
             glued = bool(segs) and isinstance(segs[-1], list) and bool(LETTER.match(form[:1]))
             j = find(text, form, pos, glued)
             if j < 0:
@@ -127,8 +147,9 @@ def segments(chapter_blocks, chapter_tokens, ids, excluded):
                 segs.append(text[pos:j])
             if glued and j == pos:
                 segs[-1][0] += form
-            elif is_word(chapter_tokens[ti], excluded, names=True) and lemma in ids:
-                segs.append([form, ids[lemma]])
+                segs[-1][1].append(chapter_tokens[ti])
+            elif is_word(chapter_tokens[ti], excluded, names=True):
+                segs.append([form, [chapter_tokens[ti]]])
             else:
                 segs.append(form)
             pos, ti = j + len(form), ti + 1
@@ -143,13 +164,15 @@ def segments(chapter_blocks, chapter_tokens, ids, excluded):
     return out
 
 
-def book(story, lists):
+def book(story, words, lists):
     out = ["# Klucz", ""]
     for i, (_, text, _) in enumerate(story):
         out += [text.strip().replace("# ", "## ", 1), "", "### Neue Wörter", ""]
-        for _, display, form, tag, de in lists[i]:
-            shown = f"{display} ({form})" if form else display
-            out.append(f"- **{shown}**{f' _{tag}_' if tag else ''} — {de or '?'}")
+        for headword, form, description in lists.get(i, []):
+            display, pos, grammar, de = words[headword]
+            label = " · ".join(p for p in (pos, grammar) if p)
+            seen = f" · im Text: {form}" + (f" ({description})" if description else "") if form else ""
+            out.append(f"- **{display}**{f' _{label}_' if label else ''} — {de or '?'}{seen}")
         out.append("")
     (ROOT / "KLUCZ.md").write_text("\n".join(out), encoding="utf-8")
 
@@ -251,11 +274,21 @@ def main():
     story = chapters(names=True)
     translations = german(story)
     glossary = {r["lemma"].lower(): (r["lemma"], r["de"]) for r in tsv(GLOSSARY)}
-    lists = word_lists(first_occurrences(story), glossary)
-    book(story, lists)
-    words = [w for i in sorted(lists) for w in lists[i]]
-    ids = {w[0]: n for n, w in enumerate(words)}
+    dictionary = Dictionary(*load([w for _, _, words in story for w in words]))
     excluded = read_tsv(EXCLUDED)
+    marked = [segments(blocks(markdown), tokens(markdown), excluded) for _, markdown, _ in story]
+    words, lists, found = entries(marked, dictionary, glossary)
+    book(story, words, lists)
+    order = [w for i in sorted(lists) for w, _, _ in lists[i]]
+    ids = {w: n for n, w in enumerate(order)}
+    descriptions = {}  # description -> its index in the page data
+    index = lambda description: descriptions.setdefault(description, len(descriptions))
+    for chapter in marked:  # [form, tokens] -> [form, id] or [form, id, description]
+        for _, segs in chapter:
+            for seg in segs:
+                if not isinstance(seg, str):
+                    headword, description = found[id(seg)]
+                    seg[1:] = [ids[headword]] + ([] if description is None else [index(description)])
 
     (TEXT / "parts").mkdir(parents=True, exist_ok=True)
     for stale in (TEXT / "parts").glob("*.txt"):  # a shortened chapter needs fewer parts
@@ -272,29 +305,32 @@ def main():
             (TEXT / "parts" / f"{number}-{k}.txt").write_text(part + "\n", encoding="utf-8")
         chapter = {
             "title": title,
-            "blocks": segments(chapter_blocks, tokens(markdown), ids, excluded),
+            "blocks": marked[i],
             "parts": chapter_parts,
-            "words": [[ids[lemma], form] for lemma, _, form, _, _ in lists[i]],
+            "words": [[ids[w]] + ([form, index(d)] if form else []) for w, form, d in lists.get(i, [])],
         }
         if i in translations:
             chapter["de"] = [t for _, t in translations[i][1]]
         chapters_data.append(chapter)
     (TEXT / "klucz.txt").write_text("\n\n\n".join(whole) + "\n", encoding="utf-8")
 
-    data = {"chapters": chapters_data, "words": [[display, tag, de] for _, display, _, tag, de in words]}
+    data = {"chapters": chapters_data, "words": [words[w] for w in order], "forms": list(descriptions)}
     payload = json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
     base = fonts_css() + BASE.read_text(encoding="utf-8")
     page = TEMPLATE.read_text(encoding="utf-8").replace("__BASE__", base).replace("__DATA__", payload)
     (ROOT / "index.html").write_text(page, encoding="utf-8")
     sheets = grammar(base)
 
-    missing = [w[1] for words in lists.values() for w in words if not w[4]]
+    missing = [words[w][0] for w in order if not words[w][3]]
     print(f"KLUCZ.md, text/ ({len(story)} chapters, "
           f"{sum(len(c['parts']) for c in chapters_data)} parts), "
           f"index.html ({len(page) // 1024} KB), grammar.html ({sheets} sheets); "
           f"{len(missing)} glossary entries missing")
     if missing:
         print("missing in data/glossary.tsv:", ", ".join(missing))
+    unused = [display for lemma, (display, _) in glossary.items() if lemma not in words]
+    if unused:
+        print("in data/glossary.tsv but not in the story:", ", ".join(unused))
     if len(translations) < len(story):
         absent = [f"{i + 1:02d}" for i in range(len(story)) if i not in translations]
         print("no German translation (chapters/de):", ", ".join(absent))
