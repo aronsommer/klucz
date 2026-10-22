@@ -17,6 +17,7 @@ import json
 import re
 import sys
 from collections import Counter
+from urllib.parse import quote
 
 from analyze import EXCLUDED, GLOSSARY, ROOT, chapters, is_word, read_tsv, tokens, tsv
 from lexicon import LABELS, Dictionary, describe, load
@@ -28,12 +29,13 @@ SYNC = ROOT / "data" / "translation_sync.tsv"
 TEMPLATE = ROOT / "tools" / "reader.html"
 GRAMMAR_TEMPLATE = ROOT / "tools" / "grammar.html"
 BASE = ROOT / "tools" / "base.css"
-THEME = ROOT / "tools" / "theme.js"
+BAR = ROOT / "tools" / "bar.js"
 LANG_JS = ROOT / "tools" / "lang.js"
 FOCUS = ROOT / "tools" / "focus.js"
 UI = ROOT / "tools" / "ui.tsv"
 GRAMMAR = ROOT / "grammar"
 FONTS = ROOT / "fonts"
+ICON = FONTS / "key.svg"  # the tab icon of both pages
 PRINT_COLORS = {"#000": "var(--text)", "#8c8c8c": "var(--text-2)", "#bbb": "var(--line)"}
 PART_LIMIT = 4800
 LETTER = re.compile(r"[^\W\d_]")
@@ -376,8 +378,9 @@ def main():
     json_script = lambda value: json.dumps(value, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
     shared = {
         "base": fonts_css() + BASE.read_text(encoding="utf-8"),
+        "icon": "data:image/svg+xml," + quote(ICON.read_text(encoding="utf-8").strip()),
         "ui": json_script(texts),
-        "shared": "".join(p.read_text(encoding="utf-8") for p in (LANG_JS, THEME, FOCUS)),
+        "shared": "".join(p.read_text(encoding="utf-8") for p in (LANG_JS, BAR, FOCUS)),
     }
     page = fill(TEMPLATE, data=json_script(data), **shared)
     (ROOT / "index.html").write_text(page, encoding="utf-8")

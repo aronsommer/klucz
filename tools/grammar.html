@@ -8,6 +8,7 @@
       content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"
     />
     <title data-t="grammar_title">Klucz</title>
+    <link rel="icon" href="__ICON__" />
     <!-- Before the first paint, so a stored theme does not flash. -->
     <script>
       try {
@@ -18,13 +19,18 @@
       __BASE__
     </style>
     <style media="screen">
-      /* A bar with the topic switcher and the way back to the story; below it one grammar sheet. */
+      /* The reading page's two rows: the topics up to the way back, which is where the grammar button
+         is there, and below print, theme, fullscreen and language in their columns there;
+         below it one grammar sheet. */
       .switcher {
-        grid-column: span 5;
+        grid-column: span 7;
+      }
+      #print {
+        grid-column: 3;
       }
       @media (min-width: 641px) {
         .switcher {
-          grid-column: span 4;
+          grid-column: span 6;
         }
         #back {
           grid-column: span 2;
@@ -41,9 +47,10 @@
           overflow-x: auto;
           line-height: 1.45;
         }
+        /* the title as a chapter's on the reading page */
         h1 {
           font-family: var(--read);
-          font-size: 32px;
+          font-size: 34px;
           line-height: 1.15;
           letter-spacing: -0.3px;
           text-wrap: balance;
@@ -185,6 +192,11 @@
             gap: 0;
           }
         }
+        @media (max-width: 480px) {
+          h1 {
+            font-size: 28px;
+          }
+        }
       }
     </style>
     <!-- On paper: the open sheet alone, styled by grammar/style.css as in the PDFs. -->
@@ -193,7 +205,8 @@
     </style>
     <style media="print">
       body::before,
-      .bar {
+      .bar,
+      .top-line {
         display: none;
       }
       main {
@@ -229,21 +242,34 @@
             <span class="icon" aria-hidden="true">chevron_right</span>
           </button>
         </div>
+        <a class="tool" id="back" href="index.html" data-tip="back">
+          <span class="icon" aria-hidden="true">menu_book</span
+          ><span class="label" data-t="book"></span>
+        </a>
         <button class="tool" id="print" data-tip="print_topic">
           <span class="icon" aria-hidden="true">print</span>
         </button>
         <button class="tool" id="theme">
           <span class="icon" aria-hidden="true">dark_mode</span>
         </button>
-        <a class="tool" id="back" href="index.html" data-tip="back">
-          <span class="icon" aria-hidden="true">menu_book</span
-          ><span class="label" data-t="book"></span>
-        </a>
+        <button class="tool" id="fullscreen">
+          <span class="icon" aria-hidden="true">fullscreen</span>
+        </button>
+        <label class="tool lang">
+          <span class="icon" aria-hidden="true">language</span>
+          <select id="lang" data-tip="language">
+            <option value="de">Deutsch</option>
+            <option value="en">English</option>
+          </select>
+        </label>
       </div>
     </header>
 
     <main>
-      <div class="column">__SHEETS__</div>
+      <div class="column">
+        <p class="top-line" data-t="proverb"></p>
+        __SHEETS__
+      </div>
     </main>
 
     <script id="ui" type="application/json">
@@ -256,28 +282,33 @@
       (() => {
         const $ = (id) => document.getElementById(id);
         // the sheets in the page's language (a German one stands in for a missing English one), named in the select
-        const sheets = [...document.querySelectorAll(".page")].filter((s) =>
-          s.dataset.lang.split(" ").includes(lang),
-        );
-        const names = sheets.map((s) => {
-          const small = s.querySelector("h1 small");
-          small.textContent = t("topic", s.dataset.sheet);
-          return (
-            s.dataset.sheet +
-            ". " +
-            s.querySelector("h1").textContent.slice(small.textContent.length)
+        let sheets, names;
+        function setup() {
+          sheets = [...document.querySelectorAll(".page")].filter((s) =>
+            s.dataset.lang.split(" ").includes(lang),
           );
-        });
-        $("topic").replaceChildren(...names.map((n) => new Option(n)));
-        document.documentElement.lang = lang;
+          names = sheets.map((s) => {
+            const small = s.querySelector("h1 small");
+            small.textContent = t("topic", s.dataset.sheet);
+            return (
+              s.dataset.sheet +
+              ". " +
+              s.querySelector("h1").textContent.slice(small.textContent.length)
+            );
+          });
+          $("topic").replaceChildren(...names.map((n) => new Option(n)));
+          document.documentElement.lang = lang;
+        }
+        setup();
         // the open sheet is kept in the hash (replaced, so Back leaves the page) and in localStorage
         const KEY = "klucz-grammar";
         const index = (name) => sheets.findIndex((s) => s.dataset.sheet === name);
         let current = 0;
         function show(i) {
-          sheets[current].hidden = true;
-          sheets[(current = i)].hidden = false;
+          current = i;
+          for (const s of document.querySelectorAll(".page")) s.hidden = s !== sheets[i];
           $("topic").selectedIndex = i;
+          document.title = "Klucz - " + names[i];
           $("prev").disabled = i === 0;
           $("next").disabled = i === sheets.length - 1;
           $("prev").title = i === 0 ? t("first_topic") : names[i - 1];
@@ -294,6 +325,14 @@
           show(i);
         };
         addEventListener("hashchange", () => show(Math.max(fromHash(), 0)));
+        // a new language: the same sheet in it, at the same height
+        addEventListener("langchange", () => {
+          const sheet = sheets[current].dataset.sheet;
+          const y = scrollY;
+          setup();
+          show(Math.max(index(sheet), 0));
+          scrollTo(0, y);
+        });
         $("prev").onclick = () => go(current - 1);
         $("next").onclick = () => go(current + 1);
         $("topic").onchange = (e) => {

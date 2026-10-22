@@ -8,6 +8,7 @@
       content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"
     />
     <title data-t="grammar_title">Klucz</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%2248%20-912%20864%20864%22%3E%3Cpath%20fill%3D%22%23e8715f%22%20d%3D%22M288-240q-100%200-170-70T48-480q0-100%2070-170t170-70q72%200%20131.5%2039T508-576h404v192h-96v144H624v-144H508q-29%2066-88.5%20105T288-240Zm0-144q39.6%200%2067.8-28.2Q384-440.4%20384-480q0-39.6-28.2-67.8Q327.6-576%20288-576q-39.6%200-67.8%2028.2Q192-519.6%20192-480q0%2039.6%2028.2%2067.8Q248.4-384%20288-384Z%22/%3E%3C/svg%3E" />
     <!-- Before the first paint, so a stored theme does not flash. -->
     <script>
       try {
@@ -229,6 +230,27 @@ main {
   cursor: not-allowed;
 }
 
+/* the grey line above the title: the tap hint, on the grammar page a proverb */
+.top-line {
+  font-family: var(--ui);
+  font-size: 15px;
+  color: var(--text-2);
+  margin: 0 0 24px;
+}
+/* the language button: a globe under an invisible select, so the device shows its own menu */
+.lang {
+  position: relative;
+}
+.lang select {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.lang:has(select:focus-visible:not(.by-pointer)) {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
 /* a bar button: fills the columns it spans */
 .tool {
   width: 100%;
@@ -259,13 +281,18 @@ main {
 
     </style>
     <style media="screen">
-      /* A bar with the topic switcher and the way back to the story; below it one grammar sheet. */
+      /* The reading page's two rows: the topics up to the way back, which is where the grammar button
+         is there, and below print, theme, fullscreen and language in their columns there;
+         below it one grammar sheet. */
       .switcher {
-        grid-column: span 5;
+        grid-column: span 7;
+      }
+      #print {
+        grid-column: 3;
       }
       @media (min-width: 641px) {
         .switcher {
-          grid-column: span 4;
+          grid-column: span 6;
         }
         #back {
           grid-column: span 2;
@@ -282,9 +309,10 @@ main {
           overflow-x: auto;
           line-height: 1.45;
         }
+        /* the title as a chapter's on the reading page */
         h1 {
           font-family: var(--read);
-          font-size: 32px;
+          font-size: 34px;
           line-height: 1.15;
           letter-spacing: -0.3px;
           text-wrap: balance;
@@ -424,6 +452,11 @@ main {
           .cols {
             flex-direction: column;
             gap: 0;
+          }
+        }
+        @media (max-width: 480px) {
+          h1 {
+            font-size: 28px;
           }
         }
       }
@@ -569,7 +602,8 @@ b {
     </style>
     <style media="print">
       body::before,
-      .bar {
+      .bar,
+      .top-line {
         display: none;
       }
       main {
@@ -605,21 +639,33 @@ b {
             <span class="icon" aria-hidden="true">chevron_right</span>
           </button>
         </div>
+        <a class="tool" id="back" href="index.html" data-tip="back">
+          <span class="icon" aria-hidden="true">menu_book</span
+          ><span class="label" data-t="book"></span>
+        </a>
         <button class="tool" id="print" data-tip="print_topic">
           <span class="icon" aria-hidden="true">print</span>
         </button>
         <button class="tool" id="theme">
           <span class="icon" aria-hidden="true">dark_mode</span>
         </button>
-        <a class="tool" id="back" href="index.html" data-tip="back">
-          <span class="icon" aria-hidden="true">menu_book</span
-          ><span class="label" data-t="book"></span>
-        </a>
+        <button class="tool" id="fullscreen">
+          <span class="icon" aria-hidden="true">fullscreen</span>
+        </button>
+        <label class="tool lang">
+          <span class="icon" aria-hidden="true">language</span>
+          <select id="lang" data-tip="language">
+            <option value="de">Deutsch</option>
+            <option value="en">English</option>
+          </select>
+        </label>
       </div>
     </header>
 
     <main>
-      <div class="column"><style>@scope ([data-sheet="1"][data-lang="de"]) {
+      <div class="column">
+        <p class="top-line" data-t="proverb"></p>
+        <style>@scope ([data-sheet="1"][data-lang="de"]) {
       :is(th, td):first-child {
         width: 90px;
       }
@@ -6694,11 +6740,12 @@ b {
           </tr>
         </table>
       </div>
-    </div></div>
+    </div>
+      </div>
     </main>
 
     <script id="ui" type="application/json">
-      {"de":{"language":"Sprache","theme_light":"Helles Design","theme_dark":"Dunkles Design","prev_chapter":"Vorheriges Kapitel","next_chapter":"Nächstes Kapitel","choose_chapter":"Kapitel wählen","first_chapter":"Das ist das erste Kapitel","last_chapter":"Das ist das letzte Kapitel","chapter_of":"Kapitel {0} von {1}","continue":"Weiterlesen: Kapitel {0}","to_words":"Zu den neuen Wörtern","words":"Wörter","open_grammar":"Grammatik öffnen","grammar":"Grammatik","read_title":"Kapitel vorlesen","stop_title":"Vorlesen beenden","copy_chapter":"Kapitel kopieren","whole_chapter":"Ganzes Kapitel","part":"Teil {0}","characters":"{0} Zeichen","copy_blocked":"Kopieren ist in diesem Browser blockiert.","print_book":"Buch drucken","fullscreen":"Vollbild","fullscreen_exit":"Vollbild beenden","lang_code":"DE","read_translation":"Auf Deutsch lesen","read_polish":"Auf Polnisch lesen","tap_hint":"Tippe auf ein polnisches Wort, um die Übersetzung zu sehen.","translation":"Übersetzung","close":"Schließen","pronounce":"Aussprechen","in_text":"im Text: {0}","new_words":"Neue Wörter","words_hint":"Alle Wörter, die in diesem Kapitel zum ersten Mal vorkommen, alphabetisch in der Grundform.<br />m/f/n: Genus · Gen.: Genitiv Sg. · Pl.: Nominativ Pl. · uv./v.: unvollendeter/vollendeter Aspekt, in Klammern der Aspektpartner · bei Verben: 1. und 2. Person Sg. · bei Präpositionen: der Kasus danach","about":"Diese Geschichte enthält die 3000 häufigsten Wörter des gesprochenen Polnisch.<br />Sie beginnt mit ganz einfachen Sätzen und wird nach und nach schwieriger.<br />Geschrieben von Aron Sommer mit <a href=\"https://claude.ai\">Claude<\/a>, 2026","grammar_title":"Klucz – Grammatik","prev_topic":"Vorheriges Thema","next_topic":"Nächstes Thema","choose_topic":"Thema wählen","first_topic":"Das ist das erste Thema","last_topic":"Das ist das letzte Thema","topic":"Thema {0}","print_topic":"Thema drucken","back":"Zurück zum Buch","book":"Buch"},"en":{"language":"Language","theme_light":"Light theme","theme_dark":"Dark theme","prev_chapter":"Previous chapter","next_chapter":"Next chapter","choose_chapter":"Choose a chapter","first_chapter":"This is the first chapter","last_chapter":"This is the last chapter","chapter_of":"Chapter {0} of {1}","continue":"Continue reading: chapter {0}","to_words":"To the new words","words":"Words","open_grammar":"Open the grammar","grammar":"Grammar","read_title":"Read the chapter aloud","stop_title":"Stop reading aloud","copy_chapter":"Copy the chapter","whole_chapter":"Whole chapter","part":"Part {0}","characters":"{0} characters","copy_blocked":"Copying is blocked in this browser.","print_book":"Print the book","fullscreen":"Full screen","fullscreen_exit":"Exit full screen","lang_code":"EN","read_translation":"Read in English","read_polish":"Read in Polish","tap_hint":"Tap a Polish word to see its translation.","translation":"Translation","close":"Close","pronounce":"Pronounce","in_text":"in the text: {0}","new_words":"New words","words_hint":"Every word that occurs in this chapter for the first time, alphabetically, in its base form.<br />m/f/n: gender · Gen.: genitive sg. · Pl.: nominative pl. · impf./pf.: imperfective/perfective aspect, the aspect partner in brackets · verbs: 1st and 2nd person sg. · prepositions: the case after them","about":"This story contains the 3000 most frequent words of spoken Polish.<br />It begins with very simple sentences and gets harder step by step.<br />Written by Aron Sommer with <a href=\"https://claude.ai\">Claude<\/a>, 2026","grammar_title":"Klucz – Grammar","prev_topic":"Previous topic","next_topic":"Next topic","choose_topic":"Choose a topic","first_topic":"This is the first topic","last_topic":"This is the last topic","topic":"Topic {0}","print_topic":"Print the topic","back":"Back to the book","book":"Book"}}
+      {"de":{"language":"Sprache","theme_light":"Helles Design","theme_dark":"Dunkles Design","prev_chapter":"Vorheriges Kapitel","next_chapter":"Nächstes Kapitel","choose_chapter":"Kapitel wählen","first_chapter":"Das ist das erste Kapitel","last_chapter":"Das ist das letzte Kapitel","chapter_of":"Kapitel {0} von {1}","continue":"Weiterlesen: Kapitel {0}","to_words":"Zu den neuen Wörtern","words":"Wörter","open_grammar":"Grammatik öffnen","grammar":"Grammatik","read_title":"Kapitel vorlesen","stop_title":"Vorlesen beenden","copy_chapter":"Kapitel kopieren","whole_chapter":"Ganzes Kapitel","part":"Teil {0}","characters":"{0} Zeichen","copy_blocked":"Kopieren ist in diesem Browser blockiert.","print_book":"Buch drucken","fullscreen":"Vollbild","fullscreen_exit":"Vollbild beenden","lang_code":"DE","read_translation":"Auf Deutsch lesen","read_polish":"Auf Polnisch lesen","tap_hint":"Tippe auf ein polnisches Wort, um die Übersetzung zu sehen.","proverb":"<span lang=\"pl\">Nie od razu Kraków zbudowano.<\/span> – Krakau wurde nicht an einem Tag erbaut.","translation":"Übersetzung","close":"Schließen","pronounce":"Aussprechen","in_text":"im Text: {0}","new_words":"Neue Wörter","words_hint":"Alle Wörter, die in diesem Kapitel zum ersten Mal vorkommen, alphabetisch in der Grundform.<br />m/f/n: Genus · Gen.: Genitiv Sg. · Pl.: Nominativ Pl. · uv./v.: unvollendeter/vollendeter Aspekt, in Klammern der Aspektpartner · bei Verben: 1. und 2. Person Sg. · bei Präpositionen: der Kasus danach","about":"Diese Geschichte enthält die 3000 häufigsten Wörter des gesprochenen Polnisch.<br />Sie beginnt mit ganz einfachen Sätzen und wird nach und nach schwieriger.<br />Geschrieben von Aron Sommer mit <a href=\"https://claude.ai\">Claude<\/a>, 2026","grammar_title":"Klucz - Grammatik","prev_topic":"Vorheriges Thema","next_topic":"Nächstes Thema","choose_topic":"Thema wählen","first_topic":"Das ist das erste Thema","last_topic":"Das ist das letzte Thema","topic":"Thema {0}","print_topic":"Thema drucken","back":"Zurück zum Buch","book":"Buch"},"en":{"language":"Language","theme_light":"Light theme","theme_dark":"Dark theme","prev_chapter":"Previous chapter","next_chapter":"Next chapter","choose_chapter":"Choose a chapter","first_chapter":"This is the first chapter","last_chapter":"This is the last chapter","chapter_of":"Chapter {0} of {1}","continue":"Continue reading: chapter {0}","to_words":"To the new words","words":"Words","open_grammar":"Open the grammar","grammar":"Grammar","read_title":"Read the chapter aloud","stop_title":"Stop reading aloud","copy_chapter":"Copy the chapter","whole_chapter":"Whole chapter","part":"Part {0}","characters":"{0} characters","copy_blocked":"Copying is blocked in this browser.","print_book":"Print the book","fullscreen":"Full screen","fullscreen_exit":"Exit full screen","lang_code":"EN","read_translation":"Read in English","read_polish":"Read in Polish","tap_hint":"Tap a Polish word to see its translation.","proverb":"<span lang=\"pl\">Nie od razu Kraków zbudowano.<\/span> – Kraków wasn't built in a day.","translation":"Translation","close":"Close","pronounce":"Pronounce","in_text":"in the text: {0}","new_words":"New words","words_hint":"Every word that occurs in this chapter for the first time, alphabetically, in its base form.<br />m/f/n: gender · Gen.: genitive sg. · Pl.: nominative pl. · impf./pf.: imperfective/perfective aspect, the aspect partner in brackets · verbs: 1st and 2nd person sg. · prepositions: the case after them","about":"This story contains the 3000 most frequent words of spoken Polish.<br />It begins with very simple sentences and gets harder step by step.<br />Written by Aron Sommer with <a href=\"https://claude.ai\">Claude<\/a>, 2026","grammar_title":"Klucz - Grammar","prev_topic":"Previous topic","next_topic":"Next topic","choose_topic":"Choose a topic","first_topic":"This is the first topic","last_topic":"This is the last topic","topic":"Topic {0}","print_topic":"Print the topic","back":"Back to the book","book":"Book"}}
     </script>
     <script>
       // The language of the page's own texts, kept for both pages; without a stored one, the browser's (German, else English).
@@ -6725,6 +6772,8 @@ function setLang(next) {
   dispatchEvent(new Event("langchange"));
 }
 applyLang();
+// The bar buttons both pages share: theme, fullscreen and language.
+
 // The theme button. A stored theme (set in the head) wins over the system's; the button shows the theme it switches to.
 {
   const button = document.getElementById("theme");
@@ -6749,6 +6798,34 @@ applyLang();
   addEventListener("langchange", update);
   update();
 }
+
+// The fullscreen button, hidden where a page cannot go fullscreen (iPhone).
+{
+  const button = document.getElementById("fullscreen");
+  button.hidden = !document.fullscreenEnabled;
+  button.onclick = () =>
+    document.fullscreenElement
+      ? document.exitFullscreen()
+      : document.documentElement.requestFullscreen();
+  const update = () => {
+    const on = !!document.fullscreenElement;
+    button.firstElementChild.textContent = on ? "fullscreen_exit" : "fullscreen";
+    button.title = button.ariaLabel = t(on ? "fullscreen_exit" : "fullscreen");
+  };
+  document.addEventListener("fullscreenchange", update);
+  addEventListener("langchange", update);
+  update();
+}
+
+// The language button.
+{
+  const select = document.getElementById("lang");
+  select.value = lang;
+  select.onchange = () => {
+    select.blur();
+    setLang(select.value);
+  };
+}
 // Chrome keeps the focus ring on a select picked with the mouse, even when the same option is picked
 // (no "change", so no blur); the ring is meant for the keyboard, so a select used with the pointer hides it.
 addEventListener("pointerdown", (e) => e.target.closest("select")?.classList.add("by-pointer"));
@@ -6760,28 +6837,33 @@ addEventListener("focusout", (e) => e.target.classList.remove("by-pointer"));
       (() => {
         const $ = (id) => document.getElementById(id);
         // the sheets in the page's language (a German one stands in for a missing English one), named in the select
-        const sheets = [...document.querySelectorAll(".page")].filter((s) =>
-          s.dataset.lang.split(" ").includes(lang),
-        );
-        const names = sheets.map((s) => {
-          const small = s.querySelector("h1 small");
-          small.textContent = t("topic", s.dataset.sheet);
-          return (
-            s.dataset.sheet +
-            ". " +
-            s.querySelector("h1").textContent.slice(small.textContent.length)
+        let sheets, names;
+        function setup() {
+          sheets = [...document.querySelectorAll(".page")].filter((s) =>
+            s.dataset.lang.split(" ").includes(lang),
           );
-        });
-        $("topic").replaceChildren(...names.map((n) => new Option(n)));
-        document.documentElement.lang = lang;
+          names = sheets.map((s) => {
+            const small = s.querySelector("h1 small");
+            small.textContent = t("topic", s.dataset.sheet);
+            return (
+              s.dataset.sheet +
+              ". " +
+              s.querySelector("h1").textContent.slice(small.textContent.length)
+            );
+          });
+          $("topic").replaceChildren(...names.map((n) => new Option(n)));
+          document.documentElement.lang = lang;
+        }
+        setup();
         // the open sheet is kept in the hash (replaced, so Back leaves the page) and in localStorage
         const KEY = "klucz-grammar";
         const index = (name) => sheets.findIndex((s) => s.dataset.sheet === name);
         let current = 0;
         function show(i) {
-          sheets[current].hidden = true;
-          sheets[(current = i)].hidden = false;
+          current = i;
+          for (const s of document.querySelectorAll(".page")) s.hidden = s !== sheets[i];
           $("topic").selectedIndex = i;
+          document.title = "Klucz - " + names[i];
           $("prev").disabled = i === 0;
           $("next").disabled = i === sheets.length - 1;
           $("prev").title = i === 0 ? t("first_topic") : names[i - 1];
@@ -6798,6 +6880,14 @@ addEventListener("focusout", (e) => e.target.classList.remove("by-pointer"));
           show(i);
         };
         addEventListener("hashchange", () => show(Math.max(fromHash(), 0)));
+        // a new language: the same sheet in it, at the same height
+        addEventListener("langchange", () => {
+          const sheet = sheets[current].dataset.sheet;
+          const y = scrollY;
+          setup();
+          show(Math.max(index(sheet), 0));
+          scrollTo(0, y);
+        });
         $("prev").onclick = () => go(current - 1);
         $("next").onclick = () => go(current + 1);
         $("topic").onchange = (e) => {

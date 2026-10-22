@@ -7,7 +7,7 @@ _Klucz_ („Der Schlüssel“) ist das Tagebuch von Jonas, einem Deutschen, der 
 Die Idee dahinter: **Wer diesen Text versteht, versteht die 3000 häufigsten Wörter des gesprochenen Polnisch.** Diese Wörter decken gut 90 % dessen ab, was im Alltag gesagt wird. Jedes davon steht mindestens einmal im Text, und zwar nicht als Liste, sondern eingebettet in eine echte Handlung.
 
 - **Lesen:** [index.html](index.html) – Leseseite: Wort antippen für die Übersetzung (🔊 spricht es mit der polnischen Stimme des Geräts aus), 🌐 wählt die Sprache der Seite (Deutsch oder English, gespeichert für Buch und Grammatik), der Schalter „PL | DE“ (bzw. „PL | EN“) oben rechts zeigt das ganze Kapitel auf Polnisch („PL“) oder in der Übersetzung („DE“ bzw. „EN“), ohne dass der Text springt, 🔊 liest das Kapitel ab dem Absatz oben auf dem Bildschirm vor (⏹ hält an) und hebt den gelesenen Absatz hervor, alphabetische Wortliste je Kapitel (oben „↓ Wörter“ springt hin), Kopiermenü für das ganze Kapitel und seine Teile, Druckknopf für das ganze Buch (im Druckdialog auch als PDF speicherbar), Vollbild (nicht auf dem iPhone) und Hell/Dunkel-Umschalter (die Wahl bleibt gespeichert)
-- **Grammatik:** [grammar.html](grammar.html) – die Grammatikblätter im Aussehen der Leseseite, eines nach dem anderen zum Durchblättern wie die Kapitel; erreichbar über den Knopf 🎓 oben auf der Leseseite, zurück geht es mit 📖; 🖨 druckt das offene Thema als A4-Seite wie in den PDFs. Die Quelle sind die Blätter in [grammar/](grammar/), Regeln dafür in [grammar/README.md](grammar/README.md). `grammar/pdf.sh <de|en> <Ordner>` macht aus denselben Blättern A4-PDFs in diesem Ordner (im Repository liegen keine PDFs)
+- **Grammatik:** [grammar.html](grammar.html) – die Grammatikblätter im Aussehen der Leseseite, eines nach dem anderen zum Durchblättern wie die Kapitel; erreichbar über den Knopf 🎓 oben auf der Leseseite, zurück geht es mit 📖; 🖨 druckt das offene Thema als A4-Seite wie in den PDFs. Die Leiste ist so aufgebaut wie auf der Leseseite, jeder Knopf an derselben Stelle (Hell/Dunkel, Vollbild und 🌐 wie dort). Über jedem Blatt steht, wo im Buch der Hinweis zum Antippen steht, ein polnisches Sprichwort mit Übersetzung. Die Quelle sind die Blätter in [grammar/](grammar/), Regeln dafür in [grammar/README.md](grammar/README.md). `grammar/pdf.sh <de|en> <Ordner>` macht aus denselben Blättern A4-PDFs in diesem Ordner (im Repository liegen keine PDFs)
 - **Buch:** [KLUCZ.md](KLUCZ.md) – das ganze Buch mit einem Glossar nach jedem Kapitel
 - **Klartext:** [text/](text/) – jedes Kapitel ohne Formatierung, auch in Teilen für Google Translate
 - **Messung:** [REPORT.md](REPORT.md) – Abdeckung, neue Wörter pro Kapitel, grammatische Formen
@@ -225,7 +225,7 @@ klucz/
 ├── grammar/                 Quelle: Grammatikblätter (je eine A4-Seite), style.css fürs Drucken, pdf.sh, README.md
 ├── grammar/en/              Quelle: dieselben Blätter auf Englisch
 ├── .nojekyll                leer: GitHub Pages liefert die Dateien unverändert aus
-├── fonts/                   Quelle: Schriften und Symbole, werden in index.html und grammar.html eingebettet
+├── fonts/                   Quelle: Schriften, Symbole und key.svg (Symbol im Browser-Tab), werden in index.html und grammar.html eingebettet
 ├── KLUCZ.md                 erzeugt: Gesamtbuch mit Glossaren
 ├── text/01.txt … 30.txt     erzeugt: Klartext je Kapitel, klucz.txt: das ganze Buch
 ├── text/parts/07-1.txt …    erzeugt: Klartext in Teilen bis 4800 Zeichen
@@ -246,8 +246,8 @@ klucz/
     ├── reader.html          Vorlage der Leseseite (Aussehen, Bedienung)
     ├── grammar.html         Vorlage der Grammatikseite
     ├── ui.tsv               Texte der Oberfläche beider Seiten, auf Deutsch und Englisch
-    ├── lang.js              Sprache der Seite (🌐), für beide Seiten
-    ├── theme.js             Hell/Dunkel-Umschalter, für beide Seiten
+    ├── lang.js              Sprache der Seite und ihre Texte, für beide Seiten
+    ├── bar.js               Knöpfe beider Leisten: Hell/Dunkel, Vollbild, Sprache (🌐)
     ├── focus.js             kein Fokusrahmen an einer mit der Maus bedienten Auswahl
     ├── lexicon.py           Wörterbuchauszüge und daraus die Einträge der Wortliste
     ├── analyze.py           misst die Geschichte: report, missing

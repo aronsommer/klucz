@@ -8,6 +8,7 @@
       content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"
     />
     <title>Klucz</title>
+    <link rel="icon" href="__ICON__" />
     <!-- Before the first paint, so a stored theme does not flash. -->
     <script>
       try {
@@ -63,20 +64,6 @@
         background: var(--text);
         color: var(--tonal);
         cursor: default;
-      }
-      /* the language button: a globe under an invisible select, so the device shows its own menu */
-      .lang {
-        position: relative;
-      }
-      .lang select {
-        position: absolute;
-        inset: 0;
-        opacity: 0;
-        cursor: pointer;
-      }
-      .lang:has(select:focus-visible:not(.by-pointer)) {
-        outline: 2px solid var(--accent);
-        outline-offset: 2px;
       }
       /* the stop icon while reading aloud */
       .filled {
@@ -134,13 +121,6 @@
       .copy-menu small {
         font-size: 13px;
         color: var(--text-2);
-      }
-
-      .tap-hint {
-        font-family: var(--ui);
-        font-size: 15px;
-        color: var(--text-2);
-        margin: 0 0 24px;
       }
 
       article {
@@ -434,7 +414,7 @@
         .bar,
         .pop,
         .toast,
-        .tap-hint {
+        .top-line {
           display: none !important;
         }
         main {
@@ -519,7 +499,7 @@
 
     <main>
       <div class="column">
-        <p class="tap-hint" data-t="tap_hint"></p>
+        <p class="top-line" data-t="tap_hint"></p>
         <article id="text"></article>
         <section>
           <h2 id="words-title"></h2>
@@ -662,7 +642,7 @@
           return f;
         }
         const wordsTitle = (i) => t("new_words") + " · " + CH[i].words.length;
-        const pageTitle = () => "Klucz · " + (ch + 1) + ". " + name(ch);
+        const pageTitle = () => "Klucz - " + (ch + 1) + ". " + name(ch);
 
         function render() {
           $("text").replaceChildren(text(ch));
@@ -956,31 +936,10 @@
           closePop();
           translate(true);
         };
-        // hidden where a page cannot go fullscreen (iPhone)
-        $("fullscreen").hidden = !document.fullscreenEnabled;
-        $("fullscreen").onclick = () =>
-          document.fullscreenElement
-            ? document.exitFullscreen()
-            : document.documentElement.requestFullscreen();
-        const fullscreenButton = () => {
-          const on = !!document.fullscreenElement;
-          $("fullscreen").firstElementChild.textContent = on ? "fullscreen_exit" : "fullscreen";
-          $("fullscreen").title = $("fullscreen").ariaLabel = t(
-            on ? "fullscreen_exit" : "fullscreen",
-          );
-        };
-        document.addEventListener("fullscreenchange", fullscreenButton);
-        fullscreenButton();
-        $("lang").value = lang;
-        $("lang").onchange = (e) => {
-          e.target.blur();
-          setLang(e.target.value);
-        };
         // a new language: every text of the page in it, at the same reading position
         addEventListener("langchange", () => {
           closePop();
           openMenu(false);
-          fullscreenButton();
           if (reading)
             read(null); // its block is redrawn
           else readButton(false);
