@@ -31,15 +31,48 @@
         clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 6px), 0 100%);
       }
       /* the bar: where to go on top (chapters | words, grammar), what to do with the text below
-         (read aloud, copy, print | theme, fullscreen, DE/PL); the column spans fill both rows */
+         (read aloud, copy, print | theme, fullscreen, language, translation); the column spans fill both rows */
       .switcher {
         grid-column: span 5;
       }
       #to-words {
         grid-column: span 2;
       }
-      #read {
-        grid-column: span 3;
+      /* the translation switch: Polish and the chosen language, the one shown cut out of a solid fill; a tap switches */
+      #translate {
+        grid-column: span 2;
+        padding: 3px;
+        gap: 2px;
+      }
+      #translate span {
+        flex: 1;
+        align-self: stretch;
+        display: grid;
+        place-items: center;
+        border-radius: 6px;
+        color: var(--text-2);
+      }
+      #translate .on {
+        background: var(--text);
+        color: var(--tonal);
+      }
+      /* the language button: a globe under an invisible select, so the device shows its own menu */
+      .lang {
+        position: relative;
+      }
+      .lang select {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        cursor: pointer;
+      }
+      .lang:has(select:focus-visible) {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+      }
+      /* the stop icon while reading aloud */
+      .filled {
+        font-variation-settings: "FILL" 1;
       }
       @media (min-width: 641px) {
         .switcher {
@@ -49,9 +82,9 @@
           grid-column: span 2;
         }
       }
-      /* without fullscreen (iPhone) read aloud takes its column */
-      .bar-inner:has(#fullscreen[hidden]) #read {
-        grid-column: span 4;
+      /* without fullscreen (iPhone) the translation button takes its column */
+      .bar-inner:has(#fullscreen[hidden]) #translate {
+        grid-column: span 3;
       }
       /* the arrow glyph has 3px of empty space on its left, so both ends look even */
       #to-words .icon {
@@ -156,11 +189,11 @@
       .pair > * {
         grid-area: 1 / 1;
       }
-      .pair > .de,
-      .german .pair > .pl {
+      .pair > .tr,
+      .translated .pair > .pl {
         visibility: hidden;
       }
-      .german .pair > .de {
+      .translated .pair > .tr {
         visibility: visible;
       }
       .w {
@@ -417,10 +450,10 @@
         #book > div + div {
           break-before: page;
         }
-        .pair > .de {
+        .pair > .tr {
           display: none;
         }
-        .german .pair > .pl {
+        .translated .pair > .pl {
           visibility: visible;
         }
       }
@@ -430,93 +463,82 @@
     <header class="bar">
       <div class="bar-inner">
         <div class="switcher">
-          <button class="arrow" id="prev" aria-label="Vorheriges Kapitel">
+          <button class="arrow" id="prev" data-tip="prev_chapter">
             <span class="icon" aria-hidden="true">chevron_left</span>
           </button>
-          <select id="chapter" aria-label="Kapitel wählen" title="Kapitel wählen"></select>
-          <button class="arrow" id="next" aria-label="Nächstes Kapitel">
+          <select id="chapter" data-tip="choose_chapter"></select>
+          <button class="arrow" id="next" data-tip="next_chapter">
             <span class="icon" aria-hidden="true">chevron_right</span>
           </button>
         </div>
-        <button class="tool" id="to-words" title="Zu den neuen Wörtern">
-          <span class="icon" aria-hidden="true">arrow_downward</span>Wörter
+        <button class="tool" id="to-words" data-tip="to_words">
+          <span class="icon" aria-hidden="true">arrow_downward</span><span data-t="words"></span>
         </button>
-        <a
-          class="tool"
-          id="grammar"
-          href="grammar.html"
-          aria-label="Grammatik öffnen"
-          title="Grammatik öffnen"
-        >
-          <span class="icon" aria-hidden="true">school</span><span class="label">Grammatik</span>
+        <a class="tool" id="grammar" href="grammar.html" data-tip="open_grammar">
+          <span class="icon" aria-hidden="true">school</span
+          ><span class="label" data-t="grammar"></span>
         </a>
-        <button class="tool" id="read" title="Kapitel vorlesen">
-          <span class="icon" aria-hidden="true">play_arrow</span>Vorlesen
-        </button>
+        <button class="tool" id="read"></button>
         <div class="copy">
-          <button
-            class="tool"
-            id="copy"
-            aria-label="Kapitel kopieren"
-            title="Kapitel kopieren"
-            aria-expanded="false"
-          >
+          <button class="tool" id="copy" data-tip="copy_chapter" aria-expanded="false">
             <span class="icon" aria-hidden="true">content_copy</span>
           </button>
           <div class="copy-menu" id="copy-menu" hidden></div>
         </div>
-        <button class="tool" id="print" aria-label="Buch drucken" title="Buch drucken">
+        <button class="tool" id="print" data-tip="print_book">
           <span class="icon" aria-hidden="true">print</span>
         </button>
         <button class="tool" id="theme">
           <span class="icon" aria-hidden="true">dark_mode</span>
         </button>
-        <button class="tool" id="fullscreen" aria-label="Vollbild" title="Vollbild">
+        <button class="tool" id="fullscreen">
           <span class="icon" aria-hidden="true">fullscreen</span>
         </button>
-        <button class="tool" id="german" title="Auf Deutsch lesen">DE</button>
+        <label class="tool lang">
+          <span class="icon" aria-hidden="true">language</span>
+          <select id="lang" data-tip="language">
+            <option value="de">Deutsch</option>
+            <option value="en">English</option>
+          </select>
+        </label>
+        <button class="tool" id="translate"></button>
       </div>
       <div class="toast" id="toast" hidden role="status"></div>
     </header>
 
     <main>
       <div class="column">
-        <p class="tap-hint">Tippe auf ein polnisches Wort, um die Übersetzung zu sehen.</p>
+        <p class="tap-hint" data-t="tap_hint"></p>
         <article id="text"></article>
         <section>
-          <h2 id="words-title">Neue Wörter</h2>
-          <p class="hint">
-            Alle Wörter, die in diesem Kapitel zum ersten Mal vorkommen, alphabetisch in der
-            Grundform.<br />
-            m/f/n: Genus · Gen.: Genitiv Sg. · Pl.: Nominativ Pl. · uv./v.:
-            unvollendeter/vollendeter Aspekt, in Klammern der Aspektpartner · bei Verben: 1. und 2.
-            Person Sg. · bei Präpositionen: der Kasus danach
-          </p>
+          <h2 id="words-title"></h2>
+          <p class="hint" data-t="words_hint"></p>
           <dl class="words" id="words"></dl>
         </section>
         <!-- The deploy workflow replaces this with the UTC time of the deploy. -->
         <footer>
-          Diese Geschichte enthält die 3000 häufigsten Wörter des gesprochenen Polnisch.<br />
-          Sie beginnt mit ganz einfachen Sätzen und wird nach und nach schwieriger.<br />
-          Geschrieben von Aron Sommer mit <a href="https://claude.ai">Claude</a>, 2026<br />
+          <span data-t="about"></span><br />
           <a href="https://github.com/aronsommer/klucz">GitHub</a> · Version __BUILD_TIMESTAMP__
         </footer>
       </div>
     </main>
     <div id="book"></div>
 
-    <div class="pop" id="pop" hidden role="dialog" aria-label="Übersetzung"></div>
+    <div class="pop" id="pop" hidden role="dialog"></div>
     <textarea class="fallback" id="fallback" tabindex="-1" aria-hidden="true" readonly></textarea>
 
     <script id="data" type="application/json">
       __DATA__
     </script>
+    <script id="ui" type="application/json">
+      __UI__
+    </script>
     <script>
-      __THEME__;
+      __SHARED__;
     </script>
     <script>
       (() => {
-        // W: [headword, part of speech, grammar, German]; F: descriptions of word forms, e.g. "Genitiv Pl."
+        // W: [headword, {lang: [part of speech, grammar, meaning]}]; F: {lang: descriptions of word forms, e.g. "Genitiv Pl."}
         const {
           chapters: CH,
           words: W,
@@ -557,25 +579,26 @@
           }
           return e;
         }
-        // the text segments, and the German translation de (if any) in the same place
-        function both(e, segs, de) {
-          if (de == null) return fill(e, segs);
+        // the text segments, and their translation tr (if any) in the same place
+        function both(e, segs, tr) {
+          if (tr == null) return fill(e, segs);
           const pl = fill(el("span", "pl"), segs),
-            german = el("span", "de", de),
+            translated = el("span", "tr", tr),
             pair = el("span", "pair");
-          german.lang = "de";
-          pair.append(pl, german);
+          translated.lang = lang;
+          pair.append(pl, translated);
           e.append(pair);
           return e;
         }
-        const line = (kind, segs, de) => both(el("p", kind === "date" ? "date" : ""), segs, de);
+        const line = (kind, segs, tr) => both(el("p", kind === "date" ? "date" : ""), segs, tr);
 
         // chapter i's text blocks, for an article
         function text(i) {
           const f = document.createDocumentFragment();
           let quote = null;
+          const translation = CH[i].tr[lang];
           for (const [n, [kind, segs]] of CH[i].blocks.entries()) {
-            const de = CH[i].de?.[n];
+            const tr = translation?.[n];
             if (kind !== "quote") quote = null;
             if (kind === "title") {
               const h = el("h1"),
@@ -586,21 +609,21 @@
                 both(
                   small,
                   [`Rozdział ${of[0]} z ${of[1]}`],
-                  CH[i].de && `Kapitel ${of[0]} von ${of[1]}`,
+                  translation && t("chapter_of", ...of),
                 ),
               );
               // the name only: "Rozdział N. " is skipped, the small line above shows it
               const start = segs.findIndex((s) => typeof s === "string" && /\d+\.\s*$/.test(s)) + 1;
-              f.append(both(h, segs.slice(start), de?.replace(/^\S+ \d+\.\s*/, "")));
+              f.append(both(h, segs.slice(start), tr?.replace(/^\S+ \d+\.\s*/, "")));
             } else if (kind === "break") {
               const b = el("div", "break", "* * *");
               b.setAttribute("role", "separator");
               f.append(b);
             } else if (kind === "quote") {
               if (!quote) f.append((quote = el("blockquote")));
-              quote.append(line(kind, segs, de));
+              quote.append(line(kind, segs, tr));
             } else {
-              f.append(line(kind, segs, de));
+              f.append(line(kind, segs, tr));
             }
           }
           return f;
@@ -609,18 +632,25 @@
         function words(i) {
           const f = document.createDocumentFragment();
           for (const [id, form, d] of CH[i].words) {
-            const [word, pos, grammar, de] = W[id];
+            const [
+              word,
+              {
+                [lang]: [pos, grammar, meaning],
+              },
+            ] = W[id];
             const dt = el("dt", "", word);
             if (pos) dt.append(el("i", "", pos));
             if (grammar) dt.append(el("small", "", grammar));
-            const dd = el("dd", "", de);
+            const dd = el("dd", "", meaning);
             if (form)
-              dd.append(el("small", "", "im Text: " + form + (F[d] ? " (" + F[d] + ")" : "")));
+              dd.append(
+                el("small", "", t("in_text", form + (F[lang][d] ? " (" + F[lang][d] + ")" : ""))),
+              );
             f.append(dt, dd);
           }
           return f;
         }
-        const wordsTitle = (i) => "Neue Wörter · " + CH[i].words.length;
+        const wordsTitle = (i) => t("new_words") + " · " + CH[i].words.length;
         const pageTitle = () => "Klucz · " + (ch + 1) + ". " + name(ch);
 
         function render() {
@@ -631,13 +661,10 @@
           $("chapter").value = ch;
           $("prev").disabled = ch === 0;
           $("next").disabled = ch === CH.length - 1;
-          $("german").hidden = !CH[ch].de;
-          $("prev").title =
-            ch === 0 ? "Das ist das erste Kapitel" : "Rozdział " + ch + ": " + name(ch - 1);
+          translate(translated);
+          $("prev").title = ch === 0 ? t("first_chapter") : "Rozdział " + ch + ": " + name(ch - 1);
           $("next").title =
-            ch === CH.length - 1
-              ? "Das ist das letzte Kapitel"
-              : "Rozdział " + (ch + 2) + ": " + name(ch + 1);
+            ch === CH.length - 1 ? t("last_chapter") : "Rozdział " + (ch + 2) + ": " + name(ch + 1);
           document.title = pageTitle();
         }
 
@@ -665,11 +692,15 @@
             p && b ? b.getBoundingClientRect().top + window.scrollY - barBottom() - 16 : 0,
           );
         }
-        function save() {
+        function topBlock() {
           const blocks = $("text").children,
             top = barBottom() + 24;
           let p = 0;
           while (p + 1 < blocks.length && blocks[p + 1].getBoundingClientRect().top <= top) p++;
+          return p;
+        }
+        function save() {
+          const p = topBlock();
           try {
             history.replaceState(null, "", "#" + (ch + 1) + (p ? "/" + p : ""));
           } catch {}
@@ -692,29 +723,33 @@
           openMenu(false);
           active = w;
           w.classList.add("active");
-          const [word, pos, grammar, de] = W[w.dataset.i];
+          const [
+            word,
+            {
+              [lang]: [pos, grammar, meaning],
+            },
+          ] = W[w.dataset.i];
           const pop = $("pop");
           pop.textContent = "";
+          pop.ariaLabel = t("translation");
           const close = el("button", "close"); // shown only on the bottom sheet
-          close.title = "Schließen";
-          close.setAttribute("aria-label", "Schließen");
+          close.title = close.ariaLabel = t("close");
           close.append(icon("close"));
           close.onclick = closePop;
           pop.append(close);
           if (w.dataset.f != null) {
             const form = el("div", "form");
             form.append(el("span", "", w.textContent));
-            if (F[w.dataset.f]) form.append(" · " + F[w.dataset.f]);
+            if (F[lang][w.dataset.f]) form.append(" · " + F[lang][w.dataset.f]);
             pop.append(form);
           }
           pop.append(el("b", "", word));
           if (pos) pop.append(el("i", "", pos));
           if (grammar) pop.append(el("div", "grammar", grammar));
-          pop.append(el("p", "", de));
+          pop.append(el("p", "", meaning));
           if (window.speechSynthesis) {
             const say = el("button", "say");
-            say.title = "Aussprechen";
-            say.setAttribute("aria-label", "Aussprechen");
+            say.title = say.ariaLabel = t("pronounce");
             say.append(icon("volume_up"));
             say.onclick = () => {
               read(null);
@@ -754,8 +789,7 @@
         // read the chapter aloud block by block from p, slower, marking the one being read; no p stops
         function read(p) {
           document.querySelector(".reading")?.classList.remove("reading");
-          $("read").replaceChildren(icon(p ? "stop" : "play_arrow"), p ? "Stopp" : "Vorlesen");
-          $("read").title = p ? "Vorlesen beenden" : "Kapitel vorlesen";
+          readButton(!!p);
           if (!p) {
             reading = null;
             return speechSynthesis.cancel();
@@ -770,6 +804,13 @@
         }
         // starts at the first block starting in the upper half below the bar; failing that (a long
         // block above it), at the block reaching below the bar
+        const readButton = (on) => {
+          const i = icon(on ? "stop" : "volume_up");
+          i.classList.toggle("filled", on);
+          $("read").replaceChildren(i);
+          $("read").title = $("read").ariaLabel = t(on ? "stop_title" : "read_title");
+        };
+        readButton(false);
         $("read").hidden = !window.speechSynthesis;
         $("read").onclick = () => {
           const all = readable(),
@@ -808,7 +849,7 @@
           if (!$("copy-menu").hidden) return openMenu(false);
           const item = (text, label) => {
             const b = el("button", "", label);
-            b.append(el("small", "", text.length + " Zeichen"));
+            b.append(el("small", "", t("characters", text.length)));
             b.onclick = () => {
               openMenu(false);
               copy(text);
@@ -816,8 +857,8 @@
             return b;
           };
           $("copy-menu").replaceChildren(
-            item(parts.join("\n\n"), "Ganzes Kapitel"),
-            ...parts.map((text, i) => item(text, "Teil " + (i + 1))),
+            item(parts.join("\n\n"), t("whole_chapter")),
+            ...parts.map((text, i) => item(text, t("part", i + 1))),
           );
           openMenu(true);
         };
@@ -826,12 +867,12 @@
           $("copy").ariaExpanded = open;
         }
         function toast(msg) {
-          const t = $("toast");
-          t.textContent = msg;
-          t.hidden = false;
+          const box = $("toast");
+          box.textContent = msg;
+          box.hidden = false;
           clearTimeout(toastTimer);
           toastTimer = setTimeout(() => {
-            t.hidden = true;
+            box.hidden = true;
           }, 3500);
         }
         // success shows on the button only; a failure needs the message
@@ -855,7 +896,7 @@
           clearTimeout(copyTimer);
           mark(ok);
           if (ok) copyTimer = setTimeout(() => mark(false), 2000);
-          else toast("Kopieren ist in diesem Browser blockiert.");
+          else toast(t("copy_blocked"));
         }
 
         $("to-words").onclick = () => {
@@ -887,12 +928,23 @@
           $("book").replaceChildren();
           document.title = pageTitle();
         });
-        // the button names the language it switches to
-        $("german").onclick = (e) => {
+        // the text in Polish or in the chosen language
+        let translated = false;
+        function translate(on) {
+          translated = on;
+          document.documentElement.classList.toggle("translated", on);
+          $("translate").hidden = !CH[ch].tr[lang];
+          $("translate").replaceChildren(
+            el("span", on ? "" : "on", "PL"),
+            el("span", on ? "on" : "", t("lang_code")),
+          );
+          $("translate").title = $("translate").ariaLabel = t(
+            on ? "read_polish" : "read_translation",
+          );
+        }
+        $("translate").onclick = () => {
           closePop();
-          const on = document.documentElement.classList.toggle("german");
-          e.currentTarget.textContent = on ? "PL" : "DE";
-          e.currentTarget.title = on ? "Auf Polnisch lesen" : "Auf Deutsch lesen";
+          translate(!translated);
         };
         // hidden where a page cannot go fullscreen (iPhone)
         $("fullscreen").hidden = !document.fullscreenEnabled;
@@ -900,10 +952,31 @@
           document.fullscreenElement
             ? document.exitFullscreen()
             : document.documentElement.requestFullscreen();
-        document.addEventListener("fullscreenchange", () => {
+        const fullscreenButton = () => {
           const on = !!document.fullscreenElement;
           $("fullscreen").firstElementChild.textContent = on ? "fullscreen_exit" : "fullscreen";
-          $("fullscreen").title = $("fullscreen").ariaLabel = on ? "Vollbild beenden" : "Vollbild";
+          $("fullscreen").title = $("fullscreen").ariaLabel = t(
+            on ? "fullscreen_exit" : "fullscreen",
+          );
+        };
+        document.addEventListener("fullscreenchange", fullscreenButton);
+        fullscreenButton();
+        $("lang").value = lang;
+        $("lang").onchange = (e) => {
+          e.target.blur();
+          setLang(e.target.value);
+        };
+        // a new language: every text of the page in it, at the same reading position
+        addEventListener("langchange", () => {
+          closePop();
+          openMenu(false);
+          fullscreenButton();
+          if (reading)
+            read(null); // its block is redrawn
+          else readButton(false);
+          const p = topBlock();
+          render();
+          scrollToBlock(p);
         });
         $("prev").onclick = () => go(ch - 1);
         $("next").onclick = () => go(ch + 1);
@@ -942,7 +1015,7 @@
         render();
         history.scrollRestoration = "manual"; // on reload the browser would scroll to the old offset after our jump
         document.fonts.ready.then(() => go(c, p)); // the layout settles once the fonts are in
-        if (saved && (c || p)) toast("Weiterlesen: Kapitel " + (c + 1));
+        if (saved && (c || p)) toast(t("continue", c + 1));
       })();
     </script>
   </body>

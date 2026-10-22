@@ -165,8 +165,8 @@ def load(words):
 
 
 GENDERS = {"m1": "m", "m2": "m", "m3": "m", "f": "f", "n": "n"}
-ASPECTS = {"imperf": "uv.", "perf": "v."}
-CASES = {"nom": "Nom.", "gen": "Gen.", "dat": "Dat.", "acc": "Akk.", "inst": "Instr.", "loc": "Lok.", "voc": "Vok."}
+ASPECTS = ("imperf", "perf")
+CASES = ("nom", "gen", "dat", "acc", "inst", "loc", "voc")
 UNUSUAL = {  # SGJP labels of dated, rare, regional, pejorative, bookish and similar forms
     "daw.", "przest.", "rzad.", "gwar.", "reg.", "hom.", "niepopr.", "niezal.", "indyw.", "arch.", "pogard.",
     "książk.", "środ.", "slang", "żart.", "podniosłe", "przest._dziś_książk.", "daw._dziś_gwar.", "daw._dziś_fraz.",
@@ -178,9 +178,46 @@ CLASSES = {  # SGJP classes as Stanza's parts of speech
     **dict.fromkeys(["fin", "bedzie", "praet", "impt", "imps", "inf", "pcon", "pant", "ger", "pact", "ppas", "winien"],
                     "VERB"),
 }
-POS = {"NOUN": "Substantiv", "PROPN": "Eigenname", "VERB": "Verb", "ADJ": "Adjektiv", "ADV": "Adverb",
-       "PRON": "Pronomen", "DET": "Pronomen", "NUM": "Zahlwort", "ADP": "Präposition", "CCONJ": "Konjunktion",
-       "SCONJ": "Konjunktion", "PART": "Partikel", "INTJ": "Interjektion", "PRED": "Prädikativ"}
+LABELS = {  # the words of word list entries and form descriptions, per language of the page
+    "de": {
+        "pos": {"NOUN": "Substantiv", "PROPN": "Eigenname", "VERB": "Verb", "ADJ": "Adjektiv", "ADV": "Adverb",
+                "PRON": "Pronomen", "DET": "Pronomen", "NUM": "Zahlwort", "ADP": "Präposition",
+                "CCONJ": "Konjunktion", "SCONJ": "Konjunktion", "PART": "Partikel", "INTJ": "Interjektion",
+                "PRED": "Prädikativ"},
+        "aspect": {"imperf": "uv.", "perf": "v."},
+        "case": {"nom": "Nom.", "gen": "Gen.", "dat": "Dat.", "acc": "Akk.", "inst": "Instr.", "loc": "Lok.",
+                 "voc": "Vok."},
+        "gen": "Gen.", "pl": "Pl.", "plural only": "nur Pl.", "indeclinable": "undeklinierbar",
+        "case name": {"Nom": "Nominativ", "Gen": "Genitiv", "Dat": "Dativ", "Acc": "Akkusativ",
+                      "Ins": "Instrumental", "Loc": "Lokativ", "Voc": "Vokativ"},
+        "number": {"Sing": "Sg.", "Plur": "Pl.", "Ptan": "Pl."},
+        "person": {"1": "1.", "2": "2.", "3": "3."},
+        "tense": {"Pres": "Präsens", "Fut": "Futur", "Past": "Vergangenheit"},
+        "infinitive": "Infinitiv", "converb": "Adverbialpartizip", "impersonal": "unpersönliche Form, Vergangenheit",
+        "imperative": "Imperativ", "conditional": "Konditional",
+        "participle": {"Act": "Partizip Aktiv", "Pass": "Partizip Passiv"}, "verbal noun": "Verbalsubstantiv",
+        "degree": {"Cmp": "Komparativ", "Sup": "Superlativ"},
+    },
+    "en": {
+        "pos": {"NOUN": "noun", "PROPN": "proper noun", "VERB": "verb", "ADJ": "adjective", "ADV": "adverb",
+                "PRON": "pronoun", "DET": "pronoun", "NUM": "numeral", "ADP": "preposition",
+                "CCONJ": "conjunction", "SCONJ": "conjunction", "PART": "particle", "INTJ": "interjection",
+                "PRED": "predicative"},
+        "aspect": {"imperf": "impf.", "perf": "pf."},
+        "case": {"nom": "Nom.", "gen": "Gen.", "dat": "Dat.", "acc": "Acc.", "inst": "Inst.", "loc": "Loc.",
+                 "voc": "Voc."},
+        "gen": "Gen.", "pl": "Pl.", "plural only": "pl. only", "indeclinable": "indeclinable",
+        "case name": {"Nom": "nominative", "Gen": "genitive", "Dat": "dative", "Acc": "accusative",
+                      "Ins": "instrumental", "Loc": "locative", "Voc": "vocative"},
+        "number": {"Sing": "sg.", "Plur": "pl.", "Ptan": "pl."},
+        "person": {"1": "1st", "2": "2nd", "3": "3rd"},
+        "tense": {"Pres": "present", "Fut": "future", "Past": "past"},
+        "infinitive": "infinitive", "converb": "adverbial participle", "impersonal": "impersonal form, past",
+        "imperative": "imperative", "conditional": "conditional",
+        "participle": {"Act": "active participle", "Pass": "passive participle"}, "verbal noun": "verbal noun",
+        "degree": {"Cmp": "comparative", "Sup": "superlative"},
+    },
+}
 OPEN = {  # SGJP classes for Stanza's open parts of speech, best fitting first
     "NOUN": [{"subst", "depr"}, {"ger"}],
     "VERB": [{"fin", "bedzie", "praet", "impt", "imps", "inf", "pcon", "pant", "winien"}],
@@ -306,11 +343,12 @@ class Dictionary:
             return kinds.pop()
         return upos
 
-    def entry(self, headword, pos, token, forms):
-        """The grammar of a word list entry, e.g. "f · Gen. kieszeni · Pl. kieszenie".
+    def entry(self, headword, pos, token, forms, lang):
+        """The grammar of a word list entry in lang's words, e.g. "f · Gen. kieszeni · Pl. kieszenie".
 
         token is the headword's first one in the text, forms all its forms there.
         """
+        labels = LABELS[lang]
         _, lemma, upos, f, _ = token
         rows = self.rows(lemma, proper=pos == "PROPN")
         group = "NOUN" if pos == "PROPN" else pos
@@ -334,16 +372,16 @@ class Dictionary:
         if pos in {"NOUN", "PROPN"}:
             nouns = [(r, t) for r, t in tagged if t[0] == "subst"]
             if any("pt" in t[4:] for _, t in nouns):
-                return "nur Pl."
+                return labels["plural only"]
             fixed = lambda t: t[1] == "sg.pl" and len(t[2].split(".")) == len(CASES)  # one form for every case
             if nouns and all(fixed(t) for _, t in nouns):
                 genders = unique(GENDERS[g] for _, t in nouns for g in t[3].split("."))
-                return " · ".join(p for p in ("/".join(genders), "undeklinierbar") if p)
+                return " · ".join(p for p in ("/".join(genders), labels["indeclinable"]) if p)
             nouns = [(r, t) for r, t in nouns if not fixed(t)]  # molo: the declined variant only
             genders = unique(GENDERS[g] for _, t in nouns for g in t[3].split("."))
             gen = self.common([r for r, t in nouns if "sg" in t[1].split(".") and "gen" in t[2].split(".")])
             plural = self.common([r for r, t in nouns if "pl" in t[1].split(".") and "nom" in t[2].split(".")])
-            shown = (("Gen.", gen),) if pos == "PROPN" else (("Gen.", gen), ("Pl.", plural))
+            shown = ((labels["gen"], gen),) if pos == "PROPN" else ((labels["gen"], gen), (labels["pl"], plural))
             parts = ["/".join(genders)] + [f"{label} {' / '.join(forms)}" for label, forms in shown if forms]
             return " · ".join(p for p in parts if p)
         if pos == "VERB":
@@ -353,9 +391,9 @@ class Dictionary:
             się = " się" if headword.endswith(" się") else ""
             _, perfective, imperfective = self.wiktionary.get(lemma, ("", "", ""))
             partners = perfective if aspects == ["imperf"] else imperfective if aspects == ["perf"] else ""
-            aspect = "/".join(ASPECTS[a] for a in aspects)
+            aspect = "/".join(labels["aspect"][a] for a in aspects)
             if partners:
-                other = "v." if aspects == ["imperf"] else "uv."
+                other = labels["aspect"]["perf" if aspects == ["imperf"] else "imperf"]
                 aspect += f" ({other} {', '.join(p + się for p in partners.split(', '))})"
             persons = [self.common([r for r, t in tagged if t[:3] == ["fin", "sg", person]])
                        for person in ("pri", "sec")]
@@ -363,48 +401,43 @@ class Dictionary:
             return " · ".join(p for p in (aspect, persons) if p)
         if pos == "ADP":
             cases = {c for _, t in tagged if t[0] == "prep" for c in t[1].split(".")}
-            return "+ " + ", ".join(CASES[c] for c in CASES if c in cases) if cases else ""
+            return "+ " + ", ".join(labels["case"][c] for c in CASES if c in cases) if cases else ""
         return ""
 
 
-CASE_NAMES = {"Nom": "Nominativ", "Gen": "Genitiv", "Dat": "Dativ", "Acc": "Akkusativ", "Ins": "Instrumental",
-              "Loc": "Lokativ", "Voc": "Vokativ"}
-NUMBERS = {"Sing": "Sg.", "Plur": "Pl.", "Ptan": "Pl."}
-TENSES = {"Pres": "Präsens", "Fut": "Futur", "Past": "Vergangenheit"}
-
-
-def describe(parts):
-    """What form a word in the text is, e.g. "Genitiv Pl." or "Vergangenheit, 1. Sg. m".
+def describe(parts, lang):
+    """What form a word in the text is, in lang's words, e.g. "Genitiv Pl." or "Vergangenheit, 1. Sg. m".
 
     parts are its tokens: the word, then any glued on (poszedł + em, zrobił + by + m).
     """
     _, _, upos, f, _ = parts[0]
     f = feats(f)
     glued = [feats(t[3]) for t in parts[1:]]
-    number = NUMBERS.get(f.get("Number"), "")
-    gender = {"Masc": "m", "Fem": "f", "Neut": "n"}.get(f.get("Gender")) if number == "Sg." else None
+    labels = LABELS[lang]
+    number = labels["number"].get(f.get("Number"), "")
+    gender = {"Masc": "m", "Fem": "f", "Neut": "n"}.get(f.get("Gender")) if f.get("Number") == "Sing" else None
     verb_form = f.get("VerbForm")
     if verb_form == "Inf":
-        return "Infinitiv"
+        return labels["infinitive"]
     if verb_form == "Conv":
-        return "Adverbialpartizip"
+        return labels["converb"]
     if verb_form == "Fin":
         person = next((g["Person"] for g in glued if "Person" in g), f.get("Person"))
         if person == "0":
-            return "unpersönliche Form, Vergangenheit"
+            return labels["impersonal"]
         if f.get("Mood") == "Imp":
-            return f"Imperativ, {person or '2'}. {number}"
+            return f"{labels['imperative']}, {labels['person'][person or '2']} {number}"
         conditional = any(t[1] == "by" for t in parts[1:])
         past = conditional or f.get("Tense") == "Past"
-        tense = "Konditional" if conditional else TENSES.get(f.get("Tense"), "")
-        who = f"{person or '3'}. {number}" + (f" {gender}" if past and gender else "") if number else ""
+        tense = labels["conditional"] if conditional else labels["tense"].get(f.get("Tense"), "")
+        who = f"{labels['person'][person or '3']} {number}" + (f" {gender}" if past and gender else "") if number else ""
         return ", ".join(p for p in (tense, who) if p)
     out = [
-        {"Part": "Partizip " + ("Passiv" if f.get("Voice") == "Pass" else "Aktiv"),
-         "Vnoun": "Verbalsubstantiv"}.get(verb_form),
-        {"Cmp": "Komparativ", "Sup": "Superlativ"}.get(f.get("Degree")),
+        {"Part": labels["participle"]["Pass" if f.get("Voice") == "Pass" else "Act"],
+         "Vnoun": labels["verbal noun"]}.get(verb_form),
+        labels["degree"].get(f.get("Degree")),
     ]
     if f.get("Case"):
         shown_gender = gender if upos in {"ADJ", "DET", "NUM", "PRON"} or verb_form == "Part" else None
-        out.append(f"{CASE_NAMES[f['Case']]} {number}".strip() + (f" {shown_gender}" if shown_gender else ""))
+        out.append(f"{labels['case name'][f['Case']]} {number}".strip() + (f" {shown_gender}" if shown_gender else ""))
     return ", ".join(p for p in out if p)

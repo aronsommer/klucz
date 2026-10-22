@@ -6,8 +6,8 @@ _Klucz_ („Der Schlüssel“) ist das Tagebuch von Jonas, einem Deutschen, der 
 
 Die Idee dahinter: **Wer diesen Text versteht, versteht die 3000 häufigsten Wörter des gesprochenen Polnisch.** Diese Wörter decken gut 90 % dessen ab, was im Alltag gesagt wird. Jedes davon steht mindestens einmal im Text, und zwar nicht als Liste, sondern eingebettet in eine echte Handlung.
 
-- **Lesen:** [index.html](index.html) – Leseseite: Wort antippen für die Übersetzung (🔊 spricht es mit der polnischen Stimme des Geräts aus), „DE“/„PL“ oben rechts zeigt das ganze Kapitel auf Deutsch oder wieder auf Polnisch, ohne dass der Text springt, „Vorlesen“ liest das Kapitel ab dem Absatz oben auf dem Bildschirm vor und hebt den gelesenen Absatz hervor, alphabetische Wortliste je Kapitel (oben „↓ Wörter“ springt hin), Kopiermenü für das ganze Kapitel und seine Teile, Druckknopf für das ganze Buch (im Druckdialog auch als PDF speicherbar), Vollbild (nicht auf dem iPhone) und Hell/Dunkel-Umschalter (die Wahl bleibt gespeichert)
-- **Grammatik:** [grammar.html](grammar.html) – die Grammatikblätter im Aussehen der Leseseite, eines nach dem anderen zum Durchblättern wie die Kapitel; erreichbar über den Knopf 🎓 oben auf der Leseseite, zurück geht es mit 📖; 🖨 druckt das offene Thema als A4-Seite wie in den PDFs. Die Quelle sind die Blätter in [grammar/](grammar/), Regeln dafür in [grammar/README.md](grammar/README.md). `grammar/pdf.sh <Ordner>` macht aus denselben Blättern A4-PDFs in diesem Ordner (im Repository liegen keine PDFs)
+- **Lesen:** [index.html](index.html) – Leseseite: Wort antippen für die Übersetzung (🔊 spricht es mit der polnischen Stimme des Geräts aus), 🌐 wählt die Sprache der Seite (Deutsch oder English, gespeichert für Buch und Grammatik), der Schalter „PL | DE“ (bzw. „PL | EN“) oben rechts zeigt mit einem Tippen das ganze Kapitel in dieser Sprache oder wieder auf Polnisch, ohne dass der Text springt, 🔊 liest das Kapitel ab dem Absatz oben auf dem Bildschirm vor (⏹ hält an) und hebt den gelesenen Absatz hervor, alphabetische Wortliste je Kapitel (oben „↓ Wörter“ springt hin), Kopiermenü für das ganze Kapitel und seine Teile, Druckknopf für das ganze Buch (im Druckdialog auch als PDF speicherbar), Vollbild (nicht auf dem iPhone) und Hell/Dunkel-Umschalter (die Wahl bleibt gespeichert)
+- **Grammatik:** [grammar.html](grammar.html) – die Grammatikblätter im Aussehen der Leseseite, eines nach dem anderen zum Durchblättern wie die Kapitel; erreichbar über den Knopf 🎓 oben auf der Leseseite, zurück geht es mit 📖; 🖨 druckt das offene Thema als A4-Seite wie in den PDFs. Die Quelle sind die Blätter in [grammar/](grammar/), Regeln dafür in [grammar/README.md](grammar/README.md). `grammar/pdf.sh <de|en> <Ordner>` macht aus denselben Blättern A4-PDFs in diesem Ordner (im Repository liegen keine PDFs)
 - **Buch:** [KLUCZ.md](KLUCZ.md) – das ganze Buch mit einem Glossar nach jedem Kapitel
 - **Klartext:** [text/](text/) – jedes Kapitel ohne Formatierung, auch in Teilen für Google Translate
 - **Messung:** [REPORT.md](REPORT.md) – Abdeckung, neue Wörter pro Kapitel, grammatische Formen
@@ -17,11 +17,11 @@ Die Idee dahinter: **Wer diesen Text versteht, versteht die 3000 häufigsten Wö
 
 Alles, was man liest, wird aus drei Quellen **erzeugt**. Von Hand bearbeitet werden nur diese Quellen:
 
-| Quelle                        | Inhalt                                                                                                                                                                                                                                                   |
-| ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `chapters/01.md` … `30.md`    | der Text der Geschichte                                                                                                                                                                                                                                  |
-| `chapters/de/01.md` … `30.md` | die deutsche Übersetzung, Absatz für Absatz wie das Original; `tools/build.py` bricht ab, wenn die Absätze nicht eins zu eins übereinstimmen                                                                                                             |
-| `data/glossary.tsv`           | die deutschen Bedeutungen, eine Zeile pro Eintrag der Wortliste: `klucz<Tab>Schlüssel`, `bać się<Tab>Angst haben`; nur Bedeutungen und Wendungen aus dem Text, keine Grammatik; Eigennamen so geschrieben, wie sie angezeigt werden: `Kraków<Tab>Krakau` |
+| Quelle                        | Inhalt                                                                                                                                                                                                                                                                                           |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `chapters/01.md` … `30.md`    | der Text der Geschichte                                                                                                                                                                                                                                                                          |
+| `chapters/de/01.md` … `30.md` | die deutsche Übersetzung, Absatz für Absatz wie das Original; `tools/build.py` bricht ab, wenn die Absätze nicht eins zu eins übereinstimmen                                                                                                                                                     |
+| `data/glossary.tsv`           | die Bedeutungen, eine Zeile pro Eintrag der Wortliste, Spalten `lemma`, `de` und (sobald begonnen) `en`: `klucz<Tab>Schlüssel`, `bać się<Tab>Angst haben`; nur Bedeutungen und Wendungen aus dem Text, keine Grammatik; Eigennamen so geschrieben, wie sie angezeigt werden: `Kraków<Tab>Krakau` |
 
 **Einmalig einrichten** (im Projektordner):
 
@@ -58,13 +58,15 @@ Das baut `index.html`, `grammar.html`, `KLUCZ.md` und `text/` neu, in wenigen Se
 2. **Veraltete Übersetzungen werden gemeldet.** `data/translation_sync.tsv` merkt sich für jeden Absatz, welche polnische und welche deutsche Fassung zuletzt zusammengehörten (als Prüfsumme). Ändert sich ein polnischer Absatz, der deutsche aber nicht, meldet das Skript ihn bei jedem Lauf, bis er erledigt ist:
 
    ```
-   1 German paragraphs may be outdated, their Polish changed. Update them in chapters/de, or run again with --accept-german if they still fit:
-     chapter 5, paragraph 6: Umówiliśmy się na drugą. Tak.
+   1 translated paragraphs may be outdated, their Polish changed. Update them in chapters/<lang>, or run again with --accept-<lang> if they still fit:
+     de, chapter 5, paragraph 6: Umówiliśmy się na drugą. Tak.
    ```
 
-   Erledigt ist die Meldung, sobald der deutsche Absatz angepasst ist. Passt er trotz der Änderung noch (etwa nach einem korrigierten Komma im Polnischen), bestätigt `.venv/bin/python tools/build.py --accept-german` alle Absätze so, wie sie jetzt sind. Eine Änderung nur am Deutschen gilt als gewollt und wird nicht gemeldet (außer der neue Text gleicht wörtlich einem anderen deutschen Absatz desselben Kapitels, etwa „— Ja.“; dann genügt einmal `--accept-german`). `data/translation_sync.tsv` wird vom Skript geschrieben, nie von Hand, und gehört ins Repository, damit die Meldungen auch auf einem anderen Rechner stimmen.
+   Erledigt ist die Meldung, sobald der deutsche Absatz angepasst ist. Passt er trotz der Änderung noch (etwa nach einem korrigierten Komma im Polnischen), bestätigt `.venv/bin/python tools/build.py --accept-de` alle Absätze so, wie sie jetzt sind. Eine Änderung nur am Deutschen gilt als gewollt und wird nicht gemeldet (außer der neue Text gleicht wörtlich einem anderen deutschen Absatz desselben Kapitels, etwa „— Ja.“; dann genügt einmal `--accept-de`). `data/translation_sync.tsv` wird vom Skript geschrieben, nie von Hand, und gehört ins Repository, damit die Meldungen auch auf einem anderen Rechner stimmen.
 
-3. **Fehlende Übersetzungen werden gemeldet.** Fehlt zu einem Kapitel die deutsche Datei, baut das Skript trotzdem, nennt das Kapitel aber am Ende; auf der Leseseite fehlt dort der Knopf „DE“.
+3. **Fehlende Übersetzungen werden gemeldet.** Fehlt zu einem Kapitel die deutsche Datei, baut das Skript trotzdem, nennt das Kapitel aber am Ende; auf der Leseseite fehlt dort der Schalter „PL | DE“.
+
+**Englisch** funktioniert genauso: `chapters/en/NN.md` mit denselben drei Sicherungen (`--accept-en`), die Spalte `en` in `data/glossary.tsv` und die Blätter `grammar/en/NN.html`. Ein englisches Blatt muss dieselben Tags, Klassen und fetten Texte haben wie das deutsche, sonst bricht der Build ab; fehlt es, zeigt die Grammatikseite auf Englisch das deutsche Blatt. Die Texte der Oberfläche (Knöpfe, Tooltips, Hinweise) stehen in `tools/ui.tsv`, je Zeile auf Deutsch und Englisch.
 
 Nicht prüfen kann das Skript, ob ein deutscher Absatz inhaltlich richtig übersetzt ist; das bleibt Sache des Lesens.
 

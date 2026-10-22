@@ -8,7 +8,7 @@
   };
   const update = () => {
     button.firstElementChild.textContent = isDark() ? "light_mode" : "dark_mode";
-    button.title = button.ariaLabel = isDark() ? "Helles Design" : "Dunkles Design";
+    button.title = button.ariaLabel = t(isDark() ? "theme_light" : "theme_dark");
   };
   button.onclick = () => {
     const next = isDark() ? "light" : "dark";
@@ -19,5 +19,6 @@
     update();
   };
   systemDark.addEventListener("change", update);
+  addEventListener("langchange", update);
   update();
 }

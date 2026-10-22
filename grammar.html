@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="de">
+<html>
   <head>
     <meta charset="utf-8" />
     <!-- maximum-scale stops iOS Safari from zooming in when the topic select gets focus. -->
@@ -7,7 +7,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"
     />
-    <title>Klucz – Grammatik</title>
+    <title data-t="grammar_title">Klucz</title>
     <!-- Before the first paint, so a stored theme does not flash. -->
     <script>
       try {
@@ -79,13 +79,13 @@
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
     U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-/* Material Symbols Outlined, reduced to these icons: arrow_downward, arrow_forward, check, chevron_left, chevron_right, close, content_copy, dark_mode, fullscreen, fullscreen_exit, light_mode, menu_book, play_arrow, print, school, stop, volume_up */
+/* Material Symbols Outlined with its fill axis, reduced to these icons: arrow_downward, check, chevron_left, chevron_right, close, content_copy, dark_mode, fullscreen, fullscreen_exit, language, light_mode, menu_book, print, school, stop, volume_up */
 @font-face {
   font-family: "Material Symbols Outlined";
   font-style: normal;
   font-weight: 400;
   font-display: block;
-  src: url(data:font/woff2;base64,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) format("woff2");
+  src: url(data:font/woff2;base64,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) format("woff2");
 }
 /* Shared by the reading page and the grammar page: colors, fonts, icons, the sticky bar and the column. */
 /* A green-tinted neutral paper with one red accent; word hover stays neutral. */
@@ -593,55 +593,29 @@ b {
     <header class="bar">
       <div class="bar-inner">
         <div class="switcher">
-          <button class="arrow" id="prev" aria-label="Vorheriges Thema">
+          <button class="arrow" id="prev" data-tip="prev_topic">
             <span class="icon" aria-hidden="true">chevron_left</span>
           </button>
-          <select id="topic" aria-label="Thema wählen" title="Thema wählen">
-            <option>1. Alfabet i wymowa – Alphabet und Aussprache</option>
-<option>2. Rzeczowniki – Nomen</option>
-<option>3. Czasowniki – Verben</option>
-<option>4. Ważne czasowniki – Wichtige Verben</option>
-<option>5. Pytania i przeczenie – Fragen und Verneinung</option>
-<option>6. Liczebniki – Zahlen</option>
-<option>7. Przypadki – Fälle</option>
-<option>8. Biernik – Akkusativ</option>
-<option>9. Narzędnik – Instrumental</option>
-<option>10. Miejscownik – Lokativ</option>
-<option>11. Dopełniacz – Genitiv</option>
-<option>12. Przymiotniki – Adjektive</option>
-<option>13. Zaimki osobowe – Personalpronomen</option>
-<option>14. Mój, twój, ten – mein, dein, dieser</option>
-<option>15. Iść i jechać – gehen und fahren</option>
-<option>16. Czas – Uhrzeit, Tage, Monate</option>
-<option>17. Aspekt i przyszłość – Aspekt und Zukunft</option>
-<option>18. Tryb rozkazujący – Imperativ</option>
-<option>19. Stopniowanie – Steigerung</option>
-<option>20. Tryb przypuszczający – Konditional</option>
-          </select>
-          <button class="arrow" id="next" aria-label="Nächstes Thema">
+          <select id="topic" data-tip="choose_topic"></select>
+          <button class="arrow" id="next" data-tip="next_topic">
             <span class="icon" aria-hidden="true">chevron_right</span>
           </button>
         </div>
-        <button class="tool" id="print" aria-label="Thema drucken" title="Thema drucken">
+        <button class="tool" id="print" data-tip="print_topic">
           <span class="icon" aria-hidden="true">print</span>
         </button>
         <button class="tool" id="theme">
           <span class="icon" aria-hidden="true">dark_mode</span>
         </button>
-        <a
-          class="tool"
-          id="back"
-          href="index.html"
-          aria-label="Zurück zum Buch"
-          title="Zurück zum Buch"
-        >
-          <span class="icon" aria-hidden="true">menu_book</span><span class="label">Buch</span>
+        <a class="tool" id="back" href="index.html" data-tip="back">
+          <span class="icon" aria-hidden="true">menu_book</span
+          ><span class="label" data-t="book"></span>
         </a>
       </div>
     </header>
 
     <main>
-      <div class="column"><style>@scope ([data-sheet="1"]) {
+      <div class="column"><style>@scope ([data-sheet="1"][data-lang="de en"]) {
       :is(th, td):first-child {
         width: 90px;
       }
@@ -659,8 +633,8 @@ b {
         font-size: 17px;
         color: var(--text-2);
       }
-    }</style><div class="page" data-sheet="1">
-      <h1><small>Thema 1</small>Alfabet i wymowa – Alphabet und Aussprache</h1>
+    }</style><div class="page" data-sheet="1" data-lang="de en" hidden>
+      <h1><small></small>Alfabet i wymowa – Alphabet und Aussprache</h1>
       <p class="sub">
         Betont wird fast immer die vorletzte Silbe: <b>Pol</b>ska · War<b>sza</b>wa ·
         dzię<b>ku</b>ję
@@ -796,15 +770,15 @@ b {
         <p>rz nach p, t, k, ch klingt wie sz · przepraszam → „pszepraszam“ · trzy → „tszy“</p>
       </div>
     </div>
-<style>@scope ([data-sheet="2"]) {
+<style>@scope ([data-sheet="2"][data-lang="de en"]) {
       :is(th, td):first-child {
         width: 200px;
       }
       .three :is(th, td):nth-child(2) {
         width: 90px;
       }
-    }</style><div class="page" data-sheet="2" hidden>
-      <h1><small>Thema 2</small>Rzeczowniki – Nomen</h1>
+    }</style><div class="page" data-sheet="2" data-lang="de en" hidden>
+      <h1><small></small>Rzeczowniki – Nomen</h1>
       <p class="sub">
         Das Wortende zeigt fast immer das Geschlecht · <span class="stem">Stamm</span> +
         <b>Endung</b>
@@ -931,7 +905,7 @@ b {
         </p>
       </div>
     </div>
-<style>@scope ([data-sheet="3"]) {
+<style>@scope ([data-sheet="3"][data-lang="de en"]) {
       .groups {
         font-size: 14px;
       }
@@ -965,8 +939,8 @@ b {
       .block th[colspan] {
         border-bottom-width: 1px;
       }
-    }</style><div class="page" data-sheet="3" hidden>
-      <h1><small>Thema 3</small>Czasowniki – Verben</h1>
+    }</style><div class="page" data-sheet="3" data-lang="de en" hidden>
+      <h1><small></small>Czasowniki – Verben</h1>
       <p class="sub">
         Gegenwart und Vergangenheit · <span class="stem">Stamm</span> + <b>Endung</b>
       </p>
@@ -1147,7 +1121,7 @@ b {
 
       <p class="note">się bleibt immer gleich: nazywam się, nazywałam się</p>
     </div>
-<style>@scope ([data-sheet="4"]) {
+<style>@scope ([data-sheet="4"][data-lang="de en"]) {
       .page > table {
         font-size: 15px;
       }
@@ -1158,8 +1132,8 @@ b {
       .page > table :is(th, td):first-child {
         width: 128px;
       }
-    }</style><div class="page" data-sheet="4" hidden>
-      <h1><small>Thema 4</small>Ważne czasowniki – Wichtige Verben</h1>
+    }</style><div class="page" data-sheet="4" data-lang="de en" hidden>
+      <h1><small></small>Ważne czasowniki – Wichtige Verben</h1>
       <p class="sub">Diese Verben weichen von den Grundmustern ab – auswendig lernen.</p>
 
       <h2>1. Gegenwart <span>· teraz</span></h2>
@@ -1382,7 +1356,7 @@ b {
         </table>
       </div>
     </div>
-<style>@scope ([data-sheet="5"]) {
+<style>@scope ([data-sheet="5"][data-lang="de en"]) {
       .col p {
         display: grid;
         grid-template-columns: 170px 1fr;
@@ -1393,8 +1367,8 @@ b {
       .page > table :is(th, td):nth-child(2) {
         width: 210px;
       }
-    }</style><div class="page" data-sheet="5" hidden>
-      <h1><small>Thema 5</small>Pytania i przeczenie – Fragen und Verneinung</h1>
+    }</style><div class="page" data-sheet="5" data-lang="de en" hidden>
+      <h1><small></small>Pytania i przeczenie – Fragen und Verneinung</h1>
       <p class="sub">Ja/Nein-Frage: Czy … ? · Verneinung: nie direkt vor das Verb</p>
 
       <h2>1. Fragewörter</h2>
@@ -1495,7 +1469,7 @@ b {
         </table>
       </div>
     </div>
-<style>@scope ([data-sheet="6"]) {
+<style>@scope ([data-sheet="6"][data-lang="de en"]) {
       .col p b:first-child {
         display: inline-block;
         width: 64px;
@@ -1507,8 +1481,8 @@ b {
       .pairs p b:first-child {
         width: 28px;
       }
-    }</style><div class="page" data-sheet="6" hidden>
-      <h1><small>Thema 6</small>Liczebniki – Zahlen</h1>
+    }</style><div class="page" data-sheet="6" data-lang="de en" hidden>
+      <h1><small></small>Liczebniki – Zahlen</h1>
       <p class="sub">Fast immer wechselt die Form bei 5: cztery tysiące → pięć tysięcy</p>
 
       <h2>1. Bis 19 <span>· ab 11 → -naście</span></h2>
@@ -1644,7 +1618,7 @@ b {
         <p class="note">Millionen genauso: milion · dwa miliony · pięć milionów</p>
       </div>
     </div>
-<style>@scope ([data-sheet="7"]) {
+<style>@scope ([data-sheet="7"][data-lang="de en"]) {
       .page > table:first-of-type :is(th, td):first-child {
         width: 120px;
       }
@@ -1660,8 +1634,8 @@ b {
       .box td:last-child {
         white-space: nowrap;
       }
-    }</style><div class="page" data-sheet="7" hidden>
-      <h1><small>Thema 7</small>Przypadki – Fälle</h1>
+    }</style><div class="page" data-sheet="7" data-lang="de en" hidden>
+      <h1><small></small>Przypadki – Fälle</h1>
       <p class="sub">
         Polnisch hat sieben Fälle: Das Nomen ändert seine Endung je nach Rolle im Satz.
       </p>
@@ -1769,15 +1743,15 @@ b {
         </table>
       </div>
     </div>
-<style>@scope ([data-sheet="8"]) {
+<style>@scope ([data-sheet="8"][data-lang="de en"]) {
       .page > table :is(th, td):first-child {
         width: 200px;
       }
       .page > table :is(th, td):nth-child(2) {
         width: 190px;
       }
-    }</style><div class="page" data-sheet="8" hidden>
-      <h1><small>Thema 8</small>Biernik – Akkusativ</h1>
+    }</style><div class="page" data-sheet="8" data-lang="de en" hidden>
+      <h1><small></small>Biernik – Akkusativ</h1>
       <p class="sub">
         Frage: kogo? co? – wen? was? · <span class="stem">Stamm</span> + <b>Endung</b>
       </p>
@@ -1890,7 +1864,7 @@ b {
         </p>
       </div>
     </div>
-<style>@scope ([data-sheet="9"]) {
+<style>@scope ([data-sheet="9"][data-lang="de en"]) {
       .page > table :is(th, td):first-child {
         width: 200px;
       }
@@ -1900,8 +1874,8 @@ b {
       .three :is(th, td):nth-child(2) {
         width: 80px;
       }
-    }</style><div class="page" data-sheet="9" hidden>
-      <h1><small>Thema 9</small>Narzędnik – Instrumental</h1>
+    }</style><div class="page" data-sheet="9" data-lang="de en" hidden>
+      <h1><small></small>Narzędnik – Instrumental</h1>
       <p class="sub">
         Frage: kim? czym? – mit wem? womit? · <span class="stem">Stamm</span> + <b>Endung</b>
       </p>
@@ -2030,7 +2004,7 @@ b {
         </table>
       </div>
     </div>
-<style>@scope ([data-sheet="10"]) {
+<style>@scope ([data-sheet="10"][data-lang="de en"]) {
       .page > table :is(th, td):first-child {
         width: 190px;
       }
@@ -2040,8 +2014,8 @@ b {
       .three :is(th, td):nth-child(2) {
         width: 90px;
       }
-    }</style><div class="page" data-sheet="10" hidden>
-      <h1><small>Thema 10</small>Miejscownik – Lokativ</h1>
+    }</style><div class="page" data-sheet="10" data-lang="de en" hidden>
+      <h1><small></small>Miejscownik – Lokativ</h1>
       <p class="sub">
         Frage: o kim? o czym? · steht nur nach w, na, o, przy, po ·
         <span class="stem">Stamm</span> + <b>Endung</b>
@@ -2165,7 +2139,7 @@ b {
         </table>
       </div>
     </div>
-<style>@scope ([data-sheet="11"]) {
+<style>@scope ([data-sheet="11"][data-lang="de en"]) {
       .page > table :is(th, td):first-child {
         width: 200px;
       }
@@ -2175,8 +2149,8 @@ b {
       .three :is(th, td):nth-child(2) {
         width: 80px;
       }
-    }</style><div class="page" data-sheet="11" hidden>
-      <h1><small>Thema 11</small>Dopełniacz – Genitiv</h1>
+    }</style><div class="page" data-sheet="11" data-lang="de en" hidden>
+      <h1><small></small>Dopełniacz – Genitiv</h1>
       <p class="sub">
         Frage: kogo? czego? · für „kein“, Mengen, Besitz und nach vielen Präpositionen ·
         <span class="stem">Stamm</span> + <b>Endung</b>
@@ -2315,12 +2289,12 @@ b {
         <p class="note">dużo studentów – viele Studenten · pięć książek – fünf Bücher</p>
       </div>
     </div>
-<style>@scope ([data-sheet="12"]) {
+<style>@scope ([data-sheet="12"][data-lang="de en"]) {
       .page > table :is(th, td):first-child {
         width: 130px;
       }
-    }</style><div class="page" data-sheet="12" hidden>
-      <h1><small>Thema 12</small>Przymiotniki – Adjektive</h1>
+    }</style><div class="page" data-sheet="12" data-lang="de en" hidden>
+      <h1><small></small>Przymiotniki – Adjektive</h1>
       <p class="sub">
         Das Adjektiv passt sich dem Nomen an: Geschlecht, Zahl und Fall ·
         <span class="stem">Stamm</span> + <b>Endung</b>
@@ -2479,12 +2453,12 @@ b {
         </table>
       </div>
     </div>
-<style>@scope ([data-sheet="13"]) {
+<style>@scope ([data-sheet="13"][data-lang="de en"]) {
       .page > table :is(th, td):first-child {
         width: 110px;
       }
-    }</style><div class="page" data-sheet="13" hidden>
-      <h1><small>Thema 13</small>Zaimki osobowe – Personalpronomen</h1>
+    }</style><div class="page" data-sheet="13" data-lang="de en" hidden>
+      <h1><small></small>Zaimki osobowe – Personalpronomen</h1>
       <p class="sub">ich, mich, mir … · bei zwei Formen: kurz / lang</p>
 
       <h2>1. Alle Fälle</h2>
@@ -2632,12 +2606,12 @@ b {
         </table>
       </div>
     </div>
-<style>@scope ([data-sheet="14"]) {
+<style>@scope ([data-sheet="14"][data-lang="de en"]) {
       .page > table :is(th, td):first-child {
         width: 120px;
       }
-    }</style><div class="page" data-sheet="14" hidden>
-      <h1><small>Thema 14</small>Mój, twój, ten – mein, dein, dieser</h1>
+    }</style><div class="page" data-sheet="14" data-lang="de en" hidden>
+      <h1><small></small>Mój, twój, ten – mein, dein, dieser</h1>
       <p class="sub">
         Sie passen sich dem Nomen an, wie Adjektive · <span class="stem">Stamm</span> +
         <b>Endung</b>
@@ -2789,8 +2763,8 @@ b {
         </table>
       </div>
     </div>
-<div class="page" data-sheet="15" hidden>
-      <h1><small>Thema 15</small>Iść i jechać – gehen und fahren</h1>
+<div class="page" data-sheet="15" data-lang="de en" hidden>
+      <h1><small></small>Iść i jechać – gehen und fahren</h1>
       <p class="sub">Zu Fuß: iść / chodzić · mit einem Fahrzeug: jechać / jeździć</p>
 
       <h2>1. Gegenwart <span>· jetzt oder regelmäßig?</span></h2>
@@ -2958,7 +2932,7 @@ b {
         </table>
       </div>
     </div>
-<style>@scope ([data-sheet="16"]) {
+<style>@scope ([data-sheet="16"][data-lang="de en"]) {
       .col p {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -2975,8 +2949,8 @@ b {
       .page > table :is(th, td):nth-child(2) {
         width: 320px;
       }
-    }</style><div class="page" data-sheet="16" hidden>
-      <h1><small>Thema 16</small>Czas – Uhrzeit, Tage, Monate</h1>
+    }</style><div class="page" data-sheet="16" data-lang="de en" hidden>
+      <h1><small></small>Czas – Uhrzeit, Tage, Monate</h1>
       <p class="sub">Die Uhrzeit sagt man mit der weiblichen Ordnungszahl: pierwsza (godzina).</p>
 
       <h2>1. Uhrzeit <span>· Która (jest) godzina? – O której?</span></h2>
@@ -3113,7 +3087,7 @@ b {
         </table>
       </div>
     </div>
-<style>@scope ([data-sheet="17"]) {
+<style>@scope ([data-sheet="17"][data-lang="de en"]) {
       .col p {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
@@ -3121,8 +3095,8 @@ b {
       .page > table :is(th, td):first-child {
         width: 110px;
       }
-    }</style><div class="page" data-sheet="17" hidden>
-      <h1><small>Thema 17</small>Aspekt i przyszłość – Aspekt und Zukunft</h1>
+    }</style><div class="page" data-sheet="17" data-lang="de en" hidden>
+      <h1><small></small>Aspekt i przyszłość – Aspekt und Zukunft</h1>
       <p class="sub">
         Fast jedes Verb gibt es doppelt: unvollendet (Vorgang) und vollendet (Ergebnis).
       </p>
@@ -3241,12 +3215,12 @@ b {
         </table>
       </div>
     </div>
-<style>@scope ([data-sheet="18"]) {
+<style>@scope ([data-sheet="18"][data-lang="de en"]) {
       .page > table :is(th, td):first-child {
         width: 200px;
       }
-    }</style><div class="page" data-sheet="18" hidden>
-      <h1><small>Thema 18</small>Tryb rozkazujący – Imperativ</h1>
+    }</style><div class="page" data-sheet="18" data-lang="de en" hidden>
+      <h1><small></small>Tryb rozkazujący – Imperativ</h1>
       <p class="sub">
         Die ty-Form ist die Basis: ihr → + -cie, wir → + -my ·
         <span class="stem">Stamm</span> + <b>Endung</b>
@@ -3389,7 +3363,7 @@ b {
         </table>
       </div>
     </div>
-<style>@scope ([data-sheet="19"]) {
+<style>@scope ([data-sheet="19"][data-lang="de en"]) {
       .page > table :is(th, td):first-child {
         width: 110px;
       }
@@ -3399,8 +3373,8 @@ b {
       .page > table :is(th, td):nth-child(3) {
         width: 190px;
       }
-    }</style><div class="page" data-sheet="19" hidden>
-      <h1><small>Thema 19</small>Stopniowanie – Steigerung</h1>
+    }</style><div class="page" data-sheet="19" data-lang="de en" hidden>
+      <h1><small></small>Stopniowanie – Steigerung</h1>
       <p class="sub">
         gut → besser → am besten · <span class="stem">Stamm</span> +
         <b>Endung</b>
@@ -3563,12 +3537,12 @@ b {
         </p>
       </div>
     </div>
-<style>@scope ([data-sheet="20"]) {
+<style>@scope ([data-sheet="20"][data-lang="de en"]) {
       .page > table:nth-of-type(2) td:first-child {
         width: 250px;
       }
-    }</style><div class="page" data-sheet="20" hidden>
-      <h1><small>Thema 20</small>Tryb przypuszczający – Konditional</h1>
+    }</style><div class="page" data-sheet="20" data-lang="de en" hidden>
+      <h1><small></small>Tryb przypuszczający – Konditional</h1>
       <p class="sub">
         würde, hätte, könnte · Vergangenheitsform + by + Endung · <span class="stem">Stamm</span> +
         <b>Endung</b>
@@ -3684,8 +3658,35 @@ b {
     </div></div>
     </main>
 
+    <script id="ui" type="application/json">
+      {"de":{"language":"Sprache","theme_light":"Helles Design","theme_dark":"Dunkles Design","prev_chapter":"Vorheriges Kapitel","next_chapter":"Nächstes Kapitel","choose_chapter":"Kapitel wählen","first_chapter":"Das ist das erste Kapitel","last_chapter":"Das ist das letzte Kapitel","chapter_of":"Kapitel {0} von {1}","continue":"Weiterlesen: Kapitel {0}","to_words":"Zu den neuen Wörtern","words":"Wörter","open_grammar":"Grammatik öffnen","grammar":"Grammatik","read_title":"Kapitel vorlesen","stop_title":"Vorlesen beenden","copy_chapter":"Kapitel kopieren","whole_chapter":"Ganzes Kapitel","part":"Teil {0}","characters":"{0} Zeichen","copy_blocked":"Kopieren ist in diesem Browser blockiert.","print_book":"Buch drucken","fullscreen":"Vollbild","fullscreen_exit":"Vollbild beenden","lang_code":"DE","read_translation":"Auf Deutsch lesen","read_polish":"Auf Polnisch lesen","tap_hint":"Tippe auf ein polnisches Wort, um die Übersetzung zu sehen.","translation":"Übersetzung","close":"Schließen","pronounce":"Aussprechen","in_text":"im Text: {0}","new_words":"Neue Wörter","words_hint":"Alle Wörter, die in diesem Kapitel zum ersten Mal vorkommen, alphabetisch in der Grundform.<br />m/f/n: Genus · Gen.: Genitiv Sg. · Pl.: Nominativ Pl. · uv./v.: unvollendeter/vollendeter Aspekt, in Klammern der Aspektpartner · bei Verben: 1. und 2. Person Sg. · bei Präpositionen: der Kasus danach","about":"Diese Geschichte enthält die 3000 häufigsten Wörter des gesprochenen Polnisch.<br />Sie beginnt mit ganz einfachen Sätzen und wird nach und nach schwieriger.<br />Geschrieben von Aron Sommer mit <a href=\"https://claude.ai\">Claude<\/a>, 2026","grammar_title":"Klucz – Grammatik","prev_topic":"Vorheriges Thema","next_topic":"Nächstes Thema","choose_topic":"Thema wählen","first_topic":"Das ist das erste Thema","last_topic":"Das ist das letzte Thema","topic":"Thema {0}","print_topic":"Thema drucken","back":"Zurück zum Buch","book":"Buch"},"en":{"language":"Language","theme_light":"Light theme","theme_dark":"Dark theme","prev_chapter":"Previous chapter","next_chapter":"Next chapter","choose_chapter":"Choose a chapter","first_chapter":"This is the first chapter","last_chapter":"This is the last chapter","chapter_of":"Chapter {0} of {1}","continue":"Continue reading: chapter {0}","to_words":"To the new words","words":"Words","open_grammar":"Open the grammar","grammar":"Grammar","read_title":"Read the chapter aloud","stop_title":"Stop reading aloud","copy_chapter":"Copy the chapter","whole_chapter":"Whole chapter","part":"Part {0}","characters":"{0} characters","copy_blocked":"Copying is blocked in this browser.","print_book":"Print the book","fullscreen":"Full screen","fullscreen_exit":"Exit full screen","lang_code":"EN","read_translation":"Read in English","read_polish":"Read in Polish","tap_hint":"Tap a Polish word to see its translation.","translation":"Translation","close":"Close","pronounce":"Pronounce","in_text":"in the text: {0}","new_words":"New words","words_hint":"Every word that occurs in this chapter for the first time, alphabetically, in its base form.<br />m/f/n: gender · Gen.: genitive sg. · Pl.: nominative pl. · impf./pf.: imperfective/perfective aspect, the aspect partner in brackets · verbs: 1st and 2nd person sg. · prepositions: the case after them","about":"This story contains the 3000 most frequent words of spoken Polish.<br />It begins with very simple sentences and gets harder step by step.<br />Written by Aron Sommer with <a href=\"https://claude.ai\">Claude<\/a>, 2026","grammar_title":"Klucz – Grammar","prev_topic":"Previous topic","next_topic":"Next topic","choose_topic":"Choose a topic","first_topic":"This is the first topic","last_topic":"This is the last topic","topic":"Topic {0}","print_topic":"Print the topic","back":"Back to the book","book":"Book"}}
+    </script>
     <script>
-      // The theme button. A stored theme (set in the head) wins over the system's; the button shows the theme it switches to.
+      // The language of the page's own texts, kept for both pages; without a stored one, the browser's (German, else English).
+// t(key, ...values) is a text of tools/ui.tsv with {0}, {1} … filled in. data-t sets an element's content,
+// data-tip its title and aria-label.
+const UI = JSON.parse(document.getElementById("ui").textContent);
+let lang;
+try {
+  lang = localStorage.getItem("klucz-lang");
+} catch {}
+if (!(lang in UI)) lang = navigator.language.startsWith("de") ? "de" : "en";
+const t = (key, ...values) => UI[lang][key].replace(/\{(\d)\}/g, (_, i) => values[i]);
+function applyLang() {
+  for (const e of document.querySelectorAll("[data-t]")) e.innerHTML = t(e.dataset.t);
+  for (const e of document.querySelectorAll("[data-tip]")) e.title = e.ariaLabel = t(e.dataset.tip);
+}
+// a new language, stored; fires "langchange" for the texts the page scripts write
+function setLang(next) {
+  lang = next;
+  try {
+    localStorage.setItem("klucz-lang", lang);
+  } catch {}
+  applyLang();
+  dispatchEvent(new Event("langchange"));
+}
+applyLang();
+// The theme button. A stored theme (set in the head) wins over the system's; the button shows the theme it switches to.
 {
   const button = document.getElementById("theme");
   const systemDark = matchMedia("(prefers-color-scheme: dark)");
@@ -3695,7 +3696,7 @@ b {
   };
   const update = () => {
     button.firstElementChild.textContent = isDark() ? "light_mode" : "dark_mode";
-    button.title = button.ariaLabel = isDark() ? "Helles Design" : "Dunkles Design";
+    button.title = button.ariaLabel = t(isDark() ? "theme_light" : "theme_dark");
   };
   button.onclick = () => {
     const next = isDark() ? "light" : "dark";
@@ -3706,6 +3707,7 @@ b {
     update();
   };
   systemDark.addEventListener("change", update);
+  addEventListener("langchange", update);
   update();
 }
 ;
@@ -3713,8 +3715,21 @@ b {
     <script>
       (() => {
         const $ = (id) => document.getElementById(id);
-        const sheets = [...document.querySelectorAll(".page")];
-        const names = [...$("topic").options].map((o) => o.text);
+        // the sheets in the page's language (a German one stands in for a missing English one), named in the select
+        const sheets = [...document.querySelectorAll(".page")].filter((s) =>
+          s.dataset.lang.split(" ").includes(lang),
+        );
+        const names = sheets.map((s) => {
+          const small = s.querySelector("h1 small");
+          small.textContent = t("topic", s.dataset.sheet);
+          return (
+            s.dataset.sheet +
+            ". " +
+            s.querySelector("h1").textContent.slice(small.textContent.length)
+          );
+        });
+        $("topic").replaceChildren(...names.map((n) => new Option(n)));
+        document.documentElement.lang = lang;
         // the open sheet is kept in the hash (replaced, so Back leaves the page) and in localStorage
         const KEY = "klucz-grammar";
         const index = (name) => sheets.findIndex((s) => s.dataset.sheet === name);
@@ -3725,8 +3740,8 @@ b {
           $("topic").selectedIndex = i;
           $("prev").disabled = i === 0;
           $("next").disabled = i === sheets.length - 1;
-          $("prev").title = i === 0 ? "Das ist das erste Thema" : names[i - 1];
-          $("next").title = i === sheets.length - 1 ? "Das ist das letzte Thema" : names[i + 1];
+          $("prev").title = i === 0 ? t("first_topic") : names[i - 1];
+          $("next").title = i === sheets.length - 1 ? t("last_topic") : names[i + 1];
           window.scrollTo(0, 0);
           try {
             localStorage.setItem(KEY, sheets[i].dataset.sheet);

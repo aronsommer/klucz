@@ -1,0 +1,46 @@
+key	de	en
+language	Sprache	Language
+theme_light	Helles Design	Light theme
+theme_dark	Dunkles Design	Dark theme
+prev_chapter	Vorheriges Kapitel	Previous chapter
+next_chapter	Nächstes Kapitel	Next chapter
+choose_chapter	Kapitel wählen	Choose a chapter
+first_chapter	Das ist das erste Kapitel	This is the first chapter
+last_chapter	Das ist das letzte Kapitel	This is the last chapter
+chapter_of	Kapitel {0} von {1}	Chapter {0} of {1}
+continue	Weiterlesen: Kapitel {0}	Continue reading: chapter {0}
+to_words	Zu den neuen Wörtern	To the new words
+words	Wörter	Words
+open_grammar	Grammatik öffnen	Open the grammar
+grammar	Grammatik	Grammar
+read_title	Kapitel vorlesen	Read the chapter aloud
+stop_title	Vorlesen beenden	Stop reading aloud
+copy_chapter	Kapitel kopieren	Copy the chapter
+whole_chapter	Ganzes Kapitel	Whole chapter
+part	Teil {0}	Part {0}
+characters	{0} Zeichen	{0} characters
+copy_blocked	Kopieren ist in diesem Browser blockiert.	Copying is blocked in this browser.
+print_book	Buch drucken	Print the book
+fullscreen	Vollbild	Full screen
+fullscreen_exit	Vollbild beenden	Exit full screen
+lang_code	DE	EN
+read_translation	Auf Deutsch lesen	Read in English
+read_polish	Auf Polnisch lesen	Read in Polish
+tap_hint	Tippe auf ein polnisches Wort, um die Übersetzung zu sehen.	Tap a Polish word to see its translation.
+translation	Übersetzung	Translation
+close	Schließen	Close
+pronounce	Aussprechen	Pronounce
+in_text	im Text: {0}	in the text: {0}
+new_words	Neue Wörter	New words
+words_hint	Alle Wörter, die in diesem Kapitel zum ersten Mal vorkommen, alphabetisch in der Grundform.<br />m/f/n: Genus · Gen.: Genitiv Sg. · Pl.: Nominativ Pl. · uv./v.: unvollendeter/vollendeter Aspekt, in Klammern der Aspektpartner · bei Verben: 1. und 2. Person Sg. · bei Präpositionen: der Kasus danach	Every word that occurs in this chapter for the first time, alphabetically, in its base form.<br />m/f/n: gender · Gen.: genitive sg. · Pl.: nominative pl. · impf./pf.: imperfective/perfective aspect, the aspect partner in brackets · verbs: 1st and 2nd person sg. · prepositions: the case after them
+about	Diese Geschichte enthält die 3000 häufigsten Wörter des gesprochenen Polnisch.<br />Sie beginnt mit ganz einfachen Sätzen und wird nach und nach schwieriger.<br />Geschrieben von Aron Sommer mit <a href="https://claude.ai">Claude</a>, 2026	This story contains the 3000 most frequent words of spoken Polish.<br />It begins with very simple sentences and gets harder step by step.<br />Written by Aron Sommer with <a href="https://claude.ai">Claude</a>, 2026
+grammar_title	Klucz – Grammatik	Klucz – Grammar
+prev_topic	Vorheriges Thema	Previous topic
+next_topic	Nächstes Thema	Next topic
+choose_topic	Thema wählen	Choose a topic
+first_topic	Das ist das erste Thema	This is the first topic
+last_topic	Das ist das letzte Thema	This is the last topic
+topic	Thema {0}	Topic {0}
+print_topic	Thema drucken	Print the topic
+back	Zurück zum Buch	Back to the book
+book	Buch	Book

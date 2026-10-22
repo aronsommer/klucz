@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="de">
+<html>
   <head>
     <meta charset="utf-8" />
     <!-- maximum-scale stops iOS Safari from zooming in when the topic select gets focus. -->
@@ -7,7 +7,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"
     />
-    <title>Klucz – Grammatik</title>
+    <title data-t="grammar_title">Klucz</title>
     <!-- Before the first paint, so a stored theme does not flash. -->
     <script>
       try {
@@ -221,30 +221,23 @@
     <header class="bar">
       <div class="bar-inner">
         <div class="switcher">
-          <button class="arrow" id="prev" aria-label="Vorheriges Thema">
+          <button class="arrow" id="prev" data-tip="prev_topic">
             <span class="icon" aria-hidden="true">chevron_left</span>
           </button>
-          <select id="topic" aria-label="Thema wählen" title="Thema wählen">
-            __OPTIONS__
-          </select>
-          <button class="arrow" id="next" aria-label="Nächstes Thema">
+          <select id="topic" data-tip="choose_topic"></select>
+          <button class="arrow" id="next" data-tip="next_topic">
             <span class="icon" aria-hidden="true">chevron_right</span>
           </button>
         </div>
-        <button class="tool" id="print" aria-label="Thema drucken" title="Thema drucken">
+        <button class="tool" id="print" data-tip="print_topic">
           <span class="icon" aria-hidden="true">print</span>
         </button>
         <button class="tool" id="theme">
           <span class="icon" aria-hidden="true">dark_mode</span>
         </button>
-        <a
-          class="tool"
-          id="back"
-          href="index.html"
-          aria-label="Zurück zum Buch"
-          title="Zurück zum Buch"
-        >
-          <span class="icon" aria-hidden="true">menu_book</span><span class="label">Buch</span>
+        <a class="tool" id="back" href="index.html" data-tip="back">
+          <span class="icon" aria-hidden="true">menu_book</span
+          ><span class="label" data-t="book"></span>
         </a>
       </div>
     </header>
@@ -253,14 +246,30 @@
       <div class="column">__SHEETS__</div>
     </main>
 
+    <script id="ui" type="application/json">
+      __UI__
+    </script>
     <script>
-      __THEME__;
+      __SHARED__;
     </script>
     <script>
       (() => {
         const $ = (id) => document.getElementById(id);
-        const sheets = [...document.querySelectorAll(".page")];
-        const names = [...$("topic").options].map((o) => o.text);
+        // the sheets in the page's language (a German one stands in for a missing English one), named in the select
+        const sheets = [...document.querySelectorAll(".page")].filter((s) =>
+          s.dataset.lang.split(" ").includes(lang),
+        );
+        const names = sheets.map((s) => {
+          const small = s.querySelector("h1 small");
+          small.textContent = t("topic", s.dataset.sheet);
+          return (
+            s.dataset.sheet +
+            ". " +
+            s.querySelector("h1").textContent.slice(small.textContent.length)
+          );
+        });
+        $("topic").replaceChildren(...names.map((n) => new Option(n)));
+        document.documentElement.lang = lang;
         // the open sheet is kept in the hash (replaced, so Back leaves the page) and in localStorage
         const KEY = "klucz-grammar";
         const index = (name) => sheets.findIndex((s) => s.dataset.sheet === name);
@@ -271,8 +280,8 @@
           $("topic").selectedIndex = i;
           $("prev").disabled = i === 0;
           $("next").disabled = i === sheets.length - 1;
-          $("prev").title = i === 0 ? "Das ist das erste Thema" : names[i - 1];
-          $("next").title = i === sheets.length - 1 ? "Das ist das letzte Thema" : names[i + 1];
+          $("prev").title = i === 0 ? t("first_topic") : names[i - 1];
+          $("next").title = i === sheets.length - 1 ? t("last_topic") : names[i + 1];
           window.scrollTo(0, 0);
           try {
             localStorage.setItem(KEY, sheets[i].dataset.sheet);

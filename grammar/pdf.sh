@@ -1,12 +1,16 @@
 #!/bin/sh
-# Deletes the numbered PDFs in the given folder, renders every numbered sheet to a PDF there, named
-# after its number and <h1> (08.html, "Biernik – Akkusativ" -> 08-biernik-akkusativ.pdf), checks that
-# each is exactly one page and merges them in order into gramatyka-grammatik.pdf there. Exits non-zero
-# on failure.
-[ -d "$1" ] || { echo "usage: grammar/pdf.sh <output folder>" >&2; exit 1; }
-out="$(cd "$1" && pwd)"
+# Deletes the numbered PDFs in the given folder, renders every numbered sheet of the language (de: grammar/,
+# en: grammar/en/) to a PDF there, named after its number and <h1> (08.html, "Biernik – Akkusativ" ->
+# 08-biernik-akkusativ.pdf), checks that each is exactly one page and merges them in order into
+# gramatyka-grammatik.pdf (de) or gramatyka-grammar.pdf (en) there. Exits non-zero on failure.
+case "$1" in
+  de) sheets=.; all=gramatyka-grammatik.pdf ;;
+  en) sheets=en; all=gramatyka-grammar.pdf ;;
+esac
+[ -n "$all" ] && [ -d "$2" ] || { echo "usage: grammar/pdf.sh <de|en> <output folder>" >&2; exit 1; }
+out="$(cd "$2" && pwd)"
 rm -f "$out"/[0-9][0-9]-*.pdf
-cd "$(dirname "$0")" || exit 1
+cd "$(dirname "$0")/$sheets" || exit 1
 chrome="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 for f in [0-9][0-9].html; do
   name=$(perl -CSD -Mutf8 -ne 'if (/<h1>(.*?)<\/h1>/) { $_ = lc $1; tr/ąćęłńóśźż/acelnoszz/;
@@ -15,7 +19,7 @@ for f in [0-9][0-9].html; do
   "$chrome" --headless --no-pdf-header-footer --print-to-pdf="$out/${f%.html}-$name.pdf" "file://$PWD/$f" 2>/dev/null
 done
 cd "$out" || exit 1
-osascript -l JavaScript - gramatyka-grammatik.pdf [0-9][0-9]-*.pdf <<'EOF'
+osascript -l JavaScript - "$all" [0-9][0-9]-*.pdf <<'EOF'
 ObjC.import("PDFKit");
 function run([out, ...files]) {
   const all = $.PDFDocument.alloc.init;

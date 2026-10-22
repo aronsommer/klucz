@@ -72,13 +72,15 @@ weiter. Das PDF heißt nach Nummer und Titel, klein geschrieben, ohne Sonderzeic
 ## PDFs erzeugen
 
 ```sh
-grammar/pdf.sh ../polski/gramatyka
+grammar/pdf.sh de ../polski/gramatyka/de
+grammar/pdf.sh en ../polski/gramatyka/en
 ```
 
 Löscht zuerst die nummerierten PDFs (`NN-….pdf`) im angegebenen Ordner, damit nach einer Änderung
 von Nummer oder Titel kein altes Blatt liegen bleibt. Erzeugt dann aus jeder nummerierten HTML-Datei
 ein PDF dort, prüft, dass jedes genau eine Seite hat, und fügt alle in Reihenfolge zu
-`gramatyka-grammatik.pdf` zusammen. Ist ein Blatt länger als eine Seite, bricht das Skript ab und
+`gramatyka-grammatik.pdf` (Deutsch, aus `grammar/`) bzw. `gramatyka-grammar.pdf` (Englisch, aus
+`grammar/en/`, dort mit `../style.css`) zusammen. Ist ein Blatt länger als eine Seite, bricht das Skript ab und
 nennt es. Braucht Google Chrome und macOS.
 
 ## Gerüst für ein neues Blatt

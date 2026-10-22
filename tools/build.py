@@ -3,11 +3,12 @@
 KLUCZ.md               the book with a glossary after each chapter
 text/NN.txt, klucz.txt plain text without markup, for copying or text-to-speech
 text/parts/NN-K.txt    the same, split into parts that fit Google Translate's 5,000 characters
-index.html             reading page (also the GitHub Pages start page): tap a word, word lists, copy,
-                       and the German translation from chapters/de/NN.md where one exists
-grammar.html           every grammar sheet from grammar/NN.html in the reading page's look
+index.html             reading page (also the GitHub Pages start page) in German and English: tap a word, word
+                       lists, copy, and the translation from chapters/<lang>/NN.md where one exists
+grammar.html           every grammar sheet from grammar/NN.html (German) and grammar/en/NN.html (English) in the
+                       reading page's look
 
-Run with --accept-german to confirm that every German paragraph still fits its Polish one.
+Run with --accept-de or --accept-en to confirm that every paragraph of that translation still fits its Polish one.
 """
 
 import base64
@@ -18,15 +19,18 @@ import sys
 from collections import Counter
 
 from analyze import EXCLUDED, GLOSSARY, ROOT, chapters, is_word, read_tsv, tokens, tsv
-from lexicon import POS, Dictionary, describe, load
+from lexicon import LABELS, Dictionary, describe, load
 
+LANGS = ("de", "en")  # the languages of the pages; the first is the one KLUCZ.md and the grammar sheets start from
+NAMES = {"de": "German", "en": "English"}
 TEXT = ROOT / "text"
-GERMAN = ROOT / "chapters" / "de"
 SYNC = ROOT / "data" / "translation_sync.tsv"
 TEMPLATE = ROOT / "tools" / "reader.html"
 GRAMMAR_TEMPLATE = ROOT / "tools" / "grammar.html"
 BASE = ROOT / "tools" / "base.css"
 THEME = ROOT / "tools" / "theme.js"
+LANG_JS = ROOT / "tools" / "lang.js"
+UI = ROOT / "tools" / "ui.tsv"
 GRAMMAR = ROOT / "grammar"
 FONTS = ROOT / "fonts"
 PRINT_COLORS = {"#000": "var(--text)", "#8c8c8c": "var(--text-2)", "#bbb": "var(--line)"}
@@ -84,10 +88,11 @@ def entries(marked, dictionary, glossary):
     """Word list entries, and what each marked word in the text is.
 
     marked holds each chapter's segments from segments(). Returns (words, lists, found):
-    words    {headword: [display, part of speech, grammar, German]}, headwords lowercase
+    words    {headword: [display, {lang: [part of speech, grammar, meaning]}]}, headwords lowercase
     lists    chapter index -> [(headword, form in the text, its description)] of the words new in it,
-             alphabetically; form and description are empty when the form is the lemma
+             alphabetically; form is empty and description None when the form is the lemma
     found    {id(segment): (headword, description or None)} for every marked word
+    A description is {lang: what form the word is}.
     """
     first, kinds, forms, found = {}, {}, {}, {}
     for i, chapter in enumerate(marked):
@@ -102,15 +107,17 @@ def entries(marked, dictionary, glossary):
                 kinds.setdefault(headword, Counter())[dictionary.pos((form, lemma, upos, f, się))] += 1
                 forms.setdefault(headword, set()).add(form)
                 text = (surface if upos == "PROPN" else surface.lower()) if surface.lower() != lemma else ""
-                description = describe(parts) if text else None
+                description = {lang: describe(parts, lang) for lang in LANGS} if text else None
                 found[id(seg)] = (headword, description)
                 first.setdefault(headword, (i, text, description, (form, lemma, upos, f, się)))
     words, lists = {}, {}
     for headword, (i, text, description, token) in first.items():
         pos = kinds[headword].most_common(1)[0][0]
-        display, de = glossary.get(headword, (headword, ""))
-        words[headword] = [display, POS.get(pos, ""), dictionary.entry(headword, pos, token, forms[headword]), de]
-        lists.setdefault(i, []).append((headword, text, description or ""))
+        display, meanings = glossary.get(headword, (headword, {}))
+        words[headword] = [display, {lang: [LABELS[lang]["pos"].get(pos, ""),
+                                            dictionary.entry(headword, pos, token, forms[headword], lang),
+                                            meanings.get(lang, "")] for lang in LANGS}]
+        lists.setdefault(i, []).append((headword, text, description))
     for i in lists:
         lists[i].sort(key=lambda w: polish_order(w[0]))
     return words, lists, found
@@ -170,67 +177,70 @@ def book(story, words, lists):
     for i, (_, text, _) in enumerate(story):
         out += [text.strip().replace("# ", "## ", 1), "", "### Neue Wörter", ""]
         for headword, form, description in lists.get(i, []):
-            display, pos, grammar, de = words[headword]
+            display, meanings = words[headword]
+            pos, grammar, de = meanings["de"]
             label = " · ".join(p for p in (pos, grammar) if p)
-            seen = f" · im Text: {form}" + (f" ({description})" if description else "") if form else ""
+            seen = f" · im Text: {form}" + (f" ({description['de']})" if description["de"] else "") if form else ""
             out.append(f"- **{display}**{f' _{label}_' if label else ''} — {de or '?'}{seen}")
         out.append("")
     (ROOT / "KLUCZ.md").write_text("\n".join(out), encoding="utf-8")
 
 
-def german(story):
-    """Map chapter index -> German blocks, checked against the Polish ones before anything is written.
+def translation(story, lang):
+    """Map chapter index -> (Polish blocks, blocks of chapters/<lang>), checked before anything is written.
 
     Paragraphs must match one to one in number, order and kind (title, date, para, quote, break).
     """
+    folder = ROOT / "chapters" / lang
     numbers = {f"{i + 1:02d}" for i in range(len(story))}
-    strays = sorted(p.name for p in GERMAN.glob("*.md") if p.stem not in numbers)
+    strays = sorted(p.name for p in folder.glob("*.md") if p.stem not in numbers)
     if strays:
-        raise SystemExit(f"chapters/de: no Polish chapter for {', '.join(strays)}")
+        raise SystemExit(f"chapters/{lang}: no Polish chapter for {', '.join(strays)}")
     result = {}
     for i, (_, markdown, _) in enumerate(story):
-        path = GERMAN / f"{i + 1:02d}.md"
+        path = folder / f"{i + 1:02d}.md"
         if not path.exists():
             continue
-        pl, de = blocks(markdown), blocks(path.read_text(encoding="utf-8"))
-        kinds_pl, kinds_de = [k for k, _ in pl], [k for k, _ in de]
-        if kinds_pl != kinds_de:
-            j = next((j for j, (a, b) in enumerate(zip(kinds_pl, kinds_de)) if a != b), min(len(pl), len(de)))
+        pl, tr = blocks(markdown), blocks(path.read_text(encoding="utf-8"))
+        kinds_pl, kinds_tr = [k for k, _ in pl], [k for k, _ in tr]
+        if kinds_pl != kinds_tr:
+            j = next((j for j, (a, b) in enumerate(zip(kinds_pl, kinds_tr)) if a != b), min(len(pl), len(tr)))
             show = lambda bl: f"{bl[j][0]}: {bl[j][1][:80]}".replace("\n", " / ") if j < len(bl) else "(none, the file ends)"
             raise SystemExit(
                 f"{path.relative_to(ROOT)} does not match chapters/{path.name} paragraph by paragraph "
-                f"({len(pl)} Polish, {len(de)} German); nothing was built.\n"
+                f"({len(pl)} Polish, {len(tr)} {NAMES[lang]}); nothing was built.\n"
                 f"paragraph {j + 1} is the first that differs in kind; an extra or missing one can be earlier:\n"
-                f"  pl  {show(pl)}\n  de  {show(de)}"
+                f"  pl  {show(pl)}\n  {lang}  {show(tr)}"
             )
-        result[i] = (pl, de)
+        result[i] = (pl, tr)
     return result
 
 
-def outdated(translations, accept):
-    """German paragraphs whose Polish changed since they were last in sync: [(chapter, paragraph, Polish)].
+def outdated(translations, accepted):
+    """Translated paragraphs whose Polish changed since they were last in sync: [(lang, chapter, paragraph, Polish)].
 
-    data/translation_sync.tsv keeps (chapter, Polish hash, German hash) for every paragraph in sync.
-    A pair is new when either side changed: a new German text is taken as updated, but an unchanged
-    German text next to a changed Polish one is reported and keeps its old pair until it is updated
-    or --accept-german confirms it.
+    translations maps lang -> translation(story, lang). data/translation_sync.tsv keeps (lang, chapter,
+    Polish hash, translation hash) for every paragraph in sync. A pair is new when either side changed: a new
+    translation is taken as updated, but an unchanged one next to a changed Polish text is reported and keeps
+    its old pair until it is updated or --accept-<lang> (a lang in accepted) confirms it.
     """
     digest = lambda text: hashlib.sha1(text.encode()).hexdigest()[:12]
     known = set()
     if SYNC.exists():
         known = {tuple(line.split("\t")) for line in SYNC.read_text(encoding="utf-8").splitlines()[1:]}
-    known_de = {(c, d) for c, _, d in known}
+    known_tr = {(lang, c, t) for lang, c, _, t in known}
     keep, report = set(), []
-    for i, (pl, de) in sorted(translations.items()):
-        number = f"{i + 1:02d}"
-        for j, ((_, a), (_, b)) in enumerate(zip(pl, de)):
-            pair = (number, digest(a), digest(b))
-            if accept or pair in known or (number, pair[2]) not in known_de:
-                keep.add(pair)
-            else:
-                report.append((i + 1, j + 1, a))
-                keep |= {k for k in known if (k[0], k[2]) == (number, pair[2])}
-    rows = ["chapter\tpl\tde"] + ["\t".join(k) for k in sorted(keep)]
+    for lang, chapters_tr in translations.items():
+        for i, (pl, tr) in sorted(chapters_tr.items()):
+            number = f"{i + 1:02d}"
+            for j, ((_, a), (_, b)) in enumerate(zip(pl, tr)):
+                pair = (lang, number, digest(a), digest(b))
+                if lang in accepted or pair in known or (lang, number, pair[3]) not in known_tr:
+                    keep.add(pair)
+                else:
+                    report.append((lang, i + 1, j + 1, a))
+                    keep |= {k for k in known if (k[0], k[1], k[3]) == (lang, number, pair[3])}
+    rows = ["lang\tchapter\tpl\ttranslation"] + ["\t".join(k) for k in sorted(keep)]
     SYNC.write_text("\n".join(rows) + "\n", encoding="utf-8")
     return report
 
@@ -244,37 +254,81 @@ def fonts_css():
     return re.sub(r"url\(([\w.-]+\.woff2)\)", embed, (FONTS / "fonts.css").read_text(encoding="utf-8"))
 
 
-def grammar(base, theme):
-    """Write grammar.html; returns the number of sheets.
+def sheet(path):
+    """(title, body, own css) of a grammar sheet, its print colors in the css turned into the page's."""
+    html = path.read_text(encoding="utf-8")
+    page = re.search(r'<div class="page">(.*)</div>\s*</body>', html, re.S)
+    title = re.search(r"<h1>(.*?)</h1>", html, re.S)
+    if not page or not title:
+        raise SystemExit(f'{path.relative_to(ROOT)}: no <div class="page"> or <h1>')
+    style = re.search(r"<style>(.*?)</style>", html, re.S)
+    css = re.sub(r"#(?:000|8c8c8c|bbb)\b", lambda m: PRINT_COLORS[m[0]], style[1]) if style else ""
+    return title[1], page[1], css
 
-    Each sheet keeps its own <style>, scoped to it, with its print colors turned into the page's.
+
+def skeleton(body):
+    """A sheet's tags with only their classes, and its bold texts: what a sheet and its translation share."""
+    tags = [re.sub(r'\s(?!class=)[\w-]+="[^"]*"', "", t) for t in re.findall(r"<[^>]+>", body)]
+    return tags, re.findall(r"<b>(.*?)</b>", body, re.S)
+
+
+def sheets():
+    """The grammar page's sheets, checked before anything is written: (their html, numbers without English).
+
+    An English sheet grammar/en/NN.html must have the tags, classes and bold texts of grammar/NN.html. Without one,
+    the German sheet stands in for it. The page script shows one sheet at a time, in the chosen language.
     """
-    sheets, options = [], []
-    for path in sorted(GRAMMAR.glob("[0-9][0-9].html")):
-        html = path.read_text(encoding="utf-8")
-        page = re.search(r'<div class="page">(.*)</div>\s*</body>', html, re.S)
-        title = re.search(r"<h1>(.*?)</h1>", html, re.S)
-        if not page or not title:
-            raise SystemExit(f'{path.relative_to(ROOT)}: no <div class="page"> or <h1>')
-        number = int(path.stem)
-        style = re.search(r"<style>(.*?)</style>", html, re.S)
-        css = re.sub(r"#(?:000|8c8c8c|bbb)\b", lambda m: PRINT_COLORS[m[0]], style[1]) if style else ""
-        body = page[1].replace("<h1>", f"<h1><small>Thema {number}</small>", 1)
-        scoped = f'<style>@scope ([data-sheet="{number}"]) {{{css}}}</style>' if css else ""
-        hidden = " hidden" if sheets else ""  # the page script shows one sheet at a time
-        sheets.append(f'{scoped}<div class="page" data-sheet="{number}"{hidden}>{body}</div>')
-        options.append(f"<option>{number}. {title[1]}</option>")
-    page = (GRAMMAR_TEMPLATE.read_text(encoding="utf-8").replace("__BASE__", base)
-            .replace("__THEME__", theme).replace("__PRINT__", (GRAMMAR / "style.css").read_text(encoding="utf-8"))
-            .replace("__OPTIONS__", "\n".join(options)).replace("__SHEETS__", "\n".join(sheets)))
-    (ROOT / "grammar.html").write_text(page, encoding="utf-8")
-    return len(sheets)
+    german = sorted(GRAMMAR.glob("[0-9][0-9].html"))
+    strays = sorted(p.name for p in (GRAMMAR / "en").glob("*.html") if not (GRAMMAR / p.name).exists())
+    if strays:
+        raise SystemExit(f"grammar/en: no German sheet for {', '.join(strays)}")
+    out, missing = [], []
+    for path in german:
+        number, versions = int(path.stem), {"de": sheet(path)}
+        english = GRAMMAR / "en" / path.name
+        if english.exists():
+            versions["en"] = sheet(english)
+            for what, a, b in zip(("tags and classes", "bold texts"), skeleton(versions["de"][1]),
+                                  skeleton(versions["en"][1])):
+                if a != b:
+                    j = next((j for j, (x, y) in enumerate(zip(a, b)) if x != y), min(len(a), len(b)))
+                    show = lambda items: items[j] if j < len(items) else "(none, the sheet ends)"
+                    raise SystemExit(f"grammar/en/{path.name} does not match grammar/{path.name} in its {what}; "
+                                     f"nothing was built.\nthe first difference:\n  de  {show(a)}\n  en  {show(b)}")
+        else:
+            missing.append(path.stem)
+        for lang, (title, body, css) in versions.items():
+            langs = lang if len(versions) > 1 else " ".join(LANGS)
+            where = f'[data-sheet="{number}"][data-lang="{langs}"]'
+            scoped = f"<style>@scope ({where}) {{{css}}}</style>" if css else ""
+            body = body.replace("<h1>", "<h1><small></small>", 1)  # the page script writes "Thema N" into it
+            out.append(f'{scoped}<div class="page" data-sheet="{number}" data-lang="{langs}" hidden>{body}</div>')
+    return "\n".join(out), missing
+
+
+def fill(template, **values):
+    """A template with each __KEY__ replaced by values[key]."""
+    text = template.read_text(encoding="utf-8")
+    for key, value in values.items():
+        text = text.replace(f"__{key.upper()}__", value)
+    return text
+
+
+def ui():
+    """tools/ui.tsv as {lang: {key: text}}; every key needs a text in every language."""
+    rows = tsv(UI)
+    empty = [r["key"] for r in rows if not all(r.get(lang) for lang in LANGS)]
+    if empty:
+        raise SystemExit(f"tools/ui.tsv: no text in every language for {', '.join(empty)}")
+    return {lang: {r["key"]: r[lang] for r in rows} for lang in LANGS}
 
 
 def main():
     story = chapters(names=True)
-    translations = german(story)
-    glossary = {r["lemma"].lower(): (r["lemma"], r["de"]) for r in tsv(GLOSSARY)}
+    translations = {lang: translation(story, lang) for lang in LANGS}
+    grammar_sheets, untranslated = sheets()
+    texts = ui()
+    glossary = {r["lemma"].lower(): (r["lemma"], {lang: r.get(lang) or "" for lang in LANGS}) for r in tsv(GLOSSARY)}
     dictionary = Dictionary(*load([w for _, _, words in story for w in words]))
     excluded = read_tsv(EXCLUDED)
     marked = [segments(blocks(markdown), tokens(markdown), excluded) for _, markdown, _ in story]
@@ -282,8 +336,8 @@ def main():
     book(story, words, lists)
     order = [w for i in sorted(lists) for w, _, _ in lists[i]]
     ids = {w: n for n, w in enumerate(order)}
-    descriptions = {}  # description -> its index in the page data
-    index = lambda description: descriptions.setdefault(description, len(descriptions))
+    descriptions = {}  # (description in each language) -> its index in the page data
+    index = lambda d: descriptions.setdefault(tuple(d[lang] for lang in LANGS), len(descriptions))
     for chapter in marked:  # [form, tokens] -> [form, id] or [form, id, description]
         for _, segs in chapter:
             for seg in segs:
@@ -304,45 +358,51 @@ def main():
         chapter_parts = parts(chapter_blocks)
         for k, part in enumerate(chapter_parts, 1):
             (TEXT / "parts" / f"{number}-{k}.txt").write_text(part + "\n", encoding="utf-8")
-        chapter = {
+        chapters_data.append({
             "title": title,
             "blocks": marked[i],
             "parts": chapter_parts,
             "words": [[ids[w]] + ([form, index(d)] if form else []) for w, form, d in lists.get(i, [])],
-        }
-        if i in translations:
-            chapter["de"] = [t for _, t in translations[i][1]]
-        chapters_data.append(chapter)
+            "tr": {lang: [t for _, t in translations[lang][i][1]] for lang in LANGS if i in translations[lang]},
+        })
     (TEXT / "klucz.txt").write_text("\n\n\n".join(whole) + "\n", encoding="utf-8")
 
-    data = {"chapters": chapters_data, "words": [words[w] for w in order], "forms": list(descriptions)}
-    payload = json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
-    base = fonts_css() + BASE.read_text(encoding="utf-8")
-    theme = THEME.read_text(encoding="utf-8")
-    page = (TEMPLATE.read_text(encoding="utf-8").replace("__BASE__", base).replace("__THEME__", theme)
-            .replace("__DATA__", payload))
+    data = {"chapters": chapters_data, "words": [words[w] for w in order],
+            "forms": {lang: [d[k] for d in descriptions] for k, lang in enumerate(LANGS)}}
+    json_script = lambda value: json.dumps(value, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+    shared = {
+        "base": fonts_css() + BASE.read_text(encoding="utf-8"),
+        "ui": json_script(texts),
+        "shared": LANG_JS.read_text(encoding="utf-8") + THEME.read_text(encoding="utf-8"),
+    }
+    page = fill(TEMPLATE, data=json_script(data), **shared)
     (ROOT / "index.html").write_text(page, encoding="utf-8")
-    sheets = grammar(base, theme)
+    (ROOT / "grammar.html").write_text(fill(GRAMMAR_TEMPLATE, print=(GRAMMAR / "style.css").read_text(encoding="utf-8"),
+                                            sheets=grammar_sheets, **shared), encoding="utf-8")
 
-    missing = [words[w][0] for w in order if not words[w][3]]
+    missing = {lang: [words[w][0] for w in order if not words[w][1][lang][2]] for lang in LANGS}
     print(f"KLUCZ.md, text/ ({len(story)} chapters, "
           f"{sum(len(c['parts']) for c in chapters_data)} parts), "
-          f"index.html ({len(page) // 1024} KB), grammar.html ({sheets} sheets); "
-          f"{len(missing)} glossary entries missing")
-    if missing:
-        print("missing in data/glossary.tsv:", ", ".join(missing))
+          f"index.html ({len(page) // 1024} KB), grammar.html ({len(list(GRAMMAR.glob('[0-9][0-9].html')))} sheets); "
+          f"glossary entries missing: " + ", ".join(f"{len(m)} {lang}" for lang, m in missing.items()))
+    for lang, m in missing.items():
+        if 0 < len(m) < len(order):  # a language whose glossary column is not started yet is not listed
+            print(f"missing in data/glossary.tsv ({lang}):", ", ".join(m))
     unused = [display for lemma, (display, _) in glossary.items() if lemma not in words]
     if unused:
         print("in data/glossary.tsv but not in the story:", ", ".join(unused))
-    if len(translations) < len(story):
-        absent = [f"{i + 1:02d}" for i in range(len(story)) if i not in translations]
-        print("no German translation (chapters/de):", ", ".join(absent))
-    report = outdated(translations, "--accept-german" in sys.argv)
+    for lang in LANGS:
+        if len(translations[lang]) < len(story):
+            absent = [f"{i + 1:02d}" for i in range(len(story)) if i not in translations[lang]]
+            print(f"no {NAMES[lang]} translation (chapters/{lang}):", ", ".join(absent))
+    if untranslated:
+        print("no English grammar sheet (grammar/en):", ", ".join(untranslated))
+    report = outdated(translations, {lang for lang in LANGS if f"--accept-{lang}" in sys.argv})
     if report:
-        print(f"{len(report)} German paragraphs may be outdated, their Polish changed. Update them in chapters/de, "
-              "or run again with --accept-german if they still fit:")
-        for c, j, text in report:
-            print(f"  chapter {c}, paragraph {j}: {text[:80]}")
+        print(f"{len(report)} translated paragraphs may be outdated, their Polish changed. Update them in "
+              "chapters/<lang>, or run again with --accept-<lang> if they still fit:")
+        for lang, c, j, text in report:
+            print(f"  {lang}, chapter {c}, paragraph {j}: {text[:80]}")
 
 
 if __name__ == "__main__":
