@@ -48,7 +48,7 @@ Wörter im Text: **37352** · verschiedene Lemmata: **4585**
 | Rozdział 29. Morze | 1572 | 116 | 31 | 9661 |
 | Rozdział 30. Klucz | 1625 | 119 | 24 | 9522 |
 
-## Wörter außerhalb der Liste (Top 10.000)
+## Wörter außerhalb der Liste (Top 10000)
 
 - **Rozdział 1. Klucz:** lotnisk (lotnisk), przesiadka (przesiadką), kiwać (kiwa), notariusz (notariusza), wstążka (wstążkę), siwy (siwe), pomidorowy (Pomidorowa)
 - **Rozdział 2. Chleb, mleko i pan Zbyszek:** warzywniak (warzywniak), market (market), wykłuć (wykol), pszenny (Pszenny), żytny (żytni), razowy (razowy), sześćdziesiąty (sześćdziesiątego), kantor (kantoru), frank (frank), okienko (okienku), reklamówka (reklamówkę), obcokrajowiec (obcokrajowców), skutecznie (skutecznie), odpisywać (Odpisuję)

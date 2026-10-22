@@ -4,7 +4,7 @@
 
 _Klucz_ („Der Schlüssel“) ist das Tagebuch von Jonas, einem Deutschen, der nach Krakau zieht, weil seine polnische Großmutter ihm eine Wohnung, einen alten Schlüssel und einen rätselhaften Satz hinterlassen hat: _„Klucz otwiera to, co zamknęłam.“_ In 30 Kapiteln, von Oktober 2026 bis Oktober 2027, wächst Jonas' Polnisch mit. Die Geschichte beginnt in kurzen Präsenssätzen auf A1-Niveau und endet bei Briefen, Gerichtsverhandlungen und Erinnerungen an 1971.
 
-Die Idee dahinter: **Wer diesen Text versteht, versteht die 3.000 häufigsten Wörter des gesprochenen Polnisch.** Diese Wörter decken gut 90 % dessen ab, was im Alltag gesagt wird. Jedes davon steht mindestens einmal im Text, und zwar nicht als Liste, sondern eingebettet in eine echte Handlung.
+Die Idee dahinter: **Wer diesen Text versteht, versteht die 3000 häufigsten Wörter des gesprochenen Polnisch.** Diese Wörter decken gut 90 % dessen ab, was im Alltag gesagt wird. Jedes davon steht mindestens einmal im Text, und zwar nicht als Liste, sondern eingebettet in eine echte Handlung.
 
 - **Lesen:** [index.html](index.html) – Leseseite: Wort antippen für die Übersetzung (🔊 spricht es mit der polnischen Stimme des Geräts aus), „DE“/„PL“ oben rechts zeigt das ganze Kapitel auf Deutsch oder wieder auf Polnisch, ohne dass der Text springt, „Vorlesen“ liest das Kapitel ab dem Absatz oben auf dem Bildschirm vor und hebt den gelesenen Absatz hervor, alphabetische Wortliste je Kapitel (oben „↓ Wörter“ springt hin), Kopiermenü für das ganze Kapitel und seine Teile, Druckknopf für das ganze Buch (im Druckdialog auch als PDF speicherbar), Vollbild (nicht auf dem iPhone) und Hell/Dunkel-Umschalter (die Wahl bleibt gespeichert)
 - **Grammatik:** [grammar.html](grammar.html) – die Grammatikblätter im Aussehen der Leseseite, eines nach dem anderen zum Durchblättern wie die Kapitel; erreichbar über den Knopf 🎓 oben auf der Leseseite, zurück geht es mit 📖; 🖨 druckt das offene Thema als A4-Seite wie in den PDFs. Die Quelle sind die Blätter in [grammar/](grammar/), Regeln dafür in [grammar/README.md](grammar/README.md). `grammar/pdf.sh <Ordner>` macht aus denselben Blättern A4-PDFs in diesem Ordner (im Repository liegen keine PDFs)
@@ -76,19 +76,19 @@ Nicht prüfen kann das Skript, ob ein deutscher Absatz inhaltlich richtig übers
 
 ## Ergebnis
 
-|                              |                                                                       |
-| ---------------------------- | --------------------------------------------------------------------- |
-| Länge                        | ~38.500 Wörter, 30 Kapitel (bei ~100 Wörtern/Minute etwa 6–7 Stunden) |
-| Verschiedene Lemmata im Text | 4.585, dazu rund 170 Eigennamen (Kraków, Wisła, Kasia …)              |
-| Wortliste                    | 4.788 Einträge, alle übersetzt, mit Wortart, Formen, Genus und Aspekt |
+|                              |                                                                      |
+| ---------------------------- | -------------------------------------------------------------------- |
+| Länge                        | ~38500 Wörter, 30 Kapitel (bei ~100 Wörtern/Minute etwa 6–7 Stunden) |
+| Verschiedene Lemmata im Text | 4585, dazu rund 170 Eigennamen (Kraków, Wisła, Kasia …)              |
+| Wortliste                    | 4788 Einträge, alle übersetzt, mit Wortart, Formen, Genus und Aspekt |
 
-| Häufigste Lemmata | im Text vorhanden  | Anteil an gesprochenem Polnisch |
-| ----------------- | ------------------ | ------------------------------- |
-| 1–500             | 500 (100 %)        | 75,0 %                          |
-| 1–1.000           | 999 (99,9 %)       | 81,6 %                          |
-| 1–2.000           | 1.997 (99,9 %)     | 87,6 %                          |
-| **1–3.000**       | **2.991 (99,7 %)** | **90,5 %**                      |
-| 1–5.000           | 3.520 (70,4 %)     | 93,4 %                          |
+| Häufigste Lemmata | im Text vorhanden | Anteil an gesprochenem Polnisch |
+| ----------------- | ----------------- | ------------------------------- |
+| 1–500             | 500 (100 %)       | 75,0 %                          |
+| 1–1000            | 999 (99,9 %)      | 81,6 %                          |
+| 1–2000            | 1997 (99,9 %)     | 87,6 %                          |
+| **1–3000**        | **2991 (99,7 %)** | **90,5 %**                      |
+| 1–5000            | 3520 (70,4 %)     | 93,4 %                          |
 
 Die neun fehlenden Kernwörter sind:
 
@@ -97,15 +97,15 @@ Die neun fehlenden Kernwörter sind:
 - Fälle, die das Analysewerkzeug strukturell nicht erkennt: das Verbalsubstantiv _działanie_, die Partizipien _zabity_ und _przerażający_ sowie _dziewczę_,
 - _rola_ und _zemrzeć_, die früher nur durch Analysefehler mitgezählt wurden: _Lali wosk_ heißt „sie gossen Wachs“ (_lać_), und _zmarli_ heißt im Text „die Verstorbenen“ (_zmarły_).
 
-Die Ränge 3.001–5.000 sind nicht vollständig enthalten, nur das, was sich natürlich ergab. Das war eine bewusste Entscheidung für einen kürzeren Text.
+Die Ränge 3001–5000 sind nicht vollständig enthalten, nur das, was sich natürlich ergab. Das war eine bewusste Entscheidung für einen kürzeren Text.
 
 ## Wie man das Buch liest
 
 - **Kapitel für Kapitel, in Reihenfolge.** Die Wörter werden ungefähr nach Häufigkeit eingeführt: Kapitel 1 nutzt fast nur die häufigsten ~300.
 - **Die Wortliste am Kapitelende** listet alphabetisch jedes Wort, das dort zum ersten Mal vorkommt, wie im Wörterbuch. Weicht die Form im Text ab, steht sie mit ihrer Bestimmung dabei, etwa _pójść_ · im Text: _poszedłem_ (Vergangenheit, 1. Sg. m).
 - **Ab Kapitel 4 schreibt Jonas in der Vergangenheit**, weil seine Lehrerin Kasia es ihm aufgibt, danach folgen Futur, Konditional und Aspekt. Die Grammatik steigt also mit der Geschichte.
-- **Für Google Translate** gibt es reinen Text ohne Formatzeichen. Google Translate nimmt höchstens 5.000 Zeichen auf einmal, deshalb liegt jedes Kapitel auch in Teilen unter 4.800 Zeichen vor (`text/parts/07-1.txt` usw.). Auf der Leseseite steht oben unter der Kapitelauswahl ein Kopierknopf; er öffnet ein Menü mit „Ganzes Kapitel“, „Teil 1“, „Teil 2“ … (bei einem Kapitel ohne Teile kopiert er es direkt).
-- **Zweimal lesen lohnt sich.** Rund 1.350 Kernwörter kommen nur ein einziges Mal vor. Beim zweiten Durchgang kennt man die Handlung und achtet auf die Wörter.
+- **Für Google Translate** gibt es reinen Text ohne Formatzeichen. Google Translate nimmt höchstens 5000 Zeichen auf einmal, deshalb liegt jedes Kapitel auch in Teilen unter 4800 Zeichen vor (`text/parts/07-1.txt` usw.). Auf der Leseseite steht oben unter der Kapitelauswahl ein Kopierknopf; er öffnet ein Menü mit „Ganzes Kapitel“, „Teil 1“, „Teil 2“ … (bei einem Kapitel ohne Teile kopiert er es direkt).
+- **Zweimal lesen lohnt sich.** Rund 1350 Kernwörter kommen nur ein einziges Mal vor. Beim zweiten Durchgang kennt man die Handlung und achtet auf die Wörter.
 
 ---
 
@@ -135,7 +135,7 @@ Die Liste ist bewusst **nicht** von Film-Genre-Wörtern bereinigt (_kapitan, age
 ### 4. Schreiben, messen, nachschärfen
 
 1. **Bauplan:** Tagebuchform, Figuren, ein Familiengeheimnis aus dem Jahr 1971, eine Zeitlinie über alle Jahreszeiten und Feste. Auf diese Weise kommen viele Lebensbereiche ganz natürlich vor: Behörden, Arzt, Polizei, Gericht, Berge, Meer, Wigilia, Ostern.
-2. **Natürlich geschrieben** deckten die ersten 25.000 Wörter nur **53 %** der Top 3.000 ab. Freies Erzählen wiederholt immer wieder dieselben Wörter.
+2. **Natürlich geschrieben** deckten die ersten 25000 Wörter nur **53 %** der Top 3000 ab. Freies Erzählen wiederholt immer wieder dieselben Wörter.
 3. **Gezielte Runden:** `analyze.py missing` listet die fehlenden Lemmata. Daraus entstehen Passagen, die thematisch in Szenen passen, etwa Radionachrichten, die Korrektur von Jonas' Tagebuch durch Kasia, eine Lektion über Präfixverben oder die Urteilsbegründung im Gericht. Nach jeder Runde wird neu gemessen. Am effizientesten waren Dialoge, die 3–6 fehlende Wörter pro Satz tragen.
 4. **Prüfung:** Unabhängige Korrekturdurchgänge (Grammatik, Idiomatik, Fakten, Kontinuität) haben rund 180 Stellen korrigiert. Darunter sind Fakten wie die Zeugenformel nach Art. 266 k.p.c., die Zuständigkeit des _Sąd Rejonowy_ in Erbsachen, die Altstadtverteidigung 1944 oder die Messe von Johannes Paul II. in Nowy Targ 1979.
 
@@ -223,11 +223,11 @@ klucz/
 ├── fonts/                   Quelle: Schriften und Symbole, werden in index.html und grammar.html eingebettet
 ├── KLUCZ.md                 erzeugt: Gesamtbuch mit Glossaren
 ├── text/01.txt … 30.txt     erzeugt: Klartext je Kapitel, klucz.txt: das ganze Buch
-├── text/parts/07-1.txt …    erzeugt: Klartext in Teilen bis 4.800 Zeichen
+├── text/parts/07-1.txt …    erzeugt: Klartext in Teilen bis 4800 Zeichen
 ├── REPORT.md                erzeugt: Abdeckungsbericht
 ├── PLAN.md                  Bauplan
 ├── data/
-│   ├── frequency.tsv        Top-10.000-Lemmata: Rang, Wortart, Anzahl, pro Million, kumulierte Abdeckung, häufigste Formen
+│   ├── frequency.tsv        Top-10000-Lemmata: Rang, Wortart, Anzahl, pro Million, kumulierte Abdeckung, häufigste Formen
 │   ├── raw_counts.tsv.gz    Rohzählung (Lemma, Wortart, Form, Anzahl) aus dem Korpus
 │   ├── lemma_fixes.tsv      Korrekturen der Lemmatisierung
 │   ├── excluded.tsv         Ausschlüsse mit Begründung

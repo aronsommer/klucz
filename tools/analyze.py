@@ -124,7 +124,7 @@ def report(args):
         outside = [l for l in lemmas if l not in rank]
         top = max((rank[l] for l in lemmas if l in rank), default=0)
         out.append(f"| {title} | {len(words)} | {len(lemmas)} | {len(outside)} | {top} |")
-    out += ["", "## Wörter außerhalb der Liste (Top 10.000)", ""]
+    out += ["", "## Wörter außerhalb der Liste (Top 10000)", ""]
     for i, (title, _, _) in enumerate(story):
         outside = [f"{l} ({f})" for f, l, *_ in new[i] if l not in rank]
         if outside:
