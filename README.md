@@ -17,11 +17,12 @@ Die Idee dahinter: **Wer diesen Text versteht, versteht die 3000 häufigsten Wö
 
 Alles, was man liest, wird aus drei Quellen **erzeugt**. Von Hand bearbeitet werden nur diese Quellen:
 
-| Quelle                        | Inhalt                                                                                                                                                                                                                                                                                           |
-| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `chapters/01.md` … `30.md`    | der Text der Geschichte                                                                                                                                                                                                                                                                          |
-| `chapters/de/01.md` … `30.md` | die deutsche Übersetzung, Absatz für Absatz wie das Original; `tools/build.py` bricht ab, wenn die Absätze nicht eins zu eins übereinstimmen                                                                                                                                                     |
-| `data/glossary.tsv`           | die Bedeutungen, eine Zeile pro Eintrag der Wortliste, Spalten `lemma`, `de` und (sobald begonnen) `en`: `klucz<Tab>Schlüssel`, `bać się<Tab>Angst haben`; nur Bedeutungen und Wendungen aus dem Text, keine Grammatik; Eigennamen so geschrieben, wie sie angezeigt werden: `Kraków<Tab>Krakau` |
+| Quelle                        | Inhalt                                                                                                                                                                                                                                                                         |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `chapters/01.md` … `30.md`    | der Text der Geschichte                                                                                                                                                                                                                                                        |
+| `chapters/de/01.md` … `30.md` | die deutsche Übersetzung, Absatz für Absatz wie das Original; `tools/build.py` bricht ab, wenn die Absätze nicht eins zu eins übereinstimmen                                                                                                                                   |
+| `chapters/en/01.md` … `30.md` | die englische Übersetzung, ebenso Absatz für Absatz aus dem Polnischen                                                                                                                                                                                                         |
+| `data/glossary.tsv`           | die Bedeutungen, eine Zeile pro Eintrag der Wortliste, Spalten `lemma`, `de` und `en`: `klucz<Tab>Schlüssel`, `bać się<Tab>Angst haben`; nur Bedeutungen und Wendungen aus dem Text, keine Grammatik; Eigennamen so geschrieben, wie sie angezeigt werden: `Kraków<Tab>Krakau` |
 
 **Einmalig einrichten** (im Projektordner):
 
@@ -218,9 +219,11 @@ Bearbeitet werden nur die **Quellen**: `chapters/`, `data/` und `grammar/`. Alle
 klucz/
 ├── chapters/01.md … 30.md   Quelle: die Kapitel
 ├── chapters/de/01.md … 30.md Quelle: die deutsche Übersetzung, Absatz für Absatz
+├── chapters/en/01.md … 30.md Quelle: die englische Übersetzung, Absatz für Absatz
 ├── index.html               erzeugt: Leseseite (Startseite für GitHub Pages)
 ├── grammar.html             erzeugt: Grammatikseite
 ├── grammar/                 Quelle: Grammatikblätter (je eine A4-Seite), style.css fürs Drucken, pdf.sh, README.md
+├── grammar/en/              Quelle: dieselben Blätter auf Englisch
 ├── .nojekyll                leer: GitHub Pages liefert die Dateien unverändert aus
 ├── fonts/                   Quelle: Schriften und Symbole, werden in index.html und grammar.html eingebettet
 ├── KLUCZ.md                 erzeugt: Gesamtbuch mit Glossaren
@@ -233,10 +236,10 @@ klucz/
 │   ├── raw_counts.tsv.gz    Rohzählung (Lemma, Wortart, Form, Anzahl) aus dem Korpus
 │   ├── lemma_fixes.tsv      Korrekturen der Lemmatisierung
 │   ├── excluded.tsv         Ausschlüsse mit Begründung
-│   ├── glossary.tsv         Quelle: Polnisch → Deutsch
+│   ├── glossary.tsv         Quelle: Polnisch → Deutsch und Englisch
 │   ├── sgjp.tsv             erzeugt: Auszug aus SGJP (Formen, Genus, Aspekt) für die Wörter im Text
 │   ├── wiktionary.tsv       erzeugt: Auszug aus Wiktionary (się, Aspektpartner) für die Verben im Text
-│   └── translation_sync.tsv erzeugt: welche polnischen und deutschen Absätze zuletzt zusammenpassten
+│   └── translation_sync.tsv erzeugt: welche polnischen und übersetzten Absätze zuletzt zusammenpassten
 └── tools/
     ├── build.py             baut index.html, grammar.html, KLUCZ.md und text/ aus den Quellen
     ├── base.css             Farben, Schriften und Leiste beider Seiten

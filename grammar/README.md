@@ -16,11 +16,24 @@ Dieselben Blätter erscheinen auch auf der Leseseite: `tools/build.py` setzt sie
 - Alltägliche Beispielwörter mit deutscher Übersetzung. Namen: Robert, Kasia, Anna.
 - Jedes Blatt funktioniert **für sich allein**: keine Verweise auf andere Blätter.
 
+## Englische Blätter
+
+`grammar/en/NN.html` ist dasselbe Blatt für Englischsprachige: gleicher Inhalt, nur die Erklärungen
+auf Englisch, übersetzt aus dem Polnischen, nicht aus dem Deutschen.
+
+- Einfaches britisches Englisch für A1–A2. Grammatikwörter sind im Englischen üblich und bleiben
+  („ending“, „consonant“, „infinitive“, „genitive“).
+- Gleiche Tags, Klassen und fett gedruckte polnische Wörter wie das deutsche Blatt: `tools/build.py`
+  prüft das und bricht sonst ab. Fett gedruckte Wörter der Erklärung (kein Polnisch) bekommen
+  `lang`: `<b lang="de">Endung</b>` bzw. `<b lang="en">ending</b>`; sie werden nicht verglichen.
+- Nicht länger als das deutsche Blatt, damit es auf eine A4-Seite passt.
+- `<html lang="en">` und `<link rel="stylesheet" href="../style.css" />`.
+
 ## Aufbau
 
 1. `h1`: **Polnisch – Deutsch**, z. B. „Biernik – Akkusativ“. Keine Nummer im Titel.
 2. `.sub`: ein Satz mit der Kernidee. Trennt das Blatt Stamm und Endung, steht hier auch die
-   Legende `<span class="stem">Stamm</span> + <b>Endung</b>`.
+   Legende `<span class="stem">Stamm</span> + <b lang="de">Endung</b>`.
 3. Nummerierte Abschnitte: `<h2>1. Deutsch <span>· Hinweis</span></h2>`, darunter optional
    `<p class="rule">` mit der Regel in einem Satz.
 4. Tabellen oder Spalten (`.cols` / `.col`).
@@ -46,28 +59,28 @@ weiter. Das PDF heißt nach Nummer und Titel, klein geschrieben, ohne Sonderzeic
 ł → l, ä → ae, ß → ss …), Leerzeichen und Striche als `-`: `08.html` mit „Biernik – Akkusativ“
 → `08-biernik-akkusativ.pdf`.
 
-| Nr. | Blatt                                        |
-| --- | -------------------------------------------- |
-| 01  | Alfabet i wymowa – Alphabet und Aussprache   |
-| 02  | Rzeczowniki – Nomen                          |
-| 03  | Czasowniki – Verben                          |
-| 04  | Ważne czasowniki – Wichtige Verben           |
-| 05  | Pytania i przeczenie – Fragen und Verneinung |
-| 06  | Liczebniki – Zahlen                          |
-| 07  | Przypadki – Fälle                            |
-| 08  | Biernik – Akkusativ                          |
-| 09  | Narzędnik – Instrumental                     |
-| 10  | Miejscownik – Lokativ                        |
-| 11  | Dopełniacz – Genitiv                         |
-| 12  | Przymiotniki – Adjektive                     |
-| 13  | Zaimki osobowe – Personalpronomen            |
-| 14  | Mój, twój, ten – mein, dein, dieser          |
-| 15  | Iść i jechać – gehen und fahren              |
-| 16  | Czas – Uhrzeit, Tage, Monate                 |
-| 17  | Aspekt i przyszłość – Aspekt und Zukunft     |
-| 18  | Tryb rozkazujący – Imperativ                 |
-| 19  | Stopniowanie – Steigerung                    |
-| 20  | Tryb przypuszczający – Konditional           |
+| Nr. | Blatt                                        | Englisch                   |
+| --- | -------------------------------------------- | -------------------------- |
+| 01  | Alfabet i wymowa – Alphabet und Aussprache   | Alphabet and Pronunciation |
+| 02  | Rzeczowniki – Nomen                          | Nouns                      |
+| 03  | Czasowniki – Verben                          | Verbs                      |
+| 04  | Ważne czasowniki – Wichtige Verben           | Important Verbs            |
+| 05  | Pytania i przeczenie – Fragen und Verneinung | Questions and Negation     |
+| 06  | Liczebniki – Zahlen                          | Numbers                    |
+| 07  | Przypadki – Fälle                            | Cases                      |
+| 08  | Biernik – Akkusativ                          | Accusative                 |
+| 09  | Narzędnik – Instrumental                     | Instrumental               |
+| 10  | Miejscownik – Lokativ                        | Locative                   |
+| 11  | Dopełniacz – Genitiv                         | Genitive                   |
+| 12  | Przymiotniki – Adjektive                     | Adjectives                 |
+| 13  | Zaimki osobowe – Personalpronomen            | Personal Pronouns          |
+| 14  | Mój, twój, ten – mein, dein, dieser          | my, your, this             |
+| 15  | Iść i jechać – gehen und fahren              | On Foot or by Vehicle      |
+| 16  | Czas – Uhrzeit, Tage, Monate                 | Time, Days, Months         |
+| 17  | Aspekt i przyszłość – Aspekt und Zukunft     | Aspect and Future          |
+| 18  | Tryb rozkazujący – Imperativ                 | Imperative                 |
+| 19  | Stopniowanie – Steigerung                    | Comparison                 |
+| 20  | Tryb przypuszczający – Konditional           | Conditional                |
 
 ## PDFs erzeugen
 
@@ -96,7 +109,9 @@ nennt es. Braucht Google Chrome und macOS.
   <body>
     <div class="page">
       <h1>Polnisch – Deutsch</h1>
-      <p class="sub">Kernidee in einem Satz · <span class="stem">Stamm</span> + <b>Endung</b></p>
+      <p class="sub">
+        Kernidee in einem Satz · <span class="stem">Stamm</span> + <b lang="de">Endung</b>
+      </p>
 
       <h2>1. Abschnitt <span>· Hinweis</span></h2>
       <p class="rule">Die Regel in einem Satz.</p>

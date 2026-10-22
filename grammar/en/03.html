@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Czasowniki – Verbs</title>
+    <link rel="stylesheet" href="../style.css" />
+    <style>
+      .groups {
+        font-size: 14px;
+      }
+      .groups :is(th, td) {
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+      .groups tr:first-child th:first-child {
+        width: 100px;
+      }
+      /* A black line before each block of groups that share their endings. */
+      .groups th[colspan],
+      .groups tr:nth-child(2) th:is(:nth-child(1), :nth-child(3), :nth-child(6)),
+      .groups td:is(:nth-child(2), :nth-child(4), :nth-child(7)) {
+        position: relative;
+      }
+      .groups th[colspan]::before,
+      .groups tr:nth-child(2) th:is(:nth-child(1), :nth-child(3), :nth-child(6))::before,
+      .groups td:is(:nth-child(2), :nth-child(4), :nth-child(7))::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        border-left: 1px solid #000;
+      }
+      /* Over the grey line below each row. */
+      .groups td:is(:nth-child(2), :nth-child(4), :nth-child(7))::before {
+        bottom: -1px;
+      }
+      .block th[colspan] {
+        border-bottom-width: 1px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <h1>Czasowniki – Verbs</h1>
+      <p class="sub">Present and past · <span class="stem">stem</span> + <b lang="en">ending</b></p>
+
+      <h2>1. Present <span>· teraz</span></h2>
+      <p class="rule">
+        The basic form (the form in the dictionary) ends in -ć. Its end usually shows which endings
+        go on the stem. Groups in the same block have the same endings.
+      </p>
+      <table class="groups">
+        <tr class="block">
+          <th rowspan="2">Person</th>
+          <th colspan="7">Basic form ends in</th>
+        </tr>
+        <tr>
+          <th>
+            -ać<small>czytać<br />read</small>
+          </th>
+          <th>
+            -eć<small>umieć<br />can</small>
+          </th>
+          <th>
+            -ować<small>pracować<br />work</small>
+          </th>
+          <th>
+            -nąć<small>ciągnąć<br />pull</small>
+          </th>
+          <th>
+            -ąć<small>zacząć *<br />begin</small>
+          </th>
+          <th>
+            -ić<small>robić<br />do</small>
+          </th>
+          <th>
+            -yć<small>tańczyć<br />dance</small>
+          </th>
+        </tr>
+        <tr>
+          <td>ja</td>
+          <td>czyta<b>m</b></td>
+          <td>umie<b>m</b></td>
+          <td>pracuj<b>ę</b></td>
+          <td>ciągn<b>ę</b></td>
+          <td>zaczn<b>ę</b></td>
+          <td>robi<b>ę</b></td>
+          <td>tańcz<b>ę</b></td>
+        </tr>
+        <tr>
+          <td>ty</td>
+          <td>czyta<b>sz</b></td>
+          <td>umie<b>sz</b></td>
+          <td>pracuj<b>esz</b></td>
+          <td>ciągni<b>esz</b></td>
+          <td>zaczni<b>esz</b></td>
+          <td>rob<b>isz</b></td>
+          <td>tańcz<b>ysz</b></td>
+        </tr>
+        <tr>
+          <td>on · ona · ono</td>
+          <td>czyta</td>
+          <td>umie</td>
+          <td>pracuj<b>e</b></td>
+          <td>ciągni<b>e</b></td>
+          <td>zaczni<b>e</b></td>
+          <td>rob<b>i</b></td>
+          <td>tańcz<b>y</b></td>
+        </tr>
+        <tr>
+          <td>my</td>
+          <td>czyta<b>my</b></td>
+          <td>umie<b>my</b></td>
+          <td>pracuj<b>emy</b></td>
+          <td>ciągni<b>emy</b></td>
+          <td>zaczni<b>emy</b></td>
+          <td>rob<b>imy</b></td>
+          <td>tańcz<b>ymy</b></td>
+        </tr>
+        <tr>
+          <td>wy</td>
+          <td>czyta<b>cie</b></td>
+          <td>umie<b>cie</b></td>
+          <td>pracuj<b>ecie</b></td>
+          <td>ciągni<b>ecie</b></td>
+          <td>zaczni<b>ecie</b></td>
+          <td>rob<b>icie</b></td>
+          <td>tańcz<b>ycie</b></td>
+        </tr>
+        <tr>
+          <td>oni · one</td>
+          <td>czyta<b>ją</b></td>
+          <td>umie<b>ją</b></td>
+          <td>pracuj<b>ą</b></td>
+          <td>ciągn<b>ą</b></td>
+          <td>zaczn<b>ą</b></td>
+          <td>robi<b>ą</b></td>
+          <td>tańcz<b>ą</b></td>
+        </tr>
+      </table>
+      <p class="note">
+        Many verbs in -eć go like -ić: myśleć (think) → myśl<b>ę</b>, myśl<b>isz</b>.
+      </p>
+      <p class="note">
+        * With most verbs in -ąć this form means the future: zacznę = I will begin.
+      </p>
+
+      <h2>2. Past <span>· przeszłość</span></h2>
+      <p class="rule">Stem = basic form without -ć: być (be) → by + ending. True for most verbs.</p>
+      <table>
+        <tr>
+          <th>Person</th>
+          <th>man<small>or group with a man</small></th>
+          <th>woman<small>or group without a man</small></th>
+        </tr>
+        <tr>
+          <td>ja</td>
+          <td>by<b>łem</b></td>
+          <td>by<b>łam</b></td>
+        </tr>
+        <tr>
+          <td>ty</td>
+          <td>by<b>łeś</b></td>
+          <td>by<b>łaś</b></td>
+        </tr>
+        <tr>
+          <td>on · ona · ono</td>
+          <td>on by<b>ł</b></td>
+          <td>ona by<b>ła</b> · ono by<b>ło</b></td>
+        </tr>
+        <tr>
+          <td>my</td>
+          <td>by<b>liśmy</b></td>
+          <td>by<b>łyśmy</b></td>
+        </tr>
+        <tr>
+          <td>wy</td>
+          <td>by<b>liście</b></td>
+          <td>by<b>łyście</b></td>
+        </tr>
+        <tr>
+          <td>oni · one</td>
+          <td>oni by<b>li</b></td>
+          <td>one by<b>ły</b></td>
+        </tr>
+      </table>
+
+      <p class="note">
+        -eć: e becomes a: umieć → umi<b>ałem</b>, umi<b>ała</b>. e stays only for a group with a
+        man: umi<b>eli</b>.
+      </p>
+      <p class="note">
+        -ąć: ą only for one man: zacząć → zacz<b>ąłem</b>, zacz<b>ął</b>. Otherwise ę:
+        zacz<b>ęłam</b>, zacz<b>ęli</b>.
+      </p>
+
+      <div class="box">
+        <h3>Examples</h3>
+        <table class="ex">
+          <tr>
+            <td>Robert <span class="stem">czyta</span><b>ł</b>.</td>
+            <td>Robert was reading.</td>
+          </tr>
+          <tr>
+            <td>Kasia <span class="stem">czyta</span><b>ła</b>.</td>
+            <td>Kasia was reading.</td>
+          </tr>
+          <tr>
+            <td>Robert i Kasia <span class="stem">czyta</span><b>li</b>.</td>
+            <td>Robert and Kasia were reading.</td>
+          </tr>
+          <tr>
+            <td>Kasia i Anna <span class="stem">czyta</span><b>ły</b>.</td>
+            <td>Kasia and Anna were reading.</td>
+          </tr>
+        </table>
+      </div>
+
+      <p class="note">się always stays the same: nazywam się, nazywałam się</p>
+    </div>
+  </body>
+</html>

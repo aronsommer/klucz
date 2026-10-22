@@ -30,6 +30,7 @@ GRAMMAR_TEMPLATE = ROOT / "tools" / "grammar.html"
 BASE = ROOT / "tools" / "base.css"
 THEME = ROOT / "tools" / "theme.js"
 LANG_JS = ROOT / "tools" / "lang.js"
+FOCUS = ROOT / "tools" / "focus.js"
 UI = ROOT / "tools" / "ui.tsv"
 GRAMMAR = ROOT / "grammar"
 FONTS = ROOT / "fonts"
@@ -267,7 +268,10 @@ def sheet(path):
 
 
 def skeleton(body):
-    """A sheet's tags with only their classes, and its bold texts: what a sheet and its translation share."""
+    """A sheet's tags with only their classes, and its bold texts: what a sheet and its translation share.
+
+    A <b lang="…"> is a bold word of the explanation, not Polish; it is translated, so its text is not compared.
+    """
     tags = [re.sub(r'\s(?!class=)[\w-]+="[^"]*"', "", t) for t in re.findall(r"<[^>]+>", body)]
     return tags, re.findall(r"<b>(.*?)</b>", body, re.S)
 
@@ -373,7 +377,7 @@ def main():
     shared = {
         "base": fonts_css() + BASE.read_text(encoding="utf-8"),
         "ui": json_script(texts),
-        "shared": LANG_JS.read_text(encoding="utf-8") + THEME.read_text(encoding="utf-8"),
+        "shared": "".join(p.read_text(encoding="utf-8") for p in (LANG_JS, THEME, FOCUS)),
     }
     page = fill(TEMPLATE, data=json_script(data), **shared)
     (ROOT / "index.html").write_text(page, encoding="utf-8")

@@ -143,6 +143,10 @@ select {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
+/* tools/focus.js: a select used with the pointer */
+select.by-pointer:focus-visible {
+  outline: none;
+}
 .icon {
   font-family: "Material Symbols Outlined";
   font-weight: normal;
@@ -615,7 +619,7 @@ b {
     </header>
 
     <main>
-      <div class="column"><style>@scope ([data-sheet="1"][data-lang="de en"]) {
+      <div class="column"><style>@scope ([data-sheet="1"][data-lang="de"]) {
       :is(th, td):first-child {
         width: 90px;
       }
@@ -633,7 +637,7 @@ b {
         font-size: 17px;
         color: var(--text-2);
       }
-    }</style><div class="page" data-sheet="1" data-lang="de en" hidden>
+    }</style><div class="page" data-sheet="1" data-lang="de" hidden>
       <h1><small></small>Alfabet i wymowa – Alphabet und Aussprache</h1>
       <p class="sub">
         Betont wird fast immer die vorletzte Silbe: <b>Pol</b>ska · War<b>sza</b>wa ·
@@ -770,18 +774,173 @@ b {
         <p>rz nach p, t, k, ch klingt wie sz · przepraszam → „pszepraszam“ · trzy → „tszy“</p>
       </div>
     </div>
-<style>@scope ([data-sheet="2"][data-lang="de en"]) {
+<style>@scope ([data-sheet="1"][data-lang="en"]) {
+      :is(th, td):first-child {
+        width: 90px;
+      }
+      :is(th, td):nth-child(2) {
+        width: 280px;
+      }
+      .page > table:last-of-type :is(th, td):first-child {
+        width: 130px;
+      }
+      .page > table:last-of-type :is(th, td):nth-child(2) {
+        width: auto;
+      }
+      .letters {
+        margin-top: 4px;
+        font-size: 17px;
+        color: var(--text-2);
+      }
+    }</style><div class="page" data-sheet="1" data-lang="en" hidden>
+      <h1><small></small>Alfabet i wymowa – Alphabet and Pronunciation</h1>
+      <p class="sub">
+        Stress is almost always on the second-last syllable: <b>Pol</b>ska · War<b>sza</b>wa ·
+        dzię<b>ku</b>ję
+      </p>
+
+      <h2>1. Alphabet <span>· 32 letters, bold = not in English</span></h2>
+      <p class="letters">
+        A <b>Ą</b> B C <b>Ć</b> D E <b>Ę</b> F G H I J K L <b>Ł</b> M N <b>Ń</b> O <b>Ó</b> P R S
+        <b>Ś</b> T U W Y Z <b>Ź</b> <b>Ż</b>
+      </p>
+      <p class="rule">
+        q, v, x only in foreign words · Almost everything is pronounced the way it is written.
+      </p>
+
+      <h2>2. Vowels <span>· sound roughly like …</span></h2>
+      <table>
+        <tr>
+          <th>Letter</th>
+          <th>Pronunciation</th>
+          <th>Example</th>
+        </tr>
+        <tr>
+          <td><b>e</b></td>
+          <td>always open, like e in “bed”</td>
+          <td><b>nie</b> – no, not</td>
+        </tr>
+        <tr>
+          <td><b>o</b></td>
+          <td>always open, like o in “hot”</td>
+          <td><b>dom</b> – house</td>
+        </tr>
+        <tr>
+          <td><b>ó</b> = <b>u</b></td>
+          <td>both like oo in “book”</td>
+          <td><b>góra</b> – mountain · <b>ulica</b> – street</td>
+        </tr>
+        <tr>
+          <td><b>y</b></td>
+          <td>a dark i, a bit like i in “bit”</td>
+          <td><b>ryba</b> – fish</td>
+        </tr>
+        <tr>
+          <td><b>ą</b></td>
+          <td>nasal o</td>
+          <td><b>są</b> – they are</td>
+        </tr>
+        <tr>
+          <td><b>ę</b></td>
+          <td>nasal e; at the end mostly plain e</td>
+          <td><b>ręka</b> – hand · <b>idę</b> → “ide”</td>
+        </tr>
+      </table>
+
+      <h2>3. Consonants <span>· different from English</span></h2>
+      <table>
+        <tr>
+          <td><b>ł</b></td>
+          <td>like w in “water”</td>
+          <td><b>mały</b> – small</td>
+        </tr>
+        <tr>
+          <td><b>w</b></td>
+          <td>like v in “very”</td>
+          <td><b>woda</b> – water</td>
+        </tr>
+        <tr>
+          <td><b>z</b></td>
+          <td>like z in “zoo”</td>
+          <td><b>zupa</b> – soup</td>
+        </tr>
+        <tr>
+          <td><b>s</b></td>
+          <td>always like s in “sun”</td>
+          <td><b>sok</b> – juice</td>
+        </tr>
+        <tr>
+          <td><b>c</b></td>
+          <td>like ts in “cats”</td>
+          <td><b>noc</b> – night</td>
+        </tr>
+        <tr>
+          <td><b>ch</b> = <b>h</b></td>
+          <td>both like ch in “loch”</td>
+          <td><b>chleb</b> – bread · <b>herbata</b> – tea</td>
+        </tr>
+        <tr>
+          <td><b>r</b></td>
+          <td>rolled with the tongue tip</td>
+          <td><b>rower</b> – bicycle</td>
+        </tr>
+      </table>
+
+      <h2>4. Hissing sounds <span>· hard and soft</span></h2>
+      <p class="rule">
+        si, ci, zi, dzi, ni = ś, ć, ź, dź, ń · before a vowel the i only makes it soft: siedem =
+        “ś-edem”
+      </p>
+      <table>
+        <tr>
+          <th>s sounds</th>
+          <th>hard<small>similar to English sh</small></th>
+          <th>soft<small>like hard, but softer</small></th>
+        </tr>
+        <tr>
+          <td><b>s</b> · sok</td>
+          <td><b>sz</b> like sh · szkoła</td>
+          <td><b>ś</b> / <b>si</b> · środa, siedem</td>
+        </tr>
+        <tr>
+          <td><b>c</b> · noc</td>
+          <td><b>cz</b> like ch · czas</td>
+          <td><b>ć</b> / <b>ci</b> · być, ciocia</td>
+        </tr>
+        <tr>
+          <td><b>z</b> · zupa</td>
+          <td><b>ż</b> = <b>rz</b> like s in “pleasure” · żona</td>
+          <td><b>ź</b> / <b>zi</b> · źle, zima</td>
+        </tr>
+        <tr>
+          <td><b>dz</b> · dzwon</td>
+          <td><b>dż</b> like j in “jam” · dżem</td>
+          <td><b>dź</b> / <b>dzi</b> · dzień</td>
+        </tr>
+      </table>
+
+      <div class="box">
+        <h3>Remember</h3>
+        <p>ń and ni sound like ny in “canyon” · koń (horse), nie</p>
+        <p>
+          Hard at the end of a word: b → p, d → t, g → k, w → f, z → s, ż → sz · chleb → “chlep” ·
+          Kraków → “Krakuf”
+        </p>
+        <p>rz after p, t, k, ch sounds like sz · przepraszam → “pszepraszam” · trzy → “tszy”</p>
+      </div>
+    </div>
+<style>@scope ([data-sheet="2"][data-lang="de"]) {
       :is(th, td):first-child {
         width: 200px;
       }
       .three :is(th, td):nth-child(2) {
         width: 90px;
       }
-    }</style><div class="page" data-sheet="2" data-lang="de en" hidden>
+    }</style><div class="page" data-sheet="2" data-lang="de" hidden>
       <h1><small></small>Rzeczowniki – Nomen</h1>
       <p class="sub">
         Das Wortende zeigt fast immer das Geschlecht · <span class="stem">Stamm</span> +
-        <b>Endung</b>
+        <b lang="de">Endung</b>
       </p>
 
       <h2>1. Geschlecht <span>· on, ona, ono</span></h2>
@@ -794,7 +953,7 @@ b {
         </tr>
         <tr>
           <td>männlich · on</td>
-          <td><b>Mitlaut</b></td>
+          <td><b lang="de">Mitlaut</b></td>
           <td>dom (Haus) · kot (Katze) · brat (Bruder)</td>
         </tr>
         <tr>
@@ -905,7 +1064,140 @@ b {
         </p>
       </div>
     </div>
-<style>@scope ([data-sheet="3"][data-lang="de en"]) {
+<style>@scope ([data-sheet="2"][data-lang="en"]) {
+      :is(th, td):first-child {
+        width: 200px;
+      }
+      .three :is(th, td):nth-child(2) {
+        width: 90px;
+      }
+    }</style><div class="page" data-sheet="2" data-lang="en" hidden>
+      <h1><small></small>Rzeczowniki – Nouns</h1>
+      <p class="sub">
+        The end of a word almost always shows its gender · <span class="stem">stem</span> +
+        <b lang="en">ending</b>
+      </p>
+
+      <h2>1. Gender <span>· on, ona, ono</span></h2>
+      <p class="rule">There are no articles: dom = the house, a house.</p>
+      <table class="three">
+        <tr>
+          <th>Gender</th>
+          <th>Ending</th>
+          <th>Examples</th>
+        </tr>
+        <tr>
+          <td>masculine · on</td>
+          <td><b lang="en">consonant</b></td>
+          <td>dom (house) · kot (cat) · brat (brother)</td>
+        </tr>
+        <tr>
+          <td>feminine · ona</td>
+          <td><b>-a</b></td>
+          <td>kaw<b>a</b> (coffee) · mam<b>a</b> · szkoł<b>a</b> (school)</td>
+        </tr>
+        <tr>
+          <td>neuter · ono</td>
+          <td><b>-o</b> · <b>-e</b></td>
+          <td>okn<b>o</b> (window) · morz<b>e</b> (sea) · also -ę: imię (first name)</td>
+        </tr>
+      </table>
+
+      <h2>2. Exceptions <span>· learn them by heart</span></h2>
+      <table>
+        <tr>
+          <td>masculine in -a</td>
+          <td><b>mężczyzna</b> (man) · <b>kolega</b> (friend) · <b>tata</b> (dad)</td>
+        </tr>
+        <tr>
+          <td>feminine in a consonant</td>
+          <td><b>noc</b> (night) · <b>rzecz</b> (thing) · <b>twarz</b> (face)</td>
+        </tr>
+        <tr>
+          <td>-ość: almost all feminine</td>
+          <td><b>miłość</b> (love) · <b>wiadomość</b> (message) · but <b>gość</b> (guest): m.</td>
+        </tr>
+        <tr>
+          <td>soft: -ń, -ć, -ś, -l …</td>
+          <td>learn with the word: <b>dzień</b> (day): m. · <b>jesień</b> (autumn): f.</td>
+        </tr>
+      </table>
+
+      <h2>3. Plural <span>· things, animals and women</span></h2>
+      <table class="three">
+        <tr>
+          <th>Word ending</th>
+          <th>Plural</th>
+          <th>Examples</th>
+        </tr>
+        <tr>
+          <td>most words</td>
+          <td><b>-y</b></td>
+          <td>dom → dom<b>y</b> · kot → kot<b>y</b> · kaw<b>a</b> → kaw<b>y</b></td>
+        </tr>
+        <tr>
+          <td>after k, g</td>
+          <td><b>-i</b></td>
+          <td>ptak → ptak<b>i</b> (birds) · nog<b>a</b> → nog<b>i</b> (legs)</td>
+        </tr>
+        <tr>
+          <td>after c, cz, sz, rz, ż, j, l and soft sounds</td>
+          <td><b>-e</b></td>
+          <td>klucz → klucz<b>e</b> (keys) · ulic<b>a</b> → ulic<b>e</b> (streets)</td>
+        </tr>
+        <tr>
+          <td>neuter</td>
+          <td><b>-a</b></td>
+          <td>okn<b>o</b> → okn<b>a</b> · morz<b>e</b> → morz<b>a</b></td>
+        </tr>
+      </table>
+
+      <h2>4. Plural <span>· men: the last consonant often changes</span></h2>
+      <table>
+        <tr>
+          <td>student · turysta</td>
+          <td><b>studenci</b> · <b>turyści</b> (students · tourists)</td>
+        </tr>
+        <tr>
+          <td>Polak · Niemiec</td>
+          <td><b>Polacy</b> · <b>Niemcy</b> (Poles · Germans)</td>
+        </tr>
+        <tr>
+          <td>lekarz · nauczyciel</td>
+          <td><b>lekarze</b> · <b>nauczyciele</b> (doctors · teachers)</td>
+        </tr>
+        <tr>
+          <td>pan · syn</td>
+          <td><b>panowie</b> · <b>synowie</b> (gentlemen · sons)</td>
+        </tr>
+      </table>
+
+      <div class="box">
+        <h3>Irregular plurals</h3>
+        <table class="ex">
+          <tr>
+            <td>człowiek → <b>ludzie</b> · dziecko → <b>dzieci</b></td>
+            <td>person → people · child → children</td>
+          </tr>
+          <tr>
+            <td>brat → <b>bracia</b> · ręka → <b>ręce</b></td>
+            <td>brother → brothers · hand → hands</td>
+          </tr>
+          <tr>
+            <td>rok → <b>lata</b> · oko → <b>oczy</b></td>
+            <td>year → years · eye → eyes</td>
+          </tr>
+          <tr>
+            <td>dzień → <b>dni</b> · tydzień → <b>tygodnie</b></td>
+            <td>day → days · week → weeks</td>
+          </tr>
+        </table>
+        <p class="note">
+          Feminine words without -a have their own forms: noc → noce · wiadomość → wiadomości
+        </p>
+      </div>
+    </div>
+<style>@scope ([data-sheet="3"][data-lang="de"]) {
       .groups {
         font-size: 14px;
       }
@@ -939,10 +1231,10 @@ b {
       .block th[colspan] {
         border-bottom-width: 1px;
       }
-    }</style><div class="page" data-sheet="3" data-lang="de en" hidden>
+    }</style><div class="page" data-sheet="3" data-lang="de" hidden>
       <h1><small></small>Czasowniki – Verben</h1>
       <p class="sub">
-        Gegenwart und Vergangenheit · <span class="stem">Stamm</span> + <b>Endung</b>
+        Gegenwart und Vergangenheit · <span class="stem">Stamm</span> + <b lang="de">Endung</b>
       </p>
 
       <h2>1. Gegenwart <span>· teraz</span></h2>
@@ -1121,7 +1413,219 @@ b {
 
       <p class="note">się bleibt immer gleich: nazywam się, nazywałam się</p>
     </div>
-<style>@scope ([data-sheet="4"][data-lang="de en"]) {
+<style>@scope ([data-sheet="3"][data-lang="en"]) {
+      .groups {
+        font-size: 14px;
+      }
+      .groups :is(th, td) {
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+      .groups tr:first-child th:first-child {
+        width: 100px;
+      }
+      /* A black line before each block of groups that share their endings. */
+      .groups th[colspan],
+      .groups tr:nth-child(2) th:is(:nth-child(1), :nth-child(3), :nth-child(6)),
+      .groups td:is(:nth-child(2), :nth-child(4), :nth-child(7)) {
+        position: relative;
+      }
+      .groups th[colspan]::before,
+      .groups tr:nth-child(2) th:is(:nth-child(1), :nth-child(3), :nth-child(6))::before,
+      .groups td:is(:nth-child(2), :nth-child(4), :nth-child(7))::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        border-left: 1px solid var(--text);
+      }
+      /* Over the grey line below each row. */
+      .groups td:is(:nth-child(2), :nth-child(4), :nth-child(7))::before {
+        bottom: -1px;
+      }
+      .block th[colspan] {
+        border-bottom-width: 1px;
+      }
+    }</style><div class="page" data-sheet="3" data-lang="en" hidden>
+      <h1><small></small>Czasowniki – Verbs</h1>
+      <p class="sub">Present and past · <span class="stem">stem</span> + <b lang="en">ending</b></p>
+
+      <h2>1. Present <span>· teraz</span></h2>
+      <p class="rule">
+        The basic form (the form in the dictionary) ends in -ć. Its end usually shows which endings
+        go on the stem. Groups in the same block have the same endings.
+      </p>
+      <table class="groups">
+        <tr class="block">
+          <th rowspan="2">Person</th>
+          <th colspan="7">Basic form ends in</th>
+        </tr>
+        <tr>
+          <th>
+            -ać<small>czytać<br />read</small>
+          </th>
+          <th>
+            -eć<small>umieć<br />can</small>
+          </th>
+          <th>
+            -ować<small>pracować<br />work</small>
+          </th>
+          <th>
+            -nąć<small>ciągnąć<br />pull</small>
+          </th>
+          <th>
+            -ąć<small>zacząć *<br />begin</small>
+          </th>
+          <th>
+            -ić<small>robić<br />do</small>
+          </th>
+          <th>
+            -yć<small>tańczyć<br />dance</small>
+          </th>
+        </tr>
+        <tr>
+          <td>ja</td>
+          <td>czyta<b>m</b></td>
+          <td>umie<b>m</b></td>
+          <td>pracuj<b>ę</b></td>
+          <td>ciągn<b>ę</b></td>
+          <td>zaczn<b>ę</b></td>
+          <td>robi<b>ę</b></td>
+          <td>tańcz<b>ę</b></td>
+        </tr>
+        <tr>
+          <td>ty</td>
+          <td>czyta<b>sz</b></td>
+          <td>umie<b>sz</b></td>
+          <td>pracuj<b>esz</b></td>
+          <td>ciągni<b>esz</b></td>
+          <td>zaczni<b>esz</b></td>
+          <td>rob<b>isz</b></td>
+          <td>tańcz<b>ysz</b></td>
+        </tr>
+        <tr>
+          <td>on · ona · ono</td>
+          <td>czyta</td>
+          <td>umie</td>
+          <td>pracuj<b>e</b></td>
+          <td>ciągni<b>e</b></td>
+          <td>zaczni<b>e</b></td>
+          <td>rob<b>i</b></td>
+          <td>tańcz<b>y</b></td>
+        </tr>
+        <tr>
+          <td>my</td>
+          <td>czyta<b>my</b></td>
+          <td>umie<b>my</b></td>
+          <td>pracuj<b>emy</b></td>
+          <td>ciągni<b>emy</b></td>
+          <td>zaczni<b>emy</b></td>
+          <td>rob<b>imy</b></td>
+          <td>tańcz<b>ymy</b></td>
+        </tr>
+        <tr>
+          <td>wy</td>
+          <td>czyta<b>cie</b></td>
+          <td>umie<b>cie</b></td>
+          <td>pracuj<b>ecie</b></td>
+          <td>ciągni<b>ecie</b></td>
+          <td>zaczni<b>ecie</b></td>
+          <td>rob<b>icie</b></td>
+          <td>tańcz<b>ycie</b></td>
+        </tr>
+        <tr>
+          <td>oni · one</td>
+          <td>czyta<b>ją</b></td>
+          <td>umie<b>ją</b></td>
+          <td>pracuj<b>ą</b></td>
+          <td>ciągn<b>ą</b></td>
+          <td>zaczn<b>ą</b></td>
+          <td>robi<b>ą</b></td>
+          <td>tańcz<b>ą</b></td>
+        </tr>
+      </table>
+      <p class="note">
+        Many verbs in -eć go like -ić: myśleć (think) → myśl<b>ę</b>, myśl<b>isz</b>.
+      </p>
+      <p class="note">
+        * With most verbs in -ąć this form means the future: zacznę = I will begin.
+      </p>
+
+      <h2>2. Past <span>· przeszłość</span></h2>
+      <p class="rule">Stem = basic form without -ć: być (be) → by + ending. True for most verbs.</p>
+      <table>
+        <tr>
+          <th>Person</th>
+          <th>man<small>or group with a man</small></th>
+          <th>woman<small>or group without a man</small></th>
+        </tr>
+        <tr>
+          <td>ja</td>
+          <td>by<b>łem</b></td>
+          <td>by<b>łam</b></td>
+        </tr>
+        <tr>
+          <td>ty</td>
+          <td>by<b>łeś</b></td>
+          <td>by<b>łaś</b></td>
+        </tr>
+        <tr>
+          <td>on · ona · ono</td>
+          <td>on by<b>ł</b></td>
+          <td>ona by<b>ła</b> · ono by<b>ło</b></td>
+        </tr>
+        <tr>
+          <td>my</td>
+          <td>by<b>liśmy</b></td>
+          <td>by<b>łyśmy</b></td>
+        </tr>
+        <tr>
+          <td>wy</td>
+          <td>by<b>liście</b></td>
+          <td>by<b>łyście</b></td>
+        </tr>
+        <tr>
+          <td>oni · one</td>
+          <td>oni by<b>li</b></td>
+          <td>one by<b>ły</b></td>
+        </tr>
+      </table>
+
+      <p class="note">
+        -eć: e becomes a: umieć → umi<b>ałem</b>, umi<b>ała</b>. e stays only for a group with a
+        man: umi<b>eli</b>.
+      </p>
+      <p class="note">
+        -ąć: ą only for one man: zacząć → zacz<b>ąłem</b>, zacz<b>ął</b>. Otherwise ę:
+        zacz<b>ęłam</b>, zacz<b>ęli</b>.
+      </p>
+
+      <div class="box">
+        <h3>Examples</h3>
+        <table class="ex">
+          <tr>
+            <td>Robert <span class="stem">czyta</span><b>ł</b>.</td>
+            <td>Robert was reading.</td>
+          </tr>
+          <tr>
+            <td>Kasia <span class="stem">czyta</span><b>ła</b>.</td>
+            <td>Kasia was reading.</td>
+          </tr>
+          <tr>
+            <td>Robert i Kasia <span class="stem">czyta</span><b>li</b>.</td>
+            <td>Robert and Kasia were reading.</td>
+          </tr>
+          <tr>
+            <td>Kasia i Anna <span class="stem">czyta</span><b>ły</b>.</td>
+            <td>Kasia and Anna were reading.</td>
+          </tr>
+        </table>
+      </div>
+
+      <p class="note">się always stays the same: nazywam się, nazywałam się</p>
+    </div>
+<style>@scope ([data-sheet="4"][data-lang="de"]) {
       .page > table {
         font-size: 15px;
       }
@@ -1132,7 +1636,7 @@ b {
       .page > table :is(th, td):first-child {
         width: 128px;
       }
-    }</style><div class="page" data-sheet="4" data-lang="de en" hidden>
+    }</style><div class="page" data-sheet="4" data-lang="de" hidden>
       <h1><small></small>Ważne czasowniki – Wichtige Verben</h1>
       <p class="sub">Diese Verben weichen von den Grundmustern ab – auswendig lernen.</p>
 
@@ -1356,7 +1860,242 @@ b {
         </table>
       </div>
     </div>
-<style>@scope ([data-sheet="5"][data-lang="de en"]) {
+<style>@scope ([data-sheet="4"][data-lang="en"]) {
+      .page > table {
+        font-size: 15px;
+      }
+      .page > table :is(th, td) {
+        padding-left: 6px;
+        padding-right: 6px;
+      }
+      .page > table :is(th, td):first-child {
+        width: 128px;
+      }
+    }</style><div class="page" data-sheet="4" data-lang="en" hidden>
+      <h1><small></small>Ważne czasowniki – Important Verbs</h1>
+      <p class="sub">These verbs do not follow the basic patterns – learn them by heart.</p>
+
+      <h2>1. Present <span>· teraz</span></h2>
+      <table>
+        <tr>
+          <th>Infinitive</th>
+          <th>ja</th>
+          <th>ty</th>
+          <th>on · ona</th>
+          <th>my</th>
+          <th>wy</th>
+          <th>oni · one</th>
+        </tr>
+        <tr>
+          <td>być · be</td>
+          <td><b>jestem</b></td>
+          <td><b>jesteś</b></td>
+          <td><b>jest</b></td>
+          <td><b>jesteśmy</b></td>
+          <td><b>jesteście</b></td>
+          <td><b>są</b></td>
+        </tr>
+        <tr>
+          <td>mieć · have</td>
+          <td><b>mam</b></td>
+          <td><b>masz</b></td>
+          <td><b>ma</b></td>
+          <td><b>mamy</b></td>
+          <td><b>macie</b></td>
+          <td><b>mają</b></td>
+        </tr>
+        <tr>
+          <td>chcieć · want</td>
+          <td><b>chcę</b></td>
+          <td><b>chcesz</b></td>
+          <td><b>chce</b></td>
+          <td><b>chcemy</b></td>
+          <td><b>chcecie</b></td>
+          <td><b>chcą</b></td>
+        </tr>
+        <tr>
+          <td>móc · can</td>
+          <td><b>mogę</b></td>
+          <td><b>możesz</b></td>
+          <td><b>może</b></td>
+          <td><b>możemy</b></td>
+          <td><b>możecie</b></td>
+          <td><b>mogą</b></td>
+        </tr>
+        <tr>
+          <td>musieć · must</td>
+          <td><b>muszę</b></td>
+          <td><b>musisz</b></td>
+          <td><b>musi</b></td>
+          <td><b>musimy</b></td>
+          <td><b>musicie</b></td>
+          <td><b>muszą</b></td>
+        </tr>
+        <tr>
+          <td>wiedzieć · know</td>
+          <td><b>wiem</b></td>
+          <td><b>wiesz</b></td>
+          <td><b>wie</b></td>
+          <td><b>wiemy</b></td>
+          <td><b>wiecie</b></td>
+          <td><b>wiedzą</b></td>
+        </tr>
+        <tr>
+          <td>rozumieć · understand</td>
+          <td><b>rozumiem</b></td>
+          <td><b>rozumiesz</b></td>
+          <td><b>rozumie</b></td>
+          <td><b>rozumiemy</b></td>
+          <td><b>rozumiecie</b></td>
+          <td><b>rozumieją</b></td>
+        </tr>
+        <tr>
+          <td>jeść · eat</td>
+          <td><b>jem</b></td>
+          <td><b>jesz</b></td>
+          <td><b>je</b></td>
+          <td><b>jemy</b></td>
+          <td><b>jecie</b></td>
+          <td><b>jedzą</b></td>
+        </tr>
+        <tr>
+          <td>pić · drink</td>
+          <td><b>piję</b></td>
+          <td><b>pijesz</b></td>
+          <td><b>pije</b></td>
+          <td><b>pijemy</b></td>
+          <td><b>pijecie</b></td>
+          <td><b>piją</b></td>
+        </tr>
+        <tr>
+          <td>pisać · write</td>
+          <td><b>piszę</b></td>
+          <td><b>piszesz</b></td>
+          <td><b>pisze</b></td>
+          <td><b>piszemy</b></td>
+          <td><b>piszecie</b></td>
+          <td><b>piszą</b></td>
+        </tr>
+        <tr>
+          <td>brać · take</td>
+          <td><b>biorę</b></td>
+          <td><b>bierzesz</b></td>
+          <td><b>bierze</b></td>
+          <td><b>bierzemy</b></td>
+          <td><b>bierzecie</b></td>
+          <td><b>biorą</b></td>
+        </tr>
+        <tr>
+          <td>spać · sleep</td>
+          <td><b>śpię</b></td>
+          <td><b>śpisz</b></td>
+          <td><b>śpi</b></td>
+          <td><b>śpimy</b></td>
+          <td><b>śpicie</b></td>
+          <td><b>śpią</b></td>
+        </tr>
+        <tr>
+          <td>dawać · give</td>
+          <td><b>daję</b></td>
+          <td><b>dajesz</b></td>
+          <td><b>daje</b></td>
+          <td><b>dajemy</b></td>
+          <td><b>dajecie</b></td>
+          <td><b>dają</b></td>
+        </tr>
+        <tr>
+          <td>iść · go, walk</td>
+          <td><b>idę</b></td>
+          <td><b>idziesz</b></td>
+          <td><b>idzie</b></td>
+          <td><b>idziemy</b></td>
+          <td><b>idziecie</b></td>
+          <td><b>idą</b></td>
+        </tr>
+        <tr>
+          <td>jechać · go, drive</td>
+          <td><b>jadę</b></td>
+          <td><b>jedziesz</b></td>
+          <td><b>jedzie</b></td>
+          <td><b>jedziemy</b></td>
+          <td><b>jedziecie</b></td>
+          <td><b>jadą</b></td>
+        </tr>
+      </table>
+
+      <h2>2. Past <span>· watch out for these forms</span></h2>
+      <table>
+        <tr>
+          <th>Infinitive</th>
+          <th>ja (man · woman)</th>
+          <th>on · ona</th>
+          <th>oni · one</th>
+        </tr>
+        <tr>
+          <td>mieć</td>
+          <td>miałem · miałam</td>
+          <td>miał · miała</td>
+          <td>mi<b>e</b>li · miały</td>
+        </tr>
+        <tr>
+          <td>chcieć</td>
+          <td>chciałem · chciałam</td>
+          <td>chciał · chciała</td>
+          <td>chci<b>e</b>li · chciały</td>
+        </tr>
+        <tr>
+          <td>móc</td>
+          <td><b>mogłem</b> · <b>mogłam</b></td>
+          <td><b>mógł</b> · <b>mogła</b></td>
+          <td><b>mogli</b> · <b>mogły</b></td>
+        </tr>
+        <tr>
+          <td>jeść</td>
+          <td><b>jadłem</b> · <b>jadłam</b></td>
+          <td><b>jadł</b> · <b>jadła</b></td>
+          <td><b>jedli</b> · <b>jadły</b></td>
+        </tr>
+      </table>
+      <p class="rule">
+        With most verbs in -eć, a becomes e for a group with a man: mieli, chcieli, musieli,
+        rozumieli.
+      </p>
+
+      <div class="box">
+        <h3>With infinitive: chcieć, móc, musieć, umieć, trzeba, można</h3>
+        <table class="ex">
+          <tr>
+            <td>Chcę spać.</td>
+            <td>I want to sleep.</td>
+          </tr>
+          <tr>
+            <td>Muszę iść.</td>
+            <td>I have to go.</td>
+          </tr>
+          <tr>
+            <td>Mogę zapłacić kartą?</td>
+            <td>Can I pay by card?</td>
+          </tr>
+          <tr>
+            <td>Umiem pływać.</td>
+            <td>I can swim (I have learnt it).</td>
+          </tr>
+          <tr>
+            <td>Dziś nie mogę pływać.</td>
+            <td>I can't swim today.</td>
+          </tr>
+          <tr>
+            <td>Trzeba czekać.</td>
+            <td>You have to wait.</td>
+          </tr>
+          <tr>
+            <td>Tu można parkować.</td>
+            <td>You may park here.</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+<style>@scope ([data-sheet="5"][data-lang="de"]) {
       .col p {
         display: grid;
         grid-template-columns: 170px 1fr;
@@ -1367,7 +2106,7 @@ b {
       .page > table :is(th, td):nth-child(2) {
         width: 210px;
       }
-    }</style><div class="page" data-sheet="5" data-lang="de en" hidden>
+    }</style><div class="page" data-sheet="5" data-lang="de" hidden>
       <h1><small></small>Pytania i przeczenie – Fragen und Verneinung</h1>
       <p class="sub">Ja/Nein-Frage: Czy … ? · Verneinung: nie direkt vor das Verb</p>
 
@@ -1469,7 +2208,120 @@ b {
         </table>
       </div>
     </div>
-<style>@scope ([data-sheet="6"][data-lang="de en"]) {
+<style>@scope ([data-sheet="5"][data-lang="en"]) {
+      .col p {
+        display: grid;
+        grid-template-columns: 170px 1fr;
+      }
+      .page > table :is(th, td):first-child {
+        width: 230px;
+      }
+      .page > table :is(th, td):nth-child(2) {
+        width: 210px;
+      }
+    }</style><div class="page" data-sheet="5" data-lang="en" hidden>
+      <h1><small></small>Pytania i przeczenie – Questions and Negation</h1>
+      <p class="sub">Yes/no question: Czy … ? · Negation: nie right before the verb</p>
+
+      <h2>1. Question words</h2>
+      <div class="cols">
+        <div class="col">
+          <p><b>kto?</b> <span>who?</span></p>
+          <p><b>co?</b> <span>what?</span></p>
+          <p><b>gdzie?</b> <span>where?</span></p>
+          <p><b>dokąd?</b> <span>where to?</span></p>
+          <p><b>skąd?</b> <span>where from?</span></p>
+          <p><b>kiedy?</b> <span>when?</span></p>
+          <p><b>o której?</b> <span>at what time?</span></p>
+          <p><b>jak?</b> <span>how?</span></p>
+        </div>
+        <div class="col">
+          <p><b>jaki? jaka? jakie?</b> <span>what kind of?</span></p>
+          <p><b>który? która? które?</b> <span>which?</span></p>
+          <p><b>czyj? czyja? czyje?</b> <span>whose?</span></p>
+          <p><b>ile?</b> <span>how much/many?</span></p>
+          <p><b>dlaczego?</b> <span>why?</span></p>
+          <p><b>po co?</b> <span>what for?</span></p>
+          <p><b>jak długo?</b> <span>how long?</span></p>
+          <p><b>od kiedy?</b> <span>since when?</span></p>
+        </div>
+      </div>
+
+      <h2>2. Yes/no questions <span>· with czy</span></h2>
+      <table>
+        <tr>
+          <td>with czy</td>
+          <td><b>Czy</b> masz czas?</td>
+          <td>Are you free?</td>
+        </tr>
+        <tr>
+          <td>answer</td>
+          <td><b>Tak</b>, mam. · <b>Nie</b>, nie mam.</td>
+          <td>Yes. · No.</td>
+        </tr>
+        <tr>
+          <td>spoken: often without czy</td>
+          <td>Masz czas?</td>
+          <td>only the voice goes up</td>
+        </tr>
+      </table>
+
+      <h2>3. Negation <span>· nie before the verb</span></h2>
+      <table>
+        <tr>
+          <td>nie + verb</td>
+          <td><b>Nie</b> rozumiem.</td>
+          <td>I don't understand.</td>
+        </tr>
+        <tr>
+          <td>nikt · nobody</td>
+          <td><b>Nikt nie</b> wie.</td>
+          <td>Nobody knows.</td>
+        </tr>
+        <tr>
+          <td>nic · nothing</td>
+          <td><b>Nic nie</b> mam.</td>
+          <td>I have nothing.</td>
+        </tr>
+        <tr>
+          <td>nigdy · never</td>
+          <td><b>Nigdy nie</b> piję kawy.</td>
+          <td>I never drink coffee.</td>
+        </tr>
+        <tr>
+          <td>nigdzie · nowhere</td>
+          <td><b>Nigdzie nie</b> idę.</td>
+          <td>I'm not going anywhere.</td>
+        </tr>
+      </table>
+      <p class="rule">
+        Double negation is a must: with nikt, nic, nigdy, nigdzie there is always also nie before
+        the verb.
+      </p>
+
+      <div class="box">
+        <h3>After nie: genitive, not accusative</h3>
+        <table class="ex">
+          <tr>
+            <td>Mam samochód. → Nie mam <b>samochodu</b>.</td>
+            <td>I don't have a car.</td>
+          </tr>
+          <tr>
+            <td>Lubię kawę. → Nie lubię <b>kawy</b>.</td>
+            <td>I don't like coffee.</td>
+          </tr>
+          <tr>
+            <td>Jest mleko. → Nie ma <b>mleka</b>.</td>
+            <td>There is no milk.</td>
+          </tr>
+          <tr>
+            <td>But być stays: To nie jest problem.</td>
+            <td>That's not a problem.</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+<style>@scope ([data-sheet="6"][data-lang="de"]) {
       .col p b:first-child {
         display: inline-block;
         width: 64px;
@@ -1481,7 +2333,7 @@ b {
       .pairs p b:first-child {
         width: 28px;
       }
-    }</style><div class="page" data-sheet="6" data-lang="de en" hidden>
+    }</style><div class="page" data-sheet="6" data-lang="de" hidden>
       <h1><small></small>Liczebniki – Zahlen</h1>
       <p class="sub">Fast immer wechselt die Form bei 5: cztery tysiące → pięć tysięcy</p>
 
@@ -1618,7 +2470,156 @@ b {
         <p class="note">Millionen genauso: milion · dwa miliony · pięć milionów</p>
       </div>
     </div>
-<style>@scope ([data-sheet="7"][data-lang="de en"]) {
+<style>@scope ([data-sheet="6"][data-lang="en"]) {
+      .col p b:first-child {
+        display: inline-block;
+        width: 64px;
+      }
+      .pairs p {
+        display: grid;
+        grid-template-columns: 120px 1fr;
+      }
+      .pairs p b:first-child {
+        width: 28px;
+      }
+    }</style><div class="page" data-sheet="6" data-lang="en" hidden>
+      <h1><small></small>Liczebniki – Numbers</h1>
+      <p class="sub">The form almost always changes at 5: cztery tysiące → pięć tysięcy</p>
+
+      <h2>1. Up to 19 <span>· from 11 → -naście</span></h2>
+      <div class="cols pairs">
+        <div class="col">
+          <h3>0 – 4 · 10 – 14</h3>
+          <p>
+            <span><b>0</b> <b>zero</b></span
+            ><span><b>10</b> <b>dziesięć</b></span>
+          </p>
+          <p>
+            <span><b>1</b> <b>jeden</b></span
+            ><span><b>11</b> jede<b>naście</b></span>
+          </p>
+          <p>
+            <span><b>2</b> <b>dwa</b></span
+            ><span><b>12</b> dwa<b>naście</b></span>
+          </p>
+          <p>
+            <span><b>3</b> <b>trzy</b></span
+            ><span><b>13</b> trzy<b>naście</b></span>
+          </p>
+          <p>
+            <span><b>4</b> <b>cztery</b></span
+            ><span><b>14</b> czter<b>naście</b></span>
+          </p>
+        </div>
+        <div class="col">
+          <h3>5 – 9 · 15 – 19</h3>
+          <p>
+            <span><b>5</b> <b>pięć</b></span
+            ><span><b>15</b> pięt<b>naście</b></span>
+          </p>
+          <p>
+            <span><b>6</b> <b>sześć</b></span
+            ><span><b>16</b> szes<b>naście</b></span>
+          </p>
+          <p>
+            <span><b>7</b> <b>siedem</b></span
+            ><span><b>17</b> siedem<b>naście</b></span>
+          </p>
+          <p>
+            <span><b>8</b> <b>osiem</b></span
+            ><span><b>18</b> osiem<b>naście</b></span>
+          </p>
+          <p>
+            <span><b>9</b> <b>dziewięć</b></span
+            ><span><b>19</b> dziewięt<b>naście</b></span>
+          </p>
+        </div>
+      </div>
+
+      <h2>2. Tens <span>· change at 50</span></h2>
+      <div class="cols">
+        <div class="col">
+          <h3>2 – 4 → -dzieści(a)</h3>
+          <p><b>20</b> dwa<b>dzieścia</b></p>
+          <p><b>30</b> trzy<b>dzieści</b></p>
+          <p><b>40</b> czter<b>dzieści</b></p>
+        </div>
+        <div class="col">
+          <h3>from 5 → -dziesiąt</h3>
+          <p><b>50</b> pięć<b>dziesiąt</b></p>
+          <p><b>60</b> sześć<b>dziesiąt</b></p>
+          <p><b>70</b> siedem<b>dziesiąt</b></p>
+          <p><b>80</b> osiem<b>dziesiąt</b></p>
+          <p><b>90</b> dziewięć<b>dziesiąt</b></p>
+        </div>
+        <div class="col"></div>
+      </div>
+
+      <h2>3. Hundreds <span>· change at 500</span></h2>
+      <div class="cols">
+        <div class="col">
+          <h3>1 and 2 → own form</h3>
+          <p><b>100</b> <b>sto</b></p>
+          <p><b>200</b> <b>dwieście</b></p>
+        </div>
+        <div class="col">
+          <h3>3 – 4 → -sta</h3>
+          <p><b>300</b> trzy<b>sta</b></p>
+          <p><b>400</b> cztery<b>sta</b></p>
+        </div>
+        <div class="col">
+          <h3>from 5 → -set</h3>
+          <p><b>500</b> pięć<b>set</b></p>
+          <p><b>600</b> sześć<b>set</b></p>
+          <p><b>700</b> siedem<b>set</b></p>
+          <p><b>800</b> osiem<b>set</b></p>
+          <p><b>900</b> dziewięć<b>set</b></p>
+        </div>
+      </div>
+
+      <h2>4. Thousands <span>· change at 5000</span></h2>
+      <div class="cols">
+        <div class="col">
+          <h3>1 → tysiąc</h3>
+          <p><b>1000</b> <b>tysiąc</b></p>
+        </div>
+        <div class="col">
+          <h3>2 – 4 → tysiące</h3>
+          <p><b>2000</b> dwa <b>tysiące</b></p>
+          <p><b>3000</b> trzy <b>tysiące</b></p>
+          <p><b>4000</b> cztery <b>tysiące</b></p>
+        </div>
+        <div class="col">
+          <h3>from 5 → tysięcy</h3>
+          <p><b>5000</b> pięć <b>tysięcy</b></p>
+          <p><b>6000</b> sześć <b>tysięcy</b></p>
+          <p><b>10 000</b> dziesięć <b>tysięcy</b></p>
+        </div>
+      </div>
+
+      <div class="box">
+        <h3>Remember: the number's last digit before tysiąc decides</h3>
+        <table>
+          <tr>
+            <td>ends in 2, 3, 4</td>
+            <td><b>tysiące</b></td>
+            <td>22 000 dwadzieścia dwa <b>tysiące</b></td>
+          </tr>
+          <tr>
+            <td>everything else</td>
+            <td><b>tysięcy</b></td>
+            <td>21 000 dwadzieścia jeden <b>tysięcy</b></td>
+          </tr>
+          <tr>
+            <td>exception: ends in 12, 13, 14</td>
+            <td><b>tysięcy</b></td>
+            <td>12 000 dwanaście <b>tysięcy</b></td>
+          </tr>
+        </table>
+        <p class="note">Millions alike: milion · dwa miliony · pięć milionów</p>
+      </div>
+    </div>
+<style>@scope ([data-sheet="7"][data-lang="de"]) {
       .page > table:first-of-type :is(th, td):first-child {
         width: 120px;
       }
@@ -1634,7 +2635,7 @@ b {
       .box td:last-child {
         white-space: nowrap;
       }
-    }</style><div class="page" data-sheet="7" data-lang="de en" hidden>
+    }</style><div class="page" data-sheet="7" data-lang="de" hidden>
       <h1><small></small>Przypadki – Fälle</h1>
       <p class="sub">
         Polnisch hat sieben Fälle: Das Nomen ändert seine Endung je nach Rolle im Satz.
@@ -1743,17 +2744,142 @@ b {
         </table>
       </div>
     </div>
-<style>@scope ([data-sheet="8"][data-lang="de en"]) {
+<style>@scope ([data-sheet="7"][data-lang="en"]) {
+      .page > table:first-of-type :is(th, td):first-child {
+        width: 120px;
+      }
+      .page > table:first-of-type :is(th, td):nth-child(2) {
+        width: 150px;
+      }
+      .page > table:first-of-type :is(th, td):nth-child(3) {
+        width: 210px;
+      }
+      .page > table:last-of-type :is(th, td):first-child {
+        width: 130px;
+      }
+      .box td:last-child {
+        white-space: nowrap;
+      }
+    }</style><div class="page" data-sheet="7" data-lang="en" hidden>
+      <h1><small></small>Przypadki – Cases</h1>
+      <p class="sub">
+        Polish has seven cases: a noun changes its ending for its role in the sentence.
+      </p>
+
+      <h2>1. Overview <span>· question, use, example</span></h2>
+      <table>
+        <tr>
+          <th>Case</th>
+          <th>Question</th>
+          <th>When?</th>
+          <th>Example</th>
+        </tr>
+        <tr>
+          <td>Mianownik</td>
+          <td><b>kto? co?</b></td>
+          <td>nominative: subject, after “to jest”</td>
+          <td>To jest <b>Kasia</b>.</td>
+        </tr>
+        <tr>
+          <td>Dopełniacz</td>
+          <td><b>kogo? czego?</b></td>
+          <td>genitive: “no”, amounts, “of”</td>
+          <td>Nie mam <b>kawy</b>.</td>
+        </tr>
+        <tr>
+          <td>Celownik</td>
+          <td><b>komu? czemu?</b></td>
+          <td>dative: to whom? give, help</td>
+          <td>Pomagam <b>bratu</b>.</td>
+        </tr>
+        <tr>
+          <td>Biernik</td>
+          <td><b>kogo? co?</b></td>
+          <td>accusative: object</td>
+          <td>Lubię <b>kawę</b>.</td>
+        </tr>
+        <tr>
+          <td>Narzędnik</td>
+          <td><b>kim? czym?</b></td>
+          <td>instrumental: with, job</td>
+          <td>Jestem <b>lekarzem</b>.</td>
+        </tr>
+        <tr>
+          <td>Miejscownik</td>
+          <td><b>o kim? o czym?</b></td>
+          <td>locative: only after prepositions</td>
+          <td>Jestem w <b>domu</b>.</td>
+        </tr>
+        <tr>
+          <td>Wołacz</td>
+          <td>–</td>
+          <td>vocative: addressing</td>
+          <td>Cześć, <b>Kasiu</b>! · <b>Mamo</b>!</td>
+        </tr>
+      </table>
+
+      <h2>2. Prepositions <span>· each takes a fixed case</span></h2>
+      <table>
+        <tr>
+          <th>Case</th>
+          <th>Prepositions</th>
+        </tr>
+        <tr>
+          <td>+ genitive</td>
+          <td>
+            <b>do</b> to · <b>z</b> from · <b>od</b> from, since · <b>bez</b> without ·
+            <b>dla</b> for · <b>u</b> at sb's
+          </td>
+        </tr>
+        <tr>
+          <td>+ accusative</td>
+          <td><b>na</b> where to? · <b>przez</b> through · <b>za</b> for (dziękuję za …)</td>
+        </tr>
+        <tr>
+          <td>+ instrumental</td>
+          <td>
+            <b>z</b> with · where?: <b>przed</b> in front of · <b>za</b> behind · <b>nad</b> above ·
+            <b>pod</b> under · <b>między</b> between
+          </td>
+        </tr>
+        <tr>
+          <td>+ locative</td>
+          <td>
+            <b>w</b> in · <b>na</b> on, at · <b>o</b> about · <b>przy</b> by, next to ·
+            <b>po</b> after (time)
+          </td>
+        </tr>
+      </table>
+
+      <div class="box">
+        <h3>Remember: same preposition, different case</h3>
+        <table>
+          <tr>
+            <td><b>z</b> + genitive = from · <b>z</b> + instrumental = with</td>
+            <td>Jestem z Polski. · Idę z Kasią.</td>
+          </tr>
+          <tr>
+            <td><b>na</b> + locative = where? · <b>na</b> + accusative = where to?</td>
+            <td>Jestem na poczcie. · Idę na pocztę.</td>
+          </tr>
+          <tr>
+            <td><b>w</b> + locative = where? · where to? mostly <b>do</b> + genitive</td>
+            <td>Jestem w domu. · Idę do domu.</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+<style>@scope ([data-sheet="8"][data-lang="de"]) {
       .page > table :is(th, td):first-child {
         width: 200px;
       }
       .page > table :is(th, td):nth-child(2) {
         width: 190px;
       }
-    }</style><div class="page" data-sheet="8" data-lang="de en" hidden>
+    }</style><div class="page" data-sheet="8" data-lang="de" hidden>
       <h1><small></small>Biernik – Akkusativ</h1>
       <p class="sub">
-        Frage: kogo? co? – wen? was? · <span class="stem">Stamm</span> + <b>Endung</b>
+        Frage: kogo? co? – wen? was? · <span class="stem">Stamm</span> + <b lang="de">Endung</b>
       </p>
 
       <h2>1. Wann? <span>· direktes Objekt</span></h2>
@@ -1864,7 +2990,127 @@ b {
         </p>
       </div>
     </div>
-<style>@scope ([data-sheet="9"][data-lang="de en"]) {
+<style>@scope ([data-sheet="8"][data-lang="en"]) {
+      .page > table :is(th, td):first-child {
+        width: 200px;
+      }
+      .page > table :is(th, td):nth-child(2) {
+        width: 190px;
+      }
+    }</style><div class="page" data-sheet="8" data-lang="en" hidden>
+      <h1><small></small>Biernik – Accusative</h1>
+      <p class="sub">
+        Question: kogo? co? – whom? what? · <span class="stem">stem</span> + <b lang="en">ending</b>
+      </p>
+
+      <h2>1. When? <span>· direct object</span></h2>
+      <p class="rule">
+        After most verbs: mam (I have), lubię (I like), kocham (I love), widzę (I see), kupuję (I
+        buy), jem (I eat), piję (I drink) · after na (where to?), przez, za (for)
+      </p>
+
+      <h2>2. Nouns <span>· singular</span></h2>
+      <table>
+        <tr>
+          <th>Noun</th>
+          <th>Nominative<small>To jest …</small></th>
+          <th>Accusative<small>Mam …</small></th>
+        </tr>
+        <tr>
+          <td>feminine in -a</td>
+          <td>kaw<b>a</b> · Kasi<b>a</b></td>
+          <td>kaw<b>ę</b> · Kasi<b>ę</b></td>
+        </tr>
+        <tr>
+          <td>feminine in a consonant</td>
+          <td><b>noc</b></td>
+          <td><b>noc</b> (same)</td>
+        </tr>
+        <tr>
+          <td>masculine: thing</td>
+          <td><b>dom</b> · <b>samochód</b></td>
+          <td><b>dom</b> · <b>samochód</b> (same)</td>
+        </tr>
+        <tr>
+          <td>masculine: person, animal</td>
+          <td>brat · kot · pies</td>
+          <td>brat<b>a</b> · kot<b>a</b> · ps<b>a</b></td>
+        </tr>
+        <tr>
+          <td>masculine in -a</td>
+          <td>koleg<b>a</b> · tat<b>a</b></td>
+          <td>koleg<b>ę</b> · tat<b>ę</b></td>
+        </tr>
+        <tr>
+          <td>neuter</td>
+          <td><b>okno</b> · <b>piwo</b></td>
+          <td><b>okno</b> · <b>piwo</b> (same)</td>
+        </tr>
+      </table>
+
+      <h2>3. Adjectives and pronouns <span>· they match</span></h2>
+      <table>
+        <tr>
+          <td>feminine</td>
+          <td>dobr<b>a</b> · moj<b>a</b> · t<b>a</b></td>
+          <td>dobr<b>ą</b> · moj<b>ą</b> · t<b>ę</b> kawę</td>
+        </tr>
+        <tr>
+          <td>masculine: thing</td>
+          <td>now<b>y</b> · mój · ten</td>
+          <td>now<b>y</b> · mój · ten dom (same)</td>
+        </tr>
+        <tr>
+          <td>masculine: person, animal</td>
+          <td>dobr<b>y</b> · mój · ten</td>
+          <td>dobr<b>ego</b> · moj<b>ego</b> · t<b>ego</b> brata</td>
+        </tr>
+        <tr>
+          <td>neuter</td>
+          <td>zimn<b>e</b> · moj<b>e</b> · t<b>o</b></td>
+          <td>zimn<b>e</b> · moj<b>e</b> · t<b>o</b> piwo (same)</td>
+        </tr>
+      </table>
+
+      <h2>4. Plural</h2>
+      <table>
+        <tr>
+          <td>men (people)</td>
+          <td colspan="2">like genitive: Znam <b>tych studentów</b>. – I know these students.</td>
+        </tr>
+        <tr>
+          <td>everything else</td>
+          <td colspan="2">like nominative: Mam <b>dwa koty</b>. · Lubię <b>kwiaty</b>.</td>
+        </tr>
+      </table>
+
+      <div class="box">
+        <h3>Examples</h3>
+        <table class="ex">
+          <tr>
+            <td>Piję <b>kawę</b>.</td>
+            <td>I drink coffee.</td>
+          </tr>
+          <tr>
+            <td>Mam <b>brata</b> i <b>siostrę</b>.</td>
+            <td>I have a brother and a sister.</td>
+          </tr>
+          <tr>
+            <td>Kupuję <b>nowy samochód</b>.</td>
+            <td>I'm buying a new car.</td>
+          </tr>
+          <tr>
+            <td>Idę na <b>pocztę</b>.</td>
+            <td>I'm going to the post office.</td>
+          </tr>
+        </table>
+        <p class="note">
+          With negation, genitive instead of accusative: Mam samochód. → Nie mam samochodu. ·
+          Exception: pani → panią
+        </p>
+      </div>
+    </div>
+<style>@scope ([data-sheet="9"][data-lang="de"]) {
       .page > table :is(th, td):first-child {
         width: 200px;
       }
@@ -1874,10 +3120,11 @@ b {
       .three :is(th, td):nth-child(2) {
         width: 80px;
       }
-    }</style><div class="page" data-sheet="9" data-lang="de en" hidden>
+    }</style><div class="page" data-sheet="9" data-lang="de" hidden>
       <h1><small></small>Narzędnik – Instrumental</h1>
       <p class="sub">
-        Frage: kim? czym? – mit wem? womit? · <span class="stem">Stamm</span> + <b>Endung</b>
+        Frage: kim? czym? – mit wem? womit? · <span class="stem">Stamm</span> +
+        <b lang="de">Endung</b>
       </p>
 
       <h2>1. Wann?</h2>
@@ -2004,7 +3251,148 @@ b {
         </table>
       </div>
     </div>
-<style>@scope ([data-sheet="10"][data-lang="de en"]) {
+<style>@scope ([data-sheet="9"][data-lang="en"]) {
+      .page > table :is(th, td):first-child {
+        width: 200px;
+      }
+      .page > table:first-of-type :is(th, td):nth-child(2) {
+        width: 230px;
+      }
+      .three :is(th, td):nth-child(2) {
+        width: 80px;
+      }
+    }</style><div class="page" data-sheet="9" data-lang="en" hidden>
+      <h1><small></small>Narzędnik – Instrumental</h1>
+      <p class="sub">
+        Question: kim? czym? – with whom? with what? · <span class="stem">stem</span> +
+        <b lang="en">ending</b>
+      </p>
+
+      <h2>1. When?</h2>
+      <table>
+        <tr>
+          <td>z = with</td>
+          <td>kawa z <b>mlekiem</b></td>
+          <td>coffee with milk</td>
+        </tr>
+        <tr>
+          <td>być + job, nationality</td>
+          <td>Jestem <b>studentem</b>.</td>
+          <td>I'm a student.</td>
+        </tr>
+        <tr>
+          <td>transport</td>
+          <td>Jadę <b>autobusem</b>.</td>
+          <td>I'm going by bus.</td>
+        </tr>
+        <tr>
+          <td>interesować się</td>
+          <td>Interesuję się <b>muzyką</b>.</td>
+          <td>I'm interested in music.</td>
+        </tr>
+        <tr>
+          <td>where? przed, za, nad, pod, między</td>
+          <td>pod <b>stołem</b></td>
+          <td>under the table</td>
+        </tr>
+      </table>
+      <p class="rule">But: To jest + nominative · To jest Robert. – Robert jest lekarzem.</p>
+
+      <h2>2. Endings <span>· singular</span></h2>
+      <table class="three">
+        <tr>
+          <th>Noun</th>
+          <th>Ending</th>
+          <th>Examples</th>
+        </tr>
+        <tr>
+          <td>masculine</td>
+          <td><b>-em</b></td>
+          <td>
+            brat → brat<b>em</b> · samochód → samochod<b>em</b> · nauczyciel → nauczyciel<b>em</b>
+          </td>
+        </tr>
+        <tr>
+          <td>… after k, g</td>
+          <td><b>-iem</b></td>
+          <td>Marek → Mark<b>iem</b> · pociąg → pociąg<b>iem</b> (train)</td>
+        </tr>
+        <tr>
+          <td>neuter</td>
+          <td><b>-em</b></td>
+          <td>
+            okn<b>o</b> → okn<b>em</b> · morz<b>e</b> → morz<b>em</b> · mlek<b>o</b> → mlek<b
+              >iem</b
+            >
+          </td>
+        </tr>
+        <tr>
+          <td>feminine</td>
+          <td><b>-ą</b></td>
+          <td>kaw<b>a</b> → kaw<b>ą</b> · Kasi<b>a</b> → Kasi<b>ą</b> · noc → noc<b>ą</b></td>
+        </tr>
+        <tr>
+          <td>masculine in -a</td>
+          <td><b>-ą</b></td>
+          <td>koleg<b>a</b> → koleg<b>ą</b> · tat<b>a</b> → tat<b>ą</b></td>
+        </tr>
+        <tr>
+          <td>plural</td>
+          <td><b>-ami</b></td>
+          <td>dom → dom<b>ami</b> · kaw<b>a</b> → kaw<b>ami</b> · okn<b>o</b> → okn<b>ami</b></td>
+        </tr>
+        <tr>
+          <td>plural: exceptions</td>
+          <td><b>-mi</b></td>
+          <td>
+            ludź<b>mi</b> (people) · dzieć<b>mi</b> (children) · przyjaciół<b>mi</b> (friends)
+          </td>
+        </tr>
+      </table>
+
+      <h2>3. Adjectives and pronouns</h2>
+      <table>
+        <tr>
+          <td>masculine · neuter</td>
+          <td>
+            <b>-ym</b> / <b>-im</b>: dobr<b>ym</b> · polsk<b>im</b> · mo<b>im</b> · t<b>ym</b>
+          </td>
+        </tr>
+        <tr>
+          <td>feminine</td>
+          <td><b>-ą</b>: dobr<b>ą</b> · polsk<b>ą</b> · moj<b>ą</b> · t<b>ą</b></td>
+        </tr>
+        <tr>
+          <td>plural</td>
+          <td>
+            <b>-ymi</b> / <b>-imi</b>: dobr<b>ymi</b> · polsk<b>imi</b> · mo<b>imi</b> · t<b>ymi</b>
+          </td>
+        </tr>
+      </table>
+
+      <div class="box">
+        <h3>Examples</h3>
+        <table class="ex">
+          <tr>
+            <td>Kasia jest <b>dobrą lekarką</b>.</td>
+            <td>Kasia is a good doctor.</td>
+          </tr>
+          <tr>
+            <td>Jestem <b>Niemcem</b>. · Jestem <b>Niemką</b>.</td>
+            <td>I'm German (man · woman).</td>
+          </tr>
+          <tr>
+            <td>Piję herbatę z <b>cytryną</b>.</td>
+            <td>I drink tea with lemon.</td>
+          </tr>
+          <tr>
+            <td>Rozmawiam z <b>moimi przyjaciółmi</b>.</td>
+            <td>I'm talking to my friends.</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+<style>@scope ([data-sheet="10"][data-lang="de"]) {
       .page > table :is(th, td):first-child {
         width: 190px;
       }
@@ -2014,11 +3402,11 @@ b {
       .three :is(th, td):nth-child(2) {
         width: 90px;
       }
-    }</style><div class="page" data-sheet="10" data-lang="de en" hidden>
+    }</style><div class="page" data-sheet="10" data-lang="de" hidden>
       <h1><small></small>Miejscownik – Lokativ</h1>
       <p class="sub">
         Frage: o kim? o czym? · steht nur nach w, na, o, przy, po ·
-        <span class="stem">Stamm</span> + <b>Endung</b>
+        <span class="stem">Stamm</span> + <b lang="de">Endung</b>
       </p>
 
       <h2>1. Wann?</h2>
@@ -2139,7 +3527,142 @@ b {
         </table>
       </div>
     </div>
-<style>@scope ([data-sheet="11"][data-lang="de en"]) {
+<style>@scope ([data-sheet="10"][data-lang="en"]) {
+      .page > table :is(th, td):first-child {
+        width: 190px;
+      }
+      .page > table:first-of-type :is(th, td):nth-child(2) {
+        width: 210px;
+      }
+      .three :is(th, td):nth-child(2) {
+        width: 90px;
+      }
+    }</style><div class="page" data-sheet="10" data-lang="en" hidden>
+      <h1><small></small>Miejscownik – Locative</h1>
+      <p class="sub">
+        Question: o kim? o czym? · only after w, na, o, przy, po ·
+        <span class="stem">stem</span> + <b lang="en">ending</b>
+      </p>
+
+      <h2>1. When?</h2>
+      <table>
+        <tr>
+          <td>w = in</td>
+          <td>w <b>Polsce</b></td>
+          <td>in Poland</td>
+        </tr>
+        <tr>
+          <td>na = on, at</td>
+          <td>na <b>stole</b> · na <b>poczcie</b></td>
+          <td>on the table · at the post office</td>
+        </tr>
+        <tr>
+          <td>o = about</td>
+          <td>Mówimy o <b>filmie</b>.</td>
+          <td>We're talking about the film.</td>
+        </tr>
+        <tr>
+          <td>przy = by, at</td>
+          <td>przy <b>oknie</b></td>
+          <td>by the window</td>
+        </tr>
+        <tr>
+          <td>po = after (time)</td>
+          <td>po <b>lekcji</b></td>
+          <td>after the lesson</td>
+        </tr>
+      </table>
+
+      <h2>2. Ending -e <span>· the last consonant becomes soft</span></h2>
+      <table class="three">
+        <tr>
+          <th>Word ending</th>
+          <th>becomes</th>
+          <th>Examples</th>
+        </tr>
+        <tr>
+          <td>-n, -m, -p, -b, -w, -s</td>
+          <td><b>-ie</b></td>
+          <td>kino → w kin<b>ie</b> · sklep → w sklep<b>ie</b> · mama → o mam<b>ie</b></td>
+        </tr>
+        <tr>
+          <td>-t</td>
+          <td><b>-cie</b></td>
+          <td>koncert → na koncer<b>cie</b> · poczta → na pocz<b>cie</b></td>
+        </tr>
+        <tr>
+          <td>-d</td>
+          <td><b>-dzie</b></td>
+          <td>ogród → w ogro<b>dzie</b> · woda → w wo<b>dzie</b></td>
+        </tr>
+        <tr>
+          <td>-r</td>
+          <td><b>-rze</b></td>
+          <td>teatr → w teat<b>rze</b> · siostra → o sios<b>trze</b></td>
+        </tr>
+        <tr>
+          <td>-ł</td>
+          <td><b>-le</b></td>
+          <td>stół → na sto<b>le</b> · szkoła → w szko<b>le</b></td>
+        </tr>
+        <tr>
+          <td>-st</td>
+          <td><b>-ście</b></td>
+          <td>most → na mo<b>ście</b> (bridge) · miasto → w mie<b>ście</b></td>
+        </tr>
+        <tr>
+          <td>feminine -ka, -ga</td>
+          <td><b>-ce</b>, <b>-dze</b></td>
+          <td>Polska → w Pols<b>ce</b> · Praga → w Pra<b>dze</b></td>
+        </tr>
+      </table>
+      <p class="rule">
+        Sometimes the vowel changes too: stół → stole · miasto → mieście · obiad → po obiedzie
+      </p>
+
+      <h2>3. Ending -u, -i, -y <span>· no change</span></h2>
+      <table class="three">
+        <tr>
+          <td>masculine, neuter after k, g, ch</td>
+          <td><b>-u</b></td>
+          <td>park → w park<b>u</b> · łóżko → w łóżk<b>u</b> (bed)</td>
+        </tr>
+        <tr>
+          <td>masculine, neuter after c, cz, sz, rz, ż, j, l and soft</td>
+          <td><b>-u</b></td>
+          <td>hotel → w hotel<b>u</b> · pokój → w pokoj<b>u</b> (room)</td>
+        </tr>
+        <tr>
+          <td>feminine in ia, ja · ca</td>
+          <td><b>-i</b> · <b>-y</b></td>
+          <td>kuchnia → w kuchn<b>i</b> · praca → w prac<b>y</b> (work)</td>
+        </tr>
+        <tr>
+          <td>exceptions</td>
+          <td><b>-u</b></td>
+          <td>dom → w dom<b>u</b> · syn → o syn<b>u</b> · pan → o pan<b>u</b></td>
+        </tr>
+      </table>
+
+      <div class="box">
+        <h3>Plural and adjectives</h3>
+        <table class="ex">
+          <tr>
+            <td>plural <b>-ach</b>: w sklep<b>ach</b></td>
+            <td>in the shops</td>
+          </tr>
+          <tr>
+            <td>masculine, neuter <b>-ym</b> / <b>-im</b>: w duż<b>ym</b> domu</td>
+            <td>in the big house</td>
+          </tr>
+          <tr>
+            <td>feminine <b>-ej</b>: w mał<b>ej</b> kuchni</td>
+            <td>in the small kitchen</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+<style>@scope ([data-sheet="11"][data-lang="de"]) {
       .page > table :is(th, td):first-child {
         width: 200px;
       }
@@ -2149,11 +3672,11 @@ b {
       .three :is(th, td):nth-child(2) {
         width: 80px;
       }
-    }</style><div class="page" data-sheet="11" data-lang="de en" hidden>
+    }</style><div class="page" data-sheet="11" data-lang="de" hidden>
       <h1><small></small>Dopełniacz – Genitiv</h1>
       <p class="sub">
         Frage: kogo? czego? · für „kein“, Mengen, Besitz und nach vielen Präpositionen ·
-        <span class="stem">Stamm</span> + <b>Endung</b>
+        <span class="stem">Stamm</span> + <b lang="de">Endung</b>
       </p>
 
       <h2>1. Wann?</h2>
@@ -2289,15 +3812,165 @@ b {
         <p class="note">dużo studentów – viele Studenten · pięć książek – fünf Bücher</p>
       </div>
     </div>
-<style>@scope ([data-sheet="12"][data-lang="de en"]) {
+<style>@scope ([data-sheet="11"][data-lang="en"]) {
+      .page > table :is(th, td):first-child {
+        width: 200px;
+      }
+      .page > table:first-of-type :is(th, td):nth-child(2) {
+        width: 210px;
+      }
+      .three :is(th, td):nth-child(2) {
+        width: 80px;
+      }
+    }</style><div class="page" data-sheet="11" data-lang="en" hidden>
+      <h1><small></small>Dopełniacz – Genitive</h1>
+      <p class="sub">
+        Question: kogo? czego? · for “no”, amounts, “of” and after many prepositions ·
+        <span class="stem">stem</span> + <b lang="en">ending</b>
+      </p>
+
+      <h2>1. When?</h2>
+      <table>
+        <tr>
+          <td>negation</td>
+          <td>Nie mam <b>czasu</b>.</td>
+          <td>I have no time.</td>
+        </tr>
+        <tr>
+          <td>nie ma = there is no</td>
+          <td>Nie ma <b>mleka</b>.</td>
+          <td>There is no milk.</td>
+        </tr>
+        <tr>
+          <td>amount</td>
+          <td>szklanka <b>wody</b></td>
+          <td>a glass of water</td>
+        </tr>
+        <tr>
+          <td>owner</td>
+          <td>dom <b>Anny</b></td>
+          <td>Anna's house</td>
+        </tr>
+        <tr>
+          <td>do, z, od, bez, dla, u</td>
+          <td>kawa bez <b>cukru</b></td>
+          <td>coffee without sugar</td>
+        </tr>
+        <tr>
+          <td>szukać, słuchać, uczyć się</td>
+          <td>Słucham <b>muzyki</b>.</td>
+          <td>I listen to music.</td>
+        </tr>
+        <tr>
+          <td>numbers from 5</td>
+          <td>pięć <b>minut</b></td>
+          <td>five minutes</td>
+        </tr>
+      </table>
+
+      <h2>2. Endings <span>· singular</span></h2>
+      <table class="three">
+        <tr>
+          <th>Noun</th>
+          <th>Ending</th>
+          <th>Examples</th>
+        </tr>
+        <tr>
+          <td>feminine in -a</td>
+          <td><b>-y</b></td>
+          <td>
+            kaw<b>a</b> → kaw<b>y</b> · wod<b>a</b> → wod<b>y</b> · ulic<b>a</b> → ulic<b>y</b>
+          </td>
+        </tr>
+        <tr>
+          <td>… after k, g and in -ia, -ja</td>
+          <td><b>-i</b></td>
+          <td>
+            matk<b>a</b> → matk<b>i</b> · Polsk<b>a</b> → Polsk<b>i</b> · babci<b>a</b> → babc<b
+              >i</b
+            >
+            · lekcj<b>a</b> → lekcj<b>i</b>
+          </td>
+        </tr>
+        <tr>
+          <td>masculine: person, animal</td>
+          <td><b>-a</b></td>
+          <td>brat → brat<b>a</b> · kot → kot<b>a</b> · pies → ps<b>a</b> (almost always -a)</td>
+        </tr>
+        <tr>
+          <td>masculine: thing</td>
+          <td><b>-a</b> / <b>-u</b></td>
+          <td>
+            learn with the word: chleb → chleb<b>a</b> · klucz → klucz<b>a</b> · dom → dom<b>u</b> ·
+            czas → czas<b>u</b>
+          </td>
+        </tr>
+        <tr>
+          <td>masculine in -a</td>
+          <td><b>-y</b> / <b>-i</b></td>
+          <td>tat<b>a</b> → tat<b>y</b> · koleg<b>a</b> → koleg<b>i</b></td>
+        </tr>
+        <tr>
+          <td>neuter</td>
+          <td><b>-a</b></td>
+          <td>
+            okn<b>o</b> → okn<b>a</b> · mlek<b>o</b> → mlek<b>a</b> · mieszkani<b>e</b> →
+            mieszkani<b>a</b>
+          </td>
+        </tr>
+      </table>
+
+      <h2>3. Adjectives and pronouns</h2>
+      <table>
+        <tr>
+          <td>masculine · neuter</td>
+          <td colspan="2">
+            <b>-ego</b>: dobr<b>ego</b> · moj<b>ego</b> · t<b>ego</b> · Nie mam dobr<b>ego</b>
+            samochodu.
+          </td>
+        </tr>
+        <tr>
+          <td>feminine</td>
+          <td colspan="2">
+            <b>-ej</b>: dobr<b>ej</b> · moj<b>ej</b> · t<b>ej</b> · Szukam moj<b>ej</b> siostry.
+          </td>
+        </tr>
+        <tr>
+          <td>plural</td>
+          <td colspan="2">
+            <b>-ych</b> / <b>-ich</b>: dobr<b>ych</b> · moi<b>ch</b> · t<b>ych</b>
+          </td>
+        </tr>
+      </table>
+
+      <div class="box">
+        <h3>Plural of nouns <span>· a selection, learn with the word</span></h3>
+        <table class="ex">
+          <tr>
+            <td>masculine mostly <b>-ów</b>: domów · kotów · studentów</td>
+            <td>houses · cats · students</td>
+          </tr>
+          <tr>
+            <td>feminine, neuter often no ending: książek · okien</td>
+            <td>books · windows</td>
+          </tr>
+          <tr>
+            <td>irregular: ludzi · dzieci</td>
+            <td>people · children</td>
+          </tr>
+        </table>
+        <p class="note">dużo studentów – many students · pięć książek – five books</p>
+      </div>
+    </div>
+<style>@scope ([data-sheet="12"][data-lang="de"]) {
       .page > table :is(th, td):first-child {
         width: 130px;
       }
-    }</style><div class="page" data-sheet="12" data-lang="de en" hidden>
+    }</style><div class="page" data-sheet="12" data-lang="de" hidden>
       <h1><small></small>Przymiotniki – Adjektive</h1>
       <p class="sub">
         Das Adjektiv passt sich dem Nomen an: Geschlecht, Zahl und Fall ·
-        <span class="stem">Stamm</span> + <b>Endung</b>
+        <span class="stem">Stamm</span> + <b lang="de">Endung</b>
       </p>
 
       <h2>1. Grundform <span>· Nominativ</span></h2>
@@ -2453,11 +4126,175 @@ b {
         </table>
       </div>
     </div>
-<style>@scope ([data-sheet="13"][data-lang="de en"]) {
+<style>@scope ([data-sheet="12"][data-lang="en"]) {
+      .page > table :is(th, td):first-child {
+        width: 130px;
+      }
+    }</style><div class="page" data-sheet="12" data-lang="en" hidden>
+      <h1><small></small>Przymiotniki – Adjectives</h1>
+      <p class="sub">
+        The adjective matches the noun: gender, number and case ·
+        <span class="stem">stem</span> + <b lang="en">ending</b>
+      </p>
+
+      <h2>1. Basic form <span>· nominative</span></h2>
+      <p class="rule">After k, g: -i, not -y: polski, drogi (expensive), wysoki (tall).</p>
+      <table>
+        <tr>
+          <th>English</th>
+          <th>masculine<small>dom</small></th>
+          <th>feminine<small>kawa</small></th>
+          <th>neuter<small>okno</small></th>
+          <th>plural<small>men</small></th>
+          <th>plural<small>all others</small></th>
+        </tr>
+        <tr>
+          <td>new</td>
+          <td>now<b>y</b></td>
+          <td>now<b>a</b></td>
+          <td>now<b>e</b></td>
+          <td>now<b>i</b></td>
+          <td>now<b>e</b></td>
+        </tr>
+        <tr>
+          <td>Polish</td>
+          <td>polsk<b>i</b></td>
+          <td>polsk<b>a</b></td>
+          <td>polsk<b>ie</b></td>
+          <td>pols<b>cy</b></td>
+          <td>polsk<b>ie</b></td>
+        </tr>
+        <tr>
+          <td>good</td>
+          <td>dobr<b>y</b></td>
+          <td>dobr<b>a</b></td>
+          <td>dobr<b>e</b></td>
+          <td>dob<b>rzy</b></td>
+          <td>dobr<b>e</b></td>
+        </tr>
+      </table>
+
+      <h2>2. Plural for men <span>· the last consonant often changes</span></h2>
+      <table>
+        <tr>
+          <td>-y → -i</td>
+          <td>nowy → now<b>i</b> · mały → mal<b>i</b> · miły → mil<b>i</b> (nice)</td>
+        </tr>
+        <tr>
+          <td>-ry → -rzy</td>
+          <td>dobry → dob<b>rzy</b> · stary → sta<b>rzy</b></td>
+        </tr>
+        <tr>
+          <td>-dy · -ży</td>
+          <td>młody → mło<b>dzi</b> (young) · duży → du<b>zi</b></td>
+        </tr>
+        <tr>
+          <td>-ki → -cy</td>
+          <td>polski → pols<b>cy</b> · wysoki → wyso<b>cy</b></td>
+        </tr>
+      </table>
+
+      <h2>3. All cases <span>· example nowy</span></h2>
+      <table>
+        <tr>
+          <th>Case</th>
+          <th>masculine</th>
+          <th>feminine</th>
+          <th>neuter</th>
+          <th>plural<small>men</small></th>
+          <th>plural<small>all others</small></th>
+        </tr>
+        <tr>
+          <td>nominative</td>
+          <td>now<b>y</b></td>
+          <td>now<b>a</b></td>
+          <td>now<b>e</b></td>
+          <td>now<b>i</b></td>
+          <td>now<b>e</b></td>
+        </tr>
+        <tr>
+          <td>genitive</td>
+          <td>now<b>ego</b></td>
+          <td>now<b>ej</b></td>
+          <td>now<b>ego</b></td>
+          <td>now<b>ych</b></td>
+          <td>now<b>ych</b></td>
+        </tr>
+        <tr>
+          <td>dative</td>
+          <td>now<b>emu</b></td>
+          <td>now<b>ej</b></td>
+          <td>now<b>emu</b></td>
+          <td>now<b>ym</b></td>
+          <td>now<b>ym</b></td>
+        </tr>
+        <tr>
+          <td>accusative</td>
+          <td>now<b>y</b> / now<b>ego</b>*</td>
+          <td>now<b>ą</b></td>
+          <td>now<b>e</b></td>
+          <td>now<b>ych</b></td>
+          <td>now<b>e</b></td>
+        </tr>
+        <tr>
+          <td>instrumental</td>
+          <td>now<b>ym</b></td>
+          <td>now<b>ą</b></td>
+          <td>now<b>ym</b></td>
+          <td>now<b>ymi</b></td>
+          <td>now<b>ymi</b></td>
+        </tr>
+        <tr>
+          <td>locative</td>
+          <td>now<b>ym</b></td>
+          <td>now<b>ej</b></td>
+          <td>now<b>ym</b></td>
+          <td>now<b>ych</b></td>
+          <td>now<b>ych</b></td>
+        </tr>
+      </table>
+      <p class="rule">
+        * thing: nowy dom · person, animal: nowego kota · after k, g: i: polskiego, polskim
+      </p>
+
+      <h2>4. Surnames <span>· in -ski, -cki like adjectives</span></h2>
+      <table>
+        <tr>
+          <td>Kowalski</td>
+          <td>pan Kowal<b>ski</b> · pani Kowal<b>ska</b> · państwo Kowal<b>scy</b></td>
+        </tr>
+        <tr>
+          <td>cases</td>
+          <td>Znam pana Kowal<b>skiego</b>. · Rozmawiam z panią Kowal<b>ską</b>.</td>
+        </tr>
+        <tr>
+          <td>Nowak</td>
+          <td>
+            man like a noun: z panem Nowak<b>iem</b> · woman stays: z panią <b>Nowak</b> · państwo
+            Nowak<b>owie</b>
+          </td>
+        </tr>
+      </table>
+
+      <div class="box">
+        <h3>Adverbs <span>· how? – adjective with -o or -e</span></h3>
+        <table class="ex">
+          <tr>
+            <td>szybki → <b>szybko</b> · drogi → <b>drogo</b></td>
+            <td>fast · expensive</td>
+          </tr>
+          <tr>
+            <td>ładny → <b>ładnie</b> · dobry → <b>dobrze</b> · zły → <b>źle</b></td>
+            <td>nicely · well · badly</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+<style>@scope ([data-sheet="13"][data-lang="de"]) {
       .page > table :is(th, td):first-child {
         width: 110px;
       }
-    }</style><div class="page" data-sheet="13" data-lang="de en" hidden>
+    }</style><div class="page" data-sheet="13" data-lang="de" hidden>
       <h1><small></small>Zaimki osobowe – Personalpronomen</h1>
       <p class="sub">ich, mich, mir … · bei zwei Formen: kurz / lang</p>
 
@@ -2606,15 +4443,169 @@ b {
         </table>
       </div>
     </div>
-<style>@scope ([data-sheet="14"][data-lang="de en"]) {
+<style>@scope ([data-sheet="13"][data-lang="en"]) {
+      .page > table :is(th, td):first-child {
+        width: 110px;
+      }
+    }</style><div class="page" data-sheet="13" data-lang="en" hidden>
+      <h1><small></small>Zaimki osobowe – Personal Pronouns</h1>
+      <p class="sub">I, me, to me … · two forms: short / long</p>
+
+      <h2>1. All cases</h2>
+      <table>
+        <tr>
+          <th>Nominative</th>
+          <th>Genitive<small>nie ma …</small></th>
+          <th>Dative<small>daj …</small></th>
+          <th>Accusative<small>widzę …</small></th>
+          <th>Instrumental<small>z …</small></th>
+          <th>Locative<small>o …</small></th>
+        </tr>
+        <tr>
+          <td>ja</td>
+          <td><b>mnie</b></td>
+          <td><b>mi</b> / <b>mnie</b></td>
+          <td><b>mnie</b></td>
+          <td><b>mną</b></td>
+          <td><b>mnie</b></td>
+        </tr>
+        <tr>
+          <td>ty</td>
+          <td><b>cię</b> / <b>ciebie</b></td>
+          <td><b>ci</b> / <b>tobie</b></td>
+          <td><b>cię</b> / <b>ciebie</b></td>
+          <td><b>tobą</b></td>
+          <td><b>tobie</b></td>
+        </tr>
+        <tr>
+          <td>on</td>
+          <td><b>go</b> / <b>jego</b></td>
+          <td><b>mu</b> / <b>jemu</b></td>
+          <td><b>go</b> / <b>jego</b></td>
+          <td><b>nim</b></td>
+          <td><b>nim</b></td>
+        </tr>
+        <tr>
+          <td>ona</td>
+          <td><b>jej</b></td>
+          <td><b>jej</b></td>
+          <td><b>ją</b></td>
+          <td><b>nią</b></td>
+          <td><b>niej</b></td>
+        </tr>
+        <tr>
+          <td>ono</td>
+          <td><b>go</b> / <b>jego</b></td>
+          <td><b>mu</b> / <b>jemu</b></td>
+          <td><b>je</b></td>
+          <td><b>nim</b></td>
+          <td><b>nim</b></td>
+        </tr>
+        <tr>
+          <td>my</td>
+          <td><b>nas</b></td>
+          <td><b>nam</b></td>
+          <td><b>nas</b></td>
+          <td><b>nami</b></td>
+          <td><b>nas</b></td>
+        </tr>
+        <tr>
+          <td>wy</td>
+          <td><b>was</b></td>
+          <td><b>wam</b></td>
+          <td><b>was</b></td>
+          <td><b>wami</b></td>
+          <td><b>was</b></td>
+        </tr>
+        <tr>
+          <td>oni</td>
+          <td><b>ich</b></td>
+          <td><b>im</b></td>
+          <td><b>ich</b></td>
+          <td><b>nimi</b></td>
+          <td><b>nich</b></td>
+        </tr>
+        <tr>
+          <td>one</td>
+          <td><b>ich</b></td>
+          <td><b>im</b></td>
+          <td><b>je</b></td>
+          <td><b>nimi</b></td>
+          <td><b>nich</b></td>
+        </tr>
+      </table>
+
+      <h2>2. Short or long? <span>· and n- after prepositions</span></h2>
+      <table>
+        <tr>
+          <td>short</td>
+          <td>normal, unstressed: Kocham <b>cię</b>. · Daj <b>mi</b> to. · Znam <b>go</b>.</td>
+        </tr>
+        <tr>
+          <td>long</td>
+          <td>
+            stressed, at the start, after prepositions: <b>Ciebie</b> kocham. · To dla
+            <b>ciebie</b>.
+          </td>
+        </tr>
+        <tr>
+          <td>n-</td>
+          <td>
+            on, ona, ono, oni, one after prepositions: do <b>niego</b> · dla <b>niej</b> · u
+            <b>nich</b> · na <b>nią</b>
+          </td>
+        </tr>
+      </table>
+
+      <h2>3. Polite <span>· formal you</span></h2>
+      <table>
+        <tr>
+          <td>pan · pani</td>
+          <td>
+            man · woman, with the verb in the 3rd person: Czy <b>pani</b> ma czas? – Are you free?
+          </td>
+        </tr>
+        <tr>
+          <td>państwo</td>
+          <td>group, verb in the 3rd person plural: Czy <b>państwo</b> mają czas?</td>
+        </tr>
+      </table>
+
+      <div class="box">
+        <h3>Useful sentences</h3>
+        <table class="ex">
+          <tr>
+            <td>Jak <b>ci</b> na imię?</td>
+            <td>What's your name?</td>
+          </tr>
+          <tr>
+            <td>Podoba <b>mi</b> się.</td>
+            <td>I like it.</td>
+          </tr>
+          <tr>
+            <td>Zimno <b>mi</b>.</td>
+            <td>I'm cold.</td>
+          </tr>
+          <tr>
+            <td>Idę z <b>tobą</b>.</td>
+            <td>I'm going with you.</td>
+          </tr>
+          <tr>
+            <td>Myję <b>się</b>. · Myjesz <b>się</b>.</td>
+            <td>I wash (myself). · You wash (yourself). (się for every person)</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+<style>@scope ([data-sheet="14"][data-lang="de"]) {
       .page > table :is(th, td):first-child {
         width: 120px;
       }
-    }</style><div class="page" data-sheet="14" data-lang="de en" hidden>
+    }</style><div class="page" data-sheet="14" data-lang="de" hidden>
       <h1><small></small>Mój, twój, ten – mein, dein, dieser</h1>
       <p class="sub">
         Sie passen sich dem Nomen an, wie Adjektive · <span class="stem">Stamm</span> +
-        <b>Endung</b>
+        <b lang="de">Endung</b>
       </p>
 
       <h2>1. Wem gehört es? <span>· Nominativ</span></h2>
@@ -2763,7 +4754,163 @@ b {
         </table>
       </div>
     </div>
-<div class="page" data-sheet="15" data-lang="de en" hidden>
+<style>@scope ([data-sheet="14"][data-lang="en"]) {
+      .page > table :is(th, td):first-child {
+        width: 120px;
+      }
+    }</style><div class="page" data-sheet="14" data-lang="en" hidden>
+      <h1><small></small>Mój, twój, ten – my, your, this</h1>
+      <p class="sub">
+        They match the noun, like adjectives · <span class="stem">stem</span> +
+        <b lang="en">ending</b>
+      </p>
+
+      <h2>1. Whose is it? <span>· nominative</span></h2>
+      <table>
+        <tr>
+          <th>Owner</th>
+          <th>masculine<small>dom</small></th>
+          <th>feminine<small>kawa</small></th>
+          <th>neuter<small>okno</small></th>
+          <th>plural<small>men</small></th>
+          <th>plural<small>all others</small></th>
+        </tr>
+        <tr>
+          <td>ja · my</td>
+          <td><b>mój</b></td>
+          <td>moj<b>a</b></td>
+          <td>moj<b>e</b></td>
+          <td>mo<b>i</b></td>
+          <td>moj<b>e</b></td>
+        </tr>
+        <tr>
+          <td>ty · your</td>
+          <td><b>twój</b></td>
+          <td>twoj<b>a</b></td>
+          <td>twoj<b>e</b></td>
+          <td>two<b>i</b></td>
+          <td>twoj<b>e</b></td>
+        </tr>
+        <tr>
+          <td>my · our</td>
+          <td><b>nasz</b></td>
+          <td>nasz<b>a</b></td>
+          <td>nasz<b>e</b></td>
+          <td>na<b>si</b></td>
+          <td>nasz<b>e</b></td>
+        </tr>
+        <tr>
+          <td>wy · your (pl.)</td>
+          <td><b>wasz</b></td>
+          <td>wasz<b>a</b></td>
+          <td>wasz<b>e</b></td>
+          <td>wa<b>si</b></td>
+          <td>wasz<b>e</b></td>
+        </tr>
+        <tr>
+          <td>on · his</td>
+          <td colspan="5"><b>jego</b> – never changes</td>
+        </tr>
+        <tr>
+          <td>ona · her</td>
+          <td colspan="5"><b>jej</b> – never changes</td>
+        </tr>
+        <tr>
+          <td>oni, one · their</td>
+          <td colspan="5"><b>ich</b> – never changes</td>
+        </tr>
+      </table>
+
+      <h2>2. swój <span>· belongs to the subject</span></h2>
+      <table>
+        <tr>
+          <td>swój</td>
+          <td>Robert lubi <b>swój</b> samochód.</td>
+          <td>Robert likes his (own) car.</td>
+        </tr>
+        <tr>
+          <td>jego</td>
+          <td>Robert lubi <b>jego</b> samochód.</td>
+          <td>Robert likes another man's car.</td>
+        </tr>
+      </table>
+      <p class="rule">
+        swój: swój, swoja, swoje, swoi, swoje · never in the subject itself: Mój brat … (not swój)
+      </p>
+
+      <h2>3. ten, ta, to <span>· this</span></h2>
+      <table>
+        <tr>
+          <th>Case</th>
+          <th>masculine · neuter</th>
+          <th>feminine</th>
+          <th>plural</th>
+        </tr>
+        <tr>
+          <td>nominative</td>
+          <td><b>ten</b> · <b>to</b></td>
+          <td><b>ta</b></td>
+          <td><b>ci</b> (men) · <b>te</b></td>
+        </tr>
+        <tr>
+          <td>genitive</td>
+          <td><b>tego</b></td>
+          <td><b>tej</b></td>
+          <td><b>tych</b></td>
+        </tr>
+        <tr>
+          <td>dative</td>
+          <td><b>temu</b></td>
+          <td><b>tej</b></td>
+          <td><b>tym</b></td>
+        </tr>
+        <tr>
+          <td>accusative</td>
+          <td><b>ten</b> / <b>tego</b>* · <b>to</b></td>
+          <td><b>tę</b></td>
+          <td><b>tych</b> (men) · <b>te</b></td>
+        </tr>
+        <tr>
+          <td>instrumental</td>
+          <td><b>tym</b></td>
+          <td><b>tą</b></td>
+          <td><b>tymi</b></td>
+        </tr>
+        <tr>
+          <td>locative</td>
+          <td><b>tym</b></td>
+          <td><b>tej</b></td>
+          <td><b>tych</b></td>
+        </tr>
+      </table>
+      <p class="rule">
+        * tego for people and animals · mój, twój, nasz, wasz, swój have the same endings: mojego,
+        mojej, moim …
+      </p>
+
+      <div class="box">
+        <h3>Examples</h3>
+        <table class="ex">
+          <tr>
+            <td><b>Czyj</b> to jest samochód? – <b>Mój</b>.</td>
+            <td>Whose car is this? – Mine.</td>
+          </tr>
+          <tr>
+            <td>To jest <b>moja</b> siostra i <b>jej</b> mąż.</td>
+            <td>This is my sister and her husband.</td>
+          </tr>
+          <tr>
+            <td>Lubię <b>tę</b> piosenkę.</td>
+            <td>I like this song.</td>
+          </tr>
+          <tr>
+            <td>Mieszkam z <b>moimi</b> przyjaciółmi.</td>
+            <td>I live with my friends.</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+<div class="page" data-sheet="15" data-lang="de" hidden>
       <h1><small></small>Iść i jechać – gehen und fahren</h1>
       <p class="sub">Zu Fuß: iść / chodzić · mit einem Fahrzeug: jechać / jeździć</p>
 
@@ -2932,7 +5079,176 @@ b {
         </table>
       </div>
     </div>
-<style>@scope ([data-sheet="16"][data-lang="de en"]) {
+<div class="page" data-sheet="15" data-lang="en" hidden>
+      <h1><small></small>Iść i jechać – On Foot or by Vehicle</h1>
+      <p class="sub">On foot: iść / chodzić · by vehicle: jechać / jeździć</p>
+
+      <h2>1. Present <span>· now or regularly?</span></h2>
+      <table>
+        <tr>
+          <th>Person</th>
+          <th>iść<small>now, on foot</small></th>
+          <th>chodzić<small>often, on foot</small></th>
+          <th>jechać<small>now, by vehicle</small></th>
+          <th>jeździć<small>often, by vehicle</small></th>
+        </tr>
+        <tr>
+          <td>ja</td>
+          <td><b>idę</b></td>
+          <td><b>chodzę</b></td>
+          <td><b>jadę</b></td>
+          <td><b>jeżdżę</b></td>
+        </tr>
+        <tr>
+          <td>ty</td>
+          <td><b>idziesz</b></td>
+          <td><b>chodzisz</b></td>
+          <td><b>jedziesz</b></td>
+          <td><b>jeździsz</b></td>
+        </tr>
+        <tr>
+          <td>on · ona</td>
+          <td><b>idzie</b></td>
+          <td><b>chodzi</b></td>
+          <td><b>jedzie</b></td>
+          <td><b>jeździ</b></td>
+        </tr>
+        <tr>
+          <td>my</td>
+          <td><b>idziemy</b></td>
+          <td><b>chodzimy</b></td>
+          <td><b>jedziemy</b></td>
+          <td><b>jeździmy</b></td>
+        </tr>
+        <tr>
+          <td>wy</td>
+          <td><b>idziecie</b></td>
+          <td><b>chodzicie</b></td>
+          <td><b>jedziecie</b></td>
+          <td><b>jeździcie</b></td>
+        </tr>
+        <tr>
+          <td>oni · one</td>
+          <td><b>idą</b></td>
+          <td><b>chodzą</b></td>
+          <td><b>jadą</b></td>
+          <td><b>jeżdżą</b></td>
+        </tr>
+      </table>
+      <p class="rule">
+        Past: iść → <b>szedł</b>, <b>szła</b>, <b>szli</b> · the others are regular: chodził,
+        jechał, jeździł
+      </p>
+      <p class="rule">
+        Idę do pracy. – I'm going to work (now). · Codziennie jeżdżę do pracy autobusem. – I go to
+        work by bus every day.
+      </p>
+
+      <h2>2. Where? Where to? Where from? <span>· gdzie? dokąd? skąd?</span></h2>
+      <table>
+        <tr>
+          <th>Word</th>
+          <th>gdzie? where?</th>
+          <th>dokąd? where to?</th>
+          <th>skąd? where from?</th>
+        </tr>
+        <tr>
+          <td>dom · house</td>
+          <td><b>w</b> domu</td>
+          <td><b>do</b> domu</td>
+          <td><b>z</b> domu</td>
+        </tr>
+        <tr>
+          <td>szkoła · school</td>
+          <td><b>w</b> szkole</td>
+          <td><b>do</b> szkoły</td>
+          <td><b>ze</b> szkoły</td>
+        </tr>
+        <tr>
+          <td>Polska · Poland</td>
+          <td><b>w</b> Polsce</td>
+          <td><b>do</b> Polski</td>
+          <td><b>z</b> Polski</td>
+        </tr>
+        <tr>
+          <td>poczta · post office</td>
+          <td><b>na</b> poczcie</td>
+          <td><b>na</b> pocztę</td>
+          <td><b>z</b> poczty</td>
+        </tr>
+        <tr>
+          <td>koncert</td>
+          <td><b>na</b> koncercie</td>
+          <td><b>na</b> koncert</td>
+          <td><b>z</b> koncertu</td>
+        </tr>
+        <tr>
+          <td>lekarz · doctor</td>
+          <td><b>u</b> lekarza</td>
+          <td><b>do</b> lekarza</td>
+          <td><b>od</b> lekarza</td>
+        </tr>
+      </table>
+      <p class="rule">
+        place or building: w → do → z · event, square, post: na → na → z · person: u → do → od
+      </p>
+
+      <h2>3. Compass points <span>· always with na</span></h2>
+      <table>
+        <tr>
+          <td>północ · north</td>
+          <td><b>na</b> północy</td>
+          <td><b>na</b> północ</td>
+          <td><b>z</b> północy</td>
+        </tr>
+        <tr>
+          <td>południe · south</td>
+          <td><b>na</b> południu</td>
+          <td><b>na</b> południe</td>
+          <td><b>z</b> południa</td>
+        </tr>
+        <tr>
+          <td>wschód · east</td>
+          <td><b>na</b> wschodzie</td>
+          <td><b>na</b> wschód</td>
+          <td><b>ze</b> wschodu</td>
+        </tr>
+        <tr>
+          <td>zachód · west</td>
+          <td><b>na</b> zachodzie</td>
+          <td><b>na</b> zachód</td>
+          <td><b>z</b> zachodu</td>
+        </tr>
+      </table>
+      <p class="rule">Gdańsk leży na północy Polski. – Gdańsk is in the north of Poland.</p>
+
+      <div class="box">
+        <h3>Examples</h3>
+        <table class="ex">
+          <tr>
+            <td>Idę do sklepu.</td>
+            <td>I'm going to the shop.</td>
+          </tr>
+          <tr>
+            <td>Jadę do Krakowa pociągiem.</td>
+            <td>I'm going to Kraków by train.</td>
+          </tr>
+          <tr>
+            <td>Wracam z pracy.</td>
+            <td>I'm coming back from work.</td>
+          </tr>
+          <tr>
+            <td>Jestem u mamy.</td>
+            <td>I'm at Mum's.</td>
+          </tr>
+          <tr>
+            <td>Chodzę na basen w środy.</td>
+            <td>I go to the pool on Wednesdays.</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+<style>@scope ([data-sheet="16"][data-lang="de"]) {
       .col p {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -2949,7 +5265,7 @@ b {
       .page > table :is(th, td):nth-child(2) {
         width: 320px;
       }
-    }</style><div class="page" data-sheet="16" data-lang="de en" hidden>
+    }</style><div class="page" data-sheet="16" data-lang="de" hidden>
       <h1><small></small>Czas – Uhrzeit, Tage, Monate</h1>
       <p class="sub">Die Uhrzeit sagt man mit der weiblichen Ordnungszahl: pierwsza (godzina).</p>
 
@@ -3087,7 +5403,162 @@ b {
         </table>
       </div>
     </div>
-<style>@scope ([data-sheet="17"][data-lang="de en"]) {
+<style>@scope ([data-sheet="16"][data-lang="en"]) {
+      .col p {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      .hours p {
+        grid-template-columns: 32px 1fr 1fr;
+      }
+      .months p {
+        grid-template-columns: 1fr 1.1fr 1fr;
+      }
+      .page > table :is(th, td):first-child {
+        width: 90px;
+      }
+      .page > table :is(th, td):nth-child(2) {
+        width: 320px;
+      }
+    }</style><div class="page" data-sheet="16" data-lang="en" hidden>
+      <h1><small></small>Czas – Time, Days, Months</h1>
+      <p class="sub">The time is said with the feminine ordinal number: pierwsza (godzina).</p>
+
+      <h2>1. Clock time <span>· Która (jest) godzina? – O której?</span></h2>
+      <div class="cols hours">
+        <div class="col">
+          <h3>What time? · At …</h3>
+          <p>
+            <b>1</b> <span><b>pierwsza</b></span> <span>o pierwszej</span>
+          </p>
+          <p>
+            <b>2</b> <span><b>druga</b></span> <span>o drugiej</span>
+          </p>
+          <p>
+            <b>3</b> <span><b>trzecia</b></span> <span>o trzeciej</span>
+          </p>
+          <p>
+            <b>4</b> <span><b>czwarta</b></span> <span>o czwartej</span>
+          </p>
+          <p>
+            <b>5</b> <span><b>piąta</b></span> <span>o piątej</span>
+          </p>
+          <p>
+            <b>6</b> <span><b>szósta</b></span> <span>o szóstej</span>
+          </p>
+        </div>
+        <div class="col">
+          <h3>What time? · At …</h3>
+          <p>
+            <b>7</b> <span><b>siódma</b></span> <span>o siódmej</span>
+          </p>
+          <p>
+            <b>8</b> <span><b>ósma</b></span> <span>o ósmej</span>
+          </p>
+          <p>
+            <b>9</b> <span><b>dziewiąta</b></span> <span>o dziewiątej</span>
+          </p>
+          <p>
+            <b>10</b> <span><b>dziesiąta</b></span> <span>o dziesiątej</span>
+          </p>
+          <p>
+            <b>11</b> <span><b>jedenasta</b></span> <span>o jedenastej</span>
+          </p>
+          <p>
+            <b>12</b> <span><b>dwunasta</b></span> <span>o dwunastej</span>
+          </p>
+        </div>
+      </div>
+      <p class="rule">
+        From 1 pm: trzynasta, czternasta … dwudziesta, dwudziesta pierwsza · o dwudziestej pierwszej
+      </p>
+
+      <h2>2. Minutes</h2>
+      <table>
+        <tr>
+          <td>8:10</td>
+          <td>dziesięć <b>po</b> ósmej</td>
+          <td>ten past eight</td>
+        </tr>
+        <tr>
+          <td>8:15</td>
+          <td><b>kwadrans po</b> ósmej</td>
+          <td>quarter past eight</td>
+        </tr>
+        <tr>
+          <td>8:30</td>
+          <td><b>wpół do</b> dziewiątej</td>
+          <td>half past eight (lit. “half to nine”)</td>
+        </tr>
+        <tr>
+          <td>8:45</td>
+          <td><b>za kwadrans</b> dziewiąta</td>
+          <td>quarter to nine</td>
+        </tr>
+        <tr>
+          <td>official</td>
+          <td>ósma trzydzieści · dwudziesta piętnaście</td>
+          <td>8:30 · 20:15</td>
+        </tr>
+      </table>
+
+      <h2>3. Days <span>· on …: w + accusative</span></h2>
+      <div class="cols">
+        <div class="col">
+          <p><b>poniedziałek</b> <span>w poniedziałek</span></p>
+          <p>
+            <b>wtorek</b> <span><b>we</b> wtorek</span>
+          </p>
+          <p><b>środa</b> <span>w środę</span></p>
+          <p><b>czwartek</b> <span>w czwartek</span></p>
+        </div>
+        <div class="col">
+          <p><b>piątek</b> <span>w piątek</span></p>
+          <p><b>sobota</b> <span>w sobotę</span></p>
+          <p><b>niedziela</b> <span>w niedzielę</span></p>
+          <p><b>weekend</b> <span>w weekend</span></p>
+        </div>
+      </div>
+
+      <h2>4. Months <span>· in …: w + locative · date: genitive</span></h2>
+      <div class="cols months">
+        <div class="col">
+          <h3>Month · in … · on the 1st …</h3>
+          <p><b>styczeń</b> <span>w styczniu</span> <span>stycznia</span></p>
+          <p><b>luty</b> <span>w lutym</span> <span>lutego</span></p>
+          <p><b>marzec</b> <span>w marcu</span> <span>marca</span></p>
+          <p><b>kwiecień</b> <span>w kwietniu</span> <span>kwietnia</span></p>
+          <p><b>maj</b> <span>w maju</span> <span>maja</span></p>
+          <p><b>czerwiec</b> <span>w czerwcu</span> <span>czerwca</span></p>
+        </div>
+        <div class="col">
+          <h3>Month · in … · on the 1st …</h3>
+          <p><b>lipiec</b> <span>w lipcu</span> <span>lipca</span></p>
+          <p><b>sierpień</b> <span>w sierpniu</span> <span>sierpnia</span></p>
+          <p>
+            <b>wrzesień</b> <span><b>we</b> wrześniu</span> <span>września</span>
+          </p>
+          <p><b>październik</b> <span>w październiku</span> <span>października</span></p>
+          <p><b>listopad</b> <span>w listopadzie</span> <span>listopada</span></p>
+          <p><b>grudzień</b> <span>w grudniu</span> <span>grudnia</span></p>
+        </div>
+      </div>
+
+      <div class="box">
+        <h3>Date <span>· day as masculine ordinal, month in genitive</span></h3>
+        <table class="ex">
+          <tr>
+            <td>Dziś jest <b>dwudziesty pierwszy</b> października.</td>
+            <td>Today is 21 October.</td>
+          </tr>
+          <tr>
+            <td>Urodziłam się <b>trzeciego</b> maja.</td>
+            <td>I was born on 3 May.</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+<style>@scope ([data-sheet="17"][data-lang="de"]) {
       .col p {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
@@ -3095,7 +5566,7 @@ b {
       .page > table :is(th, td):first-child {
         width: 110px;
       }
-    }</style><div class="page" data-sheet="17" data-lang="de en" hidden>
+    }</style><div class="page" data-sheet="17" data-lang="de" hidden>
       <h1><small></small>Aspekt i przyszłość – Aspekt und Zukunft</h1>
       <p class="sub">
         Fast jedes Verb gibt es doppelt: unvollendet (Vorgang) und vollendet (Ergebnis).
@@ -3215,15 +5686,144 @@ b {
         </table>
       </div>
     </div>
-<style>@scope ([data-sheet="18"][data-lang="de en"]) {
+<style>@scope ([data-sheet="17"][data-lang="en"]) {
+      .col p {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      .page > table :is(th, td):first-child {
+        width: 110px;
+      }
+    }</style><div class="page" data-sheet="17" data-lang="en" hidden>
+      <h1><small></small>Aspekt i przyszłość – Aspect and Future</h1>
+      <p class="sub">
+        Almost every verb comes in a pair: imperfective (process) and perfective (result).
+      </p>
+
+      <h2>1. Which one when?</h2>
+      <table>
+        <tr>
+          <th></th>
+          <th>imperfective<small>niedokonany</small></th>
+          <th>perfective<small>dokonany</small></th>
+        </tr>
+        <tr>
+          <td>meaning</td>
+          <td>process, duration, habit</td>
+          <td>result, once, finished</td>
+        </tr>
+        <tr>
+          <td>past</td>
+          <td>
+            Wczoraj <b>czytałem</b> książkę.<br />Yesterday I was reading a book (maybe not
+            finished).
+          </td>
+          <td><b>Przeczytałem</b> książkę.<br />I finished reading the book.</td>
+        </tr>
+        <tr>
+          <td>present</td>
+          <td>Codziennie <b>piję</b> kawę.<br />I drink coffee every day.</td>
+          <td>– no present</td>
+        </tr>
+      </table>
+
+      <h2>2. Important pairs <span>· imperfective → perfective</span></h2>
+      <div class="cols">
+        <div class="col">
+          <h3>with a prefix</h3>
+          <p><b>robić</b> <b>zrobić</b> <span>do, make</span></p>
+          <p><b>pisać</b> <b>napisać</b> <span>write</span></p>
+          <p><b>czytać</b> <b>przeczytać</b> <span>read</span></p>
+          <p><b>jeść</b> <b>zjeść</b> <span>eat</span></p>
+          <p><b>pić</b> <b>wypić</b> <span>drink</span></p>
+          <p><b>płacić</b> <b>zapłacić</b> <span>pay</span></p>
+          <p><b>dzwonić</b> <b>zadzwonić</b> <span>call</span></p>
+        </div>
+        <div class="col">
+          <h3>different form</h3>
+          <p><b>kupować</b> <b>kupić</b> <span>buy</span></p>
+          <p><b>dawać</b> <b>dać</b> <span>give</span></p>
+          <p><b>wracać</b> <b>wrócić</b> <span>come back</span></p>
+          <p><b>zamykać</b> <b>zamknąć</b> <span>close</span></p>
+          <p><b>brać</b> <b>wziąć</b> <span>take</span></p>
+          <p><b>mówić</b> <b>powiedzieć</b> <span>say</span></p>
+          <p><b>oglądać</b> <b>obejrzeć</b> <span>watch</span></p>
+        </div>
+      </div>
+
+      <h2>3. Future <span>· two ways</span></h2>
+      <table>
+        <tr>
+          <th>Person</th>
+          <th>imperfective<small>będę + infinitive</small></th>
+          <th>perfective<small>present form = future</small></th>
+        </tr>
+        <tr>
+          <td>ja</td>
+          <td><b>będę</b> czytać</td>
+          <td>przeczyta<b>m</b></td>
+        </tr>
+        <tr>
+          <td>ty</td>
+          <td><b>będziesz</b> czytać</td>
+          <td>przeczyta<b>sz</b></td>
+        </tr>
+        <tr>
+          <td>on · ona</td>
+          <td><b>będzie</b> czytać</td>
+          <td>przeczyta</td>
+        </tr>
+        <tr>
+          <td>my</td>
+          <td><b>będziemy</b> czytać</td>
+          <td>przeczyta<b>my</b></td>
+        </tr>
+        <tr>
+          <td>wy</td>
+          <td><b>będziecie</b> czytać</td>
+          <td>przeczyta<b>cie</b></td>
+        </tr>
+        <tr>
+          <td>oni · one</td>
+          <td><b>będą</b> czytać</td>
+          <td>przeczyta<b>ją</b></td>
+        </tr>
+      </table>
+      <p class="rule">
+        Instead of the infinitive, the past form also works: będę czytał / czytała.
+      </p>
+
+      <div class="box">
+        <h3>Examples</h3>
+        <table class="ex">
+          <tr>
+            <td>Jutro <b>będę pracować</b>.</td>
+            <td>Tomorrow I'll be working.</td>
+          </tr>
+          <tr>
+            <td>Jutro <b>zrobię</b> zakupy.</td>
+            <td>Tomorrow I'll get the shopping done.</td>
+          </tr>
+          <tr>
+            <td><b>Zadzwonię</b> do ciebie.</td>
+            <td>I'll call you.</td>
+          </tr>
+          <tr>
+            <td>Co <b>będziesz robić</b> w weekend?</td>
+            <td>What will you do at the weekend?</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+<style>@scope ([data-sheet="18"][data-lang="de"]) {
       .page > table :is(th, td):first-child {
         width: 200px;
       }
-    }</style><div class="page" data-sheet="18" data-lang="de en" hidden>
+    }</style><div class="page" data-sheet="18" data-lang="de" hidden>
       <h1><small></small>Tryb rozkazujący – Imperativ</h1>
       <p class="sub">
         Die ty-Form ist die Basis: ihr → + -cie, wir → + -my ·
-        <span class="stem">Stamm</span> + <b>Endung</b>
+        <span class="stem">Stamm</span> + <b lang="de">Endung</b>
       </p>
 
       <h2>1. Formen <span>· die ty-Form auswendig lernen</span></h2>
@@ -3363,7 +5963,157 @@ b {
         </table>
       </div>
     </div>
-<style>@scope ([data-sheet="19"][data-lang="de en"]) {
+<style>@scope ([data-sheet="18"][data-lang="en"]) {
+      .page > table :is(th, td):first-child {
+        width: 200px;
+      }
+    }</style><div class="page" data-sheet="18" data-lang="en" hidden>
+      <h1><small></small>Tryb rozkazujący – Imperative</h1>
+      <p class="sub">
+        The ty form is the base: you (pl.) → + -cie, we → + -my ·
+        <span class="stem">stem</span> + <b lang="en">ending</b>
+      </p>
+
+      <h2>1. Forms <span>· learn the ty form by heart</span></h2>
+      <table>
+        <tr>
+          <th>Infinitive</th>
+          <th>ty<small>you</small></th>
+          <th>wy<small>you (pl.)</small></th>
+          <th>my<small>let's</small></th>
+        </tr>
+        <tr>
+          <td>czytać · read</td>
+          <td><b>czytaj</b></td>
+          <td>czytaj<b>cie</b></td>
+          <td>czytaj<b>my</b></td>
+        </tr>
+        <tr>
+          <td>pracować · work</td>
+          <td><b>pracuj</b></td>
+          <td>pracuj<b>cie</b></td>
+          <td>pracuj<b>my</b></td>
+        </tr>
+        <tr>
+          <td>pisać · write</td>
+          <td><b>pisz</b></td>
+          <td>pisz<b>cie</b></td>
+          <td>pisz<b>my</b></td>
+        </tr>
+        <tr>
+          <td>robić · do, make</td>
+          <td><b>rób</b></td>
+          <td>rób<b>cie</b></td>
+          <td>rób<b>my</b></td>
+        </tr>
+        <tr>
+          <td>mówić · speak</td>
+          <td><b>mów</b></td>
+          <td>mów<b>cie</b></td>
+          <td>mów<b>my</b></td>
+        </tr>
+        <tr>
+          <td>pić · drink</td>
+          <td><b>pij</b></td>
+          <td>pij<b>cie</b></td>
+          <td>pij<b>my</b></td>
+        </tr>
+        <tr>
+          <td>jeść · eat</td>
+          <td><b>jedz</b></td>
+          <td>jedz<b>cie</b></td>
+          <td>jedz<b>my</b></td>
+        </tr>
+        <tr>
+          <td>iść · go</td>
+          <td><b>idź</b></td>
+          <td>idź<b>cie</b></td>
+          <td>idź<b>my</b></td>
+        </tr>
+        <tr>
+          <td>chodzić · go, walk</td>
+          <td><b>chodź</b></td>
+          <td>chodź<b>cie</b></td>
+          <td>chodź<b>my</b></td>
+        </tr>
+        <tr>
+          <td>być · be</td>
+          <td><b>bądź</b></td>
+          <td>bądź<b>cie</b></td>
+          <td>bądź<b>my</b></td>
+        </tr>
+        <tr>
+          <td>mieć · have</td>
+          <td><b>miej</b></td>
+          <td>miej<b>cie</b></td>
+          <td>miej<b>my</b></td>
+        </tr>
+        <tr>
+          <td>dać · give</td>
+          <td><b>daj</b></td>
+          <td>daj<b>cie</b></td>
+          <td>daj<b>my</b></td>
+        </tr>
+        <tr>
+          <td>wziąć · take</td>
+          <td><b>weź</b></td>
+          <td>weź<b>cie</b></td>
+          <td>weź<b>my</b></td>
+        </tr>
+        <tr>
+          <td>spać · sleep</td>
+          <td><b>śpij</b></td>
+          <td>śpij<b>cie</b></td>
+          <td>śpij<b>my</b></td>
+        </tr>
+        <tr>
+          <td>pomóc · help</td>
+          <td><b>pomóż</b></td>
+          <td>pomóż<b>cie</b></td>
+          <td>pomóż<b>my</b></td>
+        </tr>
+      </table>
+      <p class="rule">
+        The ty form is often the oni form without -ą: czytają → czytaj · piszą → pisz
+      </p>
+
+      <h2>2. Polite <span>· to pan, pani, państwo</span></h2>
+      <table>
+        <tr>
+          <td>Proszę + infinitive</td>
+          <td>Proszę usiąść.</td>
+          <td>Please sit down.</td>
+        </tr>
+        <tr>
+          <td>Niech + 3rd person</td>
+          <td>Niech pan wejdzie.</td>
+          <td>Please come in.</td>
+        </tr>
+      </table>
+
+      <div class="box">
+        <h3>Negation <span>· nie + mostly an imperfective verb</span></h3>
+        <table class="ex">
+          <tr>
+            <td>Zrób to! → <b>Nie rób</b> tego!</td>
+            <td>Do it! → Don't do it!</td>
+          </tr>
+          <tr>
+            <td>Zamknij okno! → <b>Nie zamykaj</b> okna!</td>
+            <td>Close the window! → Don't close it!</td>
+          </tr>
+          <tr>
+            <td><b>Nie martw się</b>!</td>
+            <td>Don't worry!</td>
+          </tr>
+          <tr>
+            <td><b>Chodźmy</b> do kina!</td>
+            <td>Let's go to the cinema!</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+<style>@scope ([data-sheet="19"][data-lang="de"]) {
       .page > table :is(th, td):first-child {
         width: 110px;
       }
@@ -3373,11 +6123,11 @@ b {
       .page > table :is(th, td):nth-child(3) {
         width: 190px;
       }
-    }</style><div class="page" data-sheet="19" data-lang="de en" hidden>
+    }</style><div class="page" data-sheet="19" data-lang="de" hidden>
       <h1><small></small>Stopniowanie – Steigerung</h1>
       <p class="sub">
         gut → besser → am besten · <span class="stem">Stamm</span> +
-        <b>Endung</b>
+        <b lang="de">Endung</b>
       </p>
 
       <h2>1. Die Regel <span>· -szy / -ejszy, dann naj-</span></h2>
@@ -3516,7 +6266,7 @@ b {
         <table class="ex">
           <tr>
             <td>Anna jest starsza <b>niż</b> Kasia.</td>
-            <td>Anna ist älter <b>als</b> Kasia.</td>
+            <td>Anna ist älter <b lang="de">als</b> Kasia.</td>
           </tr>
           <tr>
             <td><b>Najważniejsza</b> jest rodzina.</td>
@@ -3524,11 +6274,11 @@ b {
           </tr>
           <tr>
             <td>Jest <b>coraz</b> lepiej.</td>
-            <td>Es wird <b>immer</b> besser.</td>
+            <td>Es wird <b lang="de">immer</b> besser.</td>
           </tr>
           <tr>
             <td>Przyjdź <b>jak</b> najszybciej.</td>
-            <td>Komm <b>so</b> schnell <b>wie möglich</b>.</td>
+            <td>Komm <b lang="de">so</b> schnell <b lang="de">wie möglich</b>.</td>
           </tr>
         </table>
         <p class="note">
@@ -3537,15 +6287,187 @@ b {
         </p>
       </div>
     </div>
-<style>@scope ([data-sheet="20"][data-lang="de en"]) {
+<style>@scope ([data-sheet="19"][data-lang="en"]) {
+      .page > table :is(th, td):first-child {
+        width: 110px;
+      }
+      .page > table :is(th, td):nth-child(2) {
+        width: 140px;
+      }
+      .page > table :is(th, td):nth-child(3) {
+        width: 190px;
+      }
+    }</style><div class="page" data-sheet="19" data-lang="en" hidden>
+      <h1><small></small>Stopniowanie – Comparison</h1>
+      <p class="sub">
+        good → better → best · <span class="stem">stem</span> +
+        <b lang="en">ending</b>
+      </p>
+
+      <h2>1. The rule <span>· -szy / -ejszy, dann naj-</span></h2>
+      <p class="rule">
+        Rule of thumb: one consonant before -y/-i → -szy (mło<b>d</b>y). Two consonants → -ejszy
+        (wa<b>żn</b>y).
+      </p>
+      <table>
+        <tr>
+          <th>English</th>
+          <th>Base form<small>young</small></th>
+          <th>+ -szy / -ejszy<small>younger</small></th>
+          <th>naj- in front<small>youngest</small></th>
+        </tr>
+        <tr>
+          <td>young</td>
+          <td><b>młody</b></td>
+          <td>młod<b>szy</b></td>
+          <td><b>naj</b>młod<b>szy</b></td>
+        </tr>
+        <tr>
+          <td>old</td>
+          <td><b>stary</b></td>
+          <td>star<b>szy</b></td>
+          <td><b>naj</b>star<b>szy</b></td>
+        </tr>
+        <tr>
+          <td>cheap</td>
+          <td><b>tani</b></td>
+          <td>tań<b>szy</b></td>
+          <td><b>naj</b>tań<b>szy</b></td>
+        </tr>
+        <tr>
+          <td>important</td>
+          <td><b>ważny</b></td>
+          <td>ważni<b>ejszy</b></td>
+          <td><b>naj</b>ważni<b>ejszy</b></td>
+        </tr>
+        <tr>
+          <td>easy</td>
+          <td><b>łatwy</b></td>
+          <td>łatwi<b>ejszy</b></td>
+          <td><b>naj</b>łatwi<b>ejszy</b></td>
+        </tr>
+      </table>
+
+      <h2>2. Exceptions <span>· learn them by heart</span></h2>
+      <table>
+        <tr>
+          <td>good</td>
+          <td><b>dobry</b></td>
+          <td><b>lepszy</b></td>
+          <td><b>najlepszy</b></td>
+        </tr>
+        <tr>
+          <td>bad</td>
+          <td><b>zły</b></td>
+          <td><b>gorszy</b></td>
+          <td><b>najgorszy</b></td>
+        </tr>
+        <tr>
+          <td>big</td>
+          <td><b>duży</b></td>
+          <td><b>większy</b></td>
+          <td><b>największy</b></td>
+        </tr>
+        <tr>
+          <td>small</td>
+          <td><b>mały</b></td>
+          <td><b>mniejszy</b></td>
+          <td><b>najmniejszy</b></td>
+        </tr>
+        <tr>
+          <td>tall, high</td>
+          <td><b>wysoki</b></td>
+          <td><b>wyższy</b></td>
+          <td><b>najwyższy</b></td>
+        </tr>
+        <tr>
+          <td>expensive</td>
+          <td><b>drogi</b></td>
+          <td><b>droższy</b></td>
+          <td><b>najdroższy</b></td>
+        </tr>
+      </table>
+
+      <h2>3. With a helper word <span>· for long words and for “less”</span></h2>
+      <p class="rule">bardziej = more · najbardziej = most · mniej = less · najmniej = least</p>
+      <table>
+        <tr>
+          <td>tired</td>
+          <td><b>zmęczony</b></td>
+          <td><b>bardziej</b> zmęczony</td>
+          <td><b>najbardziej</b> zmęczony</td>
+        </tr>
+        <tr>
+          <td>(un)important</td>
+          <td><b>ważny</b></td>
+          <td><b>mniej</b> ważny</td>
+          <td><b>najmniej</b> ważny</td>
+        </tr>
+      </table>
+
+      <h2>4. Adverbs <span>· how? – He runs fast.</span></h2>
+      <table>
+        <tr>
+          <td>fast</td>
+          <td><b>szybko</b></td>
+          <td>szyb<b>ciej</b></td>
+          <td><b>naj</b>szyb<b>ciej</b></td>
+        </tr>
+        <tr>
+          <td>good</td>
+          <td><b>dobrze</b></td>
+          <td><b>lepiej</b></td>
+          <td><b>najlepiej</b></td>
+        </tr>
+        <tr>
+          <td>bad</td>
+          <td><b>źle</b></td>
+          <td><b>gorzej</b></td>
+          <td><b>najgorzej</b></td>
+        </tr>
+        <tr>
+          <td>much, a lot</td>
+          <td><b>dużo</b></td>
+          <td><b>więcej</b></td>
+          <td><b>najwięcej</b></td>
+        </tr>
+      </table>
+
+      <div class="box">
+        <h3>How to say it</h3>
+        <table class="ex">
+          <tr>
+            <td>Anna jest starsza <b>niż</b> Kasia.</td>
+            <td>Anna is older <b lang="en">than</b> Kasia.</td>
+          </tr>
+          <tr>
+            <td><b>Najważniejsza</b> jest rodzina.</td>
+            <td>Family is the most important thing.</td>
+          </tr>
+          <tr>
+            <td>Jest <b>coraz</b> lepiej.</td>
+            <td>It's getting better <b lang="en">and</b> better.</td>
+          </tr>
+          <tr>
+            <td>Przyjdź <b>jak</b> najszybciej.</td>
+            <td>Come <b lang="en">as</b> fast <b lang="en">as possible</b>.</td>
+          </tr>
+        </table>
+        <p class="note">
+          The ending matches the noun: najlepszy dom (house) · najlepsza kawa (coffee) · najlepsze
+          piwo (beer) · men in the plural: najlepsi przyjaciele (friends)
+        </p>
+      </div>
+    </div>
+<style>@scope ([data-sheet="20"][data-lang="de"]) {
       .page > table:nth-of-type(2) td:first-child {
         width: 250px;
       }
-    }</style><div class="page" data-sheet="20" data-lang="de en" hidden>
+    }</style><div class="page" data-sheet="20" data-lang="de" hidden>
       <h1><small></small>Tryb przypuszczający – Konditional</h1>
       <p class="sub">
         würde, hätte, könnte · Vergangenheitsform + by + Endung · <span class="stem">Stamm</span> +
-        <b>Endung</b>
+        <b lang="de">Endung</b>
       </p>
 
       <h2>1. Bildung <span>· chcieć – wollen → ich möchte</span></h2>
@@ -3655,6 +6577,123 @@ b {
           </tr>
         </table>
       </div>
+    </div>
+<style>@scope ([data-sheet="20"][data-lang="en"]) {
+      .page > table:nth-of-type(2) td:first-child {
+        width: 250px;
+      }
+    }</style><div class="page" data-sheet="20" data-lang="en" hidden>
+      <h1><small></small>Tryb przypuszczający – Conditional</h1>
+      <p class="sub">
+        would, could · past form + by + ending · <span class="stem">stem</span> +
+        <b lang="en">ending</b>
+      </p>
+
+      <h2>1. Form <span>· chcieć – want → I would like</span></h2>
+      <p class="rule">
+        Take the past form of the 3rd person (chciał, chciała, chcieli, chciały) and add by +
+        ending.
+      </p>
+      <table>
+        <tr>
+          <th>Person</th>
+          <th>man<small>or group with a man</small></th>
+          <th>woman<small>or group without a man</small></th>
+        </tr>
+        <tr>
+          <td>ja</td>
+          <td>chciał<b>bym</b></td>
+          <td>chciała<b>bym</b></td>
+        </tr>
+        <tr>
+          <td>ty</td>
+          <td>chciał<b>byś</b></td>
+          <td>chciała<b>byś</b></td>
+        </tr>
+        <tr>
+          <td>on · ona · ono</td>
+          <td>on chciał<b>by</b></td>
+          <td>ona chciała<b>by</b> · ono chciało<b>by</b></td>
+        </tr>
+        <tr>
+          <td>my</td>
+          <td>chcieli<b>byśmy</b></td>
+          <td>chciały<b>byśmy</b></td>
+        </tr>
+        <tr>
+          <td>wy</td>
+          <td>chcieli<b>byście</b></td>
+          <td>chciały<b>byście</b></td>
+        </tr>
+        <tr>
+          <td>oni · one</td>
+          <td>oni chcieli<b>by</b></td>
+          <td>one chciały<b>by</b></td>
+        </tr>
+      </table>
+
+      <h2>2. Important forms <span>· asking politely</span></h2>
+      <table>
+        <tr>
+          <td>chciałbym · chciałabym</td>
+          <td>I would like</td>
+        </tr>
+        <tr>
+          <td>mógłbyś · mogłabyś</td>
+          <td>could you</td>
+        </tr>
+        <tr>
+          <td>mógłby pan · mogłaby pani</td>
+          <td>could you (formal)</td>
+        </tr>
+        <tr>
+          <td>wolałbym · wolałabym</td>
+          <td>I would rather</td>
+        </tr>
+        <tr>
+          <td>byłoby</td>
+          <td>it would be</td>
+        </tr>
+      </table>
+
+      <h2>3. If … <span>· gdyby + past form</span></h2>
+      <p class="rule">gdyby takes the ending: gdybym, gdybyś, gdyby, gdybyśmy, gdybyście, gdyby</p>
+      <table>
+        <tr>
+          <td>man</td>
+          <td><b>Gdybym</b> miał czas, <b>poszedłbym</b> do kina.</td>
+        </tr>
+        <tr>
+          <td>woman</td>
+          <td><b>Gdybym</b> miała czas, <b>poszłabym</b> do kina.</td>
+        </tr>
+        <tr>
+          <td>English</td>
+          <td>If I had time, I would go to the cinema.</td>
+        </tr>
+      </table>
+
+      <div class="box">
+        <h3>Examples</h3>
+        <table class="ex">
+          <tr>
+            <td><b>Chciałbym</b> kawę.</td>
+            <td>I'd like a coffee.</td>
+          </tr>
+          <tr>
+            <td><b>Chciałabym</b> zapłacić.</td>
+            <td>I'd like to pay.</td>
+          </tr>
+          <tr>
+            <td><b>Mógłbyś</b> mi pomóc?</td>
+            <td>Could you help me?</td>
+          </tr>
+          <tr>
+            <td><b>Byłoby</b> miło.</td>
+            <td>That would be nice.</td>
+          </tr>
+        </table>
+      </div>
     </div></div>
     </main>
 
@@ -3710,6 +6749,11 @@ applyLang();
   addEventListener("langchange", update);
   update();
 }
+// Chrome keeps the focus ring on a select picked with the mouse, even when the same option is picked
+// (no "change", so no blur); the ring is meant for the keyboard, so a select used with the pointer hides it.
+addEventListener("pointerdown", (e) => e.target.closest("select")?.classList.add("by-pointer"));
+addEventListener("keydown", (e) => e.target.classList.remove("by-pointer"));
+addEventListener("focusout", (e) => e.target.classList.remove("by-pointer"));
 ;
     </script>
     <script>
