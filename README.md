@@ -6,7 +6,7 @@ _Klucz_ („Der Schlüssel“) ist das Tagebuch von Jonas, einem Deutschen, der 
 
 Die Idee dahinter: **Wer diesen Text versteht, versteht die 3000 häufigsten Wörter des gesprochenen Polnisch.** Diese Wörter decken gut 90 % dessen ab, was im Alltag gesagt wird. Jedes davon steht mindestens einmal im Text, und zwar nicht als Liste, sondern eingebettet in eine echte Handlung.
 
-- **Lesen:** [index.html](index.html) – Leseseite: Wort antippen für die Übersetzung (🔊 spricht es mit der polnischen Stimme des Geräts aus), 🌐 wählt die Sprache der Seite (Deutsch oder English, gespeichert für Buch und Grammatik), der Schalter „PL | DE“ (bzw. „PL | EN“) oben rechts zeigt mit einem Tippen das ganze Kapitel in dieser Sprache oder wieder auf Polnisch, ohne dass der Text springt, 🔊 liest das Kapitel ab dem Absatz oben auf dem Bildschirm vor (⏹ hält an) und hebt den gelesenen Absatz hervor, alphabetische Wortliste je Kapitel (oben „↓ Wörter“ springt hin), Kopiermenü für das ganze Kapitel und seine Teile, Druckknopf für das ganze Buch (im Druckdialog auch als PDF speicherbar), Vollbild (nicht auf dem iPhone) und Hell/Dunkel-Umschalter (die Wahl bleibt gespeichert)
+- **Lesen:** [index.html](index.html) – Leseseite: Wort antippen für die Übersetzung (🔊 spricht es mit der polnischen Stimme des Geräts aus), 🌐 wählt die Sprache der Seite (Deutsch oder English, gespeichert für Buch und Grammatik), der Schalter „PL | DE“ (bzw. „PL | EN“) oben rechts zeigt das ganze Kapitel auf Polnisch („PL“) oder in der Übersetzung („DE“ bzw. „EN“), ohne dass der Text springt, 🔊 liest das Kapitel ab dem Absatz oben auf dem Bildschirm vor (⏹ hält an) und hebt den gelesenen Absatz hervor, alphabetische Wortliste je Kapitel (oben „↓ Wörter“ springt hin), Kopiermenü für das ganze Kapitel und seine Teile, Druckknopf für das ganze Buch (im Druckdialog auch als PDF speicherbar), Vollbild (nicht auf dem iPhone) und Hell/Dunkel-Umschalter (die Wahl bleibt gespeichert)
 - **Grammatik:** [grammar.html](grammar.html) – die Grammatikblätter im Aussehen der Leseseite, eines nach dem anderen zum Durchblättern wie die Kapitel; erreichbar über den Knopf 🎓 oben auf der Leseseite, zurück geht es mit 📖; 🖨 druckt das offene Thema als A4-Seite wie in den PDFs. Die Quelle sind die Blätter in [grammar/](grammar/), Regeln dafür in [grammar/README.md](grammar/README.md). `grammar/pdf.sh <de|en> <Ordner>` macht aus denselben Blättern A4-PDFs in diesem Ordner (im Repository liegen keine PDFs)
 - **Buch:** [KLUCZ.md](KLUCZ.md) – das ganze Buch mit einem Glossar nach jedem Kapitel
 - **Klartext:** [text/](text/) – jedes Kapitel ohne Formatierung, auch in Teilen für Google Translate
@@ -15,14 +15,14 @@ Die Idee dahinter: **Wer diesen Text versteht, versteht die 3000 häufigsten Wö
 
 ## So funktioniert's im Alltag
 
-Alles, was man liest, wird aus drei Quellen **erzeugt**. Von Hand bearbeitet werden nur diese Quellen:
+Alles, was man liest, wird aus vier Quellen **erzeugt**. Von Hand bearbeitet werden nur diese Quellen:
 
-| Quelle                        | Inhalt                                                                                                                                                                                                                                                                         |
-| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `chapters/01.md` … `30.md`    | der Text der Geschichte                                                                                                                                                                                                                                                        |
-| `chapters/de/01.md` … `30.md` | die deutsche Übersetzung, Absatz für Absatz wie das Original; `tools/build.py` bricht ab, wenn die Absätze nicht eins zu eins übereinstimmen                                                                                                                                   |
-| `chapters/en/01.md` … `30.md` | die englische Übersetzung, ebenso Absatz für Absatz aus dem Polnischen                                                                                                                                                                                                         |
-| `data/glossary.tsv`           | die Bedeutungen, eine Zeile pro Eintrag der Wortliste, Spalten `lemma`, `de` und `en`: `klucz<Tab>Schlüssel`, `bać się<Tab>Angst haben`; nur Bedeutungen und Wendungen aus dem Text, keine Grammatik; Eigennamen so geschrieben, wie sie angezeigt werden: `Kraków<Tab>Krakau` |
+| Quelle                        | Inhalt                                                                                                                                                                                                                                                                                                          |
+| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `chapters/01.md` … `30.md`    | der Text der Geschichte                                                                                                                                                                                                                                                                                         |
+| `chapters/de/01.md` … `30.md` | die deutsche Übersetzung, Absatz für Absatz wie das Original; `tools/build.py` bricht ab, wenn die Absätze nicht eins zu eins übereinstimmen                                                                                                                                                                    |
+| `chapters/en/01.md` … `30.md` | die englische Übersetzung, ebenso Absatz für Absatz aus dem Polnischen                                                                                                                                                                                                                                          |
+| `data/glossary.tsv`           | die Bedeutungen, eine Zeile pro Eintrag der Wortliste, Spalten `lemma`, `de` und `en`: `klucz<Tab>Schlüssel<Tab>key`, `bać się<Tab>Angst haben<Tab>be afraid`; nur Bedeutungen und Wendungen aus dem Text, keine Grammatik; Eigennamen so geschrieben, wie sie angezeigt werden: `Kraków<Tab>Krakau<Tab>Kraków` |
 
 **Einmalig einrichten** (im Projektordner):
 
@@ -69,7 +69,7 @@ Das baut `index.html`, `grammar.html`, `KLUCZ.md` und `text/` neu, in wenigen Se
 
 **Englisch** funktioniert genauso: `chapters/en/NN.md` mit denselben drei Sicherungen (`--accept-en`), die Spalte `en` in `data/glossary.tsv` und die Blätter `grammar/en/NN.html`. Ein englisches Blatt muss dieselben Tags, Klassen und fetten Texte haben wie das deutsche, sonst bricht der Build ab; fehlt es, zeigt die Grammatikseite auf Englisch das deutsche Blatt. Die Texte der Oberfläche (Knöpfe, Tooltips, Hinweise) stehen in `tools/ui.tsv`, je Zeile auf Deutsch und Englisch.
 
-Nicht prüfen kann das Skript, ob ein deutscher Absatz inhaltlich richtig übersetzt ist; das bleibt Sache des Lesens.
+Nicht prüfen kann das Skript, ob ein Absatz inhaltlich richtig übersetzt ist; das bleibt Sache des Lesens.
 
 **Wortliste und Pop-up** entstehen automatisch nach festen Regeln, beschrieben im Abschnitt [Wortliste und Pop-up: die Regeln](#wortliste-und-pop-up-die-regeln).
 
@@ -161,7 +161,7 @@ Jeder Eintrag entsteht beim Bauen automatisch, nach denselben Regeln für alle W
 | ob ein Verb mit _się_ steht                                      | das polnische [Wiktionary](https://pl.wiktionary.org); Auszug in `data/wiktionary.tsv`                                                 |
 | Aspektpartner                                                    | das englische [Wiktionary](https://en.wiktionary.org), das sie für jedes polnische Verb nennt; Auszug in `data/wiktionary.tsv`         |
 | welche von zwei Formen üblich ist                                | die Untertitel-Zählung, `data/raw_counts.tsv.gz`                                                                                       |
-| deutsche Bedeutung                                               | `data/glossary.tsv`                                                                                                                    |
+| deutsche und englische Bedeutung                                 | `data/glossary.tsv`                                                                                                                    |
 
 1. **Ein Eintrag pro Wort**, in dem Kapitel, in dem es zum ersten Mal vorkommt, alphabetisch.
 2. **Grundform.** Stanza schlägt sie vor. Kennt SGJP die Form im Text nicht unter dieser Grundform, aber unter genau einer anderen, gilt diese (_lotnisk_ → _lotnisko_). Passen mehrere, entscheiden Wortart, Kasus, Zahl, Genus und Aspekt aus dem Satz (_sera_ → _ser_, nicht _serum_). Das gilt für Substantive, Verben, Adjektive und Adverbien, nie für Eigennamen. Was keine Regel lösen kann, steht als Formkorrektur in `data/lemma_fixes.tsv`.
@@ -178,7 +178,7 @@ Jeder Eintrag entsteht beim Bauen automatisch, nach denselben Regeln für alle W
 
 6. **Form im Text.** Weicht die Form an der ersten Fundstelle von der Grundform ab, steht sie in der Wortliste darunter, kleingeschrieben außer bei Eigennamen, mit ihrer Bestimmung aus der Satzanalyse, falls es eine gibt: _im Text: lat (Genitiv Pl.)_.
 7. **Pop-up:** derselbe Eintrag, darüber die angetippte Form mit ihrer Bestimmung, wenn sie nicht die Grundform ist. 🔊 spricht die angetippte Form.
-8. **Bedeutung:** aus `data/glossary.tsv`, nur deutsche Bedeutungen und Wendungen aus dem Text (_w domu – zu Hause_).
+8. **Bedeutung:** aus `data/glossary.tsv`, in der Sprache der Seite, nur Bedeutungen und Wendungen aus dem Text (_w domu – zu Hause_ bzw. _at home_).
 
 **Überprüfbar:** Jede grammatische Angabe steht wörtlich in den Auszügen in `data/` (mit Version und Quelle im Dateikopf) und lässt sich auf [sgjp.pl](https://sgjp.pl) oder im Wiktionary nachschlagen.
 
@@ -245,6 +245,10 @@ klucz/
     ├── base.css             Farben, Schriften und Leiste beider Seiten
     ├── reader.html          Vorlage der Leseseite (Aussehen, Bedienung)
     ├── grammar.html         Vorlage der Grammatikseite
+    ├── ui.tsv               Texte der Oberfläche beider Seiten, auf Deutsch und Englisch
+    ├── lang.js              Sprache der Seite (🌐), für beide Seiten
+    ├── theme.js             Hell/Dunkel-Umschalter, für beide Seiten
+    ├── focus.js             kein Fokusrahmen an einer mit der Maus bedienten Auswahl
     ├── lexicon.py           Wörterbuchauszüge und daraus die Einträge der Wortliste
     ├── analyze.py           misst die Geschichte: report, missing
     └── build_frequency.py   Korpus → Frequenzliste
