@@ -1,6 +1,6 @@
 """Build every output from chapters/*.md, data/glossary.tsv and the dictionary excerpts (tools/lexicon.py).
 
-KLUCZ.md               the book with a glossary after each chapter
+KLUCZ.de.md, KLUCZ.en.md the book with a German or English glossary after each chapter
 text/NN.txt, klucz.txt plain text without markup, for copying or text-to-speech
 text/parts/NN-K.txt    the same, split into parts that fit Google Translate's 5,000 characters
 index.html             reading page (also the GitHub Pages start page) in German and English: tap a word, word
@@ -22,7 +22,7 @@ from urllib.parse import quote
 from analyze import EXCLUDED, GLOSSARY, ROOT, chapters, is_word, read_tsv, tokens, tsv
 from lexicon import LABELS, Dictionary, describe, load
 
-LANGS = ("de", "en")  # the languages of the pages; the first is the one KLUCZ.md and the grammar sheets start from
+LANGS = ("de", "en")  # the languages of the pages; the first is the one the grammar sheets start from
 NAMES = {"de": "German", "en": "English"}
 TEXT = ROOT / "text"
 SYNC = ROOT / "data" / "translation_sync.tsv"
@@ -175,18 +175,23 @@ def segments(chapter_blocks, chapter_tokens, excluded):
     return out
 
 
-def book(story, words, lists):
-    out = ["# Klucz", ""]
-    for i, (_, text, _) in enumerate(story):
-        out += [text.strip().replace("# ", "## ", 1), "", "### Neue Wörter", ""]
-        for headword, form, description in lists.get(i, []):
-            display, meanings = words[headword]
-            pos, grammar, de = meanings["de"]
-            label = " · ".join(p for p in (pos, grammar) if p)
-            seen = f" · im Text: {form}" + (f" ({description['de']})" if description["de"] else "") if form else ""
-            out.append(f"- **{display}**{f' _{label}_' if label else ''} — {de or '?'}{seen}")
-        out.append("")
-    (ROOT / "KLUCZ.md").write_text("\n".join(out), encoding="utf-8")
+def book(story, words, lists, texts):
+    """KLUCZ.<lang>.md for every language: the Polish text, after each chapter its new words in that language."""
+    for lang in LANGS:
+        out = ["# Klucz", ""]
+        for i, (_, text, _) in enumerate(story):
+            out += [text.strip().replace("# ", "## ", 1), "", f"### {texts[lang]['new_words']}", ""]
+            for headword, form, description in lists.get(i, []):
+                display, meanings = words[headword]
+                pos, grammar, meaning = meanings[lang]
+                label = " · ".join(p for p in (pos, grammar) if p)
+                seen = ""
+                if form:
+                    shown = form + (f" ({description[lang]})" if description[lang] else "")
+                    seen = f" · {texts[lang]['in_text'].format(shown)}"
+                out.append(f"- **{display}**{f' _{label}_' if label else ''} — {meaning or '?'}{seen}")
+            out.append("")
+        (ROOT / f"KLUCZ.{lang}.md").write_text("\n".join(out), encoding="utf-8")
 
 
 def translation(story, lang):
@@ -339,7 +344,7 @@ def main():
     excluded = read_tsv(EXCLUDED)
     marked = [segments(blocks(markdown), tokens(markdown), excluded) for _, markdown, _ in story]
     words, lists, found = entries(marked, dictionary, glossary)
-    book(story, words, lists)
+    book(story, words, lists, texts)
     order = [w for i in sorted(lists) for w, _, _ in lists[i]]
     ids = {w: n for n, w in enumerate(order)}
     descriptions = {}  # (description in each language) -> its index in the page data
@@ -388,7 +393,7 @@ def main():
                                             sheets=grammar_sheets, **shared), encoding="utf-8")
 
     missing = {lang: [words[w][0] for w in order if not words[w][1][lang][2]] for lang in LANGS}
-    print(f"KLUCZ.md, text/ ({len(story)} chapters, "
+    print(f"KLUCZ.de.md, KLUCZ.en.md, text/ ({len(story)} chapters, "
           f"{sum(len(c['parts']) for c in chapters_data)} parts), "
           f"index.html ({len(page) // 1024} KB), grammar.html ({len(list(GRAMMAR.glob('[0-9][0-9].html')))} sheets); "
           f"glossary entries missing: " + ", ".join(f"{len(m)} {lang}" for lang, m in missing.items()))

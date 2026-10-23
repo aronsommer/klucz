@@ -8,7 +8,7 @@ Die Idee dahinter: **Wer diesen Text versteht, versteht die 3000 häufigsten Wö
 
 - **Lesen:** [index.html](index.html) – Leseseite: Wort antippen für die Übersetzung (🔊 spricht es mit der polnischen Stimme des Geräts aus), 🌐 wählt die Sprache der Seite (Deutsch oder English, gespeichert für Buch und Grammatik), der Schalter „PL | DE“ (bzw. „PL | EN“) oben rechts zeigt das ganze Kapitel auf Polnisch („PL“) oder in der Übersetzung („DE“ bzw. „EN“), ohne dass der Text springt, 🔊 liest das Kapitel ab dem Absatz oben auf dem Bildschirm vor (⏹ hält an) und hebt den gelesenen Absatz hervor, alphabetische Wortliste je Kapitel (oben „↓ Wörter“ springt hin), Kopiermenü für das ganze Kapitel und seine Teile, Druckknopf für das ganze Buch (im Druckdialog auch als PDF speicherbar), Vollbild (nicht auf dem iPhone) und Hell/Dunkel-Umschalter (die Wahl bleibt gespeichert)
 - **Grammatik:** [grammar.html](grammar.html) – die Grammatikblätter im Aussehen der Leseseite, eines nach dem anderen zum Durchblättern wie die Kapitel; erreichbar über den Knopf 🎓 oben auf der Leseseite, zurück geht es mit 📖; 🖨 druckt das offene Thema als A4-Seite wie in den PDFs. Die Leiste ist so aufgebaut wie auf der Leseseite, jeder Knopf an derselben Stelle (Hell/Dunkel, Vollbild und 🌐 wie dort). Über jedem Blatt steht, wo im Buch der Hinweis zum Antippen steht, ein polnisches Sprichwort mit Übersetzung. Die Quelle sind die Blätter in [grammar/](grammar/), Regeln dafür in [grammar/README.md](grammar/README.md). `grammar/pdf.sh <de|en> <Ordner>` macht aus denselben Blättern A4-PDFs in diesem Ordner (im Repository liegen keine PDFs)
-- **Buch:** [KLUCZ.md](KLUCZ.md) – das ganze Buch mit einem Glossar nach jedem Kapitel
+- **Buch:** [KLUCZ.de.md](KLUCZ.de.md) und [KLUCZ.en.md](KLUCZ.en.md) – das ganze Buch mit einem Glossar nach jedem Kapitel, auf Deutsch bzw. Englisch
 - **Klartext:** [text/](text/) – jedes Kapitel ohne Formatierung, auch in Teilen für Google Translate
 - **Messung:** [REPORT.md](REPORT.md) – Abdeckung, neue Wörter pro Kapitel, grammatische Formen
 - **Bauplan:** [PLAN.md](PLAN.md) – die Planung vor dem Schreiben: Figuren, Zeitlinie, Kapitelübersicht
@@ -37,7 +37,7 @@ python3 -m venv .venv
 .venv/bin/python tools/build.py
 ```
 
-Das baut `index.html`, `grammar.html`, `KLUCZ.md` und `text/` neu, in wenigen Sekunden, weil nur geänderte Kapitel neu analysiert werden. Kommt ein neues Wort vor, das noch keine Übersetzung hat, meldet das Skript am Ende `… glossary entries missing`. Dann gehört eine Zeile in `data/glossary.tsv`, und man lässt das Skript noch einmal laufen. Ebenso meldet es Zeilen im Glossar, deren Wort im Buch nicht mehr vorkommt.
+Das baut `index.html`, `grammar.html`, `KLUCZ.de.md`, `KLUCZ.en.md` und `text/` neu, in wenigen Sekunden, weil nur geänderte Kapitel neu analysiert werden. Kommt ein neues Wort vor, das noch keine Übersetzung hat, meldet das Skript am Ende `… glossary entries missing`. Dann gehört eine Zeile in `data/glossary.tsv`, und man lässt das Skript noch einmal laufen. Ebenso meldet es Zeilen im Glossar, deren Wort im Buch nicht mehr vorkommt.
 
 Ändern sich die Wortformen im Text, schreibt das Skript die Wörterbuchauszüge `data/sgjp.tsv` und `data/wiktionary.tsv` neu (rund eine Minute). Die vollständigen Wörterbücher lädt es dafür beim ersten Mal nach `.cache/` herunter (rund 270 MB). SGJP ist auf eine feste Fassung festgelegt; die Wiktionary-Exporte von kaikki.org gibt es nur in der jeweils neuesten Fassung, deshalb können sich beim Neuschreiben einzelne _się_- oder Partnerangaben ändern. Die verwendete Fassung steht im Kopf beider Auszüge.
 
@@ -226,7 +226,7 @@ klucz/
 ├── grammar/en/              Quelle: dieselben Blätter auf Englisch
 ├── .nojekyll                leer: GitHub Pages liefert die Dateien unverändert aus
 ├── fonts/                   Quelle: Schriften, Symbole und key.svg (Symbol im Browser-Tab), werden in index.html und grammar.html eingebettet
-├── KLUCZ.md                 erzeugt: Gesamtbuch mit Glossaren
+├── KLUCZ.de.md, KLUCZ.en.md erzeugt: Gesamtbuch mit deutschen bzw. englischen Glossaren
 ├── text/01.txt … 30.txt     erzeugt: Klartext je Kapitel, klucz.txt: das ganze Buch
 ├── text/parts/07-1.txt …    erzeugt: Klartext in Teilen bis 4800 Zeichen
 ├── REPORT.md                erzeugt: Abdeckungsbericht
@@ -241,7 +241,7 @@ klucz/
 │   ├── wiktionary.tsv       erzeugt: Auszug aus Wiktionary (się, Aspektpartner) für die Verben im Text
 │   └── translation_sync.tsv erzeugt: welche polnischen und übersetzten Absätze zuletzt zusammenpassten
 └── tools/
-    ├── build.py             baut index.html, grammar.html, KLUCZ.md und text/ aus den Quellen
+    ├── build.py             baut index.html, grammar.html, KLUCZ.de.md, KLUCZ.en.md und text/ aus den Quellen
     ├── base.css             Farben, Schriften und Leiste beider Seiten
     ├── reader.html          Vorlage der Leseseite (Aussehen, Bedienung)
     ├── grammar.html         Vorlage der Grammatikseite
