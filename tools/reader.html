@@ -32,11 +32,12 @@
         clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 6px), 0 100%);
       }
       /* the bar: where to go on top (chapters | words, grammar), what to do with the text below
-         (read aloud, copy, print | theme, fullscreen, language, translation); the column spans fill both rows */
+         (read aloud, share | theme, fullscreen, language, translation); the column spans fill both rows */
       .switcher {
         grid-column: span 5;
       }
-      #to-words {
+      #to-words,
+      #read {
         grid-column: span 2;
       }
       /* the translation switch: two halves, Polish and the chosen language; the one shown is filled,
@@ -77,50 +78,13 @@
           grid-column: span 2;
         }
       }
-      /* without fullscreen (iPhone) the translation button takes its column */
+      /* without fullscreen (iPhone) the translation switch takes its column */
       .bar-inner:has(#fullscreen[hidden]) #translate {
         grid-column: span 3;
       }
       /* the arrow glyph has 3px of empty space on its left, so both ends look even */
       #to-words .icon {
         margin-left: -3px;
-      }
-      .copy {
-        position: relative;
-      }
-      #copy.done {
-        background: var(--accent);
-        color: var(--on-accent);
-      }
-      /* the chapter's parts to pick from: under the copy button, on a phone from the left edge so it fits */
-      .copy-menu {
-        position: absolute;
-        top: calc(100% + 6px);
-        left: 0;
-        display: grid;
-        padding: 4px;
-        background: var(--surface);
-        border: 1px solid var(--line);
-        border-radius: 12px;
-        box-shadow: var(--shadow);
-      }
-      .copy-menu button {
-        display: flex;
-        justify-content: space-between;
-        gap: 16px;
-        border: 0;
-        border-radius: 8px;
-        background: none;
-        padding: 8px 12px;
-        white-space: nowrap;
-        cursor: pointer;
-      }
-      .copy-menu button:hover {
-        background: var(--highlight);
-      }
-      .copy-menu small {
-        font-size: 13px;
-        color: var(--text-2);
       }
 
       article {
@@ -347,20 +311,6 @@
         font-size: 15px;
       }
 
-      .toast {
-        position: absolute;
-        z-index: 50;
-        left: 50%;
-        transform: translateX(-50%);
-        top: calc(100% + 12px);
-        width: max-content;
-        max-width: calc(100vw - 32px);
-        background: var(--text);
-        color: var(--bg);
-        padding: 12px 16px;
-        border-radius: 12px;
-        box-shadow: var(--shadow);
-      }
       footer {
         margin-top: 48px;
         text-align: center;
@@ -375,19 +325,8 @@
       #book {
         display: none;
       }
-      .fallback {
-        position: fixed;
-        left: 0;
-        top: 0;
-        opacity: 0;
-        pointer-events: none;
-      }
 
       @media (max-width: 480px) {
-        /* the copy menu starts at the bar's left edge, so it fits */
-        .copy {
-          position: static;
-        }
         article {
           font-size: 18px;
         }
@@ -413,7 +352,6 @@
         body::before,
         .bar,
         .pop,
-        .toast,
         .top-line {
           display: none !important;
         }
@@ -428,7 +366,7 @@
           box-shadow: none;
           padding: 0;
         }
-        /* the print button prints the whole book instead of the open chapter */
+        /* the share menu's print prints the whole book instead of the open chapter */
         .print-all main {
           display: none;
         }
@@ -467,15 +405,12 @@
           ><span class="label" data-t="grammar"></span>
         </a>
         <button class="tool" id="read"></button>
-        <div class="copy">
-          <button class="tool" id="copy" data-tip="copy_chapter" aria-expanded="false">
-            <span class="icon" aria-hidden="true">content_copy</span>
+        <div class="share">
+          <button class="tool" id="share" data-tip="share" aria-expanded="false">
+            <span class="icon" aria-hidden="true">ios_share</span>
           </button>
-          <div class="copy-menu" id="copy-menu" hidden></div>
+          <div class="share-menu" id="share-menu" hidden></div>
         </div>
-        <button class="tool" id="print" data-tip="print_book">
-          <span class="icon" aria-hidden="true">print</span>
-        </button>
         <button class="tool" id="theme">
           <span class="icon" aria-hidden="true">dark_mode</span>
         </button>
@@ -516,7 +451,6 @@
     <div id="book"></div>
 
     <div class="pop" id="pop" hidden role="dialog"></div>
-    <textarea class="fallback" id="fallback" tabindex="-1" aria-hidden="true" readonly></textarea>
 
     <script id="data" type="application/json">
       __DATA__
@@ -550,8 +484,6 @@
         const name = (i) => CH[i].title.replace(/^Rozdział \d+\.\s*/, "");
         let ch = 0,
           active = null,
-          toastTimer,
-          copyTimer,
           reading = null; // the utterance being read aloud
 
         CH.forEach((_, i) => $("chapter").append(new Option(i + 1 + ". " + name(i), i)));
@@ -664,36 +596,38 @@
           if (i !== ch) {
             ch = i;
             closePop();
-            openMenu(false);
+            closeShare();
             if (reading) read(null);
             render();
           }
-          scrollToBlock(p);
+          scrollToParagraph(p);
           save();
         }
 
-        // reading position: the top block of the article under the bar, kept in the hash (#5/12) and in localStorage
+        // reading position: the number of the paragraph at the top of the article under the bar (0 above the
+        // first), kept in the hash (#5/12) and in localStorage; paragraphs are the p blocks but the date, also in quotes
         const KEY = "klucz-position";
         const barBottom = () => document.querySelector(".bar").getBoundingClientRect().bottom;
         let saveTimer;
-        function scrollToBlock(p) {
-          const b = $("text").children[p];
+        const paragraphs = () =>
+          $("text").querySelectorAll(":scope > p:not(.date), blockquote > p");
+        const position = () => {
+          const top = barBottom() + 24;
+          return [...paragraphs()].filter((p) => p.getBoundingClientRect().top <= top).length;
+        };
+        // paragraph n under the bar; 0, or a number past the last, the top
+        function scrollToParagraph(n) {
+          const p = paragraphs()[n - 1];
           window.scrollTo(
             0,
-            p && b ? b.getBoundingClientRect().top + window.scrollY - barBottom() - 16 : 0,
+            p ? p.getBoundingClientRect().top + window.scrollY - barBottom() - 16 : 0,
           );
         }
-        function topBlock() {
-          const blocks = $("text").children,
-            top = barBottom() + 24;
-          let p = 0;
-          while (p + 1 < blocks.length && blocks[p + 1].getBoundingClientRect().top <= top) p++;
-          return p;
-        }
+        const hash = (p) => "#" + (ch + 1) + (p ? "/" + p : "");
         function save() {
-          const p = topBlock();
+          const p = position();
           try {
-            history.replaceState(null, "", "#" + (ch + 1) + (p ? "/" + p : ""));
+            history.replaceState(null, "", hash(p));
           } catch {}
           try {
             localStorage.setItem(KEY, JSON.stringify([ch, p]));
@@ -711,7 +645,7 @@
         // tap a word: its form, its word list entry and translation
         function openPop(w) {
           closePop();
-          openMenu(false);
+          closeShare();
           active = w;
           w.classList.add("active");
           const [
@@ -830,65 +764,36 @@
         });
         document.addEventListener("click", (e) => {
           if (!e.target.closest("#pop")) closePop();
-          if (!e.target.closest(".copy")) openMenu(false);
         });
 
-        // the whole chapter, or a menu with it and its parts if it is longer than the 5,000 characters Google Translate accepts
-        $("copy").onclick = () => {
-          const parts = CH[ch].parts;
-          if (parts.length === 1) return copy(parts[0]);
-          if (!$("copy-menu").hidden) return openMenu(false);
-          const item = (text, label) => {
-            const b = el("button", "", label);
-            b.append(el("small", "", t("characters", text.length)));
-            b.onclick = () => {
-              openMenu(false);
-              copy(text);
-            };
-            return b;
-          };
-          $("copy-menu").replaceChildren(
-            item(parts.join("\n\n"), t("whole_chapter")),
-            ...parts.map((text, i) => item(text, t("part", i + 1))),
-          );
-          openMenu(true);
-        };
-        function openMenu(open) {
-          $("copy-menu").hidden = !open;
-          $("copy").ariaExpanded = open;
-        }
-        function toast(msg) {
-          const box = $("toast");
-          box.textContent = msg;
-          box.hidden = false;
-          clearTimeout(toastTimer);
-          toastTimer = setTimeout(() => {
-            box.hidden = true;
-          }, 3500);
-        }
-        // success shows on the button only; a failure needs the message
-        async function copy(text) {
-          let ok = false;
-          try {
-            await navigator.clipboard.writeText(text);
-            ok = true;
-          } catch {
-            const ta = $("fallback");
-            ta.value = text;
-            ta.select();
-            try {
-              ok = document.execCommand("copy");
-            } catch {}
-          }
-          const mark = (done) => {
-            $("copy").classList.toggle("done", done);
-            $("copy").firstElementChild.textContent = done ? "check" : "content_copy";
-          };
-          clearTimeout(copyTimer);
-          mark(ok);
-          if (ok) copyTimer = setTimeout(() => mark(false), 2000);
-          else toast(t("copy_blocked"));
-        }
+        // links to the reading position and to the book; the chapter in Polish to copy, and its parts
+        // if it is longer than the 5,000 characters Google Translate accepts; the whole book to print
+        const closeShare = shareButton(() => {
+          const p = position(),
+            page = location.href.split("#")[0],
+            parts = CH[ch].parts,
+            whole = parts.join("\n\n");
+          return [
+            {
+              label: t("link_place"),
+              detail: t("chapter", ch + 1) + (p ? "\n" + t("paragraph", p) : ""),
+              link: page + hash(p),
+            },
+            { label: t("link_book"), link: page },
+            null,
+            { label: t("copy_chapter"), detail: t("characters", whole.length), copy: whole },
+            ...(parts.length > 1
+              ? parts.map((text, i) => ({
+                  label: t("part", i + 1),
+                  detail: t("characters", text.length),
+                  copy: text,
+                  sub: true,
+                }))
+              : []),
+            null,
+            { label: t("print_book"), run: printBook },
+          ];
+        });
 
         $("to-words").onclick = () => {
           const top =
@@ -896,7 +801,7 @@
           window.scrollTo({ top, behavior: "smooth" });
         };
         // every chapter with its words, each starting on a new page; built only while printing
-        $("print").onclick = () => {
+        function printBook() {
           $("book").replaceChildren(
             ...CH.map((_, i) => {
               const art = el("article"),
@@ -913,7 +818,7 @@
           document.documentElement.classList.add("print-all");
           document.title = "Klucz"; // also the file name when saved as PDF
           window.print();
-        };
+        }
         window.addEventListener("afterprint", () => {
           document.documentElement.classList.remove("print-all");
           $("book").replaceChildren();
@@ -939,13 +844,12 @@
         // a new language: every text of the page in it, at the same reading position
         addEventListener("langchange", () => {
           closePop();
-          openMenu(false);
           if (reading)
             read(null); // its block is redrawn
           else readButton(false);
-          const p = topBlock();
+          const p = position();
           render();
-          scrollToBlock(p);
+          scrollToParagraph(p);
         });
         $("prev").onclick = () => go(ch - 1);
         $("next").onclick = () => go(ch + 1);
@@ -954,10 +858,7 @@
           e.target.blur();
         };
         document.addEventListener("keydown", (e) => {
-          if (e.key === "Escape") {
-            closePop();
-            openMenu(false);
-          }
+          if (e.key === "Escape") closePop();
           if (e.target.closest("select")) return;
           if (e.key === "ArrowLeft") go(ch - 1);
           if (e.key === "ArrowRight") go(ch + 1);

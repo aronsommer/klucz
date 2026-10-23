@@ -15,8 +15,14 @@ open_grammar	Grammatik öffnen	Open the grammar
 grammar	Grammatik	Grammar
 read_title	Kapitel vorlesen	Read the chapter aloud
 stop_title	Vorlesen beenden	Stop reading aloud
+share	Teilen	Share
+link_place	Link zu dieser Stelle	Link to this passage
+link_topic	Link zu diesem Thema	Link to this topic
+link_book	Link zum Buch	Link to the book
+link_grammar	Link zur Grammatik	Link to the grammar
+chapter	Kapitel {0}	Chapter {0}
+paragraph	Absatz {0}	Paragraph {0}
 copy_chapter	Kapitel kopieren	Copy the chapter
-whole_chapter	Ganzes Kapitel	Whole chapter
 part	Teil {0}	Part {0}
 characters	{0} Zeichen	{0} characters
 copy_blocked	Kopieren ist in diesem Browser blockiert.	Copying is blocked in this browser.

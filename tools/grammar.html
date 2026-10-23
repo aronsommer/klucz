@@ -20,12 +20,12 @@
     </style>
     <style media="screen">
       /* The reading page's two rows: the topics up to the way back, which is where the grammar button
-         is there, and below print, theme, fullscreen and language in their columns there;
+         is there, and below share, theme, fullscreen and language, from the share button's column on;
          below it one grammar sheet. */
       .switcher {
         grid-column: span 7;
       }
-      #print {
+      .share {
         grid-column: 3;
       }
       @media (min-width: 641px) {
@@ -246,9 +246,12 @@
           <span class="icon" aria-hidden="true">menu_book</span
           ><span class="label" data-t="book"></span>
         </a>
-        <button class="tool" id="print" data-tip="print_topic">
-          <span class="icon" aria-hidden="true">print</span>
-        </button>
+        <div class="share">
+          <button class="tool" id="share" data-tip="share" aria-expanded="false">
+            <span class="icon" aria-hidden="true">ios_share</span>
+          </button>
+          <div class="share-menu" id="share-menu" hidden></div>
+        </div>
         <button class="tool" id="theme">
           <span class="icon" aria-hidden="true">dark_mode</span>
         </button>
@@ -263,6 +266,7 @@
           </select>
         </label>
       </div>
+      <div class="toast" id="toast" hidden role="status"></div>
     </header>
 
     <main>
@@ -349,7 +353,17 @@
           const [c, p] = JSON.parse(localStorage.getItem("klucz-position"));
           $("back").href = "index.html#" + (c + 1) + (p ? "/" + p : "");
         } catch {}
-        $("print").onclick = () => print();
+        // links to the open topic and to the grammar; the topic to print
+        shareButton(() => {
+          const page = location.href.split("#")[0],
+            sheet = sheets[current].dataset.sheet;
+          return [
+            { label: t("link_topic"), detail: t("topic", sheet), link: page + "#" + sheet },
+            { label: t("link_grammar"), link: page },
+            null,
+            { label: t("print_topic"), run: () => print() },
+          ];
+        });
         // before printing, measure the open sheet with the print styles and shrink it if it is taller than A4
         const A4 = 1122; // 297 mm in CSS px
         const styles = [...document.querySelectorAll("style[media]")];
