@@ -202,7 +202,6 @@ Ale przede wszystkim chcę wiedzieć: co otwiera ten klucz?
 - **liczny** _adjective_ — numerous · in the text: liczne (accusative pl.)
 - **Lipowa** _proper noun · f · Gen. Lipowej / Lipowy_ — Lipowa (street name, “Lime Tree Street”) · in the text: Lipowej (locative sg.)
 - **list** _noun · m · Gen. listu · Pl. listy_ — letter
-- **lista** _noun · f · Gen. listy · Pl. listy_ — list · in the text: liście (locative sg.)
 - **lot** _noun · m · Gen. lotu · Pl. loty_ — flight
 - **lotniczy** _adjective_ — air (adj.); bilet lotniczy – plane ticket
 - **lotnisko** _noun · n · Gen. lotniska · Pl. lotniska_ — airport · in the text: lotnisk (genitive pl.)
@@ -4490,6 +4489,7 @@ Kasia mówi, że dobrze zrobiłem. Że to musi wyjść od niej. Ja nie wiem. Cza
 - **kroić** _verb · impf. · kroję, kroisz_ — cut, slice; deska do krojenia – chopping board · in the text: krojenia (verbal noun, genitive sg.)
 - **lawenda** _noun · f · Gen. lawendy · Pl. lawendy_ — lavender · in the text: lawendą (instrumental sg.)
 - **leczenie** _noun · n · Gen. leczenia · Pl. leczenia_ — treatment
+- **lista** _noun · f · Gen. listy · Pl. listy_ — list · in the text: listy (genitive sg.)
 - **łapa** _noun · f · Gen. łapy · Pl. łapy_ — paw · in the text: łapą (instrumental sg.)
 - **mecz** _noun · m · Gen. meczu · Pl. mecze_ — match · in the text: meczu (genitive sg.)
 - **medycyna** _noun · f · Gen. medycyny · Pl. medycyny_ — medicine

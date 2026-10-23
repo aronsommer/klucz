@@ -1,5 +1,6 @@
 # Stanza lemma -> correct lemma, only for lemmas that are not real words.
 # "=form" keys fix one unambiguous word form whose lemma is a real but wrong word.
+# "=before form" keys fix a form only after that word or punctuation, only in the story (liście: list, lista, liść).
 garnko	garnek
 umryć	umrzeć
 milie	miły
@@ -392,3 +393,10 @@ dzieciątka	dzieciątko
 =piątki	piątek
 =molu	molo
 =zmarli	zmarły
+=w liście	list
+=o liście	list
+=zielone liście	liść
+=, listy	list
+=też listy	list
+=dwa listy	list
+=jej listach	list

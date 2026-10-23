@@ -59,7 +59,9 @@ def tokens(text):
         CACHE.mkdir(exist_ok=True)
         cached.write_text(json.dumps(words, ensure_ascii=False))
     fixes = read_tsv(FIXES)
-    return [(form, fix(fixes, lemma, form), pos, f, się) for form, lemma, pos, f, się in words]
+    befores = [""] + [w[0] for w in words]
+    return [(form, fix(fixes, lemma, form, before), pos, f, się)
+            for before, (form, lemma, pos, f, się) in zip(befores, words)]
 
 
 def is_word(token, excluded, names=False):

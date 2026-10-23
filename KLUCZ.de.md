@@ -202,7 +202,6 @@ Ale przede wszystkim chcę wiedzieć: co otwiera ten klucz?
 - **liczny** _Adjektiv_ — zahlreich · im Text: liczne (Akkusativ Pl.)
 - **Lipowa** _Eigenname · f · Gen. Lipowej / Lipowy_ — Lipowa (Straßenname, „Lindenstraße“) · im Text: Lipowej (Lokativ Sg.)
 - **list** _Substantiv · m · Gen. listu · Pl. listy_ — Brief
-- **lista** _Substantiv · f · Gen. listy · Pl. listy_ — Liste · im Text: liście (Lokativ Sg.)
 - **lot** _Substantiv · m · Gen. lotu · Pl. loty_ — Flug
 - **lotniczy** _Adjektiv_ — Flug-; bilet lotniczy – Flugticket
 - **lotnisko** _Substantiv · n · Gen. lotniska · Pl. lotniska_ — Flughafen · im Text: lotnisk (Genitiv Pl.)
@@ -4490,6 +4489,7 @@ Kasia mówi, że dobrze zrobiłem. Że to musi wyjść od niej. Ja nie wiem. Cza
 - **kroić** _Verb · uv. · kroję, kroisz_ — schneiden; deska do krojenia – Schneidebrett · im Text: krojenia (Verbalsubstantiv, Genitiv Sg.)
 - **lawenda** _Substantiv · f · Gen. lawendy · Pl. lawendy_ — Lavendel · im Text: lawendą (Instrumental Sg.)
 - **leczenie** _Substantiv · n · Gen. leczenia · Pl. leczenia_ — Behandlung
+- **lista** _Substantiv · f · Gen. listy · Pl. listy_ — Liste · im Text: listy (Genitiv Sg.)
 - **łapa** _Substantiv · f · Gen. łapy · Pl. łapy_ — Pfote · im Text: łapą (Instrumental Sg.)
 - **mecz** _Substantiv · m · Gen. meczu · Pl. mecze_ — Spiel (Sport) · im Text: meczu (Genitiv Sg.)
 - **medycyna** _Substantiv · f · Gen. medycyny · Pl. medycyny_ — Medizin

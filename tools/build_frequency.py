@@ -34,9 +34,10 @@ def read_tsv(path):
     return {r[0]: r[1] if len(r) > 1 else "" for r in rows if r and not r[0].startswith("#")}
 
 
-def fix(fixes, lemma, form):
-    """Correct a Stanza lemma: by exact form ("=form" keys) first, then by lemma."""
-    return fixes.get("=" + form.lower(), fixes.get(lemma, lemma))
+def fix(fixes, lemma, form, before=""):
+    """Correct a Stanza lemma: by form after the word before ("=before form" keys), by form ("=form"), then by lemma."""
+    form = form.lower()
+    return fixes.get(f"={before.lower()} {form}", fixes.get("=" + form, fixes.get(lemma, lemma)))
 
 
 def clean(line):
