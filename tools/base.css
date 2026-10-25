@@ -225,9 +225,6 @@ main {
 .share-menu button:hover {
   background: var(--highlight);
 }
-.share-menu .sub {
-  padding-left: 28px;
-}
 .share-menu small {
   white-space: pre-line;
   text-align: right;

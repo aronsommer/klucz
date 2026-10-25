@@ -766,13 +766,11 @@
           if (!e.target.closest("#pop")) closePop();
         });
 
-        // links to the reading position and to the book; the chapter in Polish to copy, and its parts
-        // if it is longer than the 5,000 characters Google Translate accepts; the whole book to print
+        // links to the reading position and to the book; the chapter in Polish to copy; the whole book to print
         const closeShare = shareButton(() => {
           const p = position(),
             page = location.href.split("#")[0],
-            parts = CH[ch].parts,
-            whole = parts.join("\n\n");
+            plain = CH[ch].plain;
           return [
             {
               label: t("link_place"),
@@ -781,15 +779,7 @@
             },
             { label: t("link_book"), link: page },
             null,
-            { label: t("copy_chapter"), detail: t("characters", whole.length), copy: whole },
-            ...(parts.length > 1
-              ? parts.map((text, i) => ({
-                  label: t("part", i + 1),
-                  detail: t("characters", text.length),
-                  copy: text,
-                  sub: true,
-                }))
-              : []),
+            { label: t("copy_chapter"), detail: t("characters", plain.length), copy: plain },
             null,
             { label: t("print_book"), run: printBook },
           ];

@@ -12,7 +12,7 @@ function toast(msg) {
   }, 3500);
 }
 
-// The share button: a menu of the page's items(), each {label, detail, sub, link | copy | run}, null a line.
+// The share button: a menu of the page's items(), each {label, detail, link | copy | run}, null a line.
 // A link goes to the device's share menu on a touch screen, else to the clipboard like a copy.
 // Returns a function that closes the menu.
 function shareButton(items) {
@@ -72,7 +72,6 @@ function shareButton(items) {
         if (!item) return document.createElement("hr");
         const b = document.createElement("button");
         b.textContent = item.label;
-        if (item.sub) b.className = "sub";
         if (item.detail) {
           const small = document.createElement("small");
           small.textContent = item.detail;

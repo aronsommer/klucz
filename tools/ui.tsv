@@ -23,7 +23,6 @@ link_grammar	Link zur Grammatik	Link to the grammar
 chapter	Kapitel {0}	Chapter {0}
 paragraph	Absatz {0}	Paragraph {0}
 copy_chapter	Kapitel kopieren	Copy the chapter
-part	Teil {0}	Part {0}
 characters	{0} Zeichen	{0} characters
 copy_blocked	Kopieren ist in diesem Browser blockiert.	Copying is blocked in this browser.
 print_book	Buch drucken	Print the book

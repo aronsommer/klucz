@@ -2,7 +2,6 @@
 
 KLUCZ.de.md, KLUCZ.en.md the book with a German or English glossary after each chapter
 text/NN.txt, klucz.txt plain text without markup, for copying or text-to-speech
-text/parts/NN-K.txt    the same, split into parts that fit Google Translate's 5,000 characters
 index.html             reading page (also the GitHub Pages start page) in German and English: tap a word, word
                        lists, copy, and the translation from chapters/<lang>/NN.md where one exists
 grammar.html           every grammar sheet from grammar/NN.html (German) and grammar/en/NN.html (English) in the
@@ -37,7 +36,6 @@ GRAMMAR = ROOT / "grammar"
 FONTS = ROOT / "fonts"
 ICON = FONTS / "key.svg"  # the tab icon of both pages
 PRINT_COLORS = {"#000": "var(--text)", "#8c8c8c": "var(--text-2)", "#bbb": "var(--line)"}
-PART_LIMIT = 4800
 LETTER = re.compile(r"[^\W\d_]")
 ALPHABET = "aąbcćdeęfghijklłmnńoópqrsśtuvwxyzźż"
 
@@ -68,19 +66,6 @@ def inline(text):
 
 def plain(chapter_blocks):
     return "\n\n".join(t for k, t in chapter_blocks if k != "break")
-
-
-def parts(chapter_blocks):
-    """Group paragraphs into parts of at most PART_LIMIT characters."""
-    result, current = [], ""
-    for kind, text in chapter_blocks:
-        if kind == "break":
-            continue
-        if current and len(current) + len(text) + 2 > PART_LIMIT:
-            result.append(current)
-            current = ""
-        current = f"{current}\n\n{text}" if current else text
-    return result + [current] if current else result
 
 
 def polish_order(word):
@@ -356,23 +341,15 @@ def main():
                     headword, description = found[id(seg)]
                     seg[1:] = [ids[headword]] + ([] if description is None else [index(description)])
 
-    (TEXT / "parts").mkdir(parents=True, exist_ok=True)
-    for stale in (TEXT / "parts").glob("*.txt"):  # a shortened chapter needs fewer parts
-        stale.unlink()
     chapters_data, whole = [], []
     for i, (title, markdown, _) in enumerate(story):
-        chapter_blocks = blocks(markdown)
-        number = f"{i + 1:02d}"
-        text = plain(chapter_blocks)
+        text = plain(blocks(markdown))
         whole.append(text)
-        (TEXT / f"{number}.txt").write_text(text + "\n", encoding="utf-8")
-        chapter_parts = parts(chapter_blocks)
-        for k, part in enumerate(chapter_parts, 1):
-            (TEXT / "parts" / f"{number}-{k}.txt").write_text(part + "\n", encoding="utf-8")
+        (TEXT / f"{i + 1:02d}.txt").write_text(text + "\n", encoding="utf-8")
         chapters_data.append({
             "title": title,
             "blocks": marked[i],
-            "parts": chapter_parts,
+            "plain": text,
             "words": [[ids[w]] + ([form, index(d)] if form else []) for w, form, d in lists.get(i, [])],
             "tr": {lang: [t for _, t in translations[lang][i][1]] for lang in LANGS if i in translations[lang]},
         })
@@ -393,8 +370,7 @@ def main():
                                             sheets=grammar_sheets, **shared), encoding="utf-8")
 
     missing = {lang: [words[w][0] for w in order if not words[w][1][lang][2]] for lang in LANGS}
-    print(f"KLUCZ.de.md, KLUCZ.en.md, text/ ({len(story)} chapters, "
-          f"{sum(len(c['parts']) for c in chapters_data)} parts), "
+    print(f"KLUCZ.de.md, KLUCZ.en.md, text/ ({len(story)} chapters), "
           f"index.html ({len(page) // 1024} KB), grammar.html ({len(list(GRAMMAR.glob('[0-9][0-9].html')))} sheets); "
           f"glossary entries missing: " + ", ".join(f"{len(m)} {lang}" for lang, m in missing.items()))
     for lang, m in missing.items():
