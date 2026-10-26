@@ -1,5 +1,7 @@
 # Klucz
 
+**[aronsommer.github.io/klucz](https://aronsommer.github.io/klucz/)**
+
 **Eine Geschichte, die den Grundwortschatz der polnischen Alltagssprache enthält.**
 
 _Klucz_ („Der Schlüssel“) ist das Tagebuch von Jonas, einem Deutschen, der nach Krakau zieht, weil seine polnische Großmutter ihm eine Wohnung, einen alten Schlüssel und einen rätselhaften Satz hinterlassen hat: _„Klucz otwiera to, co zamknęłam.“_ In 30 Kapiteln, von Oktober 2026 bis Oktober 2027, wächst Jonas' Polnisch mit. Die Geschichte beginnt in kurzen Präsenssätzen auf A1-Niveau und endet bei Briefen, Gerichtsverhandlungen und Erinnerungen an 1971.
