@@ -25,6 +25,7 @@ paragraph	Absatz {0}	Paragraph {0}
 copy_chapter	Kapitel kopieren	Copy the chapter
 characters	{0} Zeichen	{0} characters
 copy_blocked	Kopieren ist in diesem Browser blockiert.	Copying is blocked in this browser.
+print_chapter	Kapitel drucken	Print the chapter
 print_book	Buch drucken	Print the book
 fullscreen	Vollbild	Full screen
 fullscreen_exit	Vollbild beenden	Exit full screen

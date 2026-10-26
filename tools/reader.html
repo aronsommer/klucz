@@ -766,7 +766,7 @@
           if (!e.target.closest("#pop")) closePop();
         });
 
-        // links to the reading position and to the book; the chapter in Polish to copy; the whole book to print
+        // links to the reading position and to the book; the chapter in Polish to copy; the chapter or the book to print
         const closeShare = shareButton(() => {
           const p = position(),
             page = location.href.split("#")[0],
@@ -781,6 +781,7 @@
             null,
             { label: t("copy_chapter"), detail: t("characters", plain.length), copy: plain },
             null,
+            { label: t("print_chapter"), run: () => print() },
             { label: t("print_book"), run: printBook },
           ];
         });
