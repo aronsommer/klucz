@@ -700,7 +700,7 @@
           }
         }
         // the device's own Polish voice, if it has one
-        function speak(text, rate = 1) {
+        function speak(text, rate = 0.8) {
           const u = new SpeechSynthesisUtterance(text);
           u.lang = "pl-PL";
           u.voice = speechSynthesis.getVoices().find((v) => v.lang.startsWith("pl")) || null;
@@ -722,7 +722,7 @@
           p.classList.add("reading");
           // the title by its name only, without the chapter number
           const text = p.tagName === "H1" ? name(ch) : (p.querySelector(".pl") ?? p).textContent;
-          const u = (reading = speak(text, 0.8));
+          const u = (reading = speak(text, 0.7));
           const all = readable();
           u.onend = () => reading === u && read(all[all.indexOf(p) + 1]);
           u.onerror = () => reading === u && read(null);
