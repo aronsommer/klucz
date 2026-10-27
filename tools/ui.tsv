@@ -32,6 +32,7 @@ fullscreen_exit	Vollbild beenden	Exit full screen
 lang_code	DE	EN
 read_translation	Auf Deutsch lesen	Read in English
 read_polish	Auf Polnisch lesen	Read in Polish
+say_translation	Auf Deutsch vorlesen	Read aloud in English
 tap_hint	Tippe auf ein polnisches Wort, um die Übersetzung zu sehen.	Tap a Polish word to see its translation.
 proverb	<span lang="pl">Nie od razu Kraków zbudowano.</span> – Krakau wurde nicht an einem Tag erbaut.	<span lang="pl">Nie od razu Kraków zbudowano.</span> – Kraków wasn't built in a day.
 translation	Übersetzung	Translation

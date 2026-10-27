@@ -32,18 +32,48 @@
         clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 6px), 0 100%);
       }
       /* the bar: where to go on top (chapters | words, grammar), what to do with the text below
-         (read aloud, share | theme, fullscreen, language, translation); the column spans fill both rows */
+         (read aloud and its language, share | theme, fullscreen, language, translation); the column
+         spans fill both rows */
       .switcher {
         grid-column: span 5;
       }
       #to-words,
-      #read {
+      #voice,
+      #translate {
         grid-column: span 2;
+      }
+      /* read aloud: the speaker as wide as one column like the other buttons, then the language
+         read, shown alone, as a field that toggles it; without a translation the speaker fills it */
+      #voice {
+        gap: 0;
+        cursor: default;
+      }
+      #voice button {
+        align-self: stretch;
+        border: 0;
+        background: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+      }
+      #read {
+        flex: 0 0 calc((100% - 8px) / 2); /* two columns and their 8px gap, halved */
+      }
+      #voice:has(#say[hidden]) #read {
+        flex: 1;
+      }
+      #voice #say {
+        flex: 1;
+        min-width: 0;
+        border-left: 1px solid var(--line);
+      }
+      #say[aria-pressed="false"] > :last-child,
+      #say[aria-pressed="true"] > :first-child {
+        display: none;
       }
       /* the translation switch: two halves, Polish and the chosen language; the one shown is filled,
          2px in from the edge, its corners 8px - 2px so they follow the button's */
       #translate {
-        grid-column: span 2;
         padding: 2px;
         gap: 0;
         cursor: default;
@@ -404,7 +434,12 @@
           <span class="icon" aria-hidden="true">school</span
           ><span class="label" data-t="grammar"></span>
         </a>
-        <button class="tool" id="read"></button>
+        <div class="tool" id="voice" role="group">
+          <button id="read"></button>
+          <button id="say" data-tip="say_translation">
+            <span>PL</span><span data-t="lang_code"></span>
+          </button>
+        </div>
         <div class="share">
           <button class="tool" id="share" data-tip="share" aria-expanded="false">
             <span class="icon" aria-hidden="true">ios_share</span>
@@ -585,6 +620,7 @@
           $("prev").disabled = ch === 0;
           $("next").disabled = ch === CH.length - 1;
           translate(translated);
+          voice(voiced);
           $("prev").title = ch === 0 ? t("first_chapter") : "Rozdział " + ch + ": " + name(ch - 1);
           $("next").title =
             ch === CH.length - 1 ? t("last_chapter") : "Rozdział " + (ch + 2) + ": " + name(ch + 1);
@@ -699,19 +735,22 @@
               (below ? r.bottom + 8 : r.top - pop.offsetHeight - 8) + window.scrollY + "px";
           }
         }
-        // the device's own Polish voice, if it has one
-        function speak(text, rate = 0.8) {
+        // the speed of every voice: the chapter, its translation and a word in the pop-up
+        const RATE = 0.7;
+        // the device's own voice for language, if it has one
+        function speak(text, language = "pl") {
           const u = new SpeechSynthesisUtterance(text);
-          u.lang = "pl-PL";
-          u.voice = speechSynthesis.getVoices().find((v) => v.lang.startsWith("pl")) || null;
-          u.rate = rate;
+          u.lang = language;
+          u.voice = speechSynthesis.getVoices().find((v) => v.lang.startsWith(language)) || null;
+          u.rate = RATE;
           speechSynthesis.cancel();
           speechSynthesis.speak(u);
           return u;
         }
         // the title and paragraphs, in reading order
         const readable = () => [...$("text").querySelectorAll("h1, p")];
-        // read the chapter aloud block by block from p, slower, marking the one being read; no p stops
+        // read the chapter aloud block by block from p, in the language chosen beside the button,
+        // marking the one being read; no p stops
         function read(p) {
           document.querySelector(".reading")?.classList.remove("reading");
           readButton(!!p);
@@ -721,8 +760,13 @@
           }
           p.classList.add("reading");
           // the title by its name only, without the chapter number
-          const text = p.tagName === "H1" ? name(ch) : (p.querySelector(".pl") ?? p).textContent;
-          const u = (reading = speak(text, 0.7));
+          const tr = voiced && p.querySelector(":scope > .pair > .tr");
+          const text = tr
+            ? tr.textContent
+            : p.tagName === "H1"
+              ? name(ch)
+              : (p.querySelector(".pl") ?? p).textContent;
+          const u = (reading = speak(text, tr ? lang : "pl"));
           const all = readable();
           u.onend = () => reading === u && read(all[all.indexOf(p) + 1]);
           u.onerror = () => reading === u && read(null);
@@ -736,7 +780,7 @@
           $("read").title = $("read").ariaLabel = t(on ? "stop_title" : "read_title");
         };
         readButton(false);
-        $("read").hidden = !window.speechSynthesis;
+        $("voice").hidden = !window.speechSynthesis;
         $("read").onclick = () => {
           const all = readable(),
             bar = barBottom();
@@ -832,6 +876,16 @@
           closePop();
           translate(true);
         };
+        // the language read aloud, whatever the text shows: Polish or the chosen language; a change
+        // while reading reads the block again in it
+        let voiced = false;
+        function voice(on) {
+          voiced = on;
+          $("say").hidden = !CH[ch].tr[lang];
+          $("say").ariaPressed = on;
+          if (reading) read(document.querySelector(".reading"));
+        }
+        $("say").onclick = () => voice(!voiced);
         // a new language: every text of the page in it, at the same reading position
         addEventListener("langchange", () => {
           closePop();
