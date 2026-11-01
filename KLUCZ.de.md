@@ -395,7 +395,7 @@ Ale przede wszystkim chcę wiedzieć: co otwiera ten klucz?
 - **zgubić** _Verb · v. (uv. gubić) · zgubię, zgubisz_ — verlieren
 - **zimno** _Adverb_ — kalt (es ist kalt)
 - **zmęczony** _Adjektiv_ — müde
-- **zmienić się** _Verb · v. (uv. zmieniać się) · zmienię się, zmienisz się_ — sich verwandeln · im Text: zmieni (Futur, 3. Sg.)
+- **zmienić się** _Verb · v. (uv. zmieniać się) · zmienię się, zmienisz się_ — sich ändern, sich verwandeln · im Text: zmieni (Futur, 3. Sg.)
 - **znaczyć** _Verb · uv. · znaczę, znaczysz_ — bedeuten · im Text: znaczy (Präsens, 3. Sg.)
 - **znać** _Verb · uv. · znam, znasz_ — kennen · im Text: znam (Präsens, 1. Sg.)
 - **znaleźć** _Verb · v. (uv. znajdować) · znajdę, znajdziesz_ — finden
@@ -3077,7 +3077,7 @@ Przy wejściu stała maszyna z numerkami. Trzeba było wybrać sprawę: „Zezwo
 
 Wszystkie siedzenia były zajęte. Na tablicy było napisane: „Sprawy pilne: okienko 7”. Wszyscy mieli pilne sprawy. Starszy pan z Wietnamu przyszedł o bardzo wczesnej godzinie, o szóstej, i był pierwszy. Powiedział mi, że wypełnia te formularze od dwudziestu lat i że jeszcze nigdy nie udało mu się wypisać żadnego bez błędu.
 
-Na ekranie było też napisane, że obecnie średni czas oczekiwania wynosi sto dwadzieścia minut. Obok wisiał plakat: „Skorzystaj z naszych usług przez internet!”. Kasia mówi, że strona urzędu działa tylko w nocy i w niedzielę. Pani obok mnie powiedziała, że przyszła trzeci raz, bo dwa razy się spóźniła i straciła swój termin. Urzędnik, który jest za to odpowiedzialny, zapewnia, że to się nie powtórzy. Zapewnia tak od pięciu lat.
+Na ekranie było też napisane, że obecnie średni czas oczekiwania wynosi sto dwadzieścia minut. Obok wisiał plakat: „Skorzystaj z naszych usług przez internet!”. Kasia mówi, że strona urzędu działa tylko w nocy i w niedzielę. Urzędnik, który jest za to odpowiedzialny, zapewnia, że to się wkrótce zmieni. Zapewnia tak od pięciu lat. Pani obok mnie powiedziała, że przyszła tu już drugi raz. Ostatnio straciła swój termin, bo spóźniła się tylko o pięć minut.
 
 Czekałem dwie godziny. W tym czasie nauczyłem się dużo słów, bo czytałem wszystkie plakaty na ścianach: „wniosek”, „załącznik”, „formularz”, „oświadczenie”, „opłata skarbowa”, „podpis wnioskodawcy”. Kasia mówi, że to język, którym nie mówi nikt oprócz urzędników. Nawet urzędnicy mówią nim tylko w pracy.
 
@@ -3277,7 +3277,6 @@ Faktycznie, jej notatki na marginesie były krótkie: „rodzaj!”, „aspekt!�
 - **poświadczenie** _Substantiv · n · Gen. poświadczenia · Pl. poświadczenia_ — Bescheinigung · im Text: poświadczenia (Genitiv Sg.)
 - **potrzebować** _Verb · uv. · potrzebuję, potrzebujesz_ — brauchen · im Text: potrzebujesz (Präsens, 2. Sg.)
 - **potwierdzić** _Verb · v. (uv. potwierdzać) · potwierdzę, potwierdzisz_ — bestätigen (potwierdzenie – Bestätigung) · im Text: potwierdzenie (Verbalsubstantiv, Nominativ Sg.)
-- **powtórzyć się** _Verb · v. (uv. powtarzać się) · powtórzę się, powtórzysz się_ — sich wiederholen · im Text: powtórzy (Futur, 3. Sg.)
 - **poznać** _Verb · v. (uv. poznawać) · poznam, poznasz_ — kennenlernen; erkennen · im Text: poznałem (Vergangenheit, 1. Sg. m)
 - **pozostać** _Verb · v. (uv. pozostawać) · pozostanę, pozostaniesz_ — bleiben · im Text: pozostanie (Futur, 3. Sg.)
 - **pozwalać** _Verb · uv. (v. pozwolić) · pozwalam, pozwalasz_ — erlauben, zulassen · im Text: pozwalają (Präsens, 3. Pl.)

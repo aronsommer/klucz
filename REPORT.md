@@ -1,23 +1,23 @@
 # Abdeckungsbericht
 
-Wörter im Text: **37352** · verschiedene Lemmata: **4585**
+Wörter im Text: **37356** · verschiedene Lemmata: **4585**
 
 ## Abdeckung der Frequenzliste
 
 | Rang | vorhanden | fehlt | nur 1× |
 |---|---|---|---|
 | 1–500 | 500 (100.0%) | 0 | 37 |
-| 1–1000 | 999 (99.9%) | 1 | 183 |
-| 1–2000 | 1997 (99.9%) | 3 | 687 |
-| 1–3000 | 2991 (99.7%) | 9 | 1347 |
-| 1–4000 | 3295 (82.4%) | 705 | 1513 |
-| 1–5000 | 3520 (70.4%) | 1480 | 1639 |
+| 1–1000 | 999 (99.9%) | 1 | 182 |
+| 1–2000 | 1997 (99.9%) | 3 | 686 |
+| 1–3000 | 2991 (99.7%) | 9 | 1346 |
+| 1–4000 | 3295 (82.4%) | 705 | 1512 |
+| 1–5000 | 3520 (70.4%) | 1480 | 1638 |
 
 ## Kapitel
 
 | Kapitel | Wörter | neue Lemmata | nicht in Liste | höchster Rang |
 |---|---|---|---|---|
-| Rozdział 1. Klucz | 660 | 301 | 7 | 9170 |
+| Rozdział 1. Klucz | 660 | 300 | 7 | 9170 |
 | Rozdział 2. Chleb, mleko i pan Zbyszek | 933 | 254 | 14 | 8906 |
 | Rozdział 3. Pierwsza lekcja | 1090 | 204 | 11 | 9940 |
 | Rozdział 4. Człowiek w czarnym płaszczu | 1171 | 225 | 8 | 9758 |
@@ -26,11 +26,11 @@ Wörter im Text: **37352** · verschiedene Lemmata: **4585**
 | Rozdział 7. Zosia i Hala | 1247 | 257 | 19 | 9801 |
 | Rozdział 8. Wszystkich Świętych | 840 | 98 | 11 | 9876 |
 | Rozdział 9. Piwnica | 1055 | 136 | 16 | 8635 |
-| Rozdział 10. Urząd | 1189 | 184 | 20 | 9094 |
+| Rozdział 10. Urząd | 1193 | 184 | 20 | 9094 |
 | Rozdział 11. Zebranie | 1123 | 147 | 17 | 9778 |
 | Rozdział 12. Andrzejki | 1336 | 183 | 13 | 9082 |
 | Rozdział 13. Włamanie | 1160 | 157 | 19 | 9392 |
-| Rozdział 14. Śnieg | 1166 | 156 | 31 | 9004 |
+| Rozdział 14. Śnieg | 1166 | 157 | 31 | 9004 |
 | Rozdział 15. Wigilia | 1126 | 111 | 27 | 9717 |
 | Rozdział 16. Prawda | 1404 | 88 | 5 | 9359 |
 | Rozdział 17. Sylwester | 1349 | 121 | 11 | 9297 |
@@ -116,12 +116,12 @@ Wörter im Text: **37352** · verschiedene Lemmata: **4585**
 | DET Loc Sing | 106 |
 | DET Nom Plur | 152 |
 | DET Nom Sing | 369 |
-| NOUN Acc Plur | 515 |
+| NOUN Acc Plur | 514 |
 | NOUN Acc Ptan | 47 |
 | NOUN Acc Sing | 1587 |
 | NOUN Dat Plur | 6 |
 | NOUN Dat Sing | 41 |
-| NOUN Gen Plur | 569 |
+| NOUN Gen Plur | 570 |
 | NOUN Gen Ptan | 21 |
 | NOUN Gen Sing | 1401 |
 | NOUN Ins Plur | 146 |

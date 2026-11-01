@@ -3077,7 +3077,7 @@ Przy wejściu stała maszyna z numerkami. Trzeba było wybrać sprawę: „Zezwo
 
 Wszystkie siedzenia były zajęte. Na tablicy było napisane: „Sprawy pilne: okienko 7”. Wszyscy mieli pilne sprawy. Starszy pan z Wietnamu przyszedł o bardzo wczesnej godzinie, o szóstej, i był pierwszy. Powiedział mi, że wypełnia te formularze od dwudziestu lat i że jeszcze nigdy nie udało mu się wypisać żadnego bez błędu.
 
-Na ekranie było też napisane, że obecnie średni czas oczekiwania wynosi sto dwadzieścia minut. Obok wisiał plakat: „Skorzystaj z naszych usług przez internet!”. Kasia mówi, że strona urzędu działa tylko w nocy i w niedzielę. Pani obok mnie powiedziała, że przyszła trzeci raz, bo dwa razy się spóźniła i straciła swój termin. Urzędnik, który jest za to odpowiedzialny, zapewnia, że to się nie powtórzy. Zapewnia tak od pięciu lat.
+Na ekranie było też napisane, że obecnie średni czas oczekiwania wynosi sto dwadzieścia minut. Obok wisiał plakat: „Skorzystaj z naszych usług przez internet!”. Kasia mówi, że strona urzędu działa tylko w nocy i w niedzielę. Urzędnik, który jest za to odpowiedzialny, zapewnia, że to się wkrótce zmieni. Zapewnia tak od pięciu lat. Pani obok mnie powiedziała, że przyszła tu już drugi raz. Ostatnio straciła swój termin, bo spóźniła się tylko o pięć minut.
 
 Czekałem dwie godziny. W tym czasie nauczyłem się dużo słów, bo czytałem wszystkie plakaty na ścianach: „wniosek”, „załącznik”, „formularz”, „oświadczenie”, „opłata skarbowa”, „podpis wnioskodawcy”. Kasia mówi, że to język, którym nie mówi nikt oprócz urzędników. Nawet urzędnicy mówią nim tylko w pracy.
 
@@ -3277,7 +3277,6 @@ Faktycznie, jej notatki na marginesie były krótkie: „rodzaj!”, „aspekt!�
 - **poświadczenie** _noun · n · Gen. poświadczenia · Pl. poświadczenia_ — certification · in the text: poświadczenia (genitive sg.)
 - **potrzebować** _verb · impf. · potrzebuję, potrzebujesz_ — need · in the text: potrzebujesz (present, 2nd sg.)
 - **potwierdzić** _verb · pf. (impf. potwierdzać) · potwierdzę, potwierdzisz_ — confirm (potwierdzenie – confirmation) · in the text: potwierdzenie (verbal noun, nominative sg.)
-- **powtórzyć się** _verb · pf. (impf. powtarzać się) · powtórzę się, powtórzysz się_ — happen again · in the text: powtórzy (future, 3rd sg.)
 - **poznać** _verb · pf. (impf. poznawać) · poznam, poznasz_ — get to know, meet; recognise · in the text: poznałem (past, 1st sg. m)
 - **pozostać** _verb · pf. (impf. pozostawać) · pozostanę, pozostaniesz_ — remain, stay · in the text: pozostanie (future, 3rd sg.)
 - **pozwalać** _verb · impf. (pf. pozwolić) · pozwalam, pozwalasz_ — allow · in the text: pozwalają (present, 3rd pl.)
