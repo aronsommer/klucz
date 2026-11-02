@@ -276,7 +276,7 @@ Ale przede wszystkim chcę wiedzieć: co otwiera ten klucz?
 - **piętro** _Substantiv · n · Gen. piętra · Pl. piętra_ — Stockwerk · im Text: piętra (Akkusativ Pl.)
 - **pisać** _Verb · uv. (v. napisać) · piszę, piszesz_ — schreiben · im Text: piszę (Präsens, 1. Sg.)
 - **plac** _Substantiv · m · Gen. placu · Pl. place_ — Platz · im Text: placu (Lokativ Sg.)
-- **po** _Präposition · + Dat., Akk., Lok._ — nach; po polsku – auf Polnisch
+- **po** _Präposition · + Dat., Akk., Lok._ — nach; po polsku – auf Polnisch; po deski – Bretter holen
 - **pociąg** _Substantiv · m · Gen. pociągu · Pl. pociągi_ — Zug · im Text: pociągiem (Instrumental Sg.)
 - **pod** _Präposition · + Akk., Instr._ — unter
 - **podobać się** _Verb · uv. (v. spodobać się) · podobam się, podobasz się_ — gefallen · im Text: podoba (Präsens, 3. Sg.)
@@ -3719,7 +3719,7 @@ Na imprezie zrozumiałem, że nie znam polskiego. Znam polski z podręcznika i p
 
 — Spoko, luz. — Dał mi piwo. — Ja też nie ogarniam. Masakra, ile tu ludzi.
 
-Kasia potem przetłumaczyła mi całą rozmowę. „Ogarniać” to rozumieć, ale też organizować, załatwiać, sprzątać. „Ogarnij się” znaczy „zachowuj się normalnie”. „Spoko” to „w porządku”. „Masakra” to coś bardzo złego albo bardzo dobrego, zależy od tonu. „Serio?” to „naprawdę?”. A „ziomek” to kolega.
+Kasia potem przetłumaczyła mi całą rozmowę. „Ogarniać” to rozumieć, ale też organizować, załatwiać, sprzątać. „Ogarnij się” znaczy „zachowuj się normalnie”. „Spoko” to „w porządku”. „Luz” to „spokojnie, bez stresu”. „Masakra” to coś bardzo złego albo bardzo dobrego, zależy od tonu. „Serio?” to „naprawdę?”. A „ziomek” to kolega.
 
 — A jak powiem do pani Haliny „siema, ziomek”?
 
@@ -3741,7 +3741,7 @@ Kasia powiedziała mi później, że „tyłek” to grzeczniejsza wersja słowa
 
 — Damy przodem — powiedziałem do Magdy przy wyjściu na balkon, bo tak uczy podręcznik. Magda powiedziała, że jestem uroczy i staroświecki, i że od razu zaczyna mnie śledzić na Instagramie.
 
-Potem Magda dała mi lekcję polskich przezwisk, „tylko tych grzecznych”: frajer, świr, palant, głupiec, drań, świnia, małpa. Każde da się powiedzieć przy babci, jeśli się uśmiechasz. Gęba, morda i łeb to twarz i głowa, ale niegrzecznie. A dupsko to bardzo duża dupa.
+Potem Magda dała mi lekcję polskich przezwisk, „tylko tych grzecznych”: frajer, świr, palant, głupiec, drań, świnia, małpa. Każde da się powiedzieć przy babci, jeśli się uśmiechasz. Gęba i morda to twarz, a łeb to głowa, ale niegrzecznie. A dupsko to bardzo duża dupa.
 
 Chłopak z brodą opowiadał o swojej byłej dziewczynie:
 
@@ -3954,6 +3954,7 @@ Kasia już wybierała numer Tomka.
 - **sprzątać** _Verb · uv. (v. sprzątnąć) · sprzątam, sprzątasz_ — aufräumen
 - **staroświecki** _Adjektiv_ — altmodisch
 - **stawiać** _Verb · uv. (v. postawić) · stawiam, stawiasz_ — stellen · im Text: stawiały (Vergangenheit, 3. Pl.)
+- **stres** _Substantiv · m · Gen. stresu · Pl. stresy_ — Stress · im Text: stresu (Genitiv Sg.)
 - **studentka** _Substantiv · f · Gen. studentki · Pl. studentki_ — Studentin · im Text: studentki (Nominativ Pl.)
 - **szał** _Substantiv · m · Gen. szału · Pl. szały_ — Raserei, Wahnsinn; Rausch
 - **szeptać** _Verb · uv. (v. szepnąć) · szepczę, szepczesz_ — flüstern · im Text: szeptała (Vergangenheit, 3. Sg. f)
@@ -4073,8 +4074,6 @@ Potem rozmawiała z panią Haliną. Pani Halina siedziała w swojej kuchni, bard
 
 — Ja rozpoznaję każdego, kogo raz zobaczę. — Pani Halina podniosła głowę. — Mam osiemdziesiąt lat, nie dziewięćdziesiąt.
 
-— Proszę się uspokoić — powiedziała łagodnie sierżant Majewska. — Nikt pani nie skrzywdzi. Będziemy w pobliżu.
-
 Sierżant Majewska zapisała: „wąż na szyi”. Tomek popatrzył na mnie. W piwnicy, na początku listopada, człowiek w kapturze. Teraz znowu człowiek w kapturze.
 
 Sierżant Majewska wytłumaczyła mi, jak to teraz będzie wyglądało. Policja rozpocznie dochodzenie. Odciski palców porówna z bazą danych. Jeśli uda się zidentyfikować sprawcę, prokurator może go oskarżyć, a sąd ukarać.
@@ -4129,7 +4128,7 @@ Wieczorem posprzątaliśmy mieszkanie. Pomagali wszyscy: Kasia, pan Zbyszek, Ola
 
 Ola zrobiła na komputerze plakat i powiesiła go w bramie: „Zaginiony kot. Rudy, gruby, odpowiada na imię Bonifacy (czasami)”.
 
-Najbardziej wkurzyło mnie nie samo włamanie, tylko to, że ktoś grzebał w rzeczach babci: w jej sukienkach, w jej listach. Najwyraźniej szukali klucza. Kiedy zapytałem Tomka, czy złodzieje wrócą, powiedział: „Bzdura”. Ale nie wyglądał na przekonanego.
+Najbardziej wkurzyło mnie nie samo włamanie, tylko to, że ktoś grzebał w rzeczach babci: w jej sukienkach, w jej listach. Najwyraźniej szukali klucza. Kiedy zapytałem Tomka, czy złodzieje wrócą, powiedział łagodnie: „Bzdura. Nikt was nie skrzywdzi. Będziemy w pobliżu”. Ale nie wyglądał na przekonanego.
 
 Przy sprzątaniu skaleczyłem się szkłem w rękę. Mała rana, ale krwawiła jak cholera.
 
@@ -4246,6 +4245,7 @@ Później pan Zbyszek odkrył, jak to się stało: złodzieje zamknęli drzwi do
 - **przydać się** _Verb · v. (uv. przydawać się) · przydam się, przydasz się_ — nützlich sein
 - **przyjrzeć się** _Verb · v. (uv. przyglądać się) · przyjrzę się, przyjrzysz się_ — genau ansehen · im Text: przyjrzałem (Vergangenheit, 1. Sg. m)
 - **radzić** _Verb · uv. · radzę, radzisz_ — raten · im Text: radzę (Präsens, 1. Sg.)
+- **rana** _Substantiv · f · Gen. rany · Pl. rany_ — Wunde
 - **rozciąć** _Verb · v. (uv. rozcinać) · rozetnę, rozetniesz_ — aufschneiden · im Text: rozcięty (Partizip Passiv, Nominativ Sg. m)
 - **rozejrzeć się** _Verb · v. (uv. rozglądać się) · rozejrzę się, rozejrzysz się_ — sich umsehen · im Text: rozejrzałem (Vergangenheit, 1. Sg. m)
 - **rozłączyć się** _Verb · v. (uv. rozłączać się) · rozłączę się, rozłączysz się_ — auflegen · im Text: rozłączył (Vergangenheit, 3. Sg. m)
@@ -4569,7 +4569,6 @@ Kasia mówi, że dobrze zrobiłem. Że to musi wyjść od niej. Ja nie wiem. Cza
 - **stabilny** _Adjektiv_ — stabil
 - **stent** _Substantiv · m · Gen. stentu · Pl. stenty_ — Stent
 - **stopień** _Substantiv · m · Gen. stopnia · Pl. stopnie_ — Grad; Stufe · im Text: stopni (Genitiv Pl.)
-- **stres** _Substantiv · m · Gen. stresu · Pl. stresy_ — Stress · im Text: stresu (Genitiv Sg.)
 - **Sukiennice** _Eigenname · nur Pl._ — Tuchhallen (in Krakau) · im Text: Sukiennicami (Instrumental Pl.)
 - **szalony** _Adjektiv_ — verrückt · im Text: szalona (Nominativ Sg. f)
 - **szczęście** _Substantiv · n · Gen. szczęścia · Pl. szczęścia_ — Glück
@@ -6763,7 +6762,6 @@ Klucz mam w kieszeni. Przez całą noc ani razu go nie wyjąłem. Ale wiem, że 
 - **przetrwać** _Verb · v. · przetrwam, przetrwasz_ — überstehen · im Text: przetrwał (Vergangenheit, 3. Sg. m)
 - **przybywać** _Verb · uv. (v. przybyć) · przybywam, przybywasz_ — ankommen, eintreffen · im Text: przybywali (Vergangenheit, 3. Pl.)
 - **puszczać** _Verb · uv. (v. puścić) · puszczam, puszczasz_ — loslassen
-- **rana** _Substantiv · f · Gen. rany · Pl. rany_ — Wunde · im Text: ranę (Akkusativ Sg.)
 - **rany** _Substantiv_ — Mensch!, oje! (ugs.)
 - **ratunek** _Substantiv · m · Gen. ratunku · Pl. ratunki_ — Rettung; Hilfe!
 - **ręcznik** _Substantiv · m · Gen. ręcznika · Pl. ręczniki_ — Handtuch · im Text: ręcznikami (Instrumental Pl.)

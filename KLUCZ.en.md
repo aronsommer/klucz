@@ -276,7 +276,7 @@ Ale przede wszystkim chcę wiedzieć: co otwiera ten klucz?
 - **piętro** _noun · n · Gen. piętra · Pl. piętra_ — floor, storey · in the text: piętra (accusative pl.)
 - **pisać** _verb · impf. (pf. napisać) · piszę, piszesz_ — write · in the text: piszę (present, 1st sg.)
 - **plac** _noun · m · Gen. placu · Pl. place_ — square · in the text: placu (locative sg.)
-- **po** _preposition · + Dat., Acc., Loc._ — after; po polsku – in Polish
+- **po** _preposition · + Dat., Acc., Loc._ — after; po polsku – in Polish; po deski – to fetch boards
 - **pociąg** _noun · m · Gen. pociągu · Pl. pociągi_ — train · in the text: pociągiem (instrumental sg.)
 - **pod** _preposition · + Acc., Inst._ — under
 - **podobać się** _verb · impf. (pf. spodobać się) · podobam się, podobasz się_ — like (Kraków mi się podoba – I like Kraków) · in the text: podoba (present, 3rd sg.)
@@ -3719,7 +3719,7 @@ Na imprezie zrozumiałem, że nie znam polskiego. Znam polski z podręcznika i p
 
 — Spoko, luz. — Dał mi piwo. — Ja też nie ogarniam. Masakra, ile tu ludzi.
 
-Kasia potem przetłumaczyła mi całą rozmowę. „Ogarniać” to rozumieć, ale też organizować, załatwiać, sprzątać. „Ogarnij się” znaczy „zachowuj się normalnie”. „Spoko” to „w porządku”. „Masakra” to coś bardzo złego albo bardzo dobrego, zależy od tonu. „Serio?” to „naprawdę?”. A „ziomek” to kolega.
+Kasia potem przetłumaczyła mi całą rozmowę. „Ogarniać” to rozumieć, ale też organizować, załatwiać, sprzątać. „Ogarnij się” znaczy „zachowuj się normalnie”. „Spoko” to „w porządku”. „Luz” to „spokojnie, bez stresu”. „Masakra” to coś bardzo złego albo bardzo dobrego, zależy od tonu. „Serio?” to „naprawdę?”. A „ziomek” to kolega.
 
 — A jak powiem do pani Haliny „siema, ziomek”?
 
@@ -3741,7 +3741,7 @@ Kasia powiedziała mi później, że „tyłek” to grzeczniejsza wersja słowa
 
 — Damy przodem — powiedziałem do Magdy przy wyjściu na balkon, bo tak uczy podręcznik. Magda powiedziała, że jestem uroczy i staroświecki, i że od razu zaczyna mnie śledzić na Instagramie.
 
-Potem Magda dała mi lekcję polskich przezwisk, „tylko tych grzecznych”: frajer, świr, palant, głupiec, drań, świnia, małpa. Każde da się powiedzieć przy babci, jeśli się uśmiechasz. Gęba, morda i łeb to twarz i głowa, ale niegrzecznie. A dupsko to bardzo duża dupa.
+Potem Magda dała mi lekcję polskich przezwisk, „tylko tych grzecznych”: frajer, świr, palant, głupiec, drań, świnia, małpa. Każde da się powiedzieć przy babci, jeśli się uśmiechasz. Gęba i morda to twarz, a łeb to głowa, ale niegrzecznie. A dupsko to bardzo duża dupa.
 
 Chłopak z brodą opowiadał o swojej byłej dziewczynie:
 
@@ -3954,6 +3954,7 @@ Kasia już wybierała numer Tomka.
 - **sprzątać** _verb · impf. (pf. sprzątnąć) · sprzątam, sprzątasz_ — clean up, tidy
 - **staroświecki** _adjective_ — old-fashioned
 - **stawiać** _verb · impf. (pf. postawić) · stawiam, stawiasz_ — put, place · in the text: stawiały (past, 3rd pl.)
+- **stres** _noun · m · Gen. stresu · Pl. stresy_ — stress · in the text: stresu (genitive sg.)
 - **studentka** _noun · f · Gen. studentki · Pl. studentki_ — student (woman) · in the text: studentki (nominative pl.)
 - **szał** _noun · m · Gen. szału · Pl. szały_ — frenzy
 - **szeptać** _verb · impf. (pf. szepnąć) · szepczę, szepczesz_ — whisper · in the text: szeptała (past, 3rd sg. f)
@@ -4073,8 +4074,6 @@ Potem rozmawiała z panią Haliną. Pani Halina siedziała w swojej kuchni, bard
 
 — Ja rozpoznaję każdego, kogo raz zobaczę. — Pani Halina podniosła głowę. — Mam osiemdziesiąt lat, nie dziewięćdziesiąt.
 
-— Proszę się uspokoić — powiedziała łagodnie sierżant Majewska. — Nikt pani nie skrzywdzi. Będziemy w pobliżu.
-
 Sierżant Majewska zapisała: „wąż na szyi”. Tomek popatrzył na mnie. W piwnicy, na początku listopada, człowiek w kapturze. Teraz znowu człowiek w kapturze.
 
 Sierżant Majewska wytłumaczyła mi, jak to teraz będzie wyglądało. Policja rozpocznie dochodzenie. Odciski palców porówna z bazą danych. Jeśli uda się zidentyfikować sprawcę, prokurator może go oskarżyć, a sąd ukarać.
@@ -4129,7 +4128,7 @@ Wieczorem posprzątaliśmy mieszkanie. Pomagali wszyscy: Kasia, pan Zbyszek, Ola
 
 Ola zrobiła na komputerze plakat i powiesiła go w bramie: „Zaginiony kot. Rudy, gruby, odpowiada na imię Bonifacy (czasami)”.
 
-Najbardziej wkurzyło mnie nie samo włamanie, tylko to, że ktoś grzebał w rzeczach babci: w jej sukienkach, w jej listach. Najwyraźniej szukali klucza. Kiedy zapytałem Tomka, czy złodzieje wrócą, powiedział: „Bzdura”. Ale nie wyglądał na przekonanego.
+Najbardziej wkurzyło mnie nie samo włamanie, tylko to, że ktoś grzebał w rzeczach babci: w jej sukienkach, w jej listach. Najwyraźniej szukali klucza. Kiedy zapytałem Tomka, czy złodzieje wrócą, powiedział łagodnie: „Bzdura. Nikt was nie skrzywdzi. Będziemy w pobliżu”. Ale nie wyglądał na przekonanego.
 
 Przy sprzątaniu skaleczyłem się szkłem w rękę. Mała rana, ale krwawiła jak cholera.
 
@@ -4246,6 +4245,7 @@ Później pan Zbyszek odkrył, jak to się stało: złodzieje zamknęli drzwi do
 - **przydać się** _verb · pf. (impf. przydawać się) · przydam się, przydasz się_ — come in handy
 - **przyjrzeć się** _verb · pf. (impf. przyglądać się) · przyjrzę się, przyjrzysz się_ — take a close look · in the text: przyjrzałem (past, 1st sg. m)
 - **radzić** _verb · impf. · radzę, radzisz_ — advise · in the text: radzę (present, 1st sg.)
+- **rana** _noun · f · Gen. rany · Pl. rany_ — wound
 - **rozciąć** _verb · pf. (impf. rozcinać) · rozetnę, rozetniesz_ — cut open · in the text: rozcięty (passive participle, nominative sg. m)
 - **rozejrzeć się** _verb · pf. (impf. rozglądać się) · rozejrzę się, rozejrzysz się_ — look around · in the text: rozejrzałem (past, 1st sg. m)
 - **rozłączyć się** _verb · pf. (impf. rozłączać się) · rozłączę się, rozłączysz się_ — hang up · in the text: rozłączył (past, 3rd sg. m)
@@ -4569,7 +4569,6 @@ Kasia mówi, że dobrze zrobiłem. Że to musi wyjść od niej. Ja nie wiem. Cza
 - **stabilny** _adjective_ — stable
 - **stent** _noun · m · Gen. stentu · Pl. stenty_ — stent
 - **stopień** _noun · m · Gen. stopnia · Pl. stopnie_ — degree; step, stair · in the text: stopni (genitive pl.)
-- **stres** _noun · m · Gen. stresu · Pl. stresy_ — stress · in the text: stresu (genitive sg.)
 - **Sukiennice** _proper noun · pl. only_ — the Cloth Hall (in Kraków) · in the text: Sukiennicami (instrumental pl.)
 - **szalony** _adjective_ — crazy · in the text: szalona (nominative sg. f)
 - **szczęście** _noun · n · Gen. szczęścia · Pl. szczęścia_ — luck; happiness; mieć szczęście – be lucky
@@ -6763,7 +6762,6 @@ Klucz mam w kieszeni. Przez całą noc ani razu go nie wyjąłem. Ale wiem, że 
 - **przetrwać** _verb · pf. · przetrwam, przetrwasz_ — survive, last · in the text: przetrwał (past, 3rd sg. m)
 - **przybywać** _verb · impf. (pf. przybyć) · przybywam, przybywasz_ — arrive · in the text: przybywali (past, 3rd pl.)
 - **puszczać** _verb · impf. (pf. puścić) · puszczam, puszczasz_ — let go of
-- **rana** _noun · f · Gen. rany · Pl. rany_ — wound · in the text: ranę (accusative sg.)
 - **rany** _noun_ — rany boskie! – good God!
 - **ratunek** _noun · m · Gen. ratunku · Pl. ratunki_ — rescue
 - **ręcznik** _noun · m · Gen. ręcznika · Pl. ręczniki_ — towel · in the text: ręcznikami (instrumental pl.)

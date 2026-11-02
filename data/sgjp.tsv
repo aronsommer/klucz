@@ -1,7 +1,7 @@
 # SGJP pl.sgjp.sgjp-2026.10.19, https://download.sgjp.pl/morfeusz/20261018/sgjp-20261018.tab.gz
 # Copyright © 2007–2026 Marcin Woliński, Zbigniew Bronk, Włodzimierz Gruszczyński, Witold Kieraś, Zygmunt Saloni, Danuta Skowrońska, Robert Wołosz; BSD license (see the downloaded file)
 # form, lemma, tag, kind, labels; written by tools/lexicon.py, never by hand
-# made for 3a55396684085aded0a1b5df7635b2687096e321
+# made for b80b1678b0793db3f7074c512e94358c95bab2b1
 AGH	AGH	subst:sg.pl:nom.gen.dat.acc.inst.loc.voc:f	nazwa_instytucji	
 AGH	AGH	subst:sg.pl:nom.gen.dat.acc.inst.loc.voc:n:ncol	nazwa_instytucji	
 Ale	Al	depr:pl:nom.acc.voc:m2	imię	
@@ -14555,7 +14555,6 @@ usiłowania	usiłować	ger:pl:nom.acc:n:imperf:aff
 usiłowania	usiłować	ger:sg:gen:n:imperf:aff		
 usiłowanie	usiłować	ger:sg:nom.acc:n:imperf:aff		
 uspokoi	uspokoić	fin:sg:ter:perf		
-uspokoić	uspokoić	inf:perf		
 uspokoił	uspokoić	praet:sg:m1.m2.m3:perf		
 uspokoił	uspokoić	praet:sg:m1.m2.m3:ter:perf		
 usprawiedliwienie	usprawiedliwienie	subst:sg:nom.acc.voc:n:ncol	nazwa_pospolita	
