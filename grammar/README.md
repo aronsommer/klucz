@@ -12,7 +12,8 @@ Dieselben Blätter erscheinen auch auf der Leseseite: `tools/build.py` setzt sie
 - **Alles muss stimmen.** Nur Formen und Regeln, die sicher sind. Im Zweifel weglassen.
 - Hat eine Regel Ausnahmen, steht das dabei: „meist“, „fast immer“, „oft“.
 - Zielgruppe: Deutschsprachige Lernende (A1–A2). Erklärungen auf Deutsch, kurz und einfach
-  („Mitlaut“ statt „Konsonant“, „Grundform“ statt „Infinitiv“).
+  („Grundform“ statt „Infinitiv“). „Vokal“ und „Konsonant“ bleiben, sie sind bekannter als
+  „Selbstlaut“ und „Mitlaut“.
 - Alltägliche Beispielwörter mit deutscher Übersetzung. Namen: Robert, Kasia, Anna.
 - Jedes Blatt funktioniert **für sich allein**: keine Verweise auf andere Blätter.
 

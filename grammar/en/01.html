@@ -2,165 +2,434 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Alfabet i wymowa – Alphabet and Pronunciation</title>
+    <title>Alfabet – Alphabet</title>
     <link rel="stylesheet" href="../style.css" />
     <style>
-      :is(th, td):first-child {
-        width: 90px;
-      }
-      :is(th, td):nth-child(2) {
-        width: 280px;
-      }
-      .page > table:last-of-type :is(th, td):first-child {
-        width: 130px;
-      }
-      .page > table:last-of-type :is(th, td):nth-child(2) {
-        width: auto;
-      }
       .letters {
-        margin-top: 4px;
+        position: relative;
+        margin-top: 6px;
+        padding-left: 110px;
         font-size: 17px;
         color: #8c8c8c;
+      }
+      .letters span {
+        position: absolute;
+        left: 0;
+        bottom: 1px;
+        font-size: 15px;
+        color: #000;
+      }
+      .legend {
+        margin-top: 4px;
+        padding-left: 110px;
+        font-size: 13px;
+        color: #8c8c8c;
+      }
+      .cols {
+        margin-top: 0;
+      }
+      h2 {
+        margin-top: 10px;
+      }
+      .col h2:first-child {
+        margin-top: 6px;
+      }
+      table {
+        font-size: 15px;
+      }
+      :is(th, td) {
+        padding: 1px 6px;
+      }
+      .col :is(th, td):first-child {
+        width: 40px;
+      }
+      td:first-child {
+        font-style: normal;
+      }
+      .col :is(th, td):nth-child(2) {
+        width: 82px;
+      }
+      .col :is(th, td):nth-child(4) {
+        width: 92px;
+      }
+      .col td:nth-child(4) {
+        font-size: 13px;
+      }
+      /* the box ends level with section 2 */
+      .col:first-child {
+        display: flex;
+        flex-direction: column;
+      }
+      .col .box {
+        margin-top: auto;
+        padding: 5px 12px;
+      }
+      .col .box p {
+        padding: 0;
+        border: 0;
+        color: #000;
+        font-size: 14px;
+      }
+      .col .box p + p {
+        margin-top: 3px;
+      }
+      .soft :is(td:nth-child(2), td:nth-child(4)) {
+        color: #000;
+      }
+      .soft .sound {
+        width: 70px;
+      }
+      .soft .word {
+        width: 90px;
+      }
+      /* the second example starts where the right column above starts */
+      .soft .left {
+        width: 185px;
       }
     </style>
   </head>
   <body>
     <div class="page">
-      <h1>Alfabet i wymowa – Alphabet and Pronunciation</h1>
-      <p class="sub">
-        Stress is almost always on the second-last syllable: <b>Pol</b>ska · War<b>sza</b>wa ·
-        dzię<b>ku</b>ję
-      </p>
+      <h1>Alfabet – Alphabet</h1>
+      <p class="sub">Almost everything is said the way it is written.</p>
 
-      <h2>1. Alphabet <span>· 32 letters, bold = not in English</span></h2>
       <p class="letters">
-        A <b>Ą</b> B C <b>Ć</b> D E <b>Ę</b> F G H I J K L <b>Ł</b> M N <b>Ń</b> O <b>Ó</b> P R S
-        <b>Ś</b> T U W Y Z <b>Ź</b> <b>Ż</b>
+        <span>Letters</span> a <b>ą</b> b c <b>ć</b> d e <b>ę</b> f g h i j k l <b>ł</b> m n
+        <b>ń</b> o <b>ó</b> p (q) r s <b>ś</b> t u (v) w (x) y z <b>ź</b> <b>ż</b>
       </p>
-      <p class="rule">
-        q, v, x only in foreign words · Almost everything is pronounced the way it is written.
-      </p>
+      <p class="letters"><span>Digraphs</span> ch cz dz dź dż rz sz · ci dzi ni si zi</p>
+      <p class="legend">bold = not in English · (q) (v) (x) only in foreign words</p>
 
-      <h2>2. Vowels <span>· sound roughly like …</span></h2>
-      <table>
-        <tr>
-          <th>Letter</th>
-          <th>Pronunciation</th>
-          <th>Example</th>
-        </tr>
-        <tr>
-          <td><b>e</b></td>
-          <td>always open, like e in “bed”</td>
-          <td><b>nie</b> – no, not</td>
-        </tr>
-        <tr>
-          <td><b>o</b></td>
-          <td>always open, like o in “hot”</td>
-          <td><b>dom</b> – house</td>
-        </tr>
-        <tr>
-          <td><b>ó</b> = <b>u</b></td>
-          <td>both like oo in “book”</td>
-          <td><b>góra</b> – mountain · <b>ulica</b> – street</td>
-        </tr>
-        <tr>
-          <td><b>y</b></td>
-          <td>a dark i, a bit like i in “bit”</td>
-          <td><b>ryba</b> – fish</td>
-        </tr>
-        <tr>
-          <td><b>ą</b></td>
-          <td>nasal o</td>
-          <td><b>są</b> – they are</td>
-        </tr>
-        <tr>
-          <td><b>ę</b></td>
-          <td>nasal e; at the end mostly plain e</td>
-          <td><b>ręka</b> – hand · <b>idę</b> → “ide”</td>
-        </tr>
-      </table>
+      <div class="cols">
+        <div class="col">
+          <h2>1. Samogłoski – Vowels</h2>
+          <table>
+            <tr>
+              <th></th>
+              <th>Example</th>
+              <th></th>
+              <th>Sound</th>
+            </tr>
+            <tr>
+              <td><b>a</b></td>
+              <td><b>arbuz</b></td>
+              <td>watermelon</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><b>ą</b></td>
+              <td><b>wąż</b></td>
+              <td>snake</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><b>e</b></td>
+              <td><b>ekran</b></td>
+              <td>screen</td>
+              <td>always open</td>
+            </tr>
+            <tr>
+              <td><b>ę</b></td>
+              <td><b>gęś</b></td>
+              <td>goose</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><b>i</b></td>
+              <td><b>igła</b></td>
+              <td>needle</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><b>o</b></td>
+              <td><b>okulary</b></td>
+              <td>glasses</td>
+              <td>always open</td>
+            </tr>
+            <tr>
+              <td><b>ó</b></td>
+              <td><b>ósemka</b></td>
+              <td>eight</td>
+              <td>same as <b>u</b></td>
+            </tr>
+            <tr>
+              <td><b>u</b></td>
+              <td><b>ucho</b></td>
+              <td>ear</td>
+              <td>same as <b>ó</b></td>
+            </tr>
+            <tr>
+              <td><b>y</b></td>
+              <td><b>ryba</b></td>
+              <td>fish</td>
+              <td>dark i</td>
+            </tr>
+          </table>
 
-      <h2>3. Consonants <span>· different from English</span></h2>
-      <table>
-        <tr>
-          <td><b>ł</b></td>
-          <td>like w in “water”</td>
-          <td><b>mały</b> – small</td>
-        </tr>
-        <tr>
-          <td><b>w</b></td>
-          <td>like v in “very”</td>
-          <td><b>woda</b> – water</td>
-        </tr>
-        <tr>
-          <td><b>z</b></td>
-          <td>like z in “zoo”</td>
-          <td><b>zupa</b> – soup</td>
-        </tr>
-        <tr>
-          <td><b>s</b></td>
-          <td>always like s in “sun”</td>
-          <td><b>sok</b> – juice</td>
-        </tr>
-        <tr>
-          <td><b>c</b></td>
-          <td>like ts in “cats”</td>
-          <td><b>noc</b> – night</td>
-        </tr>
-        <tr>
-          <td><b>ch</b> = <b>h</b></td>
-          <td>both like ch in “loch”</td>
-          <td><b>chleb</b> – bread · <b>herbata</b> – tea</td>
-        </tr>
-        <tr>
-          <td><b>r</b></td>
-          <td>rolled with the tongue tip</td>
-          <td><b>rower</b> – bicycle</td>
-        </tr>
-      </table>
+          <h2>3. Dwuznaki – Digraphs</h2>
+          <table>
+            <tr>
+              <th></th>
+              <th>Example</th>
+              <th></th>
+              <th>Sound</th>
+            </tr>
+            <tr>
+              <td><b>ch</b></td>
+              <td><b>chmura</b></td>
+              <td>cloud</td>
+              <td>same as <b>h</b></td>
+            </tr>
+            <tr>
+              <td><b>cz</b></td>
+              <td><b>czapka</b></td>
+              <td>cap</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><b>dz</b></td>
+              <td><b>dzwon</b></td>
+              <td>bell</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><b>dź</b></td>
+              <td><b>dźwig</b></td>
+              <td>crane</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><b>dż</b></td>
+              <td><b>dżem</b></td>
+              <td>jam</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><b>rz</b></td>
+              <td><b>rzeka</b></td>
+              <td>river</td>
+              <td>same as <b>ż</b></td>
+            </tr>
+            <tr>
+              <td><b>sz</b></td>
+              <td><b>szafa</b></td>
+              <td>wardrobe</td>
+              <td></td>
+            </tr>
+          </table>
+          <div class="box">
+            <p>
+              At the end of a word: b&nbsp;→&nbsp;p, d&nbsp;→&nbsp;t, g&nbsp;→&nbsp;k,
+              w&nbsp;→&nbsp;f, z&nbsp;→&nbsp;s, ż&nbsp;→&nbsp;sz
+            </p>
+            <p><b>chleb</b> → “chlep”, <b>Kraków</b> → “Krakuf”</p>
+            <p>
+              After p, b, t, d, k, g, ch, j, w you usually write <b>rz</b>, not <b>ż</b>:
+              <b>trzy</b>, <b>krzesło</b>
+            </p>
+          </div>
+        </div>
 
-      <h2>4. Hissing sounds <span>· hard and soft</span></h2>
-      <p class="rule">
-        si, ci, zi, dzi, ni = ś, ć, ź, dź, ń · before a vowel the i only makes it soft: siedem =
-        “ś-edem”
-      </p>
-      <table>
-        <tr>
-          <th>s sounds</th>
-          <th>hard<small>similar to English sh</small></th>
-          <th>soft<small>like hard, but softer</small></th>
-        </tr>
-        <tr>
-          <td><b>s</b> · sok</td>
-          <td><b>sz</b> like sh · szkoła</td>
-          <td><b>ś</b> / <b>si</b> · środa, siedem</td>
-        </tr>
-        <tr>
-          <td><b>c</b> · noc</td>
-          <td><b>cz</b> like ch · czas</td>
-          <td><b>ć</b> / <b>ci</b> · być, ciocia</td>
-        </tr>
-        <tr>
-          <td><b>z</b> · zupa</td>
-          <td><b>ż</b> = <b>rz</b> like s in “pleasure” · żona</td>
-          <td><b>ź</b> / <b>zi</b> · źle, zima</td>
-        </tr>
-        <tr>
-          <td><b>dz</b> · dzwon</td>
-          <td><b>dż</b> like j in “jam” · dżem</td>
-          <td><b>dź</b> / <b>dzi</b> · dzień</td>
-        </tr>
-      </table>
-
-      <div class="box">
-        <h3>Remember</h3>
-        <p>ń and ni sound like ny in “canyon” · koń (horse), nie</p>
-        <p>
-          Hard at the end of a word: b → p, d → t, g → k, w → f, z → s, ż → sz · chleb → “chlep” ·
-          Kraków → “Krakuf”
-        </p>
-        <p>rz after p, t, k, ch sounds like sz · przepraszam → “pszepraszam” · trzy → “tszy”</p>
+        <div class="col">
+          <h2>2. Spółgłoski – Consonants</h2>
+          <table>
+            <tr>
+              <th></th>
+              <th>Example</th>
+              <th></th>
+              <th>Sound</th>
+            </tr>
+            <tr>
+              <td><b>b</b></td>
+              <td><b>babcia</b></td>
+              <td>grandmother</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><b>c</b></td>
+              <td><b>córka</b></td>
+              <td>daughter</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><b>ć</b></td>
+              <td><b>ćma</b></td>
+              <td>moth</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><b>d</b></td>
+              <td><b>dom</b></td>
+              <td>house</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><b>f</b></td>
+              <td><b>farby</b></td>
+              <td>paints</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><b>g</b></td>
+              <td><b>guma</b></td>
+              <td>rubber</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><b>h</b></td>
+              <td><b>hura</b></td>
+              <td>hooray</td>
+              <td>same as <b>ch</b></td>
+            </tr>
+            <tr>
+              <td><b>j</b></td>
+              <td><b>jeż</b></td>
+              <td>hedgehog</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><b>k</b></td>
+              <td><b>kot</b></td>
+              <td>cat</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><b>l</b></td>
+              <td><b>lalka</b></td>
+              <td>doll</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><b>ł</b></td>
+              <td><b>łódka</b></td>
+              <td>boat</td>
+              <td>like w in weekend</td>
+            </tr>
+            <tr>
+              <td><b>m</b></td>
+              <td><b>mama</b></td>
+              <td>mum</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><b>n</b></td>
+              <td><b>nos</b></td>
+              <td>nose</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><b>ń</b></td>
+              <td><b>koń</b></td>
+              <td>horse</td>
+              <td>like ny in “canyon”</td>
+            </tr>
+            <tr>
+              <td><b>p</b></td>
+              <td><b>parasol</b></td>
+              <td>umbrella</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><b>r</b></td>
+              <td><b>rower</b></td>
+              <td>bike</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><b>s</b></td>
+              <td><b>sowa</b></td>
+              <td>owl</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><b>ś</b></td>
+              <td><b>śmieci</b></td>
+              <td>rubbish</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><b>t</b></td>
+              <td><b>tata</b></td>
+              <td>dad</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><b>w</b></td>
+              <td><b>woda</b></td>
+              <td>water</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><b>z</b></td>
+              <td><b>zegar</b></td>
+              <td>clock</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><b>ź</b></td>
+              <td><b>źródło</b></td>
+              <td>spring</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><b>ż</b></td>
+              <td><b>żaba</b></td>
+              <td>frog</td>
+              <td>same as <b>rz</b></td>
+            </tr>
+          </table>
+        </div>
       </div>
+      <h2>4. Głoski miękkie – Soft sounds <span>· same sound, two spellings</span></h2>
+      <table class="soft">
+        <colgroup>
+          <col class="sound" />
+          <col class="word" />
+          <col class="left" />
+          <col class="word" />
+          <col />
+        </colgroup>
+        <tr>
+          <th></th>
+          <th colspan="2">with accent: not before a vowel</th>
+          <th colspan="2">with i: before a vowel</th>
+        </tr>
+        <tr>
+          <td><b>ć</b> = <b>ci</b></td>
+          <td><b>ć</b>ma</td>
+          <td>moth</td>
+          <td><b>ci</b>ocia</td>
+          <td>aunt</td>
+        </tr>
+        <tr>
+          <td><b>dź</b> = <b>dzi</b></td>
+          <td><b>dź</b>wig</td>
+          <td>crane</td>
+          <td><b>dzi</b>adek</td>
+          <td>grandfather</td>
+        </tr>
+        <tr>
+          <td><b>ń</b> = <b>ni</b></td>
+          <td>ko<b>ń</b></td>
+          <td>horse</td>
+          <td><b>ni</b>ania</td>
+          <td>nanny</td>
+        </tr>
+        <tr>
+          <td><b>ś</b> = <b>si</b></td>
+          <td><b>ś</b>mieci</td>
+          <td>rubbish</td>
+          <td><b>si</b>ano</td>
+          <td>hay</td>
+        </tr>
+        <tr>
+          <td><b>ź</b> = <b>zi</b></td>
+          <td><b>ź</b>ródło</td>
+          <td>spring</td>
+          <td><b>zi</b>emia</td>
+          <td>earth</td>
+        </tr>
+      </table>
     </div>
   </body>
 </html>
