@@ -12,8 +12,8 @@ Dieselben Blätter erscheinen auch auf der Leseseite: `tools/build.py` setzt sie
 - **Alles muss stimmen.** Nur Formen und Regeln, die sicher sind. Im Zweifel weglassen.
 - Hat eine Regel Ausnahmen, steht das dabei: „meist“, „fast immer“, „oft“.
 - Zielgruppe: Deutschsprachige Lernende (A1–A2). Erklärungen auf Deutsch, kurz und einfach
-  („Grundform“ statt „Infinitiv“). „Vokal“ und „Konsonant“ bleiben, sie sind bekannter als
-  „Selbstlaut“ und „Mitlaut“.
+  („Grundform“ statt „Infinitiv“). „Vokal“, „Konsonant“ und „Neutrum“ bleiben, sie sind bekannter als
+  „Selbstlaut“, „Mitlaut“ und „sächlich“.
 - Alltägliche Beispielwörter mit deutscher Übersetzung. Namen: Robert, Kasia, Anna.
 - Jedes Blatt funktioniert **für sich allein**: keine Verweise auf andere Blätter.
 
@@ -35,7 +35,7 @@ auf Englisch, übersetzt aus dem Polnischen, nicht aus dem Deutschen.
 1. `h1`: **Polnisch – Deutsch**, z. B. „Biernik – Akkusativ“. Keine Nummer im Titel.
 2. `.sub`: ein Satz mit der Kernidee. Trennt das Blatt Stamm und Endung, steht hier auch die
    Legende `<span class="stem">Stamm</span> + <b lang="de">Endung</b>`.
-3. Nummerierte Abschnitte: `<h2>1. Deutsch <span>· Hinweis</span></h2>`, darunter optional
+3. Nummerierte Abschnitte: `<h2>1. Polnisch – Deutsch <span>· Hinweis</span></h2>`, darunter optional
    `<p class="rule">` mit der Regel in einem Satz.
 4. Tabellen oder Spalten (`.cols` / `.col`).
 5. Am Ende ein Kasten `.box` mit Beispielen („Beispiele“, „Merke“ …). Eine Beispieltabelle mit
@@ -49,7 +49,7 @@ auf Englisch, übersetzt aus dem Polnischen, nicht aus dem Deutschen.
 - Die erste Tabellenspalte ist die Beschriftung: kursiv, schwarz.
 - Farben nur `#000`, `#8c8c8c` und `#bbb`: `tools/build.py` ersetzt sie in `grammar.html` durch
   die Farben der Leseseite (hell und dunkel).
-- Alle Größen in px. Eigene Anpassungen (nur Spaltenbreiten) in einem `<style>` im Kopf des
+- Alle Größen in px. Eigene Anpassungen (Spaltenbreiten, selten Schrift oder Farbe einer Spalte) in einem `<style>` im Kopf des
   Blatts, nach `style.css`.
 
 ## Dateinamen und Reihenfolge

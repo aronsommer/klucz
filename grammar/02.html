@@ -9,7 +9,16 @@
         width: 200px;
       }
       .three :is(th, td):nth-child(2) {
-        width: 90px;
+        width: 100px;
+      }
+      .box td {
+        padding-right: 16px;
+      }
+      .box td:nth-child(2) {
+        font-style: italic;
+      }
+      .box td:nth-child(3) {
+        color: #8c8c8c;
       }
     </style>
   </head>
@@ -21,7 +30,7 @@
         <b lang="de">Endung</b>
       </p>
 
-      <h2>1. Geschlecht <span>· on, ona, ono</span></h2>
+      <h2>1. Rodzaje – Geschlechter <span>· on (er), ona (sie), ono (es)</span></h2>
       <p class="rule">Es gibt keine Artikel: dom = das Haus, ein Haus.</p>
       <table class="three">
         <tr>
@@ -30,23 +39,23 @@
           <th>Beispiele</th>
         </tr>
         <tr>
-          <td>männlich · on</td>
+          <td>männlich · on (er)</td>
           <td><b lang="de">Konsonant</b></td>
-          <td>dom (Haus) · kot (Katze) · brat (Bruder)</td>
+          <td>bra<b>t</b> (Bruder) · do<b>m</b> (Haus) · ko<b>t</b> (Katze)</td>
         </tr>
         <tr>
-          <td>weiblich · ona</td>
+          <td>weiblich · ona (sie)</td>
           <td><b>-a</b></td>
           <td>kaw<b>a</b> (Kaffee) · mam<b>a</b> · szkoł<b>a</b> (Schule)</td>
         </tr>
         <tr>
-          <td>sächlich · ono</td>
-          <td><b>-o</b> · <b>-e</b></td>
-          <td>okn<b>o</b> (Fenster) · morz<b>e</b> (Meer) · auch -ę: imię (Vorname)</td>
+          <td>Neutrum · ono (es)</td>
+          <td><b>-e</b>, <b>-ę</b>, <b>-o</b></td>
+          <td>morz<b>e</b> (Meer) · imi<b>ę</b> (Vorname) · dzieck<b>o</b> (Kind)</td>
         </tr>
       </table>
 
-      <h2>2. Ausnahmen <span>· auswendig lernen</span></h2>
+      <h2>2. Wyjątki – Ausnahmen <span>· auswendig lernen</span></h2>
       <table>
         <tr>
           <td>männlich auf -a</td>
@@ -64,11 +73,12 @@
         </tr>
         <tr>
           <td>weich: -ń, -ć, -ś, -l …</td>
-          <td>mit dem Wort lernen: <b>dzień</b> (Tag): m. · <b>jesień</b> (Herbst): w.</td>
+          <td>Geschlecht unklar: <b>dzień</b> (Tag): m. · <b>jesień</b> (Herbst): w.</td>
         </tr>
       </table>
 
-      <h2>3. Mehrzahl <span>· Sachen, Tiere und Frauen</span></h2>
+      <h2>3. Liczba mnoga – Mehrzahl <span>· außer männlichen Personen</span></h2>
+      <p class="rule">ten, ta, to (dieser, diese, dieses) → Mehrzahl: te</p>
       <table class="three">
         <tr>
           <th>Wortende</th>
@@ -86,60 +96,80 @@
           <td>ptak → ptak<b>i</b> (Vögel) · nog<b>a</b> → nog<b>i</b> (Beine)</td>
         </tr>
         <tr>
-          <td>nach c, cz, sz, rz, ż, j, l und weichen Lauten</td>
+          <td>meist nach c, cz, sz, rz, ż, j, l und weichen Lauten</td>
           <td><b>-e</b></td>
           <td>klucz → klucz<b>e</b> (Schlüssel) · ulic<b>a</b> → ulic<b>e</b> (Straßen)</td>
         </tr>
         <tr>
-          <td>sächlich</td>
+          <td>Neutrum auf -o, -e</td>
           <td><b>-a</b></td>
-          <td>okn<b>o</b> → okn<b>a</b> · morz<b>e</b> → morz<b>a</b></td>
+          <td>okn<b>o</b> → okn<b>a</b> (Fenster) · morz<b>e</b> → morz<b>a</b></td>
         </tr>
       </table>
 
-      <h2>4. Mehrzahl <span>· Männer: oft ändert sich der letzte Konsonant</span></h2>
-      <table>
+      <h2>4. Liczba mnoga: mężczyźni – Mehrzahl: Männer</h2>
+      <table class="three">
         <tr>
-          <td>student · turysta</td>
-          <td><b>studenci</b> · <b>turyści</b> (Studenten · Touristen)</td>
+          <th>Wortende</th>
+          <th>Mehrzahl</th>
+          <th>Beispiele</th>
         </tr>
         <tr>
-          <td>Polak · Niemiec</td>
-          <td><b>Polacy</b> · <b>Niemcy</b> (Polen · Deutsche)</td>
+          <td>-t, -sta</td>
+          <td><b>-ci</b>, <b>-ści</b></td>
+          <td>studen<b>t</b> → studen<b>ci</b> · tury<b>sta</b> → tury<b>ści</b></td>
         </tr>
         <tr>
-          <td>lekarz · nauczyciel</td>
-          <td><b>lekarze</b> · <b>nauczyciele</b> (Ärzte · Lehrer)</td>
+          <td>-k, -iec</td>
+          <td><b>-cy</b></td>
+          <td>Pola<b>k</b> → Pola<b>cy</b> · Niem<b>iec</b> → Niem<b>cy</b></td>
         </tr>
         <tr>
-          <td>pan · syn</td>
-          <td><b>panowie</b> · <b>synowie</b> (Herren · Söhne)</td>
+          <td>-rz, -cz</td>
+          <td><b>-e</b></td>
+          <td>lekarz → lekarz<b>e</b> (Ärzte) · gracz → gracz<b>e</b></td>
+        </tr>
+        <tr>
+          <td>einige Wörter</td>
+          <td><b>-owie</b></td>
+          <td>pan → pan<b>owie</b> · syn → syn<b>owie</b> (Söhne)</td>
         </tr>
       </table>
 
       <div class="box">
         <h3>Unregelmäßige Mehrzahl</h3>
-        <table class="ex">
+        <table>
           <tr>
-            <td>człowiek → <b>ludzie</b> · dziecko → <b>dzieci</b></td>
-            <td>Mensch → Menschen · Kind → Kinder</td>
+            <td>człowiek → <b>ludzie</b> · rok → <b>lata</b></td>
+            <td>Menschen · Jahre</td>
+            <td>ganz anderes Wort</td>
           </tr>
           <tr>
-            <td>brat → <b>bracia</b> · ręka → <b>ręce</b></td>
-            <td>Bruder → Brüder · Hand → Hände</td>
+            <td>dziecko → <b>dzieci</b></td>
+            <td>Kinder</td>
+            <td>nicht dziecka (Neutrum → -a)</td>
           </tr>
           <tr>
-            <td>rok → <b>lata</b> · oko → <b>oczy</b></td>
-            <td>Jahr → Jahre · Auge → Augen</td>
+            <td>ręka → <b>ręce</b></td>
+            <td>Hände</td>
+            <td>nicht ręki (nach k → -i)</td>
           </tr>
           <tr>
-            <td>dzień → <b>dni</b> · tydzień → <b>tygodnie</b></td>
-            <td>Tag → Tage · Woche → Wochen</td>
+            <td>dzień → <b>dni</b></td>
+            <td>Tage</td>
+            <td>nicht dzienie (weich → -e)</td>
+          </tr>
+          <tr>
+            <td>brat → <b>bracia</b></td>
+            <td>Brüder</td>
+            <td>nicht braci (t → ci)</td>
+          </tr>
+          <tr>
+            <td>część → <b>części</b> · rzecz → <b>rzeczy</b></td>
+            <td>Teile · Sachen</td>
+            <td>nicht częście, rzecze (→ -e)</td>
           </tr>
         </table>
-        <p class="note">
-          Weibliche Wörter ohne -a haben eigene Formen: noc → noce · wiadomość → wiadomości
-        </p>
       </div>
     </div>
   </body>
