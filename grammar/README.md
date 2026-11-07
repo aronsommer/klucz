@@ -55,10 +55,10 @@ auf Englisch, übersetzt aus dem Polnischen, nicht aus dem Deutschen.
 ## Dateinamen und Reihenfolge
 
 `NN.html`: die Nummer ist die Lernreihenfolge, wie bei den Kapiteln. Auf der Grammatikseite ist sie
-auch die Adresse (`grammar.html#8`); wird ein Blatt eingeschoben, rücken die folgenden eine Nummer
+auch die Adresse (`grammar.html#9`); wird ein Blatt eingeschoben, rücken die folgenden eine Nummer
 weiter. Das PDF heißt nach Nummer und Titel, klein geschrieben, ohne Sonderzeichen (ą → a,
-ł → l, ä → ae, ß → ss …), Leerzeichen und Striche als `-`: `08.html` mit „Biernik – Akkusativ“
-→ `08-biernik-akkusativ.pdf`.
+ł → l, ä → ae, ß → ss …), Leerzeichen und Striche als `-`: `09.html` mit „Biernik – Akkusativ“
+→ `09-biernik-akkusativ.pdf`.
 
 | Nr. | Blatt                                        | Englisch                   |
 | --- | -------------------------------------------- | -------------------------- |
@@ -66,14 +66,14 @@ weiter. Das PDF heißt nach Nummer und Titel, klein geschrieben, ohne Sonderzeic
 | 02  | Rzeczowniki – Nomen                          | Nouns                      |
 | 03  | Czasowniki – Verben                          | Verbs                      |
 | 04  | Ważne czasowniki – Wichtige Verben           | Important Verbs            |
-| 05  | Pytania i przeczenie – Fragen und Verneinung | Questions and Negation     |
-| 06  | Liczebniki – Zahlen                          | Numbers                    |
-| 07  | Przypadki – Fälle                            | Cases                      |
-| 08  | Biernik – Akkusativ                          | Accusative                 |
-| 09  | Narzędnik – Instrumental                     | Instrumental               |
-| 10  | Miejscownik – Lokativ                        | Locative                   |
-| 11  | Dopełniacz – Genitiv                         | Genitive                   |
-| 12  | Przymiotniki – Adjektive                     | Adjectives                 |
+| 05  | Przymiotniki – Adjektive                     | Adjectives                 |
+| 06  | Pytania i przeczenie – Fragen und Verneinung | Questions and Negation     |
+| 07  | Liczebniki – Zahlen                          | Numbers                    |
+| 08  | Przypadki – Fälle                            | Cases                      |
+| 09  | Biernik – Akkusativ                          | Accusative                 |
+| 10  | Narzędnik – Instrumental                     | Instrumental               |
+| 11  | Miejscownik – Lokativ                        | Locative                   |
+| 12  | Dopełniacz – Genitiv                         | Genitive                   |
 | 13  | Zaimki osobowe – Personalpronomen            | Personal Pronouns          |
 | 14  | Mój, twój, ten – mein, dein, dieser          | my, your, this             |
 | 15  | Iść i jechać – gehen und fahren              | On Foot or by Vehicle      |

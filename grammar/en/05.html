@@ -2,120 +2,180 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Pytania i przeczenie – Questions and Negation</title>
+    <title>Przymiotniki – Adjectives</title>
     <link rel="stylesheet" href="../style.css" />
     <style>
-      .col p {
-        display: grid;
-        grid-template-columns: 170px 1fr;
+      :is(.four, .jest) :is(th, td):nth-child(1) {
+        width: 185px;
       }
-      .page > table :is(th, td):first-child {
+      .names :is(th, td):nth-child(1) {
         width: 230px;
       }
-      .page > table :is(th, td):nth-child(2) {
-        width: 210px;
+      :is(.four, .jest) :is(th, td):nth-child(2) {
+        width: 245px;
+      }
+      .four :is(th, td):nth-child(3) {
+        width: 115px;
+      }
+      .box td:first-child {
+        font-style: italic;
+        color: #000;
+      }
+      .box td {
+        color: #8c8c8c;
+        vertical-align: top;
+      }
+      .box small {
+        display: block;
+        font-size: 14px;
+        font-style: italic;
+      }
+      th small {
+        display: inline;
       }
     </style>
   </head>
   <body>
     <div class="page">
-      <h1>Pytania i przeczenie – Questions and Negation</h1>
-      <p class="sub">Yes/no question: Czy … ? · Negation: nie right before the verb</p>
-
-      <h2>1. Question words</h2>
-      <div class="cols">
-        <div class="col">
-          <p><b>kto?</b> <span>who?</span></p>
-          <p><b>co?</b> <span>what?</span></p>
-          <p><b>gdzie?</b> <span>where?</span></p>
-          <p><b>dokąd?</b> <span>where to?</span></p>
-          <p><b>skąd?</b> <span>where from?</span></p>
-          <p><b>kiedy?</b> <span>when?</span></p>
-          <p><b>o której?</b> <span>at what time?</span></p>
-          <p><b>jak?</b> <span>how?</span></p>
-        </div>
-        <div class="col">
-          <p><b>jaki? jaka? jakie?</b> <span>what kind of?</span></p>
-          <p><b>który? która? które?</b> <span>which?</span></p>
-          <p><b>czyj? czyja? czyje?</b> <span>whose?</span></p>
-          <p><b>ile?</b> <span>how much/many?</span></p>
-          <p><b>dlaczego?</b> <span>why?</span></p>
-          <p><b>po co?</b> <span>what for?</span></p>
-          <p><b>jak długo?</b> <span>how long?</span></p>
-          <p><b>od kiedy?</b> <span>since when?</span></p>
-        </div>
-      </div>
-
-      <h2>2. Yes/no questions <span>· with czy</span></h2>
-      <table>
-        <tr>
-          <td>with czy</td>
-          <td><b>Czy</b> masz czas?</td>
-          <td>Are you free?</td>
-        </tr>
-        <tr>
-          <td>answer</td>
-          <td><b>Tak</b>, mam. · <b>Nie</b>, nie mam.</td>
-          <td>Yes. · No.</td>
-        </tr>
-        <tr>
-          <td>spoken: often without czy</td>
-          <td>Masz czas?</td>
-          <td>only the voice goes up</td>
-        </tr>
-      </table>
-
-      <h2>3. Negation <span>· nie before the verb</span></h2>
-      <table>
-        <tr>
-          <td>nie + verb</td>
-          <td><b>Nie</b> rozumiem.</td>
-          <td>I don't understand.</td>
-        </tr>
-        <tr>
-          <td>nikt · nobody</td>
-          <td><b>Nikt nie</b> wie.</td>
-          <td>Nobody knows.</td>
-        </tr>
-        <tr>
-          <td>nic · nothing</td>
-          <td><b>Nic nie</b> mam.</td>
-          <td>I have nothing.</td>
-        </tr>
-        <tr>
-          <td>nigdy · never</td>
-          <td><b>Nigdy nie</b> piję kawy.</td>
-          <td>I never drink coffee.</td>
-        </tr>
-        <tr>
-          <td>nigdzie · nowhere</td>
-          <td><b>Nigdzie nie</b> idę.</td>
-          <td>I'm not going anywhere.</td>
-        </tr>
-      </table>
-      <p class="rule">
-        Double negation is a must: with nikt, nic, nigdy, nigdzie there is always also nie before
-        the verb.
+      <h1>Przymiotniki – Adjectives</h1>
+      <p class="sub">
+        The adjective takes the gender of the noun ·
+        <span class="stem">stem</span> + <b lang="en">ending</b>
       </p>
 
+      <h2>1. Rodzaje – Genders</h2>
+      <p class="rule">In Polish every noun has a gender, even things.</p>
+      <p class="rule">dom (house) is masculine, so: duży dom (a big house).</p>
+      <table class="four">
+        <tr>
+          <th>Noun</th>
+          <th>Gender</th>
+          <th>duży <small>(big)</small></th>
+          <th>drogi <small>(expensive)</small></th>
+        </tr>
+        <tr>
+          <td>dom (house)</td>
+          <td>masculine: ends in a <b lang="en">consonant</b></td>
+          <td>duż<b>y</b> dom</td>
+          <td>drog<b>i</b> dom</td>
+        </tr>
+        <tr>
+          <td>kawa (coffee)</td>
+          <td>feminine: ends in <b>-a</b></td>
+          <td>duż<b>a</b> kawa</td>
+          <td>drog<b>a</b> kawa</td>
+        </tr>
+        <tr>
+          <td>krzesło (chair)</td>
+          <td>neuter: ends in <b>-e</b>, <b>-ę</b>, <b>-o</b></td>
+          <td>duż<b>e</b> krzesło</td>
+          <td>drog<b>ie</b> krzesło</td>
+        </tr>
+      </table>
+      <p class="note">
+        After k and g, -i replaces -y and -ie replaces -e.<br />
+        polski (not polsky) · drogie (not droge)
+      </p>
+
+      <h2>2. Przymiotnik po „jest“ – Adjective after “is”</h2>
+      <p class="rule">After jest (is), the adjective changes too.</p>
+      <p class="rule">In English it always stays the same.</p>
+      <table class="jest">
+        <tr>
+          <th>Noun</th>
+          <th>Gender</th>
+          <th>duży <small>(big)</small></th>
+        </tr>
+        <tr>
+          <td>dom (house)</td>
+          <td>masculine: ends in a <b lang="en">consonant</b></td>
+          <td>Dom jest duż<b>y</b>.</td>
+        </tr>
+        <tr>
+          <td>kawa (coffee)</td>
+          <td>feminine: ends in <b>-a</b></td>
+          <td>Kawa jest duż<b>a</b>.</td>
+        </tr>
+        <tr>
+          <td>krzesło (chair)</td>
+          <td>neuter: ends in <b>-e</b>, <b>-ę</b>, <b>-o</b></td>
+          <td>Krzesło jest duż<b>e</b>.</td>
+        </tr>
+      </table>
+
+      <h2>3. Liczba mnoga – Plural <span>· only two forms</span></h2>
+      <p class="rule">Only with male persons does the adjective have a form of its own.</p>
+      <p class="rule">This also applies to groups of men and women.</p>
+      <table class="jest">
+        <tr>
+          <th>Noun <small>(plural)</small></th>
+          <th>Gender</th>
+          <th>duży <small>(big)</small></th>
+        </tr>
+        <tr>
+          <td>chłopcy (boys)</td>
+          <td>masculine, a person</td>
+          <td>duz<b>i</b> chłopcy</td>
+        </tr>
+        <tr>
+          <td>domy (houses)</td>
+          <td>masculine, not a person</td>
+          <td>duż<b>e</b> domy</td>
+        </tr>
+        <tr>
+          <td>dziewczyny (girls)</td>
+          <td>feminine</td>
+          <td>duż<b>e</b> dziewczyny</td>
+        </tr>
+        <tr>
+          <td>krzesła (chairs)</td>
+          <td>neuter</td>
+          <td>duż<b>e</b> krzesła</td>
+        </tr>
+      </table>
+      <p class="note">
+        With male persons, the letter before the ending often changes too:<br />
+        duży → duzi (ż becomes z) · dobry → dobrzy (r becomes rz) · polski → polscy (k becomes c)
+      </p>
+
+      <h2>4. Nazwiska – Surnames</h2>
+      <p class="rule">Surnames in -ski, -cki and -dzki have the same endings as an adjective.</p>
+      <table class="names">
+        <tr>
+          <th>Person</th>
+          <th>Name</th>
+        </tr>
+        <tr>
+          <td>pan (Mr)</td>
+          <td>Kowal<b>ski</b></td>
+        </tr>
+        <tr>
+          <td>pani (Mrs)</td>
+          <td>Kowal<b>ska</b></td>
+        </tr>
+        <tr>
+          <td>państwo (Mr and Mrs)</td>
+          <td>Kowal<b>scy</b></td>
+        </tr>
+      </table>
+
       <div class="box">
-        <h3>After nie: genitive, not accusative</h3>
-        <table class="ex">
+        <h3>Examples</h3>
+        <table>
           <tr>
-            <td>Mam samochód. → Nie mam <b>samochodu</b>.</td>
-            <td>I don't have a car.</td>
+            <td>plecak (backpack)</td>
+            <td>masculine: ends in a <b lang="en">consonant</b></td>
+            <td>To jest niebiesk<b>i</b> plecak.<small>This is a blue backpack.</small></td>
           </tr>
           <tr>
-            <td>Lubię kawę. → Nie lubię <b>kawy</b>.</td>
-            <td>I don't like coffee.</td>
+            <td>bluzka (blouse)</td>
+            <td>feminine: ends in <b>-a</b></td>
+            <td>To jest biał<b>a</b> bluzka.<small>This is a white blouse.</small></td>
           </tr>
           <tr>
-            <td>Jest mleko. → Nie ma <b>mleka</b>.</td>
-            <td>There is no milk.</td>
-          </tr>
-          <tr>
-            <td>But być stays: To nie jest problem.</td>
-            <td>That's not a problem.</td>
+            <td>dziecko (child)</td>
+            <td>neuter: ends in <b>-e</b>, <b>-ę</b>, <b>-o</b></td>
+            <td>To jest mał<b>e</b> dziecko.<small>This is a small child.</small></td>
           </tr>
         </table>
       </div>

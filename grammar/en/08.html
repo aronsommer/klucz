@@ -2,129 +2,134 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Biernik – Accusative</title>
+    <title>Przypadki – Cases</title>
     <link rel="stylesheet" href="../style.css" />
     <style>
-      .page > table :is(th, td):first-child {
-        width: 200px;
+      .page > table:first-of-type :is(th, td):first-child {
+        width: 120px;
       }
-      .page > table :is(th, td):nth-child(2) {
-        width: 190px;
+      .page > table:first-of-type :is(th, td):nth-child(2) {
+        width: 150px;
+      }
+      .page > table:first-of-type :is(th, td):nth-child(3) {
+        width: 210px;
+      }
+      .page > table:last-of-type :is(th, td):first-child {
+        width: 130px;
+      }
+      .box td:last-child {
+        white-space: nowrap;
       }
     </style>
   </head>
   <body>
     <div class="page">
-      <h1>Biernik – Accusative</h1>
+      <h1>Przypadki – Cases</h1>
       <p class="sub">
-        Question: kogo? co? – whom? what? · <span class="stem">stem</span> + <b lang="en">ending</b>
+        Polish has seven cases: a noun changes its ending for its role in the sentence.
       </p>
 
-      <h2>1. When? <span>· direct object</span></h2>
-      <p class="rule">
-        After most verbs: mam (I have), lubię (I like), kocham (I love), widzę (I see), kupuję (I
-        buy), jem (I eat), piję (I drink) · after na (where to?), przez, za (for)
-      </p>
-
-      <h2>2. Nouns <span>· singular</span></h2>
+      <h2>1. Overview <span>· question, use, example</span></h2>
       <table>
         <tr>
-          <th>Noun</th>
-          <th>Nominative<small>To jest …</small></th>
-          <th>Accusative<small>Mam …</small></th>
+          <th>Case</th>
+          <th>Question</th>
+          <th>When?</th>
+          <th>Example</th>
         </tr>
         <tr>
-          <td>feminine in -a</td>
-          <td>kaw<b>a</b> · Kasi<b>a</b></td>
-          <td>kaw<b>ę</b> · Kasi<b>ę</b></td>
+          <td>Mianownik</td>
+          <td><b>kto? co?</b></td>
+          <td>nominative: subject, after “to jest”</td>
+          <td>To jest <b>Kasia</b>.</td>
         </tr>
         <tr>
-          <td>feminine in a consonant</td>
-          <td><b>noc</b></td>
-          <td><b>noc</b> (same)</td>
+          <td>Dopełniacz</td>
+          <td><b>kogo? czego?</b></td>
+          <td>genitive: “no”, amounts, “of”</td>
+          <td>Nie mam <b>kawy</b>.</td>
         </tr>
         <tr>
-          <td>masculine: thing</td>
-          <td><b>dom</b> · <b>samochód</b></td>
-          <td><b>dom</b> · <b>samochód</b> (same)</td>
+          <td>Celownik</td>
+          <td><b>komu? czemu?</b></td>
+          <td>dative: to whom? give, help</td>
+          <td>Pomagam <b>bratu</b>.</td>
         </tr>
         <tr>
-          <td>masculine: person, animal</td>
-          <td>brat · kot · pies</td>
-          <td>brat<b>a</b> · kot<b>a</b> · ps<b>a</b></td>
+          <td>Biernik</td>
+          <td><b>kogo? co?</b></td>
+          <td>accusative: object</td>
+          <td>Lubię <b>kawę</b>.</td>
         </tr>
         <tr>
-          <td>masculine in -a</td>
-          <td>koleg<b>a</b> · tat<b>a</b></td>
-          <td>koleg<b>ę</b> · tat<b>ę</b></td>
+          <td>Narzędnik</td>
+          <td><b>kim? czym?</b></td>
+          <td>instrumental: with, job</td>
+          <td>Jestem <b>lekarzem</b>.</td>
         </tr>
         <tr>
-          <td>neuter</td>
-          <td><b>okno</b> · <b>piwo</b></td>
-          <td><b>okno</b> · <b>piwo</b> (same)</td>
+          <td>Miejscownik</td>
+          <td><b>o kim? o czym?</b></td>
+          <td>locative: only after prepositions</td>
+          <td>Jestem w <b>domu</b>.</td>
+        </tr>
+        <tr>
+          <td>Wołacz</td>
+          <td>–</td>
+          <td>vocative: addressing</td>
+          <td>Cześć, <b>Kasiu</b>! · <b>Mamo</b>!</td>
         </tr>
       </table>
 
-      <h2>3. Adjectives and pronouns <span>· they match</span></h2>
+      <h2>2. Prepositions <span>· each takes a fixed case</span></h2>
       <table>
         <tr>
-          <td>feminine</td>
-          <td>dobr<b>a</b> · moj<b>a</b> · t<b>a</b></td>
-          <td>dobr<b>ą</b> · moj<b>ą</b> · t<b>ę</b> kawę</td>
+          <th>Case</th>
+          <th>Prepositions</th>
         </tr>
         <tr>
-          <td>masculine: thing</td>
-          <td>now<b>y</b> · mój · ten</td>
-          <td>now<b>y</b> · mój · ten dom (same)</td>
+          <td>+ genitive</td>
+          <td>
+            <b>do</b> to · <b>z</b> from · <b>od</b> from, since · <b>bez</b> without ·
+            <b>dla</b> for · <b>u</b> at sb's
+          </td>
         </tr>
         <tr>
-          <td>masculine: person, animal</td>
-          <td>dobr<b>y</b> · mój · ten</td>
-          <td>dobr<b>ego</b> · moj<b>ego</b> · t<b>ego</b> brata</td>
+          <td>+ accusative</td>
+          <td><b>na</b> where to? · <b>przez</b> through · <b>za</b> for (dziękuję za …)</td>
         </tr>
         <tr>
-          <td>neuter</td>
-          <td>zimn<b>e</b> · moj<b>e</b> · t<b>o</b></td>
-          <td>zimn<b>e</b> · moj<b>e</b> · t<b>o</b> piwo (same)</td>
-        </tr>
-      </table>
-
-      <h2>4. Plural</h2>
-      <table>
-        <tr>
-          <td>men (people)</td>
-          <td colspan="2">like genitive: Znam <b>tych studentów</b>. – I know these students.</td>
+          <td>+ instrumental</td>
+          <td>
+            <b>z</b> with · where?: <b>przed</b> in front of · <b>za</b> behind · <b>nad</b> above ·
+            <b>pod</b> under · <b>między</b> between
+          </td>
         </tr>
         <tr>
-          <td>everything else</td>
-          <td colspan="2">like nominative: Mam <b>dwa koty</b>. · Lubię <b>kwiaty</b>.</td>
+          <td>+ locative</td>
+          <td>
+            <b>w</b> in · <b>na</b> on, at · <b>o</b> about · <b>przy</b> by, next to ·
+            <b>po</b> after (time)
+          </td>
         </tr>
       </table>
 
       <div class="box">
-        <h3>Examples</h3>
-        <table class="ex">
+        <h3>Remember: same preposition, different case</h3>
+        <table>
           <tr>
-            <td>Piję <b>kawę</b>.</td>
-            <td>I drink coffee.</td>
+            <td><b>z</b> + genitive = from · <b>z</b> + instrumental = with</td>
+            <td>Jestem z Polski. · Idę z Kasią.</td>
           </tr>
           <tr>
-            <td>Mam <b>brata</b> i <b>siostrę</b>.</td>
-            <td>I have a brother and a sister.</td>
+            <td><b>na</b> + locative = where? · <b>na</b> + accusative = where to?</td>
+            <td>Jestem na poczcie. · Idę na pocztę.</td>
           </tr>
           <tr>
-            <td>Kupuję <b>nowy samochód</b>.</td>
-            <td>I'm buying a new car.</td>
-          </tr>
-          <tr>
-            <td>Idę na <b>pocztę</b>.</td>
-            <td>I'm going to the post office.</td>
+            <td><b>w</b> + locative = where? · where to? mostly <b>do</b> + genitive</td>
+            <td>Jestem w domu. · Idę do domu.</td>
           </tr>
         </table>
-        <p class="note">
-          With negation, genitive instead of accusative: Mam samochód. → Nie mam samochodu. ·
-          Exception: pani → panią
-        </p>
       </div>
     </div>
   </body>

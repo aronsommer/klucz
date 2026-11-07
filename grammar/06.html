@@ -2,158 +2,122 @@
 <html lang="de">
   <head>
     <meta charset="utf-8" />
-    <title>Liczebniki – Zahlen</title>
+    <title>Pytania i przeczenie – Fragen und Verneinung</title>
     <link rel="stylesheet" href="style.css" />
     <style>
-      .col p b:first-child {
-        display: inline-block;
-        width: 64px;
-      }
-      .pairs p {
+      .col p {
         display: grid;
-        grid-template-columns: 120px 1fr;
+        grid-template-columns: 170px 1fr;
       }
-      .pairs p b:first-child {
-        width: 28px;
+      .page > table :is(th, td):first-child {
+        width: 230px;
+      }
+      .page > table :is(th, td):nth-child(2) {
+        width: 210px;
       }
     </style>
   </head>
   <body>
     <div class="page">
-      <h1>Liczebniki – Zahlen</h1>
-      <p class="sub">Fast immer wechselt die Form bei 5: cztery tysiące → pięć tysięcy</p>
+      <h1>Pytania i przeczenie – Fragen und Verneinung</h1>
+      <p class="sub">Ja/Nein-Frage: Czy … ? · Verneinung: nie direkt vor das Verb</p>
 
-      <h2>1. Bis 19 <span>· ab 11 → -naście</span></h2>
-      <div class="cols pairs">
-        <div class="col">
-          <h3>0 – 4 · 10 – 14</h3>
-          <p>
-            <span><b>0</b> <b>zero</b></span
-            ><span><b>10</b> <b>dziesięć</b></span>
-          </p>
-          <p>
-            <span><b>1</b> <b>jeden</b></span
-            ><span><b>11</b> jede<b>naście</b></span>
-          </p>
-          <p>
-            <span><b>2</b> <b>dwa</b></span
-            ><span><b>12</b> dwa<b>naście</b></span>
-          </p>
-          <p>
-            <span><b>3</b> <b>trzy</b></span
-            ><span><b>13</b> trzy<b>naście</b></span>
-          </p>
-          <p>
-            <span><b>4</b> <b>cztery</b></span
-            ><span><b>14</b> czter<b>naście</b></span>
-          </p>
-        </div>
-        <div class="col">
-          <h3>5 – 9 · 15 – 19</h3>
-          <p>
-            <span><b>5</b> <b>pięć</b></span
-            ><span><b>15</b> pięt<b>naście</b></span>
-          </p>
-          <p>
-            <span><b>6</b> <b>sześć</b></span
-            ><span><b>16</b> szes<b>naście</b></span>
-          </p>
-          <p>
-            <span><b>7</b> <b>siedem</b></span
-            ><span><b>17</b> siedem<b>naście</b></span>
-          </p>
-          <p>
-            <span><b>8</b> <b>osiem</b></span
-            ><span><b>18</b> osiem<b>naście</b></span>
-          </p>
-          <p>
-            <span><b>9</b> <b>dziewięć</b></span
-            ><span><b>19</b> dziewięt<b>naście</b></span>
-          </p>
-        </div>
-      </div>
-
-      <h2>2. Zehner <span>· Wechsel bei 50</span></h2>
+      <h2>1. Fragewörter</h2>
       <div class="cols">
         <div class="col">
-          <h3>2 – 4 → -dzieści(a)</h3>
-          <p><b>20</b> dwa<b>dzieścia</b></p>
-          <p><b>30</b> trzy<b>dzieści</b></p>
-          <p><b>40</b> czter<b>dzieści</b></p>
+          <p><b>kto?</b> <span>wer?</span></p>
+          <p><b>co?</b> <span>was?</span></p>
+          <p><b>gdzie?</b> <span>wo?</span></p>
+          <p><b>dokąd?</b> <span>wohin?</span></p>
+          <p><b>skąd?</b> <span>woher?</span></p>
+          <p><b>kiedy?</b> <span>wann?</span></p>
+          <p><b>o której?</b> <span>um wie viel Uhr?</span></p>
+          <p><b>jak?</b> <span>wie?</span></p>
         </div>
         <div class="col">
-          <h3>ab 5 → -dziesiąt</h3>
-          <p><b>50</b> pięć<b>dziesiąt</b></p>
-          <p><b>60</b> sześć<b>dziesiąt</b></p>
-          <p><b>70</b> siedem<b>dziesiąt</b></p>
-          <p><b>80</b> osiem<b>dziesiąt</b></p>
-          <p><b>90</b> dziewięć<b>dziesiąt</b></p>
-        </div>
-        <div class="col"></div>
-      </div>
-
-      <h2>3. Hunderter <span>· Wechsel bei 500</span></h2>
-      <div class="cols">
-        <div class="col">
-          <h3>1 und 2 → eigene Form</h3>
-          <p><b>100</b> <b>sto</b></p>
-          <p><b>200</b> <b>dwieście</b></p>
-        </div>
-        <div class="col">
-          <h3>3 – 4 → -sta</h3>
-          <p><b>300</b> trzy<b>sta</b></p>
-          <p><b>400</b> cztery<b>sta</b></p>
-        </div>
-        <div class="col">
-          <h3>ab 5 → -set</h3>
-          <p><b>500</b> pięć<b>set</b></p>
-          <p><b>600</b> sześć<b>set</b></p>
-          <p><b>700</b> siedem<b>set</b></p>
-          <p><b>800</b> osiem<b>set</b></p>
-          <p><b>900</b> dziewięć<b>set</b></p>
+          <p><b>jaki? jaka? jakie?</b> <span>was für ein? wie?</span></p>
+          <p><b>który? która? które?</b> <span>welcher?</span></p>
+          <p><b>czyj? czyja? czyje?</b> <span>wessen?</span></p>
+          <p><b>ile?</b> <span>wie viel?</span></p>
+          <p><b>dlaczego?</b> <span>warum?</span></p>
+          <p><b>po co?</b> <span>wozu?</span></p>
+          <p><b>jak długo?</b> <span>wie lange?</span></p>
+          <p><b>od kiedy?</b> <span>seit wann?</span></p>
         </div>
       </div>
 
-      <h2>4. Tausender <span>· Wechsel bei 5000</span></h2>
-      <div class="cols">
-        <div class="col">
-          <h3>1 → tysiąc</h3>
-          <p><b>1000</b> <b>tysiąc</b></p>
-        </div>
-        <div class="col">
-          <h3>2 – 4 → tysiące</h3>
-          <p><b>2000</b> dwa <b>tysiące</b></p>
-          <p><b>3000</b> trzy <b>tysiące</b></p>
-          <p><b>4000</b> cztery <b>tysiące</b></p>
-        </div>
-        <div class="col">
-          <h3>ab 5 → tysięcy</h3>
-          <p><b>5000</b> pięć <b>tysięcy</b></p>
-          <p><b>6000</b> sześć <b>tysięcy</b></p>
-          <p><b>10 000</b> dziesięć <b>tysięcy</b></p>
-        </div>
-      </div>
+      <h2>2. Ja/Nein-Fragen <span>· mit czy</span></h2>
+      <table>
+        <tr>
+          <td>Frage mit czy</td>
+          <td><b>Czy</b> masz czas?</td>
+          <td>Hast du Zeit?</td>
+        </tr>
+        <tr>
+          <td>Antwort</td>
+          <td><b>Tak</b>, mam. · <b>Nie</b>, nie mam.</td>
+          <td>Ja. · Nein.</td>
+        </tr>
+        <tr>
+          <td>gesprochen oft ohne czy</td>
+          <td>Masz czas?</td>
+          <td>nur die Stimme geht hoch</td>
+        </tr>
+      </table>
+
+      <h2>3. Verneinung <span>· nie vor dem Verb</span></h2>
+      <table>
+        <tr>
+          <td>nie + Verb</td>
+          <td><b>Nie</b> rozumiem.</td>
+          <td>Ich verstehe nicht.</td>
+        </tr>
+        <tr>
+          <td>nikt · niemand</td>
+          <td><b>Nikt nie</b> wie.</td>
+          <td>Niemand weiß es.</td>
+        </tr>
+        <tr>
+          <td>nic · nichts</td>
+          <td><b>Nic nie</b> mam.</td>
+          <td>Ich habe nichts.</td>
+        </tr>
+        <tr>
+          <td>nigdy · niemals</td>
+          <td><b>Nigdy nie</b> piję kawy.</td>
+          <td>Ich trinke nie Kaffee.</td>
+        </tr>
+        <tr>
+          <td>nigdzie · nirgends</td>
+          <td><b>Nigdzie nie</b> idę.</td>
+          <td>Ich gehe nirgendwohin.</td>
+        </tr>
+      </table>
+      <p class="rule">
+        Doppelte Verneinung ist Pflicht: Mit nikt, nic, nigdy, nigdzie steht vor dem Verb immer auch
+        nie.
+      </p>
 
       <div class="box">
-        <h3>Merke: Die letzte Ziffer der Zahl vor tysiąc entscheidet</h3>
-        <table>
+        <h3>Nach nie: Genitiv statt Akkusativ</h3>
+        <table class="ex">
           <tr>
-            <td>endet auf 2, 3, 4</td>
-            <td><b>tysiące</b></td>
-            <td>22 000 dwadzieścia dwa <b>tysiące</b></td>
+            <td>Mam samochód. → Nie mam <b>samochodu</b>.</td>
+            <td>Ich habe kein Auto.</td>
           </tr>
           <tr>
-            <td>alles andere</td>
-            <td><b>tysięcy</b></td>
-            <td>21 000 dwadzieścia jeden <b>tysięcy</b></td>
+            <td>Lubię kawę. → Nie lubię <b>kawy</b>.</td>
+            <td>Ich mag keinen Kaffee.</td>
           </tr>
           <tr>
-            <td>Ausnahme: endet auf 12, 13, 14</td>
-            <td><b>tysięcy</b></td>
-            <td>12 000 dwanaście <b>tysięcy</b></td>
+            <td>Jest mleko. → Nie ma <b>mleka</b>.</td>
+            <td>Es gibt keine Milch.</td>
+          </tr>
+          <tr>
+            <td>Aber być bleibt: To nie jest problem.</td>
+            <td>Das ist kein Problem.</td>
           </tr>
         </table>
-        <p class="note">Millionen genauso: milion · dwa miliony · pięć milionów</p>
       </div>
     </div>
   </body>

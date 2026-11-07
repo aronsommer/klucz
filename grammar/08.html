@@ -2,130 +2,134 @@
 <html lang="de">
   <head>
     <meta charset="utf-8" />
-    <title>Biernik – Akkusativ</title>
+    <title>Przypadki – Fälle</title>
     <link rel="stylesheet" href="style.css" />
     <style>
-      .page > table :is(th, td):first-child {
-        width: 200px;
+      .page > table:first-of-type :is(th, td):first-child {
+        width: 120px;
       }
-      .page > table :is(th, td):nth-child(2) {
-        width: 190px;
+      .page > table:first-of-type :is(th, td):nth-child(2) {
+        width: 150px;
+      }
+      .page > table:first-of-type :is(th, td):nth-child(3) {
+        width: 210px;
+      }
+      .page > table:last-of-type :is(th, td):first-child {
+        width: 130px;
+      }
+      .box td:last-child {
+        white-space: nowrap;
       }
     </style>
   </head>
   <body>
     <div class="page">
-      <h1>Biernik – Akkusativ</h1>
+      <h1>Przypadki – Fälle</h1>
       <p class="sub">
-        Frage: kogo? co? – wen? was? · <span class="stem">Stamm</span> + <b lang="de">Endung</b>
+        Polnisch hat sieben Fälle: Das Nomen ändert seine Endung je nach Rolle im Satz.
       </p>
 
-      <h2>1. Wann? <span>· direktes Objekt</span></h2>
-      <p class="rule">
-        Nach den meisten Verben: mam (ich habe), lubię (ich mag), kocham (ich liebe), widzę (ich
-        sehe), kupuję (ich kaufe), jem (ich esse), piję (ich trinke) · nach na (wohin?), przez, za
-        (für)
-      </p>
-
-      <h2>2. Nomen <span>· Einzahl</span></h2>
+      <h2>1. Überblick <span>· Frage, Gebrauch, Beispiel</span></h2>
       <table>
         <tr>
-          <th>Nomen</th>
-          <th>Nominativ<small>To jest …</small></th>
-          <th>Akkusativ<small>Mam …</small></th>
+          <th>Fall</th>
+          <th>Frage</th>
+          <th>Wann?</th>
+          <th>Beispiel</th>
         </tr>
         <tr>
-          <td>weiblich auf -a</td>
-          <td>kaw<b>a</b> · Kasi<b>a</b></td>
-          <td>kaw<b>ę</b> · Kasi<b>ę</b></td>
+          <td>Mianownik</td>
+          <td><b>kto? co?</b></td>
+          <td>Nominativ: Subjekt, nach „to jest“</td>
+          <td>To jest <b>Kasia</b>.</td>
         </tr>
         <tr>
-          <td>weiblich auf Konsonant</td>
-          <td><b>noc</b></td>
-          <td><b>noc</b> (bleibt)</td>
+          <td>Dopełniacz</td>
+          <td><b>kogo? czego?</b></td>
+          <td>Genitiv: „kein“, Menge, Besitz</td>
+          <td>Nie mam <b>kawy</b>.</td>
         </tr>
         <tr>
-          <td>männlich: Sache</td>
-          <td><b>dom</b> · <b>samochód</b></td>
-          <td><b>dom</b> · <b>samochód</b> (bleibt)</td>
+          <td>Celownik</td>
+          <td><b>komu? czemu?</b></td>
+          <td>Dativ: wem? geben, helfen</td>
+          <td>Pomagam <b>bratu</b>.</td>
         </tr>
         <tr>
-          <td>männlich: Person, Tier</td>
-          <td>brat · kot · pies</td>
-          <td>brat<b>a</b> · kot<b>a</b> · ps<b>a</b></td>
+          <td>Biernik</td>
+          <td><b>kogo? co?</b></td>
+          <td>Akkusativ: wen? was?</td>
+          <td>Lubię <b>kawę</b>.</td>
         </tr>
         <tr>
-          <td>männlich auf -a</td>
-          <td>koleg<b>a</b> · tat<b>a</b></td>
-          <td>koleg<b>ę</b> · tat<b>ę</b></td>
+          <td>Narzędnik</td>
+          <td><b>kim? czym?</b></td>
+          <td>Instrumental: mit, Beruf</td>
+          <td>Jestem <b>lekarzem</b>.</td>
         </tr>
         <tr>
-          <td>Neutrum</td>
-          <td><b>okno</b> · <b>piwo</b></td>
-          <td><b>okno</b> · <b>piwo</b> (bleibt)</td>
+          <td>Miejscownik</td>
+          <td><b>o kim? o czym?</b></td>
+          <td>Lokativ: nur nach Präpositionen</td>
+          <td>Jestem w <b>domu</b>.</td>
+        </tr>
+        <tr>
+          <td>Wołacz</td>
+          <td>–</td>
+          <td>Vokativ: Anrede</td>
+          <td>Cześć, <b>Kasiu</b>! · <b>Mamo</b>!</td>
         </tr>
       </table>
 
-      <h2>3. Adjektive und Pronomen <span>· passen sich an</span></h2>
+      <h2>2. Präpositionen <span>· jede verlangt einen bestimmten Fall</span></h2>
       <table>
         <tr>
-          <td>weiblich</td>
-          <td>dobr<b>a</b> · moj<b>a</b> · t<b>a</b></td>
-          <td>dobr<b>ą</b> · moj<b>ą</b> · t<b>ę</b> kawę</td>
+          <th>Fall</th>
+          <th>Präpositionen</th>
         </tr>
         <tr>
-          <td>männlich: Sache</td>
-          <td>now<b>y</b> · mój · ten</td>
-          <td>now<b>y</b> · mój · ten dom (bleibt)</td>
+          <td>+ Genitiv</td>
+          <td>
+            <b>do</b> zu, nach · <b>z</b> aus, von · <b>od</b> von, seit · <b>bez</b> ohne ·
+            <b>dla</b> für · <b>u</b> bei
+          </td>
         </tr>
         <tr>
-          <td>männlich: Person, Tier</td>
-          <td>dobr<b>y</b> · mój · ten</td>
-          <td>dobr<b>ego</b> · moj<b>ego</b> · t<b>ego</b> brata</td>
+          <td>+ Akkusativ</td>
+          <td><b>na</b> wohin? · <b>przez</b> durch · <b>za</b> für (dziękuję za …)</td>
         </tr>
         <tr>
-          <td>Neutrum</td>
-          <td>zimn<b>e</b> · moj<b>e</b> · t<b>o</b></td>
-          <td>zimn<b>e</b> · moj<b>e</b> · t<b>o</b> piwo (bleibt)</td>
-        </tr>
-      </table>
-
-      <h2>4. Mehrzahl</h2>
-      <table>
-        <tr>
-          <td>Männer (Personen)</td>
-          <td colspan="2">wie Genitiv: Znam <b>tych studentów</b>. – Ich kenne diese Studenten.</td>
+          <td>+ Instrumental</td>
+          <td>
+            <b>z</b> mit · wo?: <b>przed</b> vor · <b>za</b> hinter · <b>nad</b> über ·
+            <b>pod</b> unter · <b>między</b> zwischen
+          </td>
         </tr>
         <tr>
-          <td>alles andere</td>
-          <td colspan="2">wie Nominativ: Mam <b>dwa koty</b>. · Lubię <b>kwiaty</b>.</td>
+          <td>+ Lokativ</td>
+          <td>
+            <b>w</b> in · <b>na</b> auf, an · <b>o</b> über (sprechen über) · <b>przy</b> bei, an ·
+            <b>po</b> nach (zeitlich)
+          </td>
         </tr>
       </table>
 
       <div class="box">
-        <h3>Beispiele</h3>
-        <table class="ex">
+        <h3>Merke: Gleiche Präposition, anderer Fall</h3>
+        <table>
           <tr>
-            <td>Piję <b>kawę</b>.</td>
-            <td>Ich trinke Kaffee.</td>
+            <td><b>z</b> + Genitiv = aus · <b>z</b> + Instrumental = mit</td>
+            <td>Jestem z Polski. · Idę z Kasią.</td>
           </tr>
           <tr>
-            <td>Mam <b>brata</b> i <b>siostrę</b>.</td>
-            <td>Ich habe einen Bruder und eine Schwester.</td>
+            <td><b>na</b> + Lokativ = wo? · <b>na</b> + Akkusativ = wohin?</td>
+            <td>Jestem na poczcie. · Idę na pocztę.</td>
           </tr>
           <tr>
-            <td>Kupuję <b>nowy samochód</b>.</td>
-            <td>Ich kaufe ein neues Auto.</td>
-          </tr>
-          <tr>
-            <td>Idę na <b>pocztę</b>.</td>
-            <td>Ich gehe zur Post.</td>
+            <td><b>w</b> + Lokativ = wo? · wohin? meist <b>do</b> + Genitiv</td>
+            <td>Jestem w domu. · Idę do domu.</td>
           </tr>
         </table>
-        <p class="note">
-          Bei Verneinung steht Genitiv statt Akkusativ: Mam samochód. → Nie mam samochodu. ·
-          Ausnahme: pani → panią
-        </p>
       </div>
     </div>
   </body>
