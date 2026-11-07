@@ -9,7 +9,10 @@
         font-size: 14px;
       }
       :is(th, td) {
-        padding: 1px 6px;
+        padding: 0.5px 6px;
+      }
+      :is(th, td):last-child {
+        padding-right: 0;
       }
       /* The same verb columns in every table. */
       :is(th, td):nth-child(1) {
@@ -22,10 +25,10 @@
         width: 126px;
       }
       :is(th, td):nth-child(4) {
-        width: 148px;
+        width: 146px;
       }
       :is(th, td):nth-child(5) {
-        width: 112px;
+        width: 114px;
       }
       /* Past: person and gender share the first column's width. */
       .past td:nth-child(1) {
@@ -41,10 +44,10 @@
         width: 126px;
       }
       .past td:nth-child(5) {
-        width: 148px;
+        width: 146px;
       }
       .past td:nth-child(6) {
-        width: 112px;
+        width: 114px;
       }
       .g {
         font-size: 13px;
@@ -136,7 +139,6 @@
 
       <h2>2. Czas przeszły – Past</h2>
       <p class="rule">Usually: infinitive without -ć + ending: czyta-ć → czyta<b>łem</b>.</p>
-      <p class="rule">The ending shows if it is about a man or a woman.</p>
       <table class="past">
         <tr>
           <td rowspan="2">ja (I)</td>
