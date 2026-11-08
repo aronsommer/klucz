@@ -60,28 +60,28 @@ weiter. Das PDF heißt nach Nummer und Titel, klein geschrieben, ohne Sonderzeic
 ł → l, ä → ae, ß → ss …), Leerzeichen und Striche als `-`: `09.html` mit „Biernik – Akkusativ“
 → `09-biernik-akkusativ.pdf`.
 
-| Nr. | Blatt                                        | Englisch                   |
-| --- | -------------------------------------------- | -------------------------- |
-| 01  | Alfabet i wymowa – Alphabet und Aussprache   | Alphabet and Pronunciation |
-| 02  | Rzeczowniki – Nomen                          | Nouns                      |
-| 03  | Czasowniki – Verben                          | Verbs                      |
-| 04  | Ważne czasowniki – Wichtige Verben           | Important Verbs            |
-| 05  | Przymiotniki – Adjektive                     | Adjectives                 |
-| 06  | Pytania i przeczenie – Fragen und Verneinung | Questions and Negation     |
-| 07  | Liczebniki – Zahlen                          | Numbers                    |
-| 08  | Przypadki – Fälle                            | Cases                      |
-| 09  | Biernik – Akkusativ                          | Accusative                 |
-| 10  | Narzędnik – Instrumental                     | Instrumental               |
-| 11  | Miejscownik – Lokativ                        | Locative                   |
-| 12  | Dopełniacz – Genitiv                         | Genitive                   |
-| 13  | Zaimki osobowe – Personalpronomen            | Personal Pronouns          |
-| 14  | Mój, twój, ten – mein, dein, dieser          | my, your, this             |
-| 15  | Iść i jechać – gehen und fahren              | On Foot or by Vehicle      |
-| 16  | Czas – Uhrzeit, Tage, Monate                 | Time, Days, Months         |
-| 17  | Aspekt i przyszłość – Aspekt und Zukunft     | Aspect and Future          |
-| 18  | Tryb rozkazujący – Imperativ                 | Imperative                 |
-| 19  | Stopniowanie – Steigerung                    | Comparison                 |
-| 20  | Tryb przypuszczający – Konditional           | Conditional                |
+| Nr. | Blatt                                        | Englisch               |
+| --- | -------------------------------------------- | ---------------------- |
+| 01  | Alfabet – Alphabet                           | Alphabet               |
+| 02  | Rzeczowniki – Nomen                          | Nouns                  |
+| 03  | Czasowniki – Verben                          | Verbs                  |
+| 04  | Ważne czasowniki – Wichtige Verben           | Important Verbs        |
+| 05  | Przymiotniki – Adjektive                     | Adjectives             |
+| 06  | Pytania i przeczenie – Fragen und Verneinung | Questions and Negation |
+| 07  | Liczebniki – Zahlen                          | Numbers                |
+| 08  | Przypadki – Fälle                            | Cases                  |
+| 09  | Biernik – Akkusativ                          | Accusative             |
+| 10  | Narzędnik – Instrumental                     | Instrumental           |
+| 11  | Miejscownik – Lokativ                        | Locative               |
+| 12  | Dopełniacz – Genitiv                         | Genitive               |
+| 13  | Zaimki osobowe – Personalpronomen            | Personal Pronouns      |
+| 14  | Mój, twój, ten – mein, dein, dieser          | my, your, this         |
+| 15  | Iść i jechać – gehen und fahren              | On Foot or by Vehicle  |
+| 16  | Czas – Uhrzeit, Tage, Monate                 | Time, Days, Months     |
+| 17  | Aspekt i przyszłość – Aspekt und Zukunft     | Aspect and Future      |
+| 18  | Tryb rozkazujący – Imperativ                 | Imperative             |
+| 19  | Stopniowanie – Steigerung                    | Comparison             |
+| 20  | Tryb przypuszczający – Konditional           | Conditional            |
 
 ## PDFs erzeugen
 
