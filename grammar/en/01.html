@@ -6,22 +6,19 @@
     <link rel="stylesheet" href="../style.css" />
     <style>
       .letters {
-        position: relative;
         margin-top: 6px;
-        padding-left: 110px;
         font-size: 17px;
         color: #8c8c8c;
       }
+      /* the label above its line */
       .letters span {
-        position: absolute;
-        left: 0;
-        bottom: 1px;
+        display: block;
         font-size: 15px;
+        line-height: 1.4;
         color: #000;
       }
       .legend {
         margin-top: 4px;
-        padding-left: 110px;
         font-size: 13px;
         color: #8c8c8c;
       }
@@ -390,8 +387,7 @@
           <col />
         </colgroup>
         <tr>
-          <th></th>
-          <th colspan="2">with accent: not before a vowel</th>
+          <th colspan="3">with accent: not before a vowel</th>
           <th colspan="2">with i: before a vowel</th>
         </tr>
         <tr>

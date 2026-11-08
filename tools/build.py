@@ -5,7 +5,7 @@ text/NN.txt, klucz.txt plain text without markup, for copying or text-to-speech
 index.html             reading page (also the GitHub Pages start page) in German and English: tap a word, word
                        lists, copy, and the translation from chapters/<lang>/NN.md where one exists
 grammar.html           every grammar sheet from grammar/NN.html (German) and grammar/en/NN.html (English) in the
-                       reading page's look
+                       reading page's look, the alphabet sheet playing the recordings in audio/
 
 Run with --accept-de or --accept-en to confirm that every paragraph of that translation still fits its Polish one.
 """
@@ -34,6 +34,7 @@ FOCUS = ROOT / "tools" / "focus.js"
 UI = ROOT / "tools" / "ui.tsv"
 GRAMMAR = ROOT / "grammar"
 FONTS = ROOT / "fonts"
+AUDIO = ROOT / "audio"  # letters/, digraphs/, words/: the recordings as NAME.mp3; originals/ is not played
 ICON = FONTS / "key.svg"  # the tab icon of both pages
 PRINT_COLORS = {"#000": "var(--text)", "#8c8c8c": "var(--text-2)", "#bbb": "var(--line)"}
 LETTER = re.compile(r"[^\W\d_]")
@@ -366,8 +367,10 @@ def main():
     }
     page = fill(TEMPLATE, data=json_script(data), **shared)
     (ROOT / "index.html").write_text(page, encoding="utf-8")
+    audio = sorted(f"{p.parent.name}/{p.stem}" for p in AUDIO.glob("*/*.mp3"))  # letters/a … words/zrodlo
     (ROOT / "grammar.html").write_text(fill(GRAMMAR_TEMPLATE, print=(GRAMMAR / "style.css").read_text(encoding="utf-8"),
-                                            sheets=grammar_sheets, **shared), encoding="utf-8")
+                                            sheets=grammar_sheets, audio=json_script(audio), **shared),
+                                       encoding="utf-8")
 
     missing = {lang: [words[w][0] for w in order if not words[w][1][lang][2]] for lang in LANGS}
     print(f"KLUCZ.de.md, KLUCZ.en.md, text/ ({len(story)} chapters), "

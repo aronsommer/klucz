@@ -35,6 +35,7 @@ read_polish	Auf Polnisch lesen	Read in Polish
 say_translation	Auf Deutsch vorlesen	Read aloud in English
 tap_hint	Tippe auf ein polnisches Wort, um die Übersetzung zu sehen.	Tap a Polish word to see its translation.
 proverb	<span lang="pl">Nie od razu Kraków zbudowano.</span> – Krakau wurde nicht an einem Tag erbaut.	<span lang="pl">Nie od razu Kraków zbudowano.</span> – Kraków wasn't built in a day.
+say_hint	<span class="icon" aria-hidden="true">volume_up</span> Tippe auf ein graues Feld, um es zu hören. Gesprochen von Jacek Będkowski.	<span class="icon" aria-hidden="true">volume_up</span> Tap a grey box to hear it. Spoken by Jacek Będkowski.
 translation	Übersetzung	Translation
 close	Schließen	Close
 pronounce	Aussprechen	Pronounce

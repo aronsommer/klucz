@@ -214,7 +214,7 @@ Ebenfalls ausgeschlossen sind zwei herabwürdigende Bezeichnungen (_czarnuch, ci
 
 ## Dateien
 
-Bearbeitet werden nur die **Quellen**: `chapters/`, `data/` und `grammar/`. Alles andere wird erzeugt und nie von Hand geändert.
+Bearbeitet werden nur die **Quellen**: `chapters/`, `data/`, `grammar/` und `audio/`. Alles andere wird erzeugt und nie von Hand geändert.
 
 ```
 klucz/
@@ -226,6 +226,7 @@ klucz/
 ├── grammar/                 Quelle: Grammatikblätter (je eine A4-Seite), style.css fürs Drucken, pdf.sh, README.md
 ├── grammar/en/              Quelle: dieselben Blätter auf Englisch
 ├── .nojekyll                leer: GitHub Pages liefert die Dateien unverändert aus
+├── audio/                   Quelle: Aufnahmen fürs Alphabetblatt (letters/, digraphs/, words/), gesprochen von Jacek Będkowski; originals/: die ungeschnittenen Aufnahmen
 ├── fonts/                   Quelle: Schriften, Symbole und key.svg (Symbol im Browser-Tab), werden in index.html und grammar.html eingebettet
 ├── KLUCZ.de.md, KLUCZ.en.md erzeugt: Gesamtbuch mit deutschen bzw. englischen Glossaren
 ├── text/01.txt … 30.txt     erzeugt: Klartext je Kapitel, klucz.txt: das ganze Buch

@@ -363,6 +363,27 @@ main {
       .share {
         grid-column: 3;
       }
+      /* the proverb and the tap hint in one cell, one of them hidden: as high on every sheet, so the
+         sheet starts at the same height */
+      #top-line {
+        display: grid;
+      }
+      #top-line > * {
+        grid-area: 1 / 1;
+      }
+      #top-line > :last-child,
+      #top-line.hint > :first-child {
+        visibility: hidden;
+      }
+      #top-line.hint > :last-child {
+        visibility: visible;
+      }
+      /* the speaker icon makes the line no higher */
+      #say-hint .icon {
+        font-size: 18px;
+        line-height: 0;
+        vertical-align: -4px;
+      }
       @media (min-width: 641px) {
         .switcher {
           grid-column: span 6;
@@ -514,6 +535,29 @@ main {
           margin-top: 8px;
         }
 
+        /* the alphabet sheet's recordings: a grey key for what plays on a click */
+        .letters {
+          line-height: 2; /* room between the keys of a wrapped line */
+        }
+        /* a cell's keys stay on one line (ć = ci); a table with two keys in a cell widens that column for them */
+        td:has(.say) {
+          white-space: nowrap;
+        }
+        table:has(td .say ~ .say) {
+          table-layout: auto;
+        }
+        .say {
+          padding: 1px 5px;
+          border-radius: 6px;
+          background: color-mix(in srgb, var(--text) 7%, transparent);
+          cursor: pointer;
+          transition: background-color 0.15s;
+        }
+        .say:hover,
+        .say.active {
+          background: color-mix(in srgb, var(--text) 18%, transparent);
+        }
+
         /* the sheets' column widths are made for A4; on a phone the columns fit their content */
         @media (max-width: 640px) {
           table {
@@ -525,6 +569,10 @@ main {
           .cols {
             flex-direction: column;
             gap: 0;
+          }
+          /* over a sheet's margin-top: auto, which has nothing to fill in one column */
+          .cols .col .box {
+            margin-top: 16px;
           }
         }
         @media (max-width: 480px) {
@@ -741,25 +789,24 @@ b {
 
     <main>
       <div class="column">
-        <p class="top-line" data-t="proverb"></p>
+        <p class="top-line" id="top-line">
+          <span data-t="proverb"></span><span id="say-hint" data-t="say_hint"></span>
+        </p>
         <style>@scope ([data-sheet="1"][data-lang="de"]) {
       .letters {
-        position: relative;
         margin-top: 6px;
-        padding-left: 110px;
         font-size: 17px;
         color: var(--text-2);
       }
+      /* the label above its line */
       .letters span {
-        position: absolute;
-        left: 0;
-        bottom: 1px;
+        display: block;
         font-size: 15px;
+        line-height: 1.4;
         color: var(--text);
       }
       .legend {
         margin-top: 4px;
-        padding-left: 110px;
         font-size: 13px;
         color: var(--text-2);
       }
@@ -1125,8 +1172,7 @@ b {
           <col />
         </colgroup>
         <tr>
-          <th></th>
-          <th colspan="2">mit Strich: nicht vor Vokal</th>
+          <th colspan="3">mit Strich: nicht vor Vokal</th>
           <th colspan="2">mit i: vor Vokal</th>
         </tr>
         <tr>
@@ -1168,22 +1214,19 @@ b {
     </div>
 <style>@scope ([data-sheet="1"][data-lang="en"]) {
       .letters {
-        position: relative;
         margin-top: 6px;
-        padding-left: 110px;
         font-size: 17px;
         color: var(--text-2);
       }
+      /* the label above its line */
       .letters span {
-        position: absolute;
-        left: 0;
-        bottom: 1px;
+        display: block;
         font-size: 15px;
+        line-height: 1.4;
         color: var(--text);
       }
       .legend {
         margin-top: 4px;
-        padding-left: 110px;
         font-size: 13px;
         color: var(--text-2);
       }
@@ -1549,8 +1592,7 @@ b {
           <col />
         </colgroup>
         <tr>
-          <th></th>
-          <th colspan="2">with accent: not before a vowel</th>
+          <th colspan="3">with accent: not before a vowel</th>
           <th colspan="2">with i: before a vowel</th>
         </tr>
         <tr>
@@ -7675,7 +7717,7 @@ b {
     </main>
 
     <script id="ui" type="application/json">
-      {"de":{"language":"Sprache","theme_light":"Helles Design","theme_dark":"Dunkles Design","prev_chapter":"Vorheriges Kapitel","next_chapter":"Nächstes Kapitel","choose_chapter":"Kapitel wählen","first_chapter":"Das ist das erste Kapitel","last_chapter":"Das ist das letzte Kapitel","chapter_of":"Kapitel {0} von {1}","continue":"Weiterlesen: Kapitel {0}","to_words":"Zu den neuen Wörtern","words":"Wörter","open_grammar":"Grammatik öffnen","grammar":"Grammatik","read_title":"Kapitel vorlesen","stop_title":"Vorlesen beenden","share":"Teilen","link_place":"Link zu dieser Stelle","link_topic":"Link zu diesem Thema","link_book":"Link zum Buch","link_grammar":"Link zur Grammatik","chapter":"Kapitel {0}","paragraph":"Absatz {0}","copy_chapter":"Kapitel kopieren","characters":"{0} Zeichen","copy_blocked":"Kopieren ist in diesem Browser blockiert.","print_chapter":"Kapitel drucken","print_book":"Buch drucken","fullscreen":"Vollbild","fullscreen_exit":"Vollbild beenden","lang_code":"DE","read_translation":"Auf Deutsch lesen","read_polish":"Auf Polnisch lesen","say_translation":"Auf Deutsch vorlesen","tap_hint":"Tippe auf ein polnisches Wort, um die Übersetzung zu sehen.","proverb":"<span lang=\"pl\">Nie od razu Kraków zbudowano.<\/span> – Krakau wurde nicht an einem Tag erbaut.","translation":"Übersetzung","close":"Schließen","pronounce":"Aussprechen","in_text":"im Text: {0}","new_words":"Neue Wörter","words_hint":"Alle Wörter, die in diesem Kapitel zum ersten Mal vorkommen, alphabetisch in der Grundform.<br />m/f/n: Genus · Gen.: Genitiv Sg. · Pl.: Nominativ Pl. · uv./v.: unvollendeter/vollendeter Aspekt, in Klammern der Aspektpartner · bei Verben: 1. und 2. Person Sg. · bei Präpositionen: der Kasus danach","about":"Diese Geschichte enthält die 3000 häufigsten Wörter des gesprochenen Polnisch.<br />Sie beginnt mit ganz einfachen Sätzen und wird nach und nach schwieriger.<br />Geschrieben von Aron Sommer mit <a href=\"https://claude.ai\">Claude<\/a>, 2026","grammar_title":"Klucz - Grammatik","prev_topic":"Vorheriges Thema","next_topic":"Nächstes Thema","choose_topic":"Thema wählen","first_topic":"Das ist das erste Thema","last_topic":"Das ist das letzte Thema","topic":"Thema {0}","print_topic":"Thema drucken","back":"Zurück zum Buch","book":"Buch"},"en":{"language":"Language","theme_light":"Light theme","theme_dark":"Dark theme","prev_chapter":"Previous chapter","next_chapter":"Next chapter","choose_chapter":"Choose a chapter","first_chapter":"This is the first chapter","last_chapter":"This is the last chapter","chapter_of":"Chapter {0} of {1}","continue":"Continue reading: chapter {0}","to_words":"To the new words","words":"Words","open_grammar":"Open the grammar","grammar":"Grammar","read_title":"Read the chapter aloud","stop_title":"Stop reading aloud","share":"Share","link_place":"Link to this passage","link_topic":"Link to this topic","link_book":"Link to the book","link_grammar":"Link to the grammar","chapter":"Chapter {0}","paragraph":"Paragraph {0}","copy_chapter":"Copy the chapter","characters":"{0} characters","copy_blocked":"Copying is blocked in this browser.","print_chapter":"Print the chapter","print_book":"Print the book","fullscreen":"Full screen","fullscreen_exit":"Exit full screen","lang_code":"EN","read_translation":"Read in English","read_polish":"Read in Polish","say_translation":"Read aloud in English","tap_hint":"Tap a Polish word to see its translation.","proverb":"<span lang=\"pl\">Nie od razu Kraków zbudowano.<\/span> – Kraków wasn't built in a day.","translation":"Translation","close":"Close","pronounce":"Pronounce","in_text":"in the text: {0}","new_words":"New words","words_hint":"Every word that occurs in this chapter for the first time, alphabetically, in its base form.<br />m/f/n: gender · Gen.: genitive sg. · Pl.: nominative pl. · impf./pf.: imperfective/perfective aspect, the aspect partner in brackets · verbs: 1st and 2nd person sg. · prepositions: the case after them","about":"This story contains the 3000 most frequent words of spoken Polish.<br />It begins with very simple sentences and gets harder step by step.<br />Written by Aron Sommer with <a href=\"https://claude.ai\">Claude<\/a>, 2026","grammar_title":"Klucz - Grammar","prev_topic":"Previous topic","next_topic":"Next topic","choose_topic":"Choose a topic","first_topic":"This is the first topic","last_topic":"This is the last topic","topic":"Topic {0}","print_topic":"Print the topic","back":"Back to the book","book":"Book"}}
+      {"de":{"language":"Sprache","theme_light":"Helles Design","theme_dark":"Dunkles Design","prev_chapter":"Vorheriges Kapitel","next_chapter":"Nächstes Kapitel","choose_chapter":"Kapitel wählen","first_chapter":"Das ist das erste Kapitel","last_chapter":"Das ist das letzte Kapitel","chapter_of":"Kapitel {0} von {1}","continue":"Weiterlesen: Kapitel {0}","to_words":"Zu den neuen Wörtern","words":"Wörter","open_grammar":"Grammatik öffnen","grammar":"Grammatik","read_title":"Kapitel vorlesen","stop_title":"Vorlesen beenden","share":"Teilen","link_place":"Link zu dieser Stelle","link_topic":"Link zu diesem Thema","link_book":"Link zum Buch","link_grammar":"Link zur Grammatik","chapter":"Kapitel {0}","paragraph":"Absatz {0}","copy_chapter":"Kapitel kopieren","characters":"{0} Zeichen","copy_blocked":"Kopieren ist in diesem Browser blockiert.","print_chapter":"Kapitel drucken","print_book":"Buch drucken","fullscreen":"Vollbild","fullscreen_exit":"Vollbild beenden","lang_code":"DE","read_translation":"Auf Deutsch lesen","read_polish":"Auf Polnisch lesen","say_translation":"Auf Deutsch vorlesen","tap_hint":"Tippe auf ein polnisches Wort, um die Übersetzung zu sehen.","proverb":"<span lang=\"pl\">Nie od razu Kraków zbudowano.<\/span> – Krakau wurde nicht an einem Tag erbaut.","say_hint":"<span class=\"icon\" aria-hidden=\"true\">volume_up<\/span> Tippe auf ein graues Feld, um es zu hören. Gesprochen von Jacek Będkowski.","translation":"Übersetzung","close":"Schließen","pronounce":"Aussprechen","in_text":"im Text: {0}","new_words":"Neue Wörter","words_hint":"Alle Wörter, die in diesem Kapitel zum ersten Mal vorkommen, alphabetisch in der Grundform.<br />m/f/n: Genus · Gen.: Genitiv Sg. · Pl.: Nominativ Pl. · uv./v.: unvollendeter/vollendeter Aspekt, in Klammern der Aspektpartner · bei Verben: 1. und 2. Person Sg. · bei Präpositionen: der Kasus danach","about":"Diese Geschichte enthält die 3000 häufigsten Wörter des gesprochenen Polnisch.<br />Sie beginnt mit ganz einfachen Sätzen und wird nach und nach schwieriger.<br />Geschrieben von Aron Sommer mit <a href=\"https://claude.ai\">Claude<\/a>, 2026","grammar_title":"Klucz - Grammatik","prev_topic":"Vorheriges Thema","next_topic":"Nächstes Thema","choose_topic":"Thema wählen","first_topic":"Das ist das erste Thema","last_topic":"Das ist das letzte Thema","topic":"Thema {0}","print_topic":"Thema drucken","back":"Zurück zum Buch","book":"Buch"},"en":{"language":"Language","theme_light":"Light theme","theme_dark":"Dark theme","prev_chapter":"Previous chapter","next_chapter":"Next chapter","choose_chapter":"Choose a chapter","first_chapter":"This is the first chapter","last_chapter":"This is the last chapter","chapter_of":"Chapter {0} of {1}","continue":"Continue reading: chapter {0}","to_words":"To the new words","words":"Words","open_grammar":"Open the grammar","grammar":"Grammar","read_title":"Read the chapter aloud","stop_title":"Stop reading aloud","share":"Share","link_place":"Link to this passage","link_topic":"Link to this topic","link_book":"Link to the book","link_grammar":"Link to the grammar","chapter":"Chapter {0}","paragraph":"Paragraph {0}","copy_chapter":"Copy the chapter","characters":"{0} characters","copy_blocked":"Copying is blocked in this browser.","print_chapter":"Print the chapter","print_book":"Print the book","fullscreen":"Full screen","fullscreen_exit":"Exit full screen","lang_code":"EN","read_translation":"Read in English","read_polish":"Read in Polish","say_translation":"Read aloud in English","tap_hint":"Tap a Polish word to see its translation.","proverb":"<span lang=\"pl\">Nie od razu Kraków zbudowano.<\/span> – Kraków wasn't built in a day.","say_hint":"<span class=\"icon\" aria-hidden=\"true\">volume_up<\/span> Tap a grey box to hear it. Spoken by Jacek Będkowski.","translation":"Translation","close":"Close","pronounce":"Pronounce","in_text":"in the text: {0}","new_words":"New words","words_hint":"Every word that occurs in this chapter for the first time, alphabetically, in its base form.<br />m/f/n: gender · Gen.: genitive sg. · Pl.: nominative pl. · impf./pf.: imperfective/perfective aspect, the aspect partner in brackets · verbs: 1st and 2nd person sg. · prepositions: the case after them","about":"This story contains the 3000 most frequent words of spoken Polish.<br />It begins with very simple sentences and gets harder step by step.<br />Written by Aron Sommer with <a href=\"https://claude.ai\">Claude<\/a>, 2026","grammar_title":"Klucz - Grammar","prev_topic":"Previous topic","next_topic":"Next topic","choose_topic":"Choose a topic","first_topic":"This is the first topic","last_topic":"This is the last topic","topic":"Topic {0}","print_topic":"Print the topic","back":"Back to the book","book":"Book"}}
     </script>
     <script>
       // The language of the page's own texts, kept for both pages; without a stored one, the browser's (German, else English).
@@ -7893,6 +7935,8 @@ addEventListener("focusout", (e) => e.target.classList.remove("by-pointer"));
           current = i;
           for (const s of document.querySelectorAll(".page")) s.hidden = s !== sheets[i];
           $("topic").selectedIndex = i;
+          // above a sheet with recordings the tap hint, else the proverb
+          $("top-line").classList.toggle("hint", !!sheets[i].querySelector(".say"));
           document.title = "Klucz - " + names[i];
           $("prev").disabled = i === 0;
           $("next").disabled = i === sheets.length - 1;
@@ -7955,6 +7999,78 @@ addEventListener("focusout", (e) => e.target.classList.remove("by-pointer"));
           const height = sheet.getBoundingClientRect().height;
           styles.forEach((s) => (s.media = s.media === "all" ? "print" : "screen"));
           if (height > A4) sheet.style.setProperty("--fit", A4 / height);
+        });
+        // the alphabet sheet (the one with the letter lines): letters, digraphs and words with a recording in
+        // audio/ play on a click; in the letter lines ó and y say their names
+        const AUDIO = new Set(["digraphs/ch","digraphs/ci","digraphs/cz","digraphs/dz","digraphs/dz-acute","digraphs/dz-dot-above","digraphs/dzi","digraphs/ni","digraphs/rz","digraphs/si","digraphs/sz","digraphs/zi","letters/a","letters/a-ogonek","letters/b","letters/c","letters/c-acute","letters/d","letters/e","letters/e-ogonek","letters/f","letters/g","letters/h","letters/i","letters/igrek","letters/j","letters/k","letters/l","letters/l-stroke","letters/m","letters/n","letters/n-acute","letters/o","letters/o-acute","letters/o-z-kreska","letters/p","letters/q","letters/r","letters/s","letters/s-acute","letters/t","letters/u","letters/v","letters/w","letters/x","letters/y","letters/z","letters/z-acute","letters/z-dot-above","words/arbuz","words/babcia","words/chleb","words/chmura","words/ciocia","words/cma","words/corka","words/czapka","words/dom","words/dzem","words/dziadek","words/dzwig","words/dzwon","words/ekran","words/farby","words/ges","words/guma","words/hura","words/igla","words/jez","words/kon","words/kot","words/krakow","words/lalka","words/lapa","words/mama","words/niania","words/nos","words/okulary","words/osemka","words/parasol","words/rower","words/ryba","words/rzeka","words/siano","words/smieci","words/sowa","words/szafa","words/tata","words/ucho","words/waz","words/woda","words/zaba","words/zegar","words/ziemia","words/zrodlo"]);
+        const MARKS = {
+          ą: "ogonek",
+          ę: "ogonek",
+          ć: "acute",
+          ń: "acute",
+          ó: "acute",
+          ś: "acute",
+          ź: "acute",
+          ż: "dot-above",
+          ł: "stroke",
+        };
+        const NAMES = { ó: "letters/o-z-kreska", y: "letters/igrek" };
+        const bare = (s) => s.normalize("NFD").replace(/\p{M}/gu, "").replaceAll("ł", "l");
+        // the recording of a text: a letter or digraph by its Unicode mark, else a word without its marks
+        function recording(text) {
+          const s = text.trim().toLowerCase();
+          const mark = MARKS[[...s].find((c) => c in MARKS)];
+          const name = bare(s) + (mark ? "-" + mark : "");
+          return ["letters/" + name, "digraphs/" + name, "words/" + bare(s)].find((p) =>
+            AUDIO.has(p),
+          );
+        }
+        const say = (el, path) => {
+          el.classList.add("say");
+          el.dataset.audio = path;
+        };
+        // a key around a text: a new <a> with these nodes
+        const key = (nodes, path) => {
+          const a = document.createElement("a");
+          a.append(...nodes);
+          say(a, path);
+          return a;
+        };
+        for (const page of document.querySelectorAll(".page:has(.letters)")) {
+          for (const line of page.querySelectorAll(".letters")) {
+            const walker = document.createTreeWalker(line, NodeFilter.SHOW_TEXT);
+            const texts = [];
+            while (walker.nextNode()) texts.push(walker.currentNode);
+            for (const text of texts)
+              text.replaceWith(
+                ...text.data.split(/(\s+)/).map((part) => {
+                  const letter = part.replace(/[()]/g, "");
+                  const path = NAMES[letter] ?? recording(letter);
+                  return path ? key([part], path) : part;
+                }),
+              );
+          }
+          // a table cell whose whole text has a recording plays as one word (ćma, not ć), else each bold text
+          for (const b of page.querySelectorAll("b:not([lang])")) {
+            if (b.closest(".letters, .say")) continue;
+            const cell = b.closest("td");
+            const whole = cell && recording(cell.textContent);
+            if (whole) cell.append(key([...cell.childNodes], whole));
+            else if (recording(b.textContent)) say(b, recording(b.textContent));
+          }
+        }
+        const audio = new Audio();
+        let playing;
+        const stop = () => playing?.classList.remove("active");
+        audio.onended = audio.onerror = stop;
+        document.addEventListener("click", (e) => {
+          const el = e.target.closest(".say");
+          if (!el) return;
+          stop();
+          playing = el;
+          el.classList.add("active");
+          audio.src = "audio/" + el.dataset.audio + ".mp3";
+          audio.play().catch(stop);
         });
         // a press does not focus a button, so Space keeps scrolling the page
         document.addEventListener("mousedown", (e) => {

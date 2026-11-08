@@ -28,6 +28,27 @@
       .share {
         grid-column: 3;
       }
+      /* the proverb and the tap hint in one cell, one of them hidden: as high on every sheet, so the
+         sheet starts at the same height */
+      #top-line {
+        display: grid;
+      }
+      #top-line > * {
+        grid-area: 1 / 1;
+      }
+      #top-line > :last-child,
+      #top-line.hint > :first-child {
+        visibility: hidden;
+      }
+      #top-line.hint > :last-child {
+        visibility: visible;
+      }
+      /* the speaker icon makes the line no higher */
+      #say-hint .icon {
+        font-size: 18px;
+        line-height: 0;
+        vertical-align: -4px;
+      }
       @media (min-width: 641px) {
         .switcher {
           grid-column: span 6;
@@ -179,6 +200,29 @@
           margin-top: 8px;
         }
 
+        /* the alphabet sheet's recordings: a grey key for what plays on a click */
+        .letters {
+          line-height: 2; /* room between the keys of a wrapped line */
+        }
+        /* a cell's keys stay on one line (ć = ci); a table with two keys in a cell widens that column for them */
+        td:has(.say) {
+          white-space: nowrap;
+        }
+        table:has(td .say ~ .say) {
+          table-layout: auto;
+        }
+        .say {
+          padding: 1px 5px;
+          border-radius: 6px;
+          background: color-mix(in srgb, var(--text) 7%, transparent);
+          cursor: pointer;
+          transition: background-color 0.15s;
+        }
+        .say:hover,
+        .say.active {
+          background: color-mix(in srgb, var(--text) 18%, transparent);
+        }
+
         /* the sheets' column widths are made for A4; on a phone the columns fit their content */
         @media (max-width: 640px) {
           table {
@@ -190,6 +234,10 @@
           .cols {
             flex-direction: column;
             gap: 0;
+          }
+          /* over a sheet's margin-top: auto, which has nothing to fill in one column */
+          .cols .col .box {
+            margin-top: 16px;
           }
         }
         @media (max-width: 480px) {
@@ -271,7 +319,9 @@
 
     <main>
       <div class="column">
-        <p class="top-line" data-t="proverb"></p>
+        <p class="top-line" id="top-line">
+          <span data-t="proverb"></span><span id="say-hint" data-t="say_hint"></span>
+        </p>
         __SHEETS__
       </div>
     </main>
@@ -312,6 +362,8 @@
           current = i;
           for (const s of document.querySelectorAll(".page")) s.hidden = s !== sheets[i];
           $("topic").selectedIndex = i;
+          // above a sheet with recordings the tap hint, else the proverb
+          $("top-line").classList.toggle("hint", !!sheets[i].querySelector(".say"));
           document.title = "Klucz - " + names[i];
           $("prev").disabled = i === 0;
           $("next").disabled = i === sheets.length - 1;
@@ -374,6 +426,78 @@
           const height = sheet.getBoundingClientRect().height;
           styles.forEach((s) => (s.media = s.media === "all" ? "print" : "screen"));
           if (height > A4) sheet.style.setProperty("--fit", A4 / height);
+        });
+        // the alphabet sheet (the one with the letter lines): letters, digraphs and words with a recording in
+        // audio/ play on a click; in the letter lines ó and y say their names
+        const AUDIO = new Set(__AUDIO__);
+        const MARKS = {
+          ą: "ogonek",
+          ę: "ogonek",
+          ć: "acute",
+          ń: "acute",
+          ó: "acute",
+          ś: "acute",
+          ź: "acute",
+          ż: "dot-above",
+          ł: "stroke",
+        };
+        const NAMES = { ó: "letters/o-z-kreska", y: "letters/igrek" };
+        const bare = (s) => s.normalize("NFD").replace(/\p{M}/gu, "").replaceAll("ł", "l");
+        // the recording of a text: a letter or digraph by its Unicode mark, else a word without its marks
+        function recording(text) {
+          const s = text.trim().toLowerCase();
+          const mark = MARKS[[...s].find((c) => c in MARKS)];
+          const name = bare(s) + (mark ? "-" + mark : "");
+          return ["letters/" + name, "digraphs/" + name, "words/" + bare(s)].find((p) =>
+            AUDIO.has(p),
+          );
+        }
+        const say = (el, path) => {
+          el.classList.add("say");
+          el.dataset.audio = path;
+        };
+        // a key around a text: a new <a> with these nodes
+        const key = (nodes, path) => {
+          const a = document.createElement("a");
+          a.append(...nodes);
+          say(a, path);
+          return a;
+        };
+        for (const page of document.querySelectorAll(".page:has(.letters)")) {
+          for (const line of page.querySelectorAll(".letters")) {
+            const walker = document.createTreeWalker(line, NodeFilter.SHOW_TEXT);
+            const texts = [];
+            while (walker.nextNode()) texts.push(walker.currentNode);
+            for (const text of texts)
+              text.replaceWith(
+                ...text.data.split(/(\s+)/).map((part) => {
+                  const letter = part.replace(/[()]/g, "");
+                  const path = NAMES[letter] ?? recording(letter);
+                  return path ? key([part], path) : part;
+                }),
+              );
+          }
+          // a table cell whose whole text has a recording plays as one word (ćma, not ć), else each bold text
+          for (const b of page.querySelectorAll("b:not([lang])")) {
+            if (b.closest(".letters, .say")) continue;
+            const cell = b.closest("td");
+            const whole = cell && recording(cell.textContent);
+            if (whole) cell.append(key([...cell.childNodes], whole));
+            else if (recording(b.textContent)) say(b, recording(b.textContent));
+          }
+        }
+        const audio = new Audio();
+        let playing;
+        const stop = () => playing?.classList.remove("active");
+        audio.onended = audio.onerror = stop;
+        document.addEventListener("click", (e) => {
+          const el = e.target.closest(".say");
+          if (!el) return;
+          stop();
+          playing = el;
+          el.classList.add("active");
+          audio.src = "audio/" + el.dataset.audio + ".mp3";
+          audio.play().catch(stop);
         });
         // a press does not focus a button, so Space keeps scrolling the page
         document.addEventListener("mousedown", (e) => {
