@@ -1,7 +1,7 @@
 # SGJP pl.sgjp.sgjp-2026.10.19, https://download.sgjp.pl/morfeusz/20261018/sgjp-20261018.tab.gz
 # Copyright © 2007–2026 Marcin Woliński, Zbigniew Bronk, Włodzimierz Gruszczyński, Witold Kieraś, Zygmunt Saloni, Danuta Skowrońska, Robert Wołosz; BSD license (see the downloaded file)
 # form, lemma, tag, kind, labels; written by tools/lexicon.py, never by hand
-# made for b80b1678b0793db3f7074c512e94358c95bab2b1
+# made for ebdd461e6b767ca6d74ef97ab0427e0520d30541
 AGH	AGH	subst:sg.pl:nom.gen.dat.acc.inst.loc.voc:f	nazwa_instytucji	
 AGH	AGH	subst:sg.pl:nom.gen.dat.acc.inst.loc.voc:n:ncol	nazwa_instytucji	
 Ale	Al	depr:pl:nom.acc.voc:m2	imię	
@@ -11898,7 +11898,6 @@ róże	róż	subst:pl:nom.acc.voc:m3	nazwa_pospolita
 róż	róża	subst:pl:gen:f	nazwa_pospolita	
 róże	róża	subst:pl:nom.acc.voc:f	nazwa_pospolita	
 różaniec	różaniec	subst:sg:nom.acc:m3	nazwa_pospolita	
-różańcem	różaniec	subst:sg:inst:m3	nazwa_pospolita	
 różnicę	różnica	subst:sg:acc:f	nazwa_pospolita	
 różni	różnić	fin:sg:ter:imperf		
 najróżniejsze	różny	adj:pl:acc:m2.m3.f.n:sup		
