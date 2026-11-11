@@ -4897,7 +4897,7 @@ Tata, Stanisław, był inżynierem. Cichym człowiekiem. Nienawidził komunistó
 
 Zosia była starsza o cztery lata i była we wszystkim lepsza. Mądrzejsza, ładniejsza, odważniejsza. Ja ją kochałam bardziej niż kogokolwiek na świecie. I trochę jej zazdrościłam. Młodsze siostry tak mają.
 
-Moja ukochana siostra. Poświęciła dla mnie bardzo dużo: nosiła mnie na rękach, uczyła mnie czytać, broniła mnie przed chłopakami z podwórka. A co ja dla niej uczyniłam w zamian? Myślałam zawsze, że ona nikogo nie zdradza, że ma w sobie coś świętego. Teraz wiem, że jej odwaga to też było poświęcenie.
+Moja ukochana siostra. Poświęciła dla mnie bardzo dużo: nosiła mnie na rękach, uczyła mnie czytać, broniła mnie przed chłopakami z podwórka. A co ja dla niej uczyniłam w zamian za całe to poświęcenie?
 
 W siedemdziesiątym roku, w grudniu, na Wybrzeżu wojsko strzelało do robotników. Zginęło wielu ludzi. W telewizji mówili, że to byli chuligani i bandyci. Zosia była wtedy na ostatnim roku studiów. Wróciła do domu po wiadomościach biała ze złości. W nocy wyszła z domu. Rano na murze uniwersytetu było napisane czerwoną farbą: »KŁAMCY«.
 
@@ -4923,7 +4923,7 @@ Długo obwiniałam ich. Potem siebie. Potem znowu ich. Ale winy nie można dziel
 
 Zosia dowiedziała się w marcu. Nie wiem od kogo. Może od nich. Oni lubili, kiedy ludzie się nienawidzili. Przyszła do mojego pokoju, stanęła w drzwiach i powiedziała tylko: »Dlaczego, Hala?«. Nie umiałam odpowiedzieć. Do dzisiaj nie umiem.
 
-Mieli tajnych współpracowników wszędzie: w pracy, na uniwersytecie, w kościele. Taka była ich metoda. Każdy mógł donosić, więc nikt nikomu nie ufał. To było gorsze niż strach.
+Mieli tajnych współpracowników wszędzie: w pracy, na uniwersytecie, w kościele. Taka była ich metoda. Ludzie zdradzali kolegów, sąsiadów, nawet własną rodzinę. Każdy mógł donosić, więc nikt nikomu nie ufał. To było gorsze niż strach.
 
 W maju poznała Klausa. Twojego dziadka. Był inżynierem z Hamburga, przyjechał do Nowej Huty na kontrakt, montował jakieś maszyny. Wysoki, spokojny, mówił po polsku jeszcze gorzej niż ty na początku. Zakochała się w nim albo chciała się zakochać. Nie wiem. W październiku wzięli ślub. W listopadzie wyjechała. Jako żony obywatela Niemiec Zachodnich władze nie mogły jej zatrzymać.
 
@@ -5059,7 +5059,7 @@ Potem wstała i zrobiła coś, czego się nie spodziewałem. Pocałowała mnie w
 - **zbrodnia** _Substantiv · f · Gen. zbrodni · Pl. zbrodnie_ — Verbrechen
 - **zdolny** _Adjektiv_ — fähig, begabt · im Text: zdolni (Nominativ Pl.)
 - **zdrada** _Substantiv · f · Gen. zdrady · Pl. zdrady_ — Verrat; Untreue
-- **zdradzać** _Verb · uv. (v. zdradzić) · zdradzam, zdradzasz_ — verraten; betrügen · im Text: zdradza (Präsens, 3. Sg.)
+- **zdradzać** _Verb · uv. (v. zdradzić) · zdradzam, zdradzasz_ — verraten; betrügen · im Text: zdradzali (Vergangenheit, 3. Pl.)
 - **zdradzić** _Verb · v. (uv. zdradzać) · zdradzę, zdradzisz_ — verraten; betrügen · im Text: zdradziłam (Vergangenheit, 1. Sg. f)
 - **zdrajca** _Substantiv · m · Gen. zdrajcy · Pl. zdrajcy_ — Verräter
 - **zdrajczyni** _Substantiv · f · Gen. zdrajczyni · Pl. zdrajczynie_ — Verräterin · im Text: zdrajczynią (Instrumental Sg.)

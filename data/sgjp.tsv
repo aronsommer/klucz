@@ -1,7 +1,7 @@
 # SGJP pl.sgjp.sgjp-2026.10.19, https://download.sgjp.pl/morfeusz/20261018/sgjp-20261018.tab.gz
 # Copyright © 2007–2026 Marcin Woliński, Zbigniew Bronk, Włodzimierz Gruszczyński, Witold Kieraś, Zygmunt Saloni, Danuta Skowrońska, Robert Wołosz; BSD license (see the downloaded file)
 # form, lemma, tag, kind, labels; written by tools/lexicon.py, never by hand
-# made for ebdd461e6b767ca6d74ef97ab0427e0520d30541
+# made for 8e5b9db135f542fa87db5f72ceaded481b1fe034
 AGH	AGH	subst:sg.pl:nom.gen.dat.acc.inst.loc.voc:f	nazwa_instytucji	
 AGH	AGH	subst:sg.pl:nom.gen.dat.acc.inst.loc.voc:n:ncol	nazwa_instytucji	
 Ale	Al	depr:pl:nom.acc.voc:m2	imię	
@@ -16850,7 +16850,8 @@ zdradliwe	zdradliwy	adj:pl:acc:m2.m3.f.n:pos
 zdradliwe	zdradliwy	adj:pl:nom.voc:m2.m3.f.n:pos		
 zdradliwe	zdradliwy	adj:sg:acc:n:pos		
 zdradliwe	zdradliwy	adj:sg:nom.voc:n:pos		
-zdradza	zdradzać	fin:sg:ter:imperf		
+zdradzali	zdradzać	praet:pl:m1:imperf		
+zdradzali	zdradzać	praet:pl:m1:ter:imperf		
 zdradziła	zdradzić	praet:sg:f:perf		
 zdradziła	zdradzić	praet:sg:f:ter:perf		
 zdrajca	zdrajca	subst:sg:nom:m1	nazwa_pospolita	
@@ -17927,8 +17928,6 @@ zły	zły:S	subst:sg:voc:m1	nazwa_pospolita
 świętuje	świętować	fin:sg:ter:imperf		
 święci	święty:A	adj:pl:nom.voc:m1:pos		
 święta	święty:A	adj:sg:nom.voc:f:pos		
-świętego	święty:A	adj:sg:acc:m1.m2:pos		
-świętego	święty:A	adj:sg:gen:m1.m2.m3.n:pos		
 święto	święty:A	adja		
 świętych	święty:A	adj:pl:acc:m1:pos		
 świętych	święty:A	adj:pl:gen:m1.m2.m3.f.n:pos		
@@ -17937,7 +17936,6 @@ zły	zły:S	subst:sg:voc:m1	nazwa_pospolita
 świętym	święty:A	adj:sg:inst:m1.m2.m3.n:pos		
 świętym	święty:A	adj:sg:loc:m1.m2.m3.n:pos		
 święci	święty:S	subst:pl:nom.voc:m1	nazwa_pospolita	
-świętego	święty:S	subst:sg:gen.acc:m1	nazwa_pospolita	
 świętych	święty:S	subst:pl:gen.acc:m1	nazwa_pospolita	
 świętych	święty:S	subst:pl:loc:m1	nazwa_pospolita	
 świętym	święty:S	subst:pl:dat:m1	nazwa_pospolita	
@@ -28770,6 +28768,7 @@ złożę	złożyć	fin:sg:pri:perf
 Świętego	Święty:Sm1	subst:sg:gen.acc:m1	nazwisko	
 Świętowie	Święty:Sm1	subst:pl:nom.voc:m1	nazwisko	
 Święty	Święty:Sf	subst:sg.pl:nom.gen.dat.acc.inst.loc.voc:f	nazwisko	
+świętego	święty:S	subst:sg:gen.acc:m1	nazwa_pospolita	
 źródła	źródło	subst:pl:nom.acc.voc:n:ncol	nazwa_pospolita	
 źródła	źródło	subst:sg:gen:n:ncol	nazwa_pospolita	
 Żabowie	Żaba:Sm1	subst:pl:nom.voc:m1	nazwisko	
