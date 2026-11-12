@@ -3433,17 +3433,26 @@ b {
         display: grid;
         grid-template-columns: 170px 1fr;
       }
-      .page > table :is(th, td):first-child {
+      .page > table:not(.forms) :is(th, td):first-child {
         width: 230px;
       }
-      .page > table :is(th, td):nth-child(2) {
+      .page > table:not(.forms) :is(th, td):nth-child(2) {
         width: 210px;
+      }
+      .forms {
+        margin-top: 14px;
+      }
+      .forms :is(th, td):first-child {
+        width: 140px;
+      }
+      .forms :is(th, td):nth-child(2) {
+        width: 130px;
       }
     }</style><div class="page" data-sheet="6" data-lang="de" hidden>
       <h1><small></small>Pytania i przeczenie – Fragen und Verneinung</h1>
-      <p class="sub">Ja/Nein-Frage: Czy … ? · Verneinung: nie direkt vor das Verb</p>
+      <p class="sub">Fragewörter, Ja/Nein-Fragen und Verneinung</p>
 
-      <h2>1. Fragewörter</h2>
+      <h2>1. Zaimki pytające – Fragewörter</h2>
       <div class="cols">
         <div class="col">
           <p><b>kto?</b> <span>wer?</span></p>
@@ -3456,7 +3465,7 @@ b {
           <p><b>jak?</b> <span>wie?</span></p>
         </div>
         <div class="col">
-          <p><b>jaki? jaka? jakie?</b> <span>was für ein? wie?</span></p>
+          <p><b>jaki? jaka? jakie?</b> <span>was für ein?</span></p>
           <p><b>który? która? które?</b> <span>welcher?</span></p>
           <p><b>czyj? czyja? czyje?</b> <span>wessen?</span></p>
           <p><b>ile?</b> <span>wie viel?</span></p>
@@ -3466,61 +3475,96 @@ b {
           <p><b>od kiedy?</b> <span>seit wann?</span></p>
         </div>
       </div>
+      <table class="forms">
+        <tr>
+          <th>Nomen</th>
+          <th>Geschlecht</th>
+          <th>jaki?</th>
+          <th>który?</th>
+          <th>czyj?</th>
+        </tr>
+        <tr>
+          <td>dom (Haus)</td>
+          <td>männlich</td>
+          <td>jak<b>i</b> dom</td>
+          <td>któr<b>y</b> dom</td>
+          <td>czyj dom</td>
+        </tr>
+        <tr>
+          <td>kawa (Kaffee)</td>
+          <td>weiblich</td>
+          <td>jak<b>a</b> kawa</td>
+          <td>któr<b>a</b> kawa</td>
+          <td>czyj<b>a</b> kawa</td>
+        </tr>
+        <tr>
+          <td>krzesło (Stuhl)</td>
+          <td>Neutrum</td>
+          <td>jak<b>ie</b> krzesło</td>
+          <td>któr<b>e</b> krzesło</td>
+          <td>czyj<b>e</b> krzesło</td>
+        </tr>
+      </table>
 
-      <h2>2. Ja/Nein-Fragen <span>· mit czy</span></h2>
+      <h2>2. Pytania tak/nie – Ja/Nein-Fragen</h2>
+      <p class="rule">czy kommt an den Satzanfang, sonst bleibt der Satz gleich.</p>
+      <p class="rule">Gesprochen fällt czy oft weg, dann geht nur die Stimme am Ende hoch.</p>
       <table>
+        <tr>
+          <td>Aussage</td>
+          <td>Masz czas.</td>
+          <td>Du hast Zeit.</td>
+        </tr>
         <tr>
           <td>Frage mit czy</td>
           <td><b>Czy</b> masz czas?</td>
           <td>Hast du Zeit?</td>
         </tr>
         <tr>
-          <td>Antwort</td>
-          <td><b>Tak</b>, mam. · <b>Nie</b>, nie mam.</td>
-          <td>Ja. · Nein.</td>
+          <td>Antwort: ja</td>
+          <td><b>Tak</b>, mam.</td>
+          <td>Ja, habe ich.</td>
         </tr>
         <tr>
-          <td>gesprochen oft ohne czy</td>
-          <td>Masz czas?</td>
-          <td>nur die Stimme geht hoch</td>
+          <td>Antwort: nein</td>
+          <td><b>Nie</b>, nie mam.</td>
+          <td>Nein, habe ich nicht.</td>
         </tr>
       </table>
 
-      <h2>3. Verneinung <span>· nie vor dem Verb</span></h2>
+      <h2>3. Przeczenie – Verneinung</h2>
+      <p class="rule">nie steht direkt vor dem Verb.</p>
+      <p class="rule">Mit nikt, nic, nigdy und nigdzie steht immer auch nie vor dem Verb.</p>
       <table>
         <tr>
-          <td>nie + Verb</td>
+          <td>nie (nicht)</td>
           <td><b>Nie</b> rozumiem.</td>
           <td>Ich verstehe nicht.</td>
         </tr>
         <tr>
-          <td>nikt · niemand</td>
+          <td>nikt (niemand)</td>
           <td><b>Nikt nie</b> wie.</td>
           <td>Niemand weiß es.</td>
         </tr>
         <tr>
-          <td>nic · nichts</td>
+          <td>nic (nichts)</td>
           <td><b>Nic nie</b> mam.</td>
           <td>Ich habe nichts.</td>
         </tr>
         <tr>
-          <td>nigdy · niemals</td>
+          <td>nigdy (niemals)</td>
           <td><b>Nigdy nie</b> piję kawy.</td>
           <td>Ich trinke nie Kaffee.</td>
         </tr>
         <tr>
-          <td>nigdzie · nirgends</td>
+          <td>nigdzie (nirgends)</td>
           <td><b>Nigdzie nie</b> idę.</td>
           <td>Ich gehe nirgendwohin.</td>
         </tr>
       </table>
-      <p class="rule">
-        Doppelte Verneinung ist Pflicht: Mit nikt, nic, nigdy, nigdzie steht vor dem Verb immer auch
-        nie.
-      </p>
 
       <div class="box">
-        <h3>Nach nie: Genitiv statt Akkusativ</h3>
+        <h3>Nach nie ändert sich oft die Endung des Nomens</h3>
         <table class="ex">
           <tr>
             <td>Mam samochód. → Nie mam <b>samochodu</b>.</td>
@@ -3531,11 +3575,11 @@ b {
             <td>Ich mag keinen Kaffee.</td>
           </tr>
           <tr>
-            <td>Jest mleko. → Nie ma <b>mleka</b>.</td>
+            <td>Auch nach nie ma (es gibt kein): Nie ma <b>mleka</b>.</td>
             <td>Es gibt keine Milch.</td>
           </tr>
           <tr>
-            <td>Aber być bleibt: To nie jest problem.</td>
+            <td>Nach być ändert sich nichts: To nie jest problem.</td>
             <td>Das ist kein Problem.</td>
           </tr>
         </table>
@@ -3546,17 +3590,26 @@ b {
         display: grid;
         grid-template-columns: 170px 1fr;
       }
-      .page > table :is(th, td):first-child {
+      .page > table:not(.forms) :is(th, td):first-child {
         width: 230px;
       }
-      .page > table :is(th, td):nth-child(2) {
+      .page > table:not(.forms) :is(th, td):nth-child(2) {
         width: 210px;
+      }
+      .forms {
+        margin-top: 14px;
+      }
+      .forms :is(th, td):first-child {
+        width: 140px;
+      }
+      .forms :is(th, td):nth-child(2) {
+        width: 130px;
       }
     }</style><div class="page" data-sheet="6" data-lang="en" hidden>
       <h1><small></small>Pytania i przeczenie – Questions and Negation</h1>
-      <p class="sub">Yes/no question: Czy … ? · Negation: nie right before the verb</p>
+      <p class="sub">Question words, yes/no questions and negation</p>
 
-      <h2>1. Question words</h2>
+      <h2>1. Zaimki pytające – Question words</h2>
       <div class="cols">
         <div class="col">
           <p><b>kto?</b> <span>who?</span></p>
@@ -3579,61 +3632,96 @@ b {
           <p><b>od kiedy?</b> <span>since when?</span></p>
         </div>
       </div>
-
-      <h2>2. Yes/no questions <span>· with czy</span></h2>
-      <table>
+      <table class="forms">
         <tr>
-          <td>with czy</td>
-          <td><b>Czy</b> masz czas?</td>
-          <td>Are you free?</td>
+          <th>Noun</th>
+          <th>Gender</th>
+          <th>jaki?</th>
+          <th>który?</th>
+          <th>czyj?</th>
         </tr>
         <tr>
-          <td>answer</td>
-          <td><b>Tak</b>, mam. · <b>Nie</b>, nie mam.</td>
-          <td>Yes. · No.</td>
+          <td>dom (house)</td>
+          <td>masculine</td>
+          <td>jak<b>i</b> dom</td>
+          <td>któr<b>y</b> dom</td>
+          <td>czyj dom</td>
         </tr>
         <tr>
-          <td>spoken: often without czy</td>
-          <td>Masz czas?</td>
-          <td>only the voice goes up</td>
+          <td>kawa (coffee)</td>
+          <td>feminine</td>
+          <td>jak<b>a</b> kawa</td>
+          <td>któr<b>a</b> kawa</td>
+          <td>czyj<b>a</b> kawa</td>
+        </tr>
+        <tr>
+          <td>krzesło (chair)</td>
+          <td>neuter</td>
+          <td>jak<b>ie</b> krzesło</td>
+          <td>któr<b>e</b> krzesło</td>
+          <td>czyj<b>e</b> krzesło</td>
         </tr>
       </table>
 
-      <h2>3. Negation <span>· nie before the verb</span></h2>
+      <h2>2. Pytania tak/nie – Yes/no questions</h2>
+      <p class="rule">czy goes at the start, the rest of the sentence stays the same.</p>
+      <p class="rule">In speech czy is often left out, then only the voice goes up at the end.</p>
       <table>
         <tr>
-          <td>nie + verb</td>
+          <td>statement</td>
+          <td>Masz czas.</td>
+          <td>You have time.</td>
+        </tr>
+        <tr>
+          <td>question with czy</td>
+          <td><b>Czy</b> masz czas?</td>
+          <td>Do you have time?</td>
+        </tr>
+        <tr>
+          <td>answer: yes</td>
+          <td><b>Tak</b>, mam.</td>
+          <td>Yes, I do.</td>
+        </tr>
+        <tr>
+          <td>answer: no</td>
+          <td><b>Nie</b>, nie mam.</td>
+          <td>No, I don't.</td>
+        </tr>
+      </table>
+
+      <h2>3. Przeczenie – Negation</h2>
+      <p class="rule">nie goes right before the verb.</p>
+      <p class="rule">With nikt, nic, nigdy and nigdzie, nie always goes before the verb too.</p>
+      <table>
+        <tr>
+          <td>nie (not)</td>
           <td><b>Nie</b> rozumiem.</td>
           <td>I don't understand.</td>
         </tr>
         <tr>
-          <td>nikt · nobody</td>
+          <td>nikt (nobody)</td>
           <td><b>Nikt nie</b> wie.</td>
           <td>Nobody knows.</td>
         </tr>
         <tr>
-          <td>nic · nothing</td>
+          <td>nic (nothing)</td>
           <td><b>Nic nie</b> mam.</td>
           <td>I have nothing.</td>
         </tr>
         <tr>
-          <td>nigdy · never</td>
+          <td>nigdy (never)</td>
           <td><b>Nigdy nie</b> piję kawy.</td>
           <td>I never drink coffee.</td>
         </tr>
         <tr>
-          <td>nigdzie · nowhere</td>
+          <td>nigdzie (nowhere)</td>
           <td><b>Nigdzie nie</b> idę.</td>
           <td>I'm not going anywhere.</td>
         </tr>
       </table>
-      <p class="rule">
-        Double negation is a must: with nikt, nic, nigdy, nigdzie there is always also nie before
-        the verb.
-      </p>
 
       <div class="box">
-        <h3>After nie: genitive, not accusative</h3>
+        <h3>After nie, the noun often changes its ending</h3>
         <table class="ex">
           <tr>
             <td>Mam samochód. → Nie mam <b>samochodu</b>.</td>
@@ -3644,11 +3732,11 @@ b {
             <td>I don't like coffee.</td>
           </tr>
           <tr>
-            <td>Jest mleko. → Nie ma <b>mleka</b>.</td>
+            <td>Also after nie ma (there is no): Nie ma <b>mleka</b>.</td>
             <td>There is no milk.</td>
           </tr>
           <tr>
-            <td>But być stays: To nie jest problem.</td>
+            <td>After być nothing changes: To nie jest problem.</td>
             <td>That's not a problem.</td>
           </tr>
         </table>
