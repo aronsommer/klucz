@@ -106,7 +106,7 @@ Die Ränge 3001–5000 sind nicht vollständig enthalten, nur das, was sich nat�
 
 ## Wie man das Buch liest
 
-- **Kapitel für Kapitel, in Reihenfolge.** Die Wörter werden ungefähr nach Häufigkeit eingeführt: Kapitel 1 nutzt fast nur die häufigsten ~300.
+- **Kapitel für Kapitel, in Reihenfolge.** Die Wörter werden ungefähr nach Häufigkeit eingeführt: Am Anfang kommen vor allem die häufigsten Wörter dazu, später zunehmend seltenere.
 - **Die Wortliste am Kapitelende** listet alphabetisch jedes Wort, das dort zum ersten Mal vorkommt, wie im Wörterbuch. Weicht die Form im Text ab, steht sie mit ihrer Bestimmung dabei, etwa _pójść_ · im Text: _poszedłem_ (Vergangenheit, 1. Sg. m).
 - **Ab Kapitel 4 schreibt Jonas in der Vergangenheit**, weil seine Lehrerin Kasia es ihm aufgibt, danach folgen Futur, Konditional und Aspekt. Die Grammatik steigt also mit der Geschichte.
 - **Zweimal lesen lohnt sich.** Rund 1350 Kernwörter kommen nur ein einziges Mal vor. Beim zweiten Durchgang kennt man die Handlung und achtet auf die Wörter.
