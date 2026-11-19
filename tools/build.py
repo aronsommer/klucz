@@ -265,8 +265,8 @@ def skeleton(body):
 
     A <b lang="…"> is a bold word of the explanation, not Polish; it is translated, so its text is not compared.
     """
-    tags = [re.sub(r'\s(?!class=)[\w-]+="[^"]*"', "", t) for t in re.findall(r"<[^>]+>", body)]
-    return tags, re.findall(r"<b>(.*?)</b>", body, re.S)
+    tags = [re.sub(r'\s(?!class=)[\w-]+="[^"]*"|\s+(?=/?>)', "", t) for t in re.findall(r"<[^>]+>", body)]
+    return tags, re.findall(r"<b\s*>(.*?)</b\s*>", body, re.S)
 
 
 def sheets():
