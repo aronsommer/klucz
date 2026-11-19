@@ -428,7 +428,7 @@
           if (height > A4) sheet.style.setProperty("--fit", A4 / height);
         });
         // the alphabet sheet (the one with the letter lines): letters, digraphs and words with a recording in
-        // audio/ play on a click; in the letter lines ó and y say their names
+        // audio/ play on a click
         const AUDIO = new Set(__AUDIO__);
         const MARKS = {
           ą: "ogonek",
@@ -441,7 +441,6 @@
           ż: "dot-above",
           ł: "stroke",
         };
-        const NAMES = { ó: "letters/o-z-kreska", y: "letters/igrek" };
         const bare = (s) => s.normalize("NFD").replace(/\p{M}/gu, "").replaceAll("ł", "l");
         // the recording of a text: a letter or digraph by its Unicode mark, else a word without its marks
         function recording(text) {
@@ -472,7 +471,7 @@
               text.replaceWith(
                 ...text.data.split(/(\s+)/).map((part) => {
                   const letter = part.replace(/[()]/g, "");
-                  const path = NAMES[letter] ?? recording(letter);
+                  const path = recording(letter);
                   return path ? key([part], path) : part;
                 }),
               );
