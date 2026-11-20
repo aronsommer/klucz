@@ -70,12 +70,18 @@
         margin-top: 10px;
       }
       /* Above the móc column of the future table, as close to its line as the headers above. */
-      .rule .g {
-        float: right;
+      .future td:has(.g) {
         position: relative;
-        top: 6px;
-        width: 114px;
-        padding-left: 6px;
+      }
+      .future .g {
+        position: absolute;
+        bottom: calc(100% + 2.5px);
+      }
+      /* On a phone the wrapped rule line could reach the label, so it gets its own room. */
+      @media (max-width: 640px) {
+        .future {
+          margin-top: 20px;
+        }
       }
       .past,
       .future {
@@ -252,16 +258,14 @@
       </table>
 
       <h2>3. Czas przyszły – Future</h2>
-      <p class="rule">
-        być in the future + infinitive: będę mieć = I will have.<span class="g">masculine</span>
-      </p>
+      <p class="rule">być in the future + infinitive: będę mieć = I will have.</p>
       <table class="future">
         <tr>
           <td>ja (I)</td>
           <td><b>będę</b> mieć</td>
           <td><b>będę</b> chcieć</td>
           <td><b>będę</b> musieć</td>
-          <td><b>będę</b> mógł</td>
+          <td><span class="g">masculine</span><b>będę</b> mógł</td>
         </tr>
         <tr>
           <td>ty (you)</td>
