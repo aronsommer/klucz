@@ -2,11 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <!-- maximum-scale stops iOS Safari from zooming in when the topic select gets focus. -->
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title data-t="grammar_title">Klucz</title>
     <link rel="icon" href="__ICON__" />
     <!-- Before the first paint, so a stored theme does not flash. -->
@@ -223,27 +219,13 @@
           background: color-mix(in srgb, var(--text) 18%, transparent);
         }
 
-        /* the sheets' column widths are made for A4; on a phone the columns fit their content */
-        @media (max-width: 640px) {
-          table {
-            table-layout: auto;
-          }
-          :is(th, td) {
-            width: auto !important;
-          }
-          .cols {
-            flex-direction: column;
-            gap: 0;
-          }
-          /* over a sheet's margin-top: auto, which has nothing to fill in one column */
-          .cols .col .box {
-            margin-top: 16px;
-          }
-        }
-        @media (max-width: 480px) {
-          h1 {
-            font-size: 28px;
-          }
+        /* every sheet laid out as wide as on a desktop and shrunk like a picture to a narrower column
+           (--scale); the margin gives back the height it no longer fills (--height: its own) */
+        :scope {
+          width: 680px;
+          transform: scale(var(--scale, 1));
+          transform-origin: 0 0;
+          margin-bottom: calc((var(--scale, 1) - 1) * var(--height, 0px));
         }
       }
     </style>
@@ -416,6 +398,14 @@
             { label: t("print_topic"), run: () => print() },
           ];
         });
+        // a sheet shrinks to a column narrower than the 680px it is laid out at
+        const column = document.querySelector(".column");
+        const pages = document.querySelectorAll(".page");
+        const fit = new ResizeObserver(() => {
+          column.style.setProperty("--scale", Math.min(1, column.clientWidth / 680));
+          for (const p of pages) p.style.setProperty("--height", p.offsetHeight + "px");
+        });
+        for (const el of [column, ...pages]) fit.observe(el);
         // before printing, measure the open sheet with the print styles and shrink it if it is taller than A4
         const A4 = 1122; // 297 mm in CSS px
         const styles = [...document.querySelectorAll("style[media]")];
