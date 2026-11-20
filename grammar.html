@@ -381,6 +381,10 @@ main {
         line-height: 0;
         vertical-align: -4px;
       }
+      /* a shrunk sheet's negative margin stays inside the column, so the column ends with the sheet */
+      .column {
+        display: flow-root;
+      }
       @media (min-width: 641px) {
         .switcher {
           grid-column: span 6;
@@ -8052,7 +8056,10 @@ addEventListener("focusout", (e) => e.target.classList.remove("by-pointer"));
         const column = document.querySelector(".column");
         const pages = document.querySelectorAll(".page");
         const fit = new ResizeObserver(() => {
-          column.style.setProperty("--scale", Math.min(1, column.clientWidth / 680));
+          column.style.setProperty(
+            "--scale",
+            Math.min(1, column.getBoundingClientRect().width / 680),
+          );
           for (const p of pages) p.style.setProperty("--height", p.offsetHeight + "px");
         });
         for (const el of [column, ...pages]) fit.observe(el);
